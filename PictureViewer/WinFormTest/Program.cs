@@ -4,7 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace PictureViewer
+namespace WinFormTest
 {
     static class Program
     {
@@ -16,8 +16,7 @@ namespace PictureViewer
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            //Application.Run(new MainForm());
-            Application.Run(new ShowImage());
+            Application.Run(new Form1());
         }
     }
 }

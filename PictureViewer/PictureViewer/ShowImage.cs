@@ -19,9 +19,27 @@ namespace PictureViewer
             imagePictureBox.MouseMove += new MouseEventHandler(picture_MouseMove);
             imagePictureBox.MouseDoubleClick += new MouseEventHandler(picture_DoubleClick);
             imagePictureBox.MouseWheel += new MouseEventHandler(picture_MouseWheel);
-            //imagePictureBox.PreviewKeyDown += new PreviewKeyDownEventHandler(picture_PreviewKeyDown);
+
+            KeyDown += new System.Windows.Forms.KeyEventHandler(this.ShowImage_KeyDown);
+            KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.ShowImage_KeyPress);
+            KeyUp += new System.Windows.Forms.KeyEventHandler(this.ShowImage_KeyUp);
         }
 
+        private void ShowImage_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.Control == true)
+                isCtrlDown = true;
+        }
+        private void ShowImage_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            //if (e.KeyChar.ToString() == Keys.Control.ToString())
+
+        }
+        private void ShowImage_KeyUp(object sender, KeyEventArgs e)
+        {
+            if (e.Control == false)
+                isCtrlDown = false;
+        }
 
         public Bitmap myBitMap = new Bitmap("..\\..\\Images\\default.jpg");
         public void SetBitMap(Image imageInfo)
@@ -31,6 +49,7 @@ namespace PictureViewer
 
         private void ShowImage_Load(object sender, EventArgs e)
         {
+            //允许键盘
             KeyPreview = true;
             TopMost = true;
             FormBorderStyle = FormBorderStyle.None;
@@ -112,14 +131,9 @@ namespace PictureViewer
                 imagePictureBox.Height = curPicHeight / 2;
                 return;
             }
-
+            
         }
-        //private void picture_PreviewKeyDown(object sender, PreviewKeyDownEventArgs e)
-        //{
-        //    if (e.Control == true)
-        //        isCtrlDown = true;
-
-        //}
+      
         private void ShowContextMenuStrip(object sender, System.ComponentModel.CancelEventArgs e)
         {
             myContextMenuStrip.Items.Add("");
