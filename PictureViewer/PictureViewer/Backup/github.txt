@@ -1,4 +1,6 @@
-﻿git config --global user.name "By2048"
+﻿
+
+git config --global user.name "By2048"
 git config --global user.email "1247079575@qq.com"
 
 

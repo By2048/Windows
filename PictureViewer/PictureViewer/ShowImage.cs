@@ -63,6 +63,7 @@ namespace PictureViewer
             imagePictureBox.SizeMode = PictureBoxSizeMode.StretchImage;
             imagePictureBox.ClientSize = new Size(Width, Height);
             imagePictureBox.Image = myBitMap;
+
             Controls.Add(imagePictureBox);
         }
 
