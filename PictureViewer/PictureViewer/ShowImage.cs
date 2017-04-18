@@ -12,9 +12,18 @@ namespace PictureViewer
 {
     public partial class ShowImage : Form
     {
+        bool isMaxScreen = false;
+        //当前的屏幕除任务栏外的工作域大小
+        int ScreenWidth = System.Windows.Forms.Screen.PrimaryScreen.WorkingArea.Width;
+        int ScreenHeight = System.Windows.Forms.Screen.PrimaryScreen.WorkingArea.Height;
         public ShowImage()
         {
             InitializeComponent();
+
+            //MouseDown += new System.Windows.Forms.MouseEventHandler(this.showImage_MouseDown);
+            //MouseMove += new System.Windows.Forms.MouseEventHandler(this.showImage_MouseMove);
+            //MouseUp += new System.Windows.Forms.MouseEventHandler(this.form_MouseUp);
+
             imagePictureBox.MouseDown += new MouseEventHandler(picture_MouseDown);
             imagePictureBox.MouseMove += new MouseEventHandler(picture_MouseMove);
             imagePictureBox.MouseDoubleClick += new MouseEventHandler(picture_DoubleClick);
@@ -23,6 +32,8 @@ namespace PictureViewer
             KeyDown += new System.Windows.Forms.KeyEventHandler(this.ShowImage_KeyDown);
             KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.ShowImage_KeyPress);
             KeyUp += new System.Windows.Forms.KeyEventHandler(this.ShowImage_KeyUp);
+
+            
         }
 
         private void ShowImage_KeyDown(object sender, KeyEventArgs e)
@@ -120,6 +131,8 @@ namespace PictureViewer
                 Height = curPicHeight * 2;
                 imagePictureBox.Width = curPicWidth * 2;
                 imagePictureBox.Height = curPicHeight * 2;
+                if (Width >= ScreenWidth || Height >= ScreenHeight)
+                    isMaxScreen = true;
                 return;
             }
             if (e.Delta == -120 && isCtrlDown == false)
@@ -134,7 +147,6 @@ namespace PictureViewer
             }
             
         }
-      
         private void ShowContextMenuStrip(object sender, System.ComponentModel.CancelEventArgs e)
         {
             myContextMenuStrip.Items.Add("");
@@ -144,6 +156,34 @@ namespace PictureViewer
             myContextMenuStrip.Items.Add("Pears");
             e.Cancel = false;
         }
+
+
+        //private void showImage_MouseDown(object sender, MouseEventArgs e)
+        //{
+        //    if (e.Button == MouseButtons.Left)
+        //    {
+        //        Point currentPoint = PointToScreen(e.Location);
+        //        offsetPoint = new Point(currentPoint.X - Left, currentPoint.Y - Top);
+
+        //    }
+        //    if (e.Button == MouseButtons.Right)
+        //    {
+        //        myContextMenuStrip = new ContextMenuStrip();
+        //        Point showPoint = PointToScreen(e.Location);
+        //        myContextMenuStrip.Opening += new CancelEventHandler(ShowContextMenuStrip);
+        //        ContextMenuStrip = myContextMenuStrip;
+        //    }
+        //}
+        //private void showImage_MouseMove(object sender, MouseEventArgs e)
+        //{
+        //    this.imagePictureBox.Focus();
+        //    if (e.Button == MouseButtons.Left)
+        //    {
+        //        Point currentPoint = MousePosition;
+        //        Location = new Point(currentPoint.X - offsetPoint.X, currentPoint.Y - offsetPoint.Y);
+        //    }
+        //}
+
 
     }
 }

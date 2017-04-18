@@ -31,10 +31,37 @@ namespace WinFormTest
 
         }
 
+        //当前的屏幕除任务栏外的工作域大小
+        //this.Width = System.Windows.Forms.Screen.PrimaryScreen.WorkingArea.Width;
+        //this.Height = System.Windows.Forms.Screen.PrimaryScreen.WorkingArea.Height;
+
+        //当前的屏幕包括任务栏的工作域大小
+        //this.Width=System.Windows.Forms.Screen.PrimaryScreen.Bounds.Width;
+        //this.Height=System.Windows.Forms.Screen.PrimaryScreen.Bounds.Height;
+
+        //任务栏大小
+        //this.Width=System.Windows.Forms.Screen.PrimaryScreen.Bounds.Width-System.Windows.Forms.Screen.PrimaryScreen.WorkingArea.Width;
+        //this.Height=System.Windows.Forms.Screen.PrimaryScreen.Bounds.Height-System.Windows.Forms.Screen.PrimaryScreen.WorkingArea.Height;
+
+        //winform实现全屏显示
+        //WinForm:
+        //this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+        //this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
+        //this.TopMost = true;  
+
         private void button2_Click(object sender, EventArgs e)
         {
-            this.pictureBox1.Size = new System.Drawing.Size(700, 700);
-            this.pictureBox1.BackColor = Color.Red;
+            //int Width = System.Windows.Forms.Screen.PrimaryScreen.WorkingArea.Width;
+            //int Height = System.Windows.Forms.Screen.PrimaryScreen.WorkingArea.Height;
+
+            //int Width = System.Windows.Forms.Screen.PrimaryScreen.Bounds.Width;
+            //int Height = System.Windows.Forms.Screen.PrimaryScreen.Bounds.Height;
+
+            int Width = System.Windows.Forms.Screen.PrimaryScreen.Bounds.Width - System.Windows.Forms.Screen.PrimaryScreen.WorkingArea.Width;
+            int Height = System.Windows.Forms.Screen.PrimaryScreen.Bounds.Height - System.Windows.Forms.Screen.PrimaryScreen.WorkingArea.Height;
+
+
+            MessageBox.Show(Width.ToString() + "\n" + Height.ToString());
         }
     }
 }
