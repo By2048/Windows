@@ -17,7 +17,7 @@ namespace PictureViewer
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             //Application.Run(new MainForm());
-            Application.Run(new ShowImage());
+            Application.Run(new MainForm());
         }
     }
 }

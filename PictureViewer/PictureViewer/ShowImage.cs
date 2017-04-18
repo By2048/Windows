@@ -19,16 +19,16 @@ namespace PictureViewer
             imagePictureBox.MouseMove += new MouseEventHandler(picture_MouseMove);
             imagePictureBox.MouseDoubleClick += new MouseEventHandler(picture_DoubleClick);
             imagePictureBox.MouseWheel += new MouseEventHandler(picture_MouseWheel);
-            imagePictureBox.PreviewKeyDown += new PreviewKeyDownEventHandler(picture_PreviewKeyDown);
+            //imagePictureBox.PreviewKeyDown += new PreviewKeyDownEventHandler(picture_PreviewKeyDown);
         }
 
-     
-        public Bitmap myBitMap= new Bitmap("..\\..\\Images\\default.jpg");
+
+        public Bitmap myBitMap = new Bitmap("..\\..\\Images\\default.jpg");
         public void SetBitMap(Image imageInfo)
         {
             myBitMap = new Bitmap(imageInfo.Path);
         }
-        
+
         private void ShowImage_Load(object sender, EventArgs e)
         {
             KeyPreview = true;
@@ -62,9 +62,7 @@ namespace PictureViewer
             {
                 myContextMenuStrip = new ContextMenuStrip();
                 Point showPoint = PointToScreen(e.Location);
-
-                myContextMenuStrip.Opening += new CancelEventHandler(ShowItem);
-
+                myContextMenuStrip.Opening += new CancelEventHandler(ShowContextMenuStrip);
                 ContextMenuStrip = myContextMenuStrip;
             }
         }
@@ -91,13 +89,10 @@ namespace PictureViewer
             }
             if (e.Delta == -120 && isCtrlDown == true)
             {
-                if (Opacity > 0.2)
-                {
-                    Opacity -= 0.1;
-                }
+                Opacity -= 0.1;
                 return;
             }
-            if (e.Delta == 120)
+            if (e.Delta == 120 && isCtrlDown == false)
             {
                 int curPicWidth = imagePictureBox.Width;
                 int curPicHeight = imagePictureBox.Height;
@@ -107,7 +102,7 @@ namespace PictureViewer
                 imagePictureBox.Height = curPicHeight * 2;
                 return;
             }
-            if (e.Delta == -120)
+            if (e.Delta == -120 && isCtrlDown == false)
             {
                 int curPicWidth = imagePictureBox.Width;
                 int curPicHeight = imagePictureBox.Height;
@@ -119,15 +114,15 @@ namespace PictureViewer
             }
 
         }
-        private void picture_PreviewKeyDown(object sender, PreviewKeyDownEventArgs e)
-        {
-            if (e.Control == true)
-                isCtrlDown = true;
+        //private void picture_PreviewKeyDown(object sender, PreviewKeyDownEventArgs e)
+        //{
+        //    if (e.Control == true)
+        //        isCtrlDown = true;
 
-        }
-        private void ShowItem(object sender, System.ComponentModel.CancelEventArgs e)
+        //}
+        private void ShowContextMenuStrip(object sender, System.ComponentModel.CancelEventArgs e)
         {
-            myContextMenuStrip.Items.Add("Apples");
+            myContextMenuStrip.Items.Add("");
             myContextMenuStrip.Items.Add("-");
             myContextMenuStrip.Items.Add("Apples");
             myContextMenuStrip.Items.Add("Oranges");
