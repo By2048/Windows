@@ -1,0 +1,14 @@
+﻿git config --global user.name "By2048"
+git config --global user.email "1247079575@qq.com"
+
+
+echo "# Windows" >> README.md
+git init
+git add README.md
+git commit -m "first commit"
+git remote add origin https://github.com/By2048/Windows.git
+git push -u origin master
+
+
+git remote add origin https://github.com/By2048/Windows.git
+git push -u origin master

@@ -1,0 +1,6 @@
+E:\Desktop\Windows\PictureViewer\CSharp Test\bin\Debug\CSharp Test.exe.config
+E:\Desktop\Windows\PictureViewer\CSharp Test\bin\Debug\CSharp Test.exe
+E:\Desktop\Windows\PictureViewer\CSharp Test\bin\Debug\CSharp Test.pdb
+E:\Desktop\Windows\PictureViewer\CSharp Test\obj\Debug\CSharpTest.csprojResolveAssemblyReference.cache
+E:\Desktop\Windows\PictureViewer\CSharp Test\obj\Debug\CSharp Test.exe
+E:\Desktop\Windows\PictureViewer\CSharp Test\obj\Debug\CSharp Test.pdb
