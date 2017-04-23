@@ -63,5 +63,10 @@ namespace WinFormTest
 
             MessageBox.Show(Width.ToString() + "\n" + Height.ToString());
         }
+
+        private void Form2_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }

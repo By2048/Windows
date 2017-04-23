@@ -1,0 +1,11 @@
+E:\Desktop\Windows\PictureViewer\WinFormTest\bin\Debug\WinFormTest.exe.config
+E:\Desktop\Windows\PictureViewer\WinFormTest\bin\Debug\WinFormTest.exe
+E:\Desktop\Windows\PictureViewer\WinFormTest\bin\Debug\WinFormTest.pdb
+E:\Desktop\Windows\PictureViewer\WinFormTest\obj\Debug\WinFormTest.csprojResolveAssemblyReference.cache
+E:\Desktop\Windows\PictureViewer\WinFormTest\obj\Debug\WinFormTest.Form1.resources
+E:\Desktop\Windows\PictureViewer\WinFormTest\obj\Debug\WinFormTest.Form2.resources
+E:\Desktop\Windows\PictureViewer\WinFormTest\obj\Debug\WinFormTest.Properties.Resources.resources
+E:\Desktop\Windows\PictureViewer\WinFormTest\obj\Debug\WinFormTest.csproj.GenerateResource.Cache
+E:\Desktop\Windows\PictureViewer\WinFormTest\obj\Debug\WinFormTest.exe
+E:\Desktop\Windows\PictureViewer\WinFormTest\obj\Debug\WinFormTest.pdb
+E:\Desktop\Windows\PictureViewer\WinFormTest\obj\Debug\WinFormTest.Form3.resources

@@ -34,7 +34,7 @@ namespace PictureViewer
             for (int i = 0; i < 7; i++)
             {               
                 ShowImage newForm = new ShowImage();
-                newForm.SetBitMap(images[i]);
+                newForm.SetImagePath(images[i].Path);
                 newForm.StartPosition = FormStartPosition.Manual;
                 newForm.Location = new Point(100 + i * 10, 100 + i * 10);
                 newForm.Text = i.ToString();
