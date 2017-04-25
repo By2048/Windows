@@ -19,7 +19,7 @@ namespace PictureViewer
 
 
         private ToolStripMenuItem ImageShowModel;
-        private ToolStripMenuItem StretchImageModel;
+        private ToolStripMenuItem ZoomModel;
         private ToolStripMenuItem AutoSizeModel;
 
         private ToolStripMenuItem ImageInfo;
@@ -41,7 +41,7 @@ namespace PictureViewer
             picBoxContextMenuStrip.Name = "picBoxContextMenuStrip";
 
             ImageShowModel = new ToolStripMenuItem();
-            StretchImageModel = new ToolStripMenuItem();
+            ZoomModel = new ToolStripMenuItem();
             AutoSizeModel = new ToolStripMenuItem();
 
             ImageInfo = new ToolStripMenuItem();
@@ -55,15 +55,15 @@ namespace PictureViewer
             ImageShowModel.Text = "显示模式";
             ImageShowModel.DropDownOpening += new EventHandler(ImageShowModel_DropDownOpening);
             ImageShowModel.DropDownItemClicked += new ToolStripItemClickedEventHandler(ImageShowModelItem_Clicked);
-                       
-            StretchImageModel.Name = "StretchImageModel";
-            StretchImageModel.Text = "拉伸适应";
+
+            ZoomModel.Name = "ZoomModel";
+            ZoomModel.Text = "比例显示";
             AutoSizeModel.Name = "AutoSizeModel";
             AutoSizeModel.Text = "实际像素";
 
             ImageShowModel.DropDownItems.AddRange(
                 new ToolStripItem[] {
-                StretchImageModel,
+                ZoomModel,
                 AutoSizeModel,
             });
 
@@ -108,7 +108,7 @@ namespace PictureViewer
             Width = picWidth / 4;
             Height = picHeight / 4;
 
-            imagePictureBox.SizeMode = PictureBoxSizeMode.StretchImage;
+            imagePictureBox.SizeMode = PictureBoxSizeMode.Zoom;
             imagePictureBox.ClientSize = new Size(Width, Height);
             imagePictureBox.Image = imageBitmap;
 
@@ -220,7 +220,7 @@ namespace PictureViewer
             string mode = this.imagePictureBox.SizeMode.ToString();
             switch (mode)
             {
-                case "StretchImage": mode = "拉伸适应"; break;
+                case "Zoom": mode = "比例显示"; break;
                 case "AutoSize": mode = "实际像素"; break;
                 default: break;
             }
@@ -237,7 +237,7 @@ namespace PictureViewer
             ToolStripMenuItem item = e.ClickedItem as ToolStripMenuItem;
             switch (item.Text)
             {
-                case "拉伸适应": imagePictureBox.SizeMode = PictureBoxSizeMode.StretchImage; break;
+                case "比例显示": imagePictureBox.SizeMode = PictureBoxSizeMode.Zoom; break;
                 case "实际像素": imagePictureBox.SizeMode = PictureBoxSizeMode.AutoSize; break;
                 default: break;
             }
