@@ -19,9 +19,8 @@ namespace PictureViewer
 
 
         private ToolStripMenuItem ImageShowModel;
-        private ToolStripMenuItem ZoomMode;
         private ToolStripMenuItem StretchImageModel;
-        private ToolStripMenuItem NormalModel;
+        private ToolStripMenuItem AutoSizeModel;
 
         private ToolStripMenuItem ImageInfo;
         public ShowImage()
@@ -42,9 +41,8 @@ namespace PictureViewer
             picBoxContextMenuStrip.Name = "picBoxContextMenuStrip";
 
             ImageShowModel = new ToolStripMenuItem();
-            ZoomMode = new ToolStripMenuItem();
             StretchImageModel = new ToolStripMenuItem();
-            NormalModel = new ToolStripMenuItem();
+            AutoSizeModel = new ToolStripMenuItem();
 
             ImageInfo = new ToolStripMenuItem();
 
@@ -56,26 +54,24 @@ namespace PictureViewer
             ImageShowModel.Name = "ImageShowModel";
             ImageShowModel.Text = "显示模式";
             ImageShowModel.DropDownOpening += new EventHandler(ImageShowModel_DropDownOpening);
-            ImageShowModel.DropDownItemClicked += new ToolStripItemClickedEventHandler(ImageShowModelItemClicked);
-            ZoomMode.Name = "ZoomMode";
-            ZoomMode.Text = "放大";
+            ImageShowModel.DropDownItemClicked += new ToolStripItemClickedEventHandler(ImageShowModelItem_Clicked);
+                       
             StretchImageModel.Name = "StretchImageModel";
-            StretchImageModel.Text = "拉伸";
-            NormalModel.Name = "NormalModel";
-            NormalModel.Text = "正常";
+            StretchImageModel.Text = "拉伸适应";
+            AutoSizeModel.Name = "AutoSizeModel";
+            AutoSizeModel.Text = "实际像素";
 
             ImageShowModel.DropDownItems.AddRange(
                 new ToolStripItem[] {
-                ZoomMode,
                 StretchImageModel,
-                NormalModel
+                AutoSizeModel,
             });
+
             ImageInfo.Name = "ImageInfo";
             ImageInfo.Text = "图片信息";
 
         }
-
-      
+        
 
         private void ShowImage_KeyDown(object sender, KeyEventArgs e)
         {
@@ -119,9 +115,7 @@ namespace PictureViewer
             Controls.Add(imagePictureBox);
         }
 
-
         private Point currentPoint, offsetPoint;
-
 
         private void picture_MouseDown(object sender, MouseEventArgs e)
         {
@@ -129,7 +123,6 @@ namespace PictureViewer
             {
                 currentPoint = PointToScreen(e.Location);
                 offsetPoint = new Point(currentPoint.X - Left, currentPoint.Y - Top);
-
             }
             if (e.Button == MouseButtons.Right)
             {
@@ -140,6 +133,7 @@ namespace PictureViewer
         Point movePoint = new Point(0, 0);
         private void picture_MouseMove(object sender, MouseEventArgs e)
         {
+
             this.imagePictureBox.Focus();
             if (e.Button == MouseButtons.Left && isMaxScreen == false && isMaxScreen == false)
             {
@@ -148,20 +142,20 @@ namespace PictureViewer
             }
             else if (e.Button == MouseButtons.Left && isMaxScreen == true)
             {
-                diffPoint.X = currentPoint.X - e.X;
-                diffPoint.Y = currentPoint.Y - e.Y;
+                //diffPoint.X = currentPoint.X - e.X;
+                //diffPoint.Y = currentPoint.Y - e.Y;
 
-                movePoint.X = movePoint.X - diffPoint.X;
-                movePoint.Y = movePoint.Y - diffPoint.Y;
+                //movePoint.X = movePoint.X - diffPoint.X;
+                //movePoint.Y = movePoint.Y - diffPoint.Y;
 
-                imageBitmap = new Bitmap("..\\..\\Images\\default.jpg");
-                Graphics gra = imagePictureBox.CreateGraphics();
-                gra.Clear(imagePictureBox.BackColor);
-                gra.DrawImage(imageBitmap, movePoint.X, movePoint.Y);
-                currentPoint.X = e.X;
-                currentPoint.Y = e.Y;
-                imageBitmap.Dispose();
-                gra.Dispose();
+                //imageBitmap = new Bitmap("..\\..\\Images\\default.jpg");
+                //Graphics gra = imagePictureBox.CreateGraphics();
+                //gra.Clear(imagePictureBox.BackColor);
+                //gra.DrawImage(imageBitmap, movePoint.X, movePoint.Y);
+                //currentPoint.X = e.X;
+                //currentPoint.Y = e.Y;
+                //imageBitmap.Dispose();
+                //gra.Dispose();
             }
         }
         private void picture_DoubleClick(object sender, MouseEventArgs e)
@@ -192,10 +186,12 @@ namespace PictureViewer
                 int curPicWidth = imagePictureBox.Width;
                 int curPicHeight = imagePictureBox.Height;
 
-                imagePictureBox.Width = int.Parse(Math.Round((curPicWidth + 28 * imageProportion)).ToString());
-                imagePictureBox.Height = int.Parse(Math.Round((curPicHeight + 28.0)).ToString());
+
+                imagePictureBox.Width = int.Parse(Math.Round((curPicWidth + 20.0 * imageProportion)).ToString());
+                imagePictureBox.Height = int.Parse(Math.Round((curPicHeight + 20.0)).ToString());
                 Width = imagePictureBox.Width;
                 Height = imagePictureBox.Height;
+
 
                 if (Width >= ScreenWidth || Height >= ScreenHeight)
                     isMaxScreen = true;
@@ -217,21 +213,15 @@ namespace PictureViewer
             }
 
         }
-
-
-
-
-
-
+        
 
         private void ImageShowModel_DropDownOpening(object sender, EventArgs e)
         {
             string mode = this.imagePictureBox.SizeMode.ToString();
             switch (mode)
             {
-                case "Zoom": mode = "放大"; break;
-                case "StretchImage": mode = "拉伸"; break;
-                case "Normal": mode = "正常"; break;
+                case "StretchImage": mode = "拉伸适应"; break;
+                case "AutoSize": mode = "实际像素"; break;
                 default: break;
             }
             ToolStripMenuItem item = sender as ToolStripMenuItem;
@@ -242,14 +232,13 @@ namespace PictureViewer
 
         }
 
-        private void ImageShowModelItemClicked(object sender, ToolStripItemClickedEventArgs e)
+        private void ImageShowModelItem_Clicked(object sender, ToolStripItemClickedEventArgs e)
         {
             ToolStripMenuItem item = e.ClickedItem as ToolStripMenuItem;
             switch (item.Text)
             {
-                case "放大": imagePictureBox.SizeMode = PictureBoxSizeMode.Zoom; break;
-                case "拉伸": imagePictureBox.SizeMode = PictureBoxSizeMode.StretchImage; break;
-                case "正常": imagePictureBox.SizeMode = PictureBoxSizeMode.Normal; break;
+                case "拉伸适应": imagePictureBox.SizeMode = PictureBoxSizeMode.StretchImage; break;
+                case "实际像素": imagePictureBox.SizeMode = PictureBoxSizeMode.AutoSize; break;
                 default: break;
             }
         }
