@@ -24,3 +24,8 @@ C:\Users\Administrator\Desktop\Windows\PictureViewer\WinFormTest\obj\Debug\WinFo
 C:\Users\Administrator\Desktop\Windows\PictureViewer\WinFormTest\obj\Debug\WinFormTest.csproj.GenerateResource.Cache
 C:\Users\Administrator\Desktop\Windows\PictureViewer\WinFormTest\obj\Debug\WinFormTest.Form5.resources
 C:\Users\Administrator\Desktop\Windows\PictureViewer\WinFormTest\obj\Debug\WinFormTest.Form6.resources
+E:\Desktop\Windows\PictureViewer\WinFormTest\obj\Debug\WinFormTest.Form4.resources
+E:\Desktop\Windows\PictureViewer\WinFormTest\obj\Debug\WinFormTest.Form5.resources
+E:\Desktop\Windows\PictureViewer\WinFormTest\obj\Debug\WinFormTest.Form6.resources
+E:\Desktop\Windows\PictureViewer\WinFormTest\obj\Debug\WinFormTest.Form7.resources
+E:\Desktop\Windows\PictureViewer\WinFormTest\obj\Debug\WinFormTest.TestUserControl.resources

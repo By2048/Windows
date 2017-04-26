@@ -1,0 +1,5 @@
+E:\Desktop\Windows\PictureViewer\ImageView\bin\Debug\ImageView.dll
+E:\Desktop\Windows\PictureViewer\ImageView\bin\Debug\ImageView.pdb
+E:\Desktop\Windows\PictureViewer\ImageView\obj\Debug\ImageView.csprojResolveAssemblyReference.cache
+E:\Desktop\Windows\PictureViewer\ImageView\obj\Debug\ImageView.dll
+E:\Desktop\Windows\PictureViewer\ImageView\obj\Debug\ImageView.pdb

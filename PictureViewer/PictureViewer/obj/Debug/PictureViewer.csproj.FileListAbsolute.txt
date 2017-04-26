@@ -22,10 +22,13 @@ D:\Windows\PictureViewer\PictureViewer\obj\Debug\PictureViewer.csproj.GenerateRe
 E:\Desktop\Windows\PictureViewer\PictureViewer\bin\Debug\PictureViewer.exe.config
 E:\Desktop\Windows\PictureViewer\PictureViewer\bin\Debug\PictureViewer.exe
 E:\Desktop\Windows\PictureViewer\PictureViewer\bin\Debug\PictureViewer.pdb
-E:\Desktop\Windows\PictureViewer\PictureViewer\obj\Debug\PictureViewer.MainForm.resources
-E:\Desktop\Windows\PictureViewer\PictureViewer\obj\Debug\PictureViewer.Properties.Resources.resources
 E:\Desktop\Windows\PictureViewer\PictureViewer\obj\Debug\PictureViewer.ShowImage.resources
 E:\Desktop\Windows\PictureViewer\PictureViewer\obj\Debug\PictureViewer.csproj.GenerateResource.Cache
 E:\Desktop\Windows\PictureViewer\PictureViewer\obj\Debug\PictureViewer.exe
 E:\Desktop\Windows\PictureViewer\PictureViewer\obj\Debug\PictureViewer.pdb
 E:\Desktop\Windows\PictureViewer\PictureViewer\obj\Debug\PictureViewer.csprojResolveAssemblyReference.cache
+E:\Desktop\Windows\PictureViewer\PictureViewer\obj\Debug\PictureViewer.TestShowForm.resources
+E:\Desktop\Windows\PictureViewer\PictureViewer\obj\Debug\AM.Windows.Forms.MainForm.resources
+E:\Desktop\Windows\PictureViewer\PictureViewer\obj\Debug\AM.Windows.Forms.Properties.Resources.resources
+E:\Desktop\Windows\PictureViewer\PictureViewer\bin\Debug\ImageView.dll
+E:\Desktop\Windows\PictureViewer\PictureViewer\bin\Debug\ImageView.pdb
