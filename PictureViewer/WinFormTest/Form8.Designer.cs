@@ -28,42 +28,43 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.flowLayoutPanel2 = new System.Windows.Forms.FlowLayoutPanel();
+            this.treeView1 = new System.Windows.Forms.TreeView();
+            this.listBox1 = new System.Windows.Forms.ListBox();
             this.SuspendLayout();
             // 
-            // groupBox1
+            // treeView1
             // 
-            this.groupBox1.Location = new System.Drawing.Point(119, 294);
-            this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(200, 100);
-            this.groupBox1.TabIndex = 1;
-            this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "groupBox1";
-            this.groupBox1.Enter += new System.EventHandler(this.groupBox1_Enter);
+            this.treeView1.Location = new System.Drawing.Point(103, 48);
+            this.treeView1.Name = "treeView1";
+            this.treeView1.Size = new System.Drawing.Size(278, 477);
+            this.treeView1.TabIndex = 0;
             // 
-            // flowLayoutPanel2
+            // listBox1
             // 
-            this.flowLayoutPanel2.Location = new System.Drawing.Point(134, 87);
-            this.flowLayoutPanel2.Name = "flowLayoutPanel2";
-            this.flowLayoutPanel2.Size = new System.Drawing.Size(185, 100);
-            this.flowLayoutPanel2.TabIndex = 0;
+            this.listBox1.FormattingEnabled = true;
+            this.listBox1.ItemHeight = 12;
+            this.listBox1.Location = new System.Drawing.Point(514, 65);
+            this.listBox1.Name = "listBox1";
+            this.listBox1.Size = new System.Drawing.Size(321, 484);
+            this.listBox1.TabIndex = 1;
             // 
             // Form8
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(866, 591);
-            this.Controls.Add(this.flowLayoutPanel2);
-            this.Controls.Add(this.groupBox1);
+            this.Controls.Add(this.listBox1);
+            this.Controls.Add(this.treeView1);
             this.Name = "Form8";
-            this.Text = "Form8";
+            this.Text = "i";
+            this.Load += new System.EventHandler(this.Form8_Load);
             this.ResumeLayout(false);
 
         }
 
         #endregion
-        private System.Windows.Forms.GroupBox groupBox1;
-        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel2;
+
+        private System.Windows.Forms.TreeView treeView1;
+        private System.Windows.Forms.ListBox listBox1;
     }
 }

@@ -102,6 +102,12 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Backup\github.txt" />
+    <Content Include="icons\folder-select.png" />
+    <Content Include="icons\folder.png" />
+    <Content Include="icons\img-select.png" />
+    <Content Include="icons\img.png" />
+    <Content Include="icons\pc.png" />
+    <Content Include="icons\picture-viewer.png" />
     <Content Include="Images\1.jpg" />
     <Content Include="Images\2.jpg" />
     <Content Include="Images\3.jpg" />

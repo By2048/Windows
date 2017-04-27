@@ -4,12 +4,13 @@ using System.ComponentModel;
 using System.Drawing;
 using System.Resources;
 using System.Reflection;
+using System.Windows.Forms;
 
 
 namespace AM.Windows.Forms
 {
-    public class ImageView
+    public partial class ImageView : Control, IComponent
     {
-        string Name = "test";
-    }
+        
+    }   
 }

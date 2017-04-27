@@ -29,13 +29,15 @@ namespace AM.Windows.Forms
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.toolStripContainerImage = new System.Windows.Forms.ToolStripContainer();
             this.statusStripImage = new System.Windows.Forms.StatusStrip();
             this.toolStripStatusLabelImage = new System.Windows.Forms.ToolStripStatusLabel();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             this.treeViewImage = new System.Windows.Forms.TreeView();
+            this.imageList = new System.Windows.Forms.ImageList(this.components);
             this.splitContainer2 = new System.Windows.Forms.SplitContainer();
-            this.toolStrip1 = new System.Windows.Forms.ToolStrip();
+            this.toolStrip = new System.Windows.Forms.ToolStrip();
             this.toolStripButton1 = new System.Windows.Forms.ToolStripButton();
             this.toolStripButton2 = new System.Windows.Forms.ToolStripButton();
             this.toolStripButton3 = new System.Windows.Forms.ToolStripButton();
@@ -47,6 +49,7 @@ namespace AM.Windows.Forms
             this.toolStripLabel2 = new System.Windows.Forms.ToolStripDropDownButton();
             this.显示多选框ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripTextBox1 = new System.Windows.Forms.ToolStripTextBox();
+            this.listView1 = new System.Windows.Forms.ListView();
             this.toolStripContainerImage.BottomToolStripPanel.SuspendLayout();
             this.toolStripContainerImage.ContentPanel.SuspendLayout();
             this.toolStripContainerImage.TopToolStripPanel.SuspendLayout();
@@ -57,8 +60,9 @@ namespace AM.Windows.Forms
             this.splitContainer1.Panel2.SuspendLayout();
             this.splitContainer1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer2)).BeginInit();
+            this.splitContainer2.Panel1.SuspendLayout();
             this.splitContainer2.SuspendLayout();
-            this.toolStrip1.SuspendLayout();
+            this.toolStrip.SuspendLayout();
             this.SuspendLayout();
             // 
             // toolStripContainerImage
@@ -81,7 +85,7 @@ namespace AM.Windows.Forms
             // 
             // toolStripContainerImage.TopToolStripPanel
             // 
-            this.toolStripContainerImage.TopToolStripPanel.Controls.Add(this.toolStrip1);
+            this.toolStripContainerImage.TopToolStripPanel.Controls.Add(this.toolStrip);
             // 
             // statusStripImage
             // 
@@ -118,37 +122,50 @@ namespace AM.Windows.Forms
             // 
             // treeViewImage
             // 
-            this.treeViewImage.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
-            | System.Windows.Forms.AnchorStyles.Left)
+            this.treeViewImage.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.treeViewImage.ImageIndex = 0;
+            this.treeViewImage.ImageList = this.imageList;
             this.treeViewImage.Location = new System.Drawing.Point(3, 45);
             this.treeViewImage.Name = "treeViewImage";
+            this.treeViewImage.SelectedImageIndex = 0;
             this.treeViewImage.Size = new System.Drawing.Size(265, 732);
             this.treeViewImage.TabIndex = 2;
+            // 
+            // imageList
+            // 
+            this.imageList.ColorDepth = System.Windows.Forms.ColorDepth.Depth8Bit;
+            this.imageList.ImageSize = new System.Drawing.Size(16, 16);
+            this.imageList.TransparentColor = System.Drawing.Color.Transparent;
             // 
             // splitContainer2
             // 
             this.splitContainer2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.splitContainer2.Location = new System.Drawing.Point(0, 0);
             this.splitContainer2.Name = "splitContainer2";
+            // 
+            // splitContainer2.Panel1
+            // 
+            this.splitContainer2.Panel1.Controls.Add(this.listView1);
             this.splitContainer2.Size = new System.Drawing.Size(885, 780);
             this.splitContainer2.SplitterDistance = 625;
             this.splitContainer2.TabIndex = 0;
             // 
-            // toolStrip1
+            // toolStrip
             // 
-            this.toolStrip1.Dock = System.Windows.Forms.DockStyle.None;
-            this.toolStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.toolStrip.Dock = System.Windows.Forms.DockStyle.None;
+            this.toolStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.toolStripButton1,
             this.toolStripButton2,
             this.toolStripButton3,
             this.toolStripButton4,
             this.toolStripLabel1,
             this.toolStripLabel2});
-            this.toolStrip1.Location = new System.Drawing.Point(3, 0);
-            this.toolStrip1.Name = "toolStrip1";
-            this.toolStrip1.Size = new System.Drawing.Size(218, 25);
-            this.toolStrip1.TabIndex = 0;
+            this.toolStrip.Location = new System.Drawing.Point(3, 0);
+            this.toolStrip.Name = "toolStrip";
+            this.toolStrip.Size = new System.Drawing.Size(218, 25);
+            this.toolStrip.TabIndex = 0;
             // 
             // toolStripButton1
             // 
@@ -233,6 +250,15 @@ namespace AM.Windows.Forms
             this.toolStripTextBox1.Name = "toolStripTextBox1";
             this.toolStripTextBox1.Size = new System.Drawing.Size(100, 25);
             // 
+            // listView1
+            // 
+            this.listView1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.listView1.Location = new System.Drawing.Point(0, 0);
+            this.listView1.Name = "listView1";
+            this.listView1.Size = new System.Drawing.Size(625, 780);
+            this.listView1.TabIndex = 0;
+            this.listView1.UseCompatibleStateImageBehavior = false;
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -255,10 +281,11 @@ namespace AM.Windows.Forms
             this.splitContainer1.Panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).EndInit();
             this.splitContainer1.ResumeLayout(false);
+            this.splitContainer2.Panel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer2)).EndInit();
             this.splitContainer2.ResumeLayout(false);
-            this.toolStrip1.ResumeLayout(false);
-            this.toolStrip1.PerformLayout();
+            this.toolStrip.ResumeLayout(false);
+            this.toolStrip.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -270,7 +297,7 @@ namespace AM.Windows.Forms
         private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabelImage;
         private System.Windows.Forms.SplitContainer splitContainer1;
         private System.Windows.Forms.SplitContainer splitContainer2;
-        private System.Windows.Forms.ToolStrip toolStrip1;
+        private System.Windows.Forms.ToolStrip toolStrip;
         private System.Windows.Forms.ToolStripButton toolStripButton1;
         private System.Windows.Forms.ToolStripButton toolStripButton2;
         private System.Windows.Forms.ToolStripButton toolStripButton3;
@@ -283,5 +310,7 @@ namespace AM.Windows.Forms
         private System.Windows.Forms.ToolStripMenuItem x200ToolStripMenuItem;
         private System.Windows.Forms.ToolStripDropDownButton toolStripLabel2;
         private System.Windows.Forms.ToolStripMenuItem 显示多选框ToolStripMenuItem;
+        private System.Windows.Forms.ImageList imageList;
+        private System.Windows.Forms.ListView listView1;
     }
 }
