@@ -28,8 +28,8 @@ E:\Desktop\Windows\PictureViewer\WinFormTest\obj\Debug\WinFormTest.Form4.resourc
 E:\Desktop\Windows\PictureViewer\WinFormTest\obj\Debug\WinFormTest.Form5.resources
 E:\Desktop\Windows\PictureViewer\WinFormTest\obj\Debug\WinFormTest.Form6.resources
 E:\Desktop\Windows\PictureViewer\WinFormTest\obj\Debug\WinFormTest.Form7.resources
-E:\Desktop\Windows\PictureViewer\WinFormTest\obj\Debug\WinFormTest.TestUserControl.resources
 E:\Desktop\Windows\PictureViewer\WinFormTest\obj\Debug\WinFormTest.Form8.resources
 E:\Desktop\Windows\PictureViewer\WinFormTest\obj\Debug\WinFormTest.Form9.resources
 E:\Desktop\Windows\PictureViewer\WinFormTest\bin\Debug\ImageView.dll
 E:\Desktop\Windows\PictureViewer\WinFormTest\bin\Debug\ImageView.pdb
+E:\Desktop\Windows\PictureViewer\WinFormTest\obj\Debug\WinFormTest.Form10.resources
