@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace WinFormTest
 {
-    public partial class Form6 : Form
+    public partial class Form06 : Form
     {
-        public Form6()
+        public Form06()
         {
             InitializeComponent();
         }

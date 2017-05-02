@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace WinFormTest
 {
-    public partial class Form2 : Form
+    public partial class Form02 : Form
     {
-        public Form2()
+        public Form02()
         {
             InitializeComponent();
             //this.AutoScrollMinSize = new Size(1980,1080);

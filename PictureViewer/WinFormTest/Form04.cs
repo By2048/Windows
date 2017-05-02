@@ -12,9 +12,9 @@ using System.Runtime.InteropServices;
 
 namespace WinFormTest
 {
-    public partial class Form4 : Form
+    public partial class Form04 : Form
     {
-        public Form4()
+        public Form04()
         {
             InitializeComponent();
         }

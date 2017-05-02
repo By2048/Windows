@@ -1,6 +1,6 @@
 ﻿namespace WinFormTest
 {
-    partial class Form3
+    partial class Form03
     {
         /// <summary>
         /// Required designer variable.

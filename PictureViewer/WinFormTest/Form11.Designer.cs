@@ -1,6 +1,6 @@
-﻿namespace PictureViewer
+﻿namespace WinFormTest
 {
-    partial class TestShowForm
+    partial class Form11
     {
         /// <summary>
         /// Required designer variable.
@@ -30,14 +30,14 @@
         {
             this.SuspendLayout();
             // 
-            // MainForm
+            // Form11
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(284, 262);
-            this.Name = "MainForm";
-            this.Text = "PictureViewer-MainForm";
-            this.Load += new System.EventHandler(this.MainForm_Load);
+            this.ClientSize = new System.Drawing.Size(582, 469);
+            this.Name = "Form11";
+            this.Text = "Form11";
+            this.Load += new System.EventHandler(this.Form11_Load);
             this.ResumeLayout(false);
 
         }
