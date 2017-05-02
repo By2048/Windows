@@ -170,9 +170,6 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="folder.png" />
-  </ItemGroup>
-  <ItemGroup>
     <ProjectReference Include="..\ImageView\ImageView.csproj">
       <Project>{3DC0CACA-BC61-4C49-93E9-F7C86AABB17D}</Project>
       <Name>ImageView</Name>
