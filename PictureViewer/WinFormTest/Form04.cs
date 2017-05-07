@@ -21,6 +21,7 @@ namespace WinFormTest
 
         private void Form4_Load(object sender, EventArgs e)
         {
+            CenterToScreen();
             this.FormBorderStyle = FormBorderStyle.None;
             Image O_Image = Image.FromStream(WebRequest.Create("http://www.baidu.com/img/baidu_logo.gif").GetResponse().GetResponseStream());
             pictureBox1.Image = O_Image;

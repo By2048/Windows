@@ -1,13 +1,11 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 14
-VisualStudioVersion = 14.0.25420.1
+# Visual Studio 15
+VisualStudioVersion = 15.0.26403.7
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PictureViewer", "PictureViewer\PictureViewer.csproj", "{84527E78-0618-4AA4-87C7-E9CF2AC2A5D3}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WinFormTest", "WinFormTest\WinFormTest.csproj", "{518AB130-A493-4B7C-937F-33081460F2B3}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ImageView", "ImageView\ImageView.csproj", "{3DC0CACA-BC61-4C49-93E9-F7C86AABB17D}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CSharpTest", "CSharpTest\CSharpTest.csproj", "{5E93194E-69B5-4070-BA82-BF345797299A}"
 EndProject
@@ -25,10 +23,6 @@ Global
 		{518AB130-A493-4B7C-937F-33081460F2B3}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{518AB130-A493-4B7C-937F-33081460F2B3}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{518AB130-A493-4B7C-937F-33081460F2B3}.Release|Any CPU.Build.0 = Release|Any CPU
-		{3DC0CACA-BC61-4C49-93E9-F7C86AABB17D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{3DC0CACA-BC61-4C49-93E9-F7C86AABB17D}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{3DC0CACA-BC61-4C49-93E9-F7C86AABB17D}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{3DC0CACA-BC61-4C49-93E9-F7C86AABB17D}.Release|Any CPU.Build.0 = Release|Any CPU
 		{5E93194E-69B5-4070-BA82-BF345797299A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{5E93194E-69B5-4070-BA82-BF345797299A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{5E93194E-69B5-4070-BA82-BF345797299A}.Release|Any CPU.ActiveCfg = Release|Any CPU

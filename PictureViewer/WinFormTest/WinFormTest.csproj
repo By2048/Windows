@@ -57,18 +57,6 @@
     <Compile Include="Form10.Designer.cs">
       <DependentUpon>Form10.cs</DependentUpon>
     </Compile>
-    <Compile Include="Form02.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Form02.Designer.cs">
-      <DependentUpon>Form02.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Form03.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Form03.Designer.cs">
-      <DependentUpon>Form03.cs</DependentUpon>
-    </Compile>
     <Compile Include="Form04.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -119,12 +107,6 @@
     <EmbeddedResource Include="Form10.resx">
       <DependentUpon>Form10.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Form02.resx">
-      <DependentUpon>Form02.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Form03.resx">
-      <DependentUpon>Form03.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="Form04.resx">
       <DependentUpon>Form04.cs</DependentUpon>
     </EmbeddedResource>
@@ -155,6 +137,7 @@
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
     </Compile>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -170,10 +153,7 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\ImageView\ImageView.csproj">
-      <Project>{3DC0CACA-BC61-4C49-93E9-F7C86AABB17D}</Project>
-      <Name>ImageView</Name>
-    </ProjectReference>
+    <None Include="Resources\008.jpg" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

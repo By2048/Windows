@@ -121,12 +121,6 @@
     <None Include="Resources\2.png" />
     <None Include="Resources\1.png" />
   </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\ImageView\ImageView.csproj">
-      <Project>{3dc0caca-bc61-4c49-93e9-f7c86aabb17d}</Project>
-      <Name>ImageView</Name>
-    </ProjectReference>
-  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

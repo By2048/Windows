@@ -25,6 +25,7 @@ namespace PictureViewer
         private ToolStripMenuItem ImageInfo;
         public ShowImage()
         {
+            CenterToScreen();
 
             InitializeComponent();
 
@@ -71,7 +72,7 @@ namespace PictureViewer
             ImageInfo.Text = "图片信息";
 
         }
-        
+
 
         private void ShowImage_KeyDown(object sender, KeyEventArgs e)
         {
@@ -213,7 +214,7 @@ namespace PictureViewer
             }
 
         }
-        
+
 
         private void ImageShowModel_DropDownOpening(object sender, EventArgs e)
         {
