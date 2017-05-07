@@ -36,5 +36,5 @@ E:\Desktop\Windows\PictureViewer\WinFormTest\obj\Debug\WinFormTest.Form07.resour
 E:\Desktop\Windows\PictureViewer\WinFormTest\obj\Debug\WinFormTest.Form09.resources
 E:\Desktop\Windows\PictureViewer\WinFormTest\obj\Debug\WinFormTest.Form11.resources
 E:\Desktop\Windows\PictureViewer\WinFormTest\obj\Debug\WinFormTest.Form19.resources
-E:\Desktop\Windows\PictureViewer\WinFormTest\obj\Debug\WinFormTest.UserControl05.resources
-E:\Desktop\Windows\PictureViewer\WinFormTest\obj\Debug\WinFormTest.UserControlTest.resources
+E:\Desktop\Windows\PictureViewer\WinFormTest\obj\Debug\WinFormTest.UserControl1.resources
+E:\Desktop\Windows\PictureViewer\WinFormTest\obj\Debug\WinFormTest.Form00.resources

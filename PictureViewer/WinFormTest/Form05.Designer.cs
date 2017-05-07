@@ -36,26 +36,28 @@
             this.panPicShow.AutoScroll = true;
             this.panPicShow.BackColor = System.Drawing.SystemColors.Control;
             this.panPicShow.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.panPicShow.Location = new System.Drawing.Point(461, 265);
+            this.panPicShow.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panPicShow.Location = new System.Drawing.Point(0, 0);
             this.panPicShow.Name = "panPicShow";
-            this.panPicShow.Size = new System.Drawing.Size(338, 197);
+            this.panPicShow.Size = new System.Drawing.Size(659, 718);
             this.panPicShow.TabIndex = 7;
             // 
             // Form05
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(975, 718);
+            this.ClientSize = new System.Drawing.Size(659, 718);
             this.Controls.Add(this.panPicShow);
             this.Name = "Form05";
             this.Text = "Form5";
             this.Load += new System.EventHandler(this.Form05_Load);
+            this.Resize += new System.EventHandler(this.Form05_Resize);
             this.ResumeLayout(false);
 
         }
 
         #endregion
 
-        private System.Windows.Forms.Panel panPicShow;
+        public System.Windows.Forms.Panel panPicShow;
     }
 }
