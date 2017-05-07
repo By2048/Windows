@@ -70,10 +70,10 @@ namespace WinFormTest
             ImageList imageListLarge = new ImageList();
 
             // Initialize the ImageList objects with bitmaps.
-            imageListSmall.Images.Add(Bitmap.FromFile("D:\\Test\\001.jpg"));
-            imageListSmall.Images.Add(Bitmap.FromFile("D:\\Test\\002.jpg"));
-            imageListLarge.Images.Add(Bitmap.FromFile("D:\\Test\\003.jpg"));
-            imageListLarge.Images.Add(Bitmap.FromFile("D:\\Test\\004.jpg"));
+            imageListSmall.Images.Add(Bitmap.FromFile("F:\\Test\\001.jpg"));
+            imageListSmall.Images.Add(Bitmap.FromFile("F:\\Test\\002.jpg"));
+            imageListLarge.Images.Add(Bitmap.FromFile("F:\\Test\\003.jpg"));
+            imageListLarge.Images.Add(Bitmap.FromFile("F:\\Test\\004.jpg"));
 
             //Assign the ImageList objects to the ListView.
             listView1.LargeImageList = imageListLarge;

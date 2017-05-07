@@ -23,12 +23,12 @@ namespace WinFormTest
 
         private void Form9_Load(object sender, EventArgs e)
         {
-
+            CenterToScreen();
         }
         private void PopulateTreeView()
         {
             TreeNode rootNode;
-            DirectoryInfo info = new DirectoryInfo(@"D:\Test");
+            DirectoryInfo info = new DirectoryInfo(@"F:\Test");
             if (info.Exists)
             {
                 rootNode = new TreeNode(info.Name);

@@ -18,98 +18,86 @@ namespace WinFormTest
         {
             InitializeComponent();
         }
-
-        private void showPicByFolder(string folderPath)
+        private void Form05_Load(object sender, EventArgs e)
         {
-            string[] fileNames = Directory.GetFiles(folderPath, "*jpg");//获取指定目录文件中的文件名称
-            if (fileNames == null || fileNames.Length == 0)
-            {
-                return;
-            }
+            ShowPictureByFolder(@"F:\Test\媚眼柔嫩娇滴滴 爆乳萌妹子猫儿蜜糖化身性感女仆被调教");
+        }
+                private void ShowPictureByFolder(string folderPath)
+        {
 
-            int pictureCount = fileNames.Length;//获取所取图片的张数
 
-            int columnCount = 6;//每行显示6张图片
+            string[] pictures = Directory.GetFiles(folderPath, "*jpg");
+            int pictureCount = pictures.Length;
 
-            //得到适合所取图片张数的显示行数
-            int rowCount = (pictureCount % columnCount == 0) ? pictureCount / columnCount : (pictureCount / columnCount) + 1;
+            int columnCount = panPicShow.Width / 100;
+            int rowCount = (pictureCount % columnCount == 0) ?
+                pictureCount / columnCount :
+                (pictureCount / columnCount) + 1;
 
             int padding = 2;
-            int pictureWidth = this.panPicShow.Width / columnCount - 2 * padding;//图片的宽
-            int pictureHeight = pictureWidth * 9 / 16;//图片为16*9比例
+            int pictureWidth = this.panPicShow.Width / columnCount - 2 * padding;
+            int pictureHeight = pictureWidth * 9 / 16; //16*9比例
 
 
-            for (int rowIndex = 0; rowIndex < rowCount; rowIndex++)
+            for (int row = 0; row < rowCount; row++)
             {
-                for (int columnIndex = 0; columnIndex < columnCount; columnIndex++)
+                for (int column = 0; column < columnCount; column++)
                 {
-                    int index = rowIndex * columnCount + columnIndex;//图片下标
+                    int pictureIndex = row * columnCount + column;//图片下标
                     PictureBox pictureBox = new PictureBox();
-                    pictureBox.SizeMode = PictureBoxSizeMode.Zoom;//图片按其原有的比例加载
-                    //设置pictureBox的大小和图片一样
+                    pictureBox.SizeMode = PictureBoxSizeMode.Zoom;
                     pictureBox.Width = pictureWidth;
                     pictureBox.Height = pictureHeight;
-
-                    if (index >= pictureCount)
+                    if (pictureIndex >= pictureCount)
                     {
                         return;
                     }
-                    pictureBox.Image = Image.FromFile(fileNames[index]);//将图片加载到pictureBox中
-
+                    pictureBox.Image = Image.FromFile(pictures[pictureIndex]);
                     Point pictureLoction = new Point();
-                    pictureLoction.X = padding * (columnIndex + 1) + pictureWidth * columnIndex;
-                    pictureLoction.Y = padding * (rowIndex + 1) + pictureHeight * rowIndex;
+                    pictureLoction.X = padding * (column + 1) + pictureWidth * column;
+                    pictureLoction.Y = padding * (row + 1) + pictureHeight * row;
                     pictureBox.Location = pictureLoction;
-
-                    pictureBox.DoubleClick += panPicShow_DoubleClick;
-
-                    this.panPicShow.Controls.Add(pictureBox);
-
+                    //pictureBox.DoubleClick += panPicShow_DoubleClick;
+                    panPicShow.Controls.Add(pictureBox);
 
                 }
             }
         }
 
-        private void Form5_Load(object sender, EventArgs e)
-        {
-
-        }
-
-        private void panPicShow_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
-
-        private void btnOk_Click(object sender, EventArgs e)
-        {
-            FolderBrowserDialog folderDlg = new FolderBrowserDialog(); //新建打开对话框
-
-            //folderDlg.SelectedPath = "F:\\照片\\乱七八糟\\贴图"; //设置默认路径
-            // folderDlg.SelectedPath = @"F:\照片\乱七八糟\贴图";
-            folderDlg.ShowNewFolderButton = false; //取消“新建文件夹”按钮
-            DialogResult dlgResult = folderDlg.ShowDialog(); //得到所取图片
+   
 
 
-            if (dlgResult == DialogResult.Cancel)
-            {
-                return;
-            }
-            string path = folderDlg.SelectedPath;
+        //private void btnOk_Click(object sender, EventArgs e)
+        //{
+        //    FolderBrowserDialog folderDlg = new FolderBrowserDialog(); //新建打开对话框
 
-            this.txtWay.Text = path;
-            panPicShow.BackColor = Color.Black;
-            showPicByFolder(path);
+        //    //folderDlg.SelectedPath = "F:\\照片\\乱七八糟\\贴图"; //设置默认路径
+        //    folderDlg.ShowNewFolderButton = false; //取消“新建文件夹”按钮
+        //    DialogResult dlgResult = folderDlg.ShowDialog(); //得到所取图片
 
-        }
 
-        private void panPicShow_DoubleClick(object sender, EventArgs e)
-        {
-            PictureBox pictureBox = (PictureBox)sender;
-            Image image = pictureBox.Image;//获取该PictureBox控件中的图像
-            //FormLarge formLarge = new FormLarge();
-            //formLarge.BackgroundImage = image;
-            //formLarge.BackgroundImageLayout = ImageLayout.Zoom;
-            //formLarge.Show();
-        }
+        //    if (dlgResult == DialogResult.Cancel)
+        //    {
+        //        return;
+        //    }
+        //    string path = folderDlg.SelectedPath;
+
+        //    this.txtWay.Text = path;
+        //    panPicShow.BackColor = Color.Black;
+        //    showPicByFolder(path);
+
+        //}
+
+        //private void panPicShow_DoubleClick(object sender, EventArgs e)
+        //{
+        //    PictureBox pictureBox = (PictureBox)sender;
+        //    Image image = pictureBox.Image;//获取该PictureBox控件中的图像
+        //    //FormLarge formLarge = new FormLarge();
+        //    //formLarge.BackgroundImage = image;
+        //    //formLarge.BackgroundImageLayout = ImageLayout.Zoom;
+        //    //formLarge.Show();
+        //}
+
+
     }
 }

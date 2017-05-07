@@ -48,16 +48,16 @@
             // 
             // treeView1
             // 
-            this.treeView1.Location = new System.Drawing.Point(12, 53);
+            this.treeView1.Location = new System.Drawing.Point(12, 34);
             this.treeView1.Name = "treeView1";
-            this.treeView1.Size = new System.Drawing.Size(242, 417);
+            this.treeView1.Size = new System.Drawing.Size(288, 573);
             this.treeView1.TabIndex = 0;
             // 
             // listView1
             // 
-            this.listView1.Location = new System.Drawing.Point(323, 53);
+            this.listView1.Location = new System.Drawing.Point(323, 34);
             this.listView1.Name = "listView1";
-            this.listView1.Size = new System.Drawing.Size(496, 417);
+            this.listView1.Size = new System.Drawing.Size(548, 573);
             this.listView1.TabIndex = 1;
             this.listView1.UseCompatibleStateImageBehavior = false;
             // 

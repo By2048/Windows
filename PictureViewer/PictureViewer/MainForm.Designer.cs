@@ -37,6 +37,7 @@ namespace AM.Windows.Forms
             this.treeViewImage = new System.Windows.Forms.TreeView();
             this.imageList = new System.Windows.Forms.ImageList(this.components);
             this.splitContainer2 = new System.Windows.Forms.SplitContainer();
+            this.listView1 = new System.Windows.Forms.ListView();
             this.toolStrip = new System.Windows.Forms.ToolStrip();
             this.toolStripButton1 = new System.Windows.Forms.ToolStripButton();
             this.toolStripButton2 = new System.Windows.Forms.ToolStripButton();
@@ -49,7 +50,6 @@ namespace AM.Windows.Forms
             this.toolStripLabel2 = new System.Windows.Forms.ToolStripDropDownButton();
             this.显示多选框ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripTextBox1 = new System.Windows.Forms.ToolStripTextBox();
-            this.listView1 = new System.Windows.Forms.ListView();
             this.toolStripContainerImage.BottomToolStripPanel.SuspendLayout();
             this.toolStripContainerImage.ContentPanel.SuspendLayout();
             this.toolStripContainerImage.TopToolStripPanel.SuspendLayout();
@@ -127,10 +127,10 @@ namespace AM.Windows.Forms
             | System.Windows.Forms.AnchorStyles.Right)));
             this.treeViewImage.ImageIndex = 0;
             this.treeViewImage.ImageList = this.imageList;
-            this.treeViewImage.Location = new System.Drawing.Point(3, 45);
+            this.treeViewImage.Location = new System.Drawing.Point(3, 3);
             this.treeViewImage.Name = "treeViewImage";
             this.treeViewImage.SelectedImageIndex = 0;
-            this.treeViewImage.Size = new System.Drawing.Size(265, 732);
+            this.treeViewImage.Size = new System.Drawing.Size(265, 774);
             this.treeViewImage.TabIndex = 2;
             // 
             // imageList
@@ -151,6 +151,15 @@ namespace AM.Windows.Forms
             this.splitContainer2.Size = new System.Drawing.Size(885, 780);
             this.splitContainer2.SplitterDistance = 625;
             this.splitContainer2.TabIndex = 0;
+            // 
+            // listView1
+            // 
+            this.listView1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.listView1.Location = new System.Drawing.Point(0, 0);
+            this.listView1.Name = "listView1";
+            this.listView1.Size = new System.Drawing.Size(625, 780);
+            this.listView1.TabIndex = 0;
+            this.listView1.UseCompatibleStateImageBehavior = false;
             // 
             // toolStrip
             // 
@@ -250,15 +259,6 @@ namespace AM.Windows.Forms
             this.toolStripTextBox1.Name = "toolStripTextBox1";
             this.toolStripTextBox1.Size = new System.Drawing.Size(100, 25);
             // 
-            // listView1
-            // 
-            this.listView1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.listView1.Location = new System.Drawing.Point(0, 0);
-            this.listView1.Name = "listView1";
-            this.listView1.Size = new System.Drawing.Size(625, 780);
-            this.listView1.TabIndex = 0;
-            this.listView1.UseCompatibleStateImageBehavior = false;
-            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -291,7 +291,6 @@ namespace AM.Windows.Forms
         }
 
         #endregion
-        private ImageView imageView;
         private System.Windows.Forms.ToolStripContainer toolStripContainerImage;
         private System.Windows.Forms.StatusStrip statusStripImage;
         private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabelImage;

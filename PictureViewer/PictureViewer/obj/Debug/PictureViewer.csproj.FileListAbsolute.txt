@@ -30,5 +30,3 @@ E:\Desktop\Windows\PictureViewer\PictureViewer\obj\Debug\PictureViewer.csprojRes
 E:\Desktop\Windows\PictureViewer\PictureViewer\obj\Debug\PictureViewer.TestShowForm.resources
 E:\Desktop\Windows\PictureViewer\PictureViewer\obj\Debug\AM.Windows.Forms.MainForm.resources
 E:\Desktop\Windows\PictureViewer\PictureViewer\obj\Debug\AM.Windows.Forms.Properties.Resources.resources
-E:\Desktop\Windows\PictureViewer\PictureViewer\bin\Debug\ImageView.dll
-E:\Desktop\Windows\PictureViewer\PictureViewer\bin\Debug\ImageView.pdb

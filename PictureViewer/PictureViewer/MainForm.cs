@@ -25,7 +25,6 @@ namespace AM.Windows.Forms
             //DirectoryInfo  path = new DirectoryInfo(@"F:\Test");
             //InitTreeView(path);
             InitTreeView();
-            panelImage.BackColor = Color.Red;
         }
         private void InitTreeView()
         {
