@@ -13,24 +13,17 @@ namespace WinFormTest
 {
     public partial class UserControl1 : UserControl
     {
-        //public string folderPath
-        //{
-        //    get { return folderPath; }
-        //    set { folderPath = value; }
-        //}
-        //public int  panelWidth
-        //{
-        //    get { return panelWidth; }
-        //    set { panelWidth = value; }
-        //}
-        //public int panelHeight
-        //{
-        //    get { return panelHeight; }
-        //    set { panelHeight = value; }
-        //}
         public UserControl1(string folderPath, int panelWidth, int panelHeight)
         {
             InitializeComponent();
+
+            Width = panelWidth ;
+            Height = panelHeight-20;
+
+            //panel1.Size = new Size(panelWidth, panelHeight);
+            panel1.AutoScroll = true;
+            panel1.AutoScrollMinSize = new Size(panelWidth,panelHeight);
+
             ShowPictureByFolder(folderPath, panelWidth, panelHeight);
         }
 
@@ -46,7 +39,7 @@ namespace WinFormTest
 
             int padding = 2;
             int pictureWidth = panelWidth / columnCount - 2 * padding;
-            int pictureHeight = pictureWidth * 9 / 16; //16*9比例
+            int pictureHeight = pictureWidth * 9 / 16; // 16*9比例
 
             for (int row = 0; row < rowCount; row++)
             {
@@ -54,7 +47,8 @@ namespace WinFormTest
                 {
                     int pictureIndex = row * columnCount + column;//图片下标
                     PictureBox pictureBox = new PictureBox();
-                    pictureBox.SizeMode = PictureBoxSizeMode.Zoom;
+                    //pictureBox.SizeMode = PictureBoxSizeMode.Zoom;
+                    pictureBox.SizeMode = PictureBoxSizeMode.StretchImage;
                     pictureBox.Width = pictureWidth;
                     pictureBox.Height = pictureHeight;
                     if (pictureIndex >= pictureCount)
