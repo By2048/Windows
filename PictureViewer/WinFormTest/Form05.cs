@@ -22,6 +22,9 @@ namespace WinFormTest
         {
             InitializeComponent();
             panPicShow.AutoScroll = false;
+
+            this.Load += new System.EventHandler(this.Form05_Load);
+            this.Resize += new System.EventHandler(this.Form05_Resize);
         }
         private void Form05_Load(object sender, EventArgs e)
         {

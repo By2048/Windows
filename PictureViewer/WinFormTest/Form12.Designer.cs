@@ -1,6 +1,6 @@
 ﻿namespace WinFormTest
 {
-    partial class Form00
+    partial class Form12
     {
         /// <summary>
         /// Required designer variable.
@@ -28,34 +28,32 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.panel1 = new System.Windows.Forms.Panel();
+            this.panelShowImage = new System.Windows.Forms.Panel();
             this.SuspendLayout();
             // 
-            // panel1
+            // panelShowImage
             // 
-            this.panel1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.panel1.Location = new System.Drawing.Point(39, 40);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(360, 291);
-            this.panel1.TabIndex = 0;
+            this.panelShowImage.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panelShowImage.Location = new System.Drawing.Point(0, 0);
+            this.panelShowImage.Name = "panelShowImage";
+            this.panelShowImage.Size = new System.Drawing.Size(607, 579);
+            this.panelShowImage.TabIndex = 0;
             // 
-            // Form00
+            // Form12
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(472, 437);
-            this.Controls.Add(this.panel1);
-            this.Name = "Form00";
-            this.Text = "Form00";
-            this.Load += new System.EventHandler(this.Form00_Load);
+            this.ClientSize = new System.Drawing.Size(607, 579);
+            this.Controls.Add(this.panelShowImage);
+            this.Name = "Form12";
+            this.Text = "Form12";
+            this.Load += new System.EventHandler(this.Form12_Load);
             this.ResumeLayout(false);
 
         }
 
         #endregion
 
-        private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.Panel panelShowImage;
     }
 }

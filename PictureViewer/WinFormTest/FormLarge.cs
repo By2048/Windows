@@ -10,18 +10,12 @@ using System.Windows.Forms;
 
 namespace WinFormTest
 {
-    public partial class Form00 : Form
+    public partial class FormLarge : Form
     {
-        public Form00()
+        public FormLarge()
         {
             InitializeComponent();
-        }
-
-        private void Form00_Load(object sender, EventArgs e)
-        {
             CenterToScreen();
-            panel1.BackgroundImage = Image.FromFile(@"F:\Test\001.jpg");
-            panel1.BackgroundImageLayout = ImageLayout.Zoom;
         }
     }
 }

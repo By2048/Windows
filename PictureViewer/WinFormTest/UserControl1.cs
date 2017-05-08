@@ -17,12 +17,11 @@ namespace WinFormTest
         {
             InitializeComponent();
 
-            Width = panelWidth ;
-            Height = panelHeight-20;
+            Width = panelWidth;
+            Height = panelHeight;
 
-            //panel1.Size = new Size(panelWidth, panelHeight);
             panel1.AutoScroll = true;
-            panel1.AutoScrollMinSize = new Size(panelWidth,panelHeight);
+            //panel1.AutoScrollMinSize = new Size(panelWidth-20,panelHeight-20);
 
             ShowPictureByFolder(folderPath, panelWidth, panelHeight);
         }
@@ -45,28 +44,31 @@ namespace WinFormTest
             {
                 for (int column = 0; column < columnCount; column++)
                 {
-                    int pictureIndex = row * columnCount + column;//图片下标
+                    int pictureIndex = row * columnCount + column; // 图片下标
                     PictureBox pictureBox = new PictureBox();
-                    //pictureBox.SizeMode = PictureBoxSizeMode.Zoom;
-                    pictureBox.SizeMode = PictureBoxSizeMode.StretchImage;
+                    pictureBox.SizeMode = PictureBoxSizeMode.Zoom;
                     pictureBox.Width = pictureWidth;
                     pictureBox.Height = pictureHeight;
-                    if (pictureIndex >= pictureCount)
-                    {
-                        return;
-                    }
+                    if (pictureIndex >= pictureCount) { return; }
                     pictureBox.Image = Image.FromFile(pictures[pictureIndex]);
                     Point pictureLoction = new Point();
                     pictureLoction.X = padding * (column + 1) + pictureWidth * column;
                     pictureLoction.Y = padding * (row + 1) + pictureHeight * row;
                     pictureBox.Location = pictureLoction;
-                    //pictureBox.DoubleClick += panPicShow_DoubleClick;
+                    pictureBox.DoubleClick += pictureBox_DoubleClick;
                     panel1.Controls.Add(pictureBox);
-
                 }
             }
+        }       
+        private void pictureBox_DoubleClick(object sender, EventArgs e)
+        {
+            PictureBox pictureBox = (PictureBox)sender;
+            Image image = pictureBox.Image;
+            FormLarge formLarge = new FormLarge();
+            formLarge.Size = new Size(image.Width,image.Height);
+            formLarge.BackgroundImage = image;
+            formLarge.BackgroundImageLayout = ImageLayout.Zoom;
+            formLarge.Show();            
         }
-        
-
     }
 }
