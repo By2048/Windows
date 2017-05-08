@@ -17,42 +17,52 @@ namespace WinFormTest
         {
             InitializeComponent();
             Size = panelSize;
-            panelSmallImage.BackColor = Color.Red;
-            panelLargeImage.BackColor = Color.Gray;
-        }       
-        //private void ShowPictureByFolder(string folderPath, Size panelSize)
-        //{
-        //    string[] pictures = Directory.GetFiles(folderPath, "*jpg");
-        //    int pictureCount = pictures.Length;
 
-        //    int columnCount = panelWidth / 100;
-        //    int rowCount = (pictureCount % columnCount == 0) ?
-        //        pictureCount / columnCount :
-        //        (pictureCount / columnCount) + 1;
+            panelLargeImage.Size = new Size(Size.Width, Size.Height / 5 * 4-20);
+            panelLargeImage.Location = new Point(0, 0);
+            panelLargeImage.BackgroundImage = null;
+            panelLargeImage.BackgroundImageLayout = ImageLayout.Zoom;
+            //panelLargeImage.BackColor = Color.Red;
 
-        //    int padding = 2;
-        //    int pictureWidth = panelWidth / columnCount - 2 * padding;
-        //    int pictureHeight = pictureWidth * 9 / 16; // 16*9比例
+            panelSmallImage.Size = new Size(Size.Width, Size.Height - panelLargeImage.Height+20);
+            panelSmallImage.Location = new Point(0, panelLargeImage.Height+20);
+            panelSmallImage.AutoScroll = true;
+            //panelSmallImage.BackColor = Color.Green;
 
-        //    for (int row = 0; row < rowCount; row++)
-        //    {
-        //        for (int column = 0; column < columnCount; column++)
-        //        {
-        //            int pictureIndex = row * columnCount + column; // 图片下标
-        //            PictureBox pictureBox = new PictureBox();
-        //            pictureBox.SizeMode = PictureBoxSizeMode.Zoom;
-        //            pictureBox.Width = pictureWidth;
-        //            pictureBox.Height = pictureHeight;
-        //            if (pictureIndex >= pictureCount) { return; }
-        //            pictureBox.Image = Image.FromFile(pictures[pictureIndex]);
-        //            Point pictureLoction = new Point();
-        //            pictureLoction.X = padding * (column + 1) + pictureWidth * column;
-        //            pictureLoction.Y = padding * (row + 1) + pictureHeight * row;
-        //            pictureBox.Location = pictureLoction;
-        //            //pictureBox.DoubleClick += pictureBox_DoubleClick;
-        //            panelLargeImage.Controls.Add(pictureBox);
-        //        }
-        //    }
-        //}
+            ShowPictureByFolder(folderPath, panelSize);
+        }
+        private void ShowPictureByFolder(string folderPath, Size panelSize)
+        {
+            string[] pictures = Directory.GetFiles(folderPath, "*jpg");
+            int pictureCount = pictures.Length;
+
+            int padding = 2;
+            int pictureHeight = panelSmallImage.Height - 17;
+            int pictureWidth = pictureHeight* 16 / 9;
+
+            for (int cnt = 0; cnt < pictureCount; cnt++)
+            {
+                PictureBox pictureBox = new PictureBox();
+                pictureBox.SizeMode = PictureBoxSizeMode.Zoom;
+                pictureBox.Width = pictureWidth;
+                pictureBox.Height = pictureHeight;
+                pictureBox.Image = Image.FromFile(pictures[cnt]);
+
+                Point pictureLoction = new Point();
+                pictureLoction.X = padding * (cnt + 1) + pictureWidth * cnt;
+                pictureLoction.Y = 0;
+                pictureBox.Location = pictureLoction;
+                pictureBox.Click += pictureBox_Click;
+                panelSmallImage.Controls.Add(pictureBox);
+            }
+            panelLargeImage.BackgroundImage= Image.FromFile(pictures[0]);
+        }
+
+        private void pictureBox_Click(object sender, EventArgs e)
+        {
+            PictureBox pictureBox = (PictureBox)sender;
+            Image image = pictureBox.Image;
+            panelLargeImage.BackgroundImage = image;            
+        }
     }
 }

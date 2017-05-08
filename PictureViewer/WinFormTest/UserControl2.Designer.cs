@@ -34,9 +34,7 @@
             // 
             // panelLargeImage
             // 
-            this.panelLargeImage.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
+            this.panelLargeImage.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.panelLargeImage.Location = new System.Drawing.Point(0, 0);
             this.panelLargeImage.Name = "panelLargeImage";
             this.panelLargeImage.Size = new System.Drawing.Size(380, 272);
@@ -44,9 +42,7 @@
             // 
             // panelSmallImage
             // 
-            this.panelSmallImage.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
+            this.panelSmallImage.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.panelSmallImage.Location = new System.Drawing.Point(0, 278);
             this.panelSmallImage.Name = "panelSmallImage";
             this.panelSmallImage.Size = new System.Drawing.Size(380, 78);
