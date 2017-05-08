@@ -41,7 +41,7 @@ namespace WinFormTest
 
         private void LoadUserControl()
         {
-            userControl = new UserControl1(folderPath, panPicShow.Width, panPicShow.Height);
+            userControl = new UserControl1(folderPath, panPicShow.Size);
             panPicShow.Controls.Add(userControl);
         }
 

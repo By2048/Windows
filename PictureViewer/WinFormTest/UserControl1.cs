@@ -13,31 +13,27 @@ namespace WinFormTest
 {
     public partial class UserControl1 : UserControl
     {
-        public UserControl1(string folderPath, int panelWidth, int panelHeight)
+        public UserControl1(string folderPath, Size panelSize)
         {
             InitializeComponent();
-
-            Width = panelWidth;
-            Height = panelHeight;
-
+            Size = panelSize;
             panel1.AutoScroll = true;
             //panel1.AutoScrollMinSize = new Size(panelWidth-20,panelHeight-20);
-
-            ShowPictureByFolder(folderPath, panelWidth, panelHeight);
+            ShowPictureByFolder(folderPath, panelSize);
         }
 
-        private void ShowPictureByFolder(string folderPath, int panelWidth, int panelHeight)
+        private void ShowPictureByFolder(string folderPath, Size panelSize)
         {
             string[] pictures = Directory.GetFiles(folderPath, "*jpg");
             int pictureCount = pictures.Length;
 
-            int columnCount = panelWidth / 100;
+            int columnCount = panelSize.Width / 100;
             int rowCount = (pictureCount % columnCount == 0) ?
                 pictureCount / columnCount :
                 (pictureCount / columnCount) + 1;
 
             int padding = 2;
-            int pictureWidth = panelWidth / columnCount - 2 * padding;
+            int pictureWidth = panelSize.Width / columnCount - 2 * padding;
             int pictureHeight = pictureWidth * 9 / 16; // 16*9比例
 
             for (int row = 0; row < rowCount; row++)
