@@ -22,13 +22,9 @@ namespace WinFormTest
             //panelLargeImage.BackColor = Color.Red;
             //panelSmallImages.BackColor = Color.Green;
 
-            //panelLargeImage.Size = new Size(Size.Width, Size.Height / 5 * 4 - 20);
-            //panelLargeImage.Location = new Point(0, 0);
             panelLargeImage.BackgroundImage = null;
             panelLargeImage.BackgroundImageLayout = ImageLayout.Zoom;
 
-            //panelSmallImage.Size = new Size(Size.Width, Size.Height - panelLargeImage.Height + 20);
-            //panelSmallImage.Location = new Point(0, panelLargeImage.Height + 20);
             panelSmallImages.AutoScroll = true;
 
             ShowPictureByFolder(folderPath, panelSize);

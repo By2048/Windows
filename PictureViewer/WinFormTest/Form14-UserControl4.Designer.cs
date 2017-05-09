@@ -1,6 +1,6 @@
 ﻿namespace WinFormTest
 {
-    partial class Form19
+    partial class Form14
     {
         /// <summary>
         /// Required designer variable.
@@ -30,13 +30,14 @@
         {
             this.SuspendLayout();
             // 
-            // Form19
+            // Form14
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(815, 703);
-            this.Name = "Form19";
-            this.Text = "Form19";
+            this.ClientSize = new System.Drawing.Size(557, 566);
+            this.Name = "Form14";
+            this.Text = "Form14";
+            this.Load += new System.EventHandler(this.Form14_Load);
             this.ResumeLayout(false);
 
         }

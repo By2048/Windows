@@ -45,77 +45,71 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Form00.cs">
+    <Compile Include="Form00-Test.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Form00.Designer.cs">
-      <DependentUpon>Form00.cs</DependentUpon>
+    <Compile Include="Form00-Test.Designer.cs">
+      <DependentUpon>Form00-Test.cs</DependentUpon>
     </Compile>
-    <Compile Include="Form01.cs">
+    <Compile Include="Form01-PicMouseMove.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Form01.Designer.cs">
-      <DependentUpon>Form01.cs</DependentUpon>
+    <Compile Include="Form01-PicMouseMove.Designer.cs">
+      <DependentUpon>Form01-PicMouseMove.cs</DependentUpon>
     </Compile>
-    <Compile Include="Form10.cs">
+    <Compile Include="Form04-Paint.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Form10.Designer.cs">
-      <DependentUpon>Form10.cs</DependentUpon>
+    <Compile Include="Form04-Paint.Designer.cs">
+      <DependentUpon>Form04-Paint.cs</DependentUpon>
     </Compile>
-    <Compile Include="Form04.cs">
+    <Compile Include="Form05-UserControl.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Form04.Designer.cs">
-      <DependentUpon>Form04.cs</DependentUpon>
+    <Compile Include="Form05-UserControl.Designer.cs">
+      <DependentUpon>Form05-UserControl.cs</DependentUpon>
     </Compile>
-    <Compile Include="Form05.cs">
+    <Compile Include="Form06-Drag.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Form05.Designer.cs">
-      <DependentUpon>Form05.cs</DependentUpon>
+    <Compile Include="Form06-Drag.Designer.cs">
+      <DependentUpon>Form06-Drag.cs</DependentUpon>
     </Compile>
-    <Compile Include="Form06.cs">
+    <Compile Include="Form07-TestMain.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Form06.Designer.cs">
-      <DependentUpon>Form06.cs</DependentUpon>
+    <Compile Include="Form07-TestMain.Designer.cs">
+      <DependentUpon>Form07-TestMain.cs</DependentUpon>
     </Compile>
-    <Compile Include="Form07.cs">
+    <Compile Include="Form09-Tree.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Form07.Designer.cs">
-      <DependentUpon>Form07.cs</DependentUpon>
+    <Compile Include="Form09-Tree.Designer.cs">
+      <DependentUpon>Form09-Tree.cs</DependentUpon>
     </Compile>
-    <Compile Include="Form09.cs">
+    <Compile Include="Form11-ListView.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Form09.Designer.cs">
-      <DependentUpon>Form09.cs</DependentUpon>
+    <Compile Include="Form11-ListView.Designer.cs">
+      <DependentUpon>Form11-ListView.cs</DependentUpon>
     </Compile>
-    <Compile Include="Form11.cs">
+    <Compile Include="Form12-UserControl2.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Form11.Designer.cs">
-      <DependentUpon>Form11.cs</DependentUpon>
+    <Compile Include="Form12-UserControl2.Designer.cs">
+      <DependentUpon>Form12-UserControl2.cs</DependentUpon>
     </Compile>
-    <Compile Include="Form12.cs">
+    <Compile Include="Form13-UserControl3.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Form12.Designer.cs">
-      <DependentUpon>Form12.cs</DependentUpon>
+    <Compile Include="Form13-UserControl3.Designer.cs">
+      <DependentUpon>Form13-UserControl3.cs</DependentUpon>
     </Compile>
-    <Compile Include="Form13.cs">
+    <Compile Include="Form14-UserControl4.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Form13.Designer.cs">
-      <DependentUpon>Form13.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Form19.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Form19.Designer.cs">
-      <DependentUpon>Form19.cs</DependentUpon>
+    <Compile Include="Form14-UserControl4.Designer.cs">
+      <DependentUpon>Form14-UserControl4.cs</DependentUpon>
     </Compile>
     <Compile Include="FormLarge.cs">
       <SubType>Form</SubType>
@@ -143,42 +137,45 @@
     <Compile Include="UserControl3.Designer.cs">
       <DependentUpon>UserControl3.cs</DependentUpon>
     </Compile>
-    <EmbeddedResource Include="Form00.resx">
-      <DependentUpon>Form00.cs</DependentUpon>
+    <Compile Include="UserControl4.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControl4.Designer.cs">
+      <DependentUpon>UserControl4.cs</DependentUpon>
+    </Compile>
+    <EmbeddedResource Include="Form00-Test.resx">
+      <DependentUpon>Form00-Test.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Form01.resx">
-      <DependentUpon>Form01.cs</DependentUpon>
+    <EmbeddedResource Include="Form01-PicMouseMove.resx">
+      <DependentUpon>Form01-PicMouseMove.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Form10.resx">
-      <DependentUpon>Form10.cs</DependentUpon>
+    <EmbeddedResource Include="Form04-Paint.resx">
+      <DependentUpon>Form04-Paint.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Form04.resx">
-      <DependentUpon>Form04.cs</DependentUpon>
+    <EmbeddedResource Include="Form05-UserControl.resx">
+      <DependentUpon>Form05-UserControl.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Form05.resx">
-      <DependentUpon>Form05.cs</DependentUpon>
+    <EmbeddedResource Include="Form06-Drag.resx">
+      <DependentUpon>Form06-Drag.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Form06.resx">
-      <DependentUpon>Form06.cs</DependentUpon>
+    <EmbeddedResource Include="Form07-TestMain.resx">
+      <DependentUpon>Form07-TestMain.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Form07.resx">
-      <DependentUpon>Form07.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Form09.resx">
-      <DependentUpon>Form09.cs</DependentUpon>
+    <EmbeddedResource Include="Form09-Tree.resx">
+      <DependentUpon>Form09-Tree.cs</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
-    <EmbeddedResource Include="Form11.resx">
-      <DependentUpon>Form11.cs</DependentUpon>
+    <EmbeddedResource Include="Form11-ListView.resx">
+      <DependentUpon>Form11-ListView.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Form12.resx">
-      <DependentUpon>Form12.cs</DependentUpon>
+    <EmbeddedResource Include="Form12-UserControl2.resx">
+      <DependentUpon>Form12-UserControl2.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Form13.resx">
-      <DependentUpon>Form13.cs</DependentUpon>
+    <EmbeddedResource Include="Form13-UserControl3.resx">
+      <DependentUpon>Form13-UserControl3.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Form19.resx">
-      <DependentUpon>Form19.cs</DependentUpon>
+    <EmbeddedResource Include="Form14-UserControl4.resx">
+      <DependentUpon>Form14-UserControl4.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FormLarge.resx">
       <DependentUpon>FormLarge.cs</DependentUpon>
@@ -201,6 +198,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="UserControl3.resx">
       <DependentUpon>UserControl3.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserControl4.resx">
+      <DependentUpon>UserControl4.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>

@@ -10,13 +10,16 @@ using System.Windows.Forms;
 
 namespace WinFormTest
 {
-    public partial class Form19 : Form
+    public partial class Form14 : Form
     {
-        public Form19()
+        public Form14()
         {
             InitializeComponent();
         }
 
-        
+        private void Form14_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }
