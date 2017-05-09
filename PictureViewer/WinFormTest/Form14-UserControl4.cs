@@ -19,7 +19,8 @@ namespace WinFormTest
 
         private void Form14_Load(object sender, EventArgs e)
         {
-
+            CenterToScreen();
         }
+
     }
 }

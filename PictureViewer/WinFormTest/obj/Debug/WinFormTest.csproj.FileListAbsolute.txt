@@ -14,7 +14,6 @@ C:\Users\Administrator\Desktop\Windows\PictureViewer\WinFormTest\bin\Debug\WinFo
 C:\Users\Administrator\Desktop\Windows\PictureViewer\WinFormTest\obj\Debug\WinFormTest.csprojResolveAssemblyReference.cache
 C:\Users\Administrator\Desktop\Windows\PictureViewer\WinFormTest\obj\Debug\WinFormTest.Properties.Resources.resources
 C:\Users\Administrator\Desktop\Windows\PictureViewer\WinFormTest\obj\Debug\WinFormTest.csproj.GenerateResource.Cache
-E:\Desktop\Windows\PictureViewer\WinFormTest\obj\Debug\WinFormTest.Form10.resources
 C:\Users\Administrator\Desktop\Windows\PictureViewer\WinFormTest\bin\Debug\ImageView.dll
 C:\Users\Administrator\Desktop\Windows\PictureViewer\WinFormTest\bin\Debug\ImageView.pdb
 C:\Users\Administrator\Desktop\Windows\PictureViewer\WinFormTest\obj\Debug\WinFormTest.Form01.resources
@@ -34,7 +33,6 @@ E:\Desktop\Windows\PictureViewer\WinFormTest\obj\Debug\WinFormTest.Form05.resour
 E:\Desktop\Windows\PictureViewer\WinFormTest\obj\Debug\WinFormTest.Form07.resources
 E:\Desktop\Windows\PictureViewer\WinFormTest\obj\Debug\WinFormTest.Form09.resources
 E:\Desktop\Windows\PictureViewer\WinFormTest\obj\Debug\WinFormTest.Form11.resources
-E:\Desktop\Windows\PictureViewer\WinFormTest\obj\Debug\WinFormTest.Form19.resources
 E:\Desktop\Windows\PictureViewer\WinFormTest\obj\Debug\WinFormTest.UserControl1.resources
 E:\Desktop\Windows\PictureViewer\WinFormTest\obj\Debug\WinFormTest.Form00.resources
 E:\Desktop\Windows\PictureViewer\WinFormTest\obj\Debug\WinFormTest.FormLarge.resources
