@@ -23,6 +23,7 @@ namespace WinFormTest
         }
 
         private void ShowPictureByFolder(string folderPath, Size panelSize)
+
         {
             string[] pictures = Directory.GetFiles(folderPath, "*jpg");
             int pictureCount = pictures.Length;

@@ -25,7 +25,7 @@ namespace WinFormTest
             panelSmallImages.AutoScroll = true;
             pictureBoxLarge.SizeMode = PictureBoxSizeMode.Zoom;
 
-            ShowPictureByFolder(folderPath, panelSize);
+            ShowPictureByFolder(folderPath, panelSize); 
 
 
         }
@@ -98,7 +98,7 @@ namespace WinFormTest
             //propertyGrid1.HelpVisible = false;
             propertyGrid1.ToolbarVisible = false;
             propertyGrid1.Height = panelImageInfo.Height/5*4;
-            ImageInfo imageInfo = new ImageInfo(imageSize, imageVerticalResolution, imageHorizontalResolution,
+            ImageDetailInfo imageInfo = new ImageDetailInfo(imageSize, imageVerticalResolution, imageHorizontalResolution,
                                                 fileDirectoryName, fileName, fileType, fillFullName, fileSize,
                                                 createTime, lastWriteTime, lastAccessTime);
             propertyGrid1.SelectedObject = imageInfo;
@@ -108,7 +108,7 @@ namespace WinFormTest
 }
 
 
-public class ImageInfo
+public class ImageDetailInfo
 {
     private Size imageSize;
     private string imageVerticalResolution;
@@ -123,7 +123,7 @@ public class ImageInfo
     private DateTime lastAccessTime;
 
 
-    public ImageInfo(Size imageSize, string imageVerticalResolution, string imageHorizontalResolution,
+    public ImageDetailInfo(Size imageSize, string imageVerticalResolution, string imageHorizontalResolution,
                      string fileDirectoryName, string fileName, string fileType, string fillFullName, double fileSize,
                      DateTime createTime, DateTime lastWriteTime, DateTime lastAccessTime)
     {

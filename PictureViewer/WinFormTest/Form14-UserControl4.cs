@@ -15,12 +15,24 @@ namespace WinFormTest
         public Form14()
         {
             InitializeComponent();
+            this.Resize += new System.EventHandler(this.Form14_Resize);
         }
+        private UserControl4 userControl;
+        private string folderPath = @"F:\Test\媚眼柔嫩娇滴滴 爆乳萌妹子猫儿蜜糖化身性感女仆被调教";
 
         private void Form14_Load(object sender, EventArgs e)
         {
             CenterToScreen();
+            userControl = new UserControl4(folderPath, Size);
+            panelImageShow.Controls.Add(userControl);
         }
+        private void Form14_Resize(object sender, EventArgs e)
+        {
+            panelImageShow.Controls.Remove(userControl);
+            userControl = new UserControl4(folderPath, Size);
+            panelImageShow.Controls.Add(userControl);
+        }
+
 
     }
 }
