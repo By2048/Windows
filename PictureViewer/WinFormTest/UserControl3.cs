@@ -79,22 +79,100 @@ namespace WinFormTest
         private void ShowImageInfo(string filePath)
         {
             Image image = Image.FromFile(filePath);
-            Size imageSize=image.Size;
+            Size imageSize = image.Size;
 
-            
+            string imageVerticalResolution = image.VerticalResolution.ToString(); // 垂直分辨率
+            string imageHorizontalResolution = image.HorizontalResolution.ToString(); // 水平分辨率
 
             FileInfo fileInfo = new FileInfo(filePath);
-            string fileName = fileInfo.Name;    // 1.jpg
             string fileDirectoryName = fileInfo.DirectoryName;  // F:\Test
-            double fileSize = fileInfo.Length/1000.0;   // 72.121
+            string fileName = fileInfo.Name.Split('.')[0];    // 001
             //string fileType = path.Split('.').Last();
             string fileType = fileInfo.Extension.Trim('.').ToString(); // jpg
+            string fillFullName = fileInfo.FullName;        // F:\Test\001.jpg
+            double fileSize = fileInfo.Length / 1000.0;   // 72.121
             DateTime createTime = fileInfo.CreationTime;    // 创建时间
             DateTime lastWriteTime = fileInfo.LastWriteTime;   // 修改时间
             DateTime lastAccessTime = fileInfo.LastAccessTime;  // 上次访问时间
 
-            MessageBox.Show(fileDirectoryName.ToString());
+            //propertyGrid1.HelpVisible = false;
+            propertyGrid1.ToolbarVisible = false;
+            propertyGrid1.Height = panelImageInfo.Height/5*4;
+            ImageInfo imageInfo = new ImageInfo(imageSize, imageVerticalResolution, imageHorizontalResolution,
+                                                fileDirectoryName, fileName, fileType, fillFullName, fileSize,
+                                                createTime, lastWriteTime, lastAccessTime);
+            propertyGrid1.SelectedObject = imageInfo;
         }
 
     }
+}
+
+
+public class ImageInfo
+{
+    private Size imageSize;
+    private string imageVerticalResolution;
+    private string imageHorizontalResolution;
+    private string fileDirectoryName;
+    private string fileName;
+    private string fileType;
+    private string fillFullName;
+    private double fileSize;
+    private DateTime createTime;
+    private DateTime lastWriteTime;
+    private DateTime lastAccessTime;
+
+
+    public ImageInfo(Size imageSize, string imageVerticalResolution, string imageHorizontalResolution,
+                     string fileDirectoryName, string fileName, string fileType, string fillFullName, double fileSize,
+                     DateTime createTime, DateTime lastWriteTime, DateTime lastAccessTime)
+    {
+        this.imageSize = imageSize;
+        this.imageVerticalResolution = imageVerticalResolution;
+        this.imageHorizontalResolution = imageHorizontalResolution;
+        this.fileDirectoryName = fileDirectoryName;
+        this.fileName = fileName;
+        this.fileType = fileType;
+        this.fillFullName = fillFullName;
+        this.fileSize = fileSize;
+        this.createTime = createTime;
+        this.lastWriteTime = lastWriteTime;
+        this.lastAccessTime = lastAccessTime;
+    }
+
+    [Description("图片大小"), Category("图片信息")]
+    public Size ImageSize { get => imageSize; set => imageSize = value; }
+
+    [Description("图片垂直分辨率"), Category("图片信息")]
+    public string ImageVerticalResolution { get => imageVerticalResolution; set => imageVerticalResolution = value; }
+
+    [Description("图片水平分辨率"), Category("图片信息")]
+    public string ImageHorizontalResolution { get => imageHorizontalResolution; set => imageHorizontalResolution = value; }
+
+    [Description("文件路径"), Category("文件信息")]
+    public string FileDirectoryName { get => fileDirectoryName; set => fileDirectoryName = value; }
+
+    [Description("文件名"), Category("文件信息")]
+    public string FileName { get => fileName; set => fileName = value; }
+
+    [Description("文件类型"), Category("文件信息")]
+    public string FileType { get => fileType; set => fileType = value; }
+
+    [Description("文件路径"), Category("文件信息")]
+    public string FillFullName { get => fillFullName; set => fillFullName = value; }
+
+    [Description("文件大小（K）"), Category("文件信息")]
+    public double FileSize { get => fileSize; set => fileSize = value; }
+
+    [Description("文件创建时间"), Category("时间信息")]
+    public DateTime CreateTime { get => createTime; set => createTime = value; }
+
+    [Description("文件修改时间"), Category("时间信息")]
+    public DateTime LastWriteTime { get => lastWriteTime; set => lastWriteTime = value; }
+
+    [Description("文件上次访问时间"), Category("时间信息")]
+    public DateTime LastAccessTime { get => lastAccessTime; set => lastAccessTime = value; }
+
+    //[Description("以毫秒表示的文本重复率。"), Category("全局设置"), DefaultValue(90), ReadOnly(true)]
+
 }

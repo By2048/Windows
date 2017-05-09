@@ -28,25 +28,23 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.panel1 = new System.Windows.Forms.Panel();
+            this.propertyGrid1 = new System.Windows.Forms.PropertyGrid();
             this.SuspendLayout();
             // 
-            // panel1
+            // propertyGrid1
             // 
-            this.panel1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.panel1.Location = new System.Drawing.Point(39, 40);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(360, 291);
-            this.panel1.TabIndex = 0;
+            this.propertyGrid1.LineColor = System.Drawing.SystemColors.ControlDark;
+            this.propertyGrid1.Location = new System.Drawing.Point(95, 114);
+            this.propertyGrid1.Name = "propertyGrid1";
+            this.propertyGrid1.Size = new System.Drawing.Size(264, 228);
+            this.propertyGrid1.TabIndex = 0;
             // 
             // Form00
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(472, 437);
-            this.Controls.Add(this.panel1);
+            this.Controls.Add(this.propertyGrid1);
             this.Name = "Form00";
             this.Text = "Form00";
             this.Load += new System.EventHandler(this.Form00_Load);
@@ -56,6 +54,6 @@
 
         #endregion
 
-        private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.PropertyGrid propertyGrid1;
     }
 }

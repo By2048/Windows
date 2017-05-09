@@ -34,6 +34,7 @@
             this.panel2 = new System.Windows.Forms.Panel();
             this.pictureBoxLarge = new System.Windows.Forms.PictureBox();
             this.panelImageInfo = new System.Windows.Forms.Panel();
+            this.propertyGrid1 = new System.Windows.Forms.PropertyGrid();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
@@ -44,6 +45,7 @@
             this.splitContainer2.SuspendLayout();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxLarge)).BeginInit();
+            this.panelImageInfo.SuspendLayout();
             this.SuspendLayout();
             // 
             // splitContainer1
@@ -109,11 +111,23 @@
             // 
             // panelImageInfo
             // 
+            this.panelImageInfo.Controls.Add(this.propertyGrid1);
             this.panelImageInfo.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panelImageInfo.Location = new System.Drawing.Point(0, 0);
             this.panelImageInfo.Name = "panelImageInfo";
             this.panelImageInfo.Size = new System.Drawing.Size(160, 300);
             this.panelImageInfo.TabIndex = 0;
+            // 
+            // propertyGrid1
+            // 
+            this.propertyGrid1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.propertyGrid1.LineColor = System.Drawing.SystemColors.ControlDark;
+            this.propertyGrid1.Location = new System.Drawing.Point(3, 3);
+            this.propertyGrid1.Name = "propertyGrid1";
+            this.propertyGrid1.Size = new System.Drawing.Size(154, 294);
+            this.propertyGrid1.TabIndex = 0;
             // 
             // UserControl3
             // 
@@ -132,6 +146,7 @@
             this.splitContainer2.ResumeLayout(false);
             this.panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxLarge)).EndInit();
+            this.panelImageInfo.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -144,5 +159,6 @@
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.Panel panelImageInfo;
         private System.Windows.Forms.PictureBox pictureBoxLarge;
+        private System.Windows.Forms.PropertyGrid propertyGrid1;
     }
 }
