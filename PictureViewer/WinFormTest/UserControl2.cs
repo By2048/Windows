@@ -18,16 +18,18 @@ namespace WinFormTest
             InitializeComponent();
             Size = panelSize;
 
-            panelLargeImage.Size = new Size(Size.Width, Size.Height / 5 * 4-20);
-            panelLargeImage.Location = new Point(0, 0);
+            splitContainer1.SplitterDistance = Size.Height / 5*4;
+            //panelLargeImage.BackColor = Color.Red;
+            //panelSmallImages.BackColor = Color.Green;
+
+            //panelLargeImage.Size = new Size(Size.Width, Size.Height / 5 * 4 - 20);
+            //panelLargeImage.Location = new Point(0, 0);
             panelLargeImage.BackgroundImage = null;
             panelLargeImage.BackgroundImageLayout = ImageLayout.Zoom;
-            //panelLargeImage.BackColor = Color.Red;
 
-            panelSmallImage.Size = new Size(Size.Width, Size.Height - panelLargeImage.Height+20);
-            panelSmallImage.Location = new Point(0, panelLargeImage.Height+20);
-            panelSmallImage.AutoScroll = true;
-            //panelSmallImage.BackColor = Color.Green;
+            //panelSmallImage.Size = new Size(Size.Width, Size.Height - panelLargeImage.Height + 20);
+            //panelSmallImage.Location = new Point(0, panelLargeImage.Height + 20);
+            panelSmallImages.AutoScroll = true;
 
             ShowPictureByFolder(folderPath, panelSize);
         }
@@ -37,8 +39,8 @@ namespace WinFormTest
             int pictureCount = pictures.Length;
 
             int padding = 2;
-            int pictureHeight = panelSmallImage.Height - 17;
-            int pictureWidth = pictureHeight* 16 / 9;
+            int pictureHeight = panelSmallImages.Height - 17;
+            int pictureWidth = pictureHeight * 16 / 9;
 
             for (int cnt = 0; cnt < pictureCount; cnt++)
             {
@@ -53,16 +55,16 @@ namespace WinFormTest
                 pictureLoction.Y = 0;
                 pictureBox.Location = pictureLoction;
                 pictureBox.Click += pictureBox_Click;
-                panelSmallImage.Controls.Add(pictureBox);
+                panelSmallImages.Controls.Add(pictureBox);
             }
-            panelLargeImage.BackgroundImage= Image.FromFile(pictures[0]);
+            panelLargeImage.BackgroundImage = Image.FromFile(pictures[0]);
         }
 
         private void pictureBox_Click(object sender, EventArgs e)
         {
             PictureBox pictureBox = (PictureBox)sender;
             Image image = pictureBox.Image;
-            panelLargeImage.BackgroundImage = image;            
+            panelLargeImage.BackgroundImage = image;
         }
     }
 }
