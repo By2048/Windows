@@ -11,31 +11,28 @@ using System.IO;
 
 namespace WinFormTest
 {
-    public partial class UserControl1 : UserControl
+    public partial class ImgSmartView : UserControl
     {
-        public UserControl1(string folderPath, Size panelSize)
+        public ImgSmartView(string folderPath, Size panelSize, Size imageSize)
         {
             InitializeComponent();
             Size = panelSize;
             panel1.AutoScroll = true;
-            //panel1.AutoScrollMinSize = new Size(panelWidth-20,panelHeight-20);
-            ShowPictureByFolder(folderPath, panelSize);
+            ShowPictureByFolder(folderPath, panelSize, imageSize);
         }
 
-        private void ShowPictureByFolder(string folderPath, Size panelSize)
+        private void ShowPictureByFolder(string folderPath, Size panelSize, Size imageSize)
 
         {
             string[] pictures = Directory.GetFiles(folderPath, "*jpg");
             int pictureCount = pictures.Length;
 
-            int columnCount = panelSize.Width / 100;
+            int padding = 2;
+            int columnCount = panelSize.Width / imageSize.Width;
             int rowCount = (pictureCount % columnCount == 0) ?
                 pictureCount / columnCount :
                 (pictureCount / columnCount) + 1;
 
-            int padding = 2;
-            int pictureWidth = panelSize.Width / columnCount - 2 * padding;
-            int pictureHeight = pictureWidth * 9 / 16; // 16*9比例
 
             for (int row = 0; row < rowCount; row++)
             {
@@ -44,28 +41,29 @@ namespace WinFormTest
                     int pictureIndex = row * columnCount + column; // 图片下标
                     PictureBox pictureBox = new PictureBox();
                     pictureBox.SizeMode = PictureBoxSizeMode.Zoom;
-                    pictureBox.Width = pictureWidth;
-                    pictureBox.Height = pictureHeight;
+                    pictureBox.Size = imageSize;
                     if (pictureIndex >= pictureCount) { return; }
                     pictureBox.Image = Image.FromFile(pictures[pictureIndex]);
-                    Point pictureLoction = new Point();
-                    pictureLoction.X = padding * (column + 1) + pictureWidth * column;
-                    pictureLoction.Y = padding * (row + 1) + pictureHeight * row;
+                    Point pictureLoction = new Point()
+                    {
+                        X = pictureBox.Width * column + padding * (column + 1),
+                        Y = pictureBox.Height * row + padding * (row + 1)
+                    };
                     pictureBox.Location = pictureLoction;
                     pictureBox.DoubleClick += pictureBox_DoubleClick;
                     panel1.Controls.Add(pictureBox);
                 }
             }
-        }       
+        }
         private void pictureBox_DoubleClick(object sender, EventArgs e)
         {
             PictureBox pictureBox = (PictureBox)sender;
             Image image = pictureBox.Image;
             FormLarge formLarge = new FormLarge();
-            formLarge.Size = new Size(image.Width,image.Height);
+            formLarge.Size = new Size(image.Width, image.Height);
             formLarge.BackgroundImage = image;
             formLarge.BackgroundImageLayout = ImageLayout.Zoom;
-            formLarge.Show();            
+            formLarge.Show();
         }
     }
 }

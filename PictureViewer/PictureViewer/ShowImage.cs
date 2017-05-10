@@ -14,7 +14,8 @@ namespace PictureViewer
     {
         bool isMaxScreen = false;
         bool isCtrlDown = false;
-        public Bitmap imageBitmap;
+
+        public Bitmap showBitmap;
         private ContextMenuStrip picBoxContextMenuStrip;
 
 
@@ -73,6 +74,33 @@ namespace PictureViewer
 
         }
 
+        private void ShowImage_Load(object sender, EventArgs e)
+        {
+            //允许键盘
+            KeyPreview = true;
+            TopMost = true;
+            FormBorderStyle = FormBorderStyle.None;
+
+            SetImage("..\\..\\Images\\default.jpg");
+
+            int picWidth = showBitmap.Width;
+            int picHeight = showBitmap.Height;
+
+            Width = picWidth / 4;
+            Height = picHeight / 4;
+
+            imagePictureBox.SizeMode = PictureBoxSizeMode.StretchImage;
+            imagePictureBox.ClientSize = new Size(Width, Height);
+            imagePictureBox.Image = showBitmap;
+
+            Controls.Add(imagePictureBox);
+        }
+
+
+        public void SetImage(string path)
+        {
+            showBitmap = new Bitmap(path);
+        }
 
         private void ShowImage_KeyDown(object sender, KeyEventArgs e)
         {
@@ -90,31 +118,6 @@ namespace PictureViewer
                 isCtrlDown = false;
         }
 
-        public void SetImagePath(string path)
-        {
-            imageBitmap = new Bitmap(path);
-        }
-        private void ShowImage_Load(object sender, EventArgs e)
-        {
-            //允许键盘
-            KeyPreview = true;
-            TopMost = true;
-            FormBorderStyle = FormBorderStyle.None;
-
-            SetImagePath("..\\..\\Images\\default.jpg");
-
-            int picWidth = imageBitmap.Width;
-            int picHeight = imageBitmap.Height;
-
-            Width = picWidth / 4;
-            Height = picHeight / 4;
-
-            imagePictureBox.SizeMode = PictureBoxSizeMode.StretchImage;
-            imagePictureBox.ClientSize = new Size(Width, Height);
-            imagePictureBox.Image = imageBitmap;
-
-            Controls.Add(imagePictureBox);
-        }
 
         private Point currentPoint, offsetPoint;
 
@@ -130,6 +133,7 @@ namespace PictureViewer
                 ContextMenuStrip = picBoxContextMenuStrip;
             }
         }
+
         Point diffPoint = new Point(0, 0);
         Point movePoint = new Point(0, 0);
         private void picture_MouseMove(object sender, MouseEventArgs e)
@@ -166,7 +170,7 @@ namespace PictureViewer
         }
         private void picture_MouseWheel(object sender, MouseEventArgs e)
         {
-            double imageProportion = double.Parse(imageBitmap.Width.ToString()) / double.Parse(imageBitmap.Height.ToString());
+            double imageProportion = double.Parse(showBitmap.Width.ToString()) / double.Parse(showBitmap.Height.ToString());
 
             //当前的屏幕除任务栏外的工作域大小
             int ScreenWidth = System.Windows.Forms.Screen.PrimaryScreen.WorkingArea.Width;
@@ -214,7 +218,6 @@ namespace PictureViewer
             }
 
         }
-
 
         private void ImageShowModel_DropDownOpening(object sender, EventArgs e)
         {

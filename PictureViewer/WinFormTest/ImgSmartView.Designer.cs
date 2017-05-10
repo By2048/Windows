@@ -1,6 +1,6 @@
 ﻿namespace WinFormTest
 {
-    partial class UserControl1
+    partial class ImgSmartView
     {
         /// <summary> 
         /// 必需的设计器变量。

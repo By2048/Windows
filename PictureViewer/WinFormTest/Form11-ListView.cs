@@ -23,10 +23,10 @@ namespace WinFormTest
             CreateMyListView();
         }
 
-        private ListView listView1;
+        private System.Windows.Forms.ListView listView1;
         private void CreateMyListView()
         {
-            listView1 = new ListView();
+            listView1 = new System.Windows.Forms.ListView();
             listView1.Bounds = new Rectangle(new Point(10, 10), new Size(500, 400));
 
             // Set the view to show details.

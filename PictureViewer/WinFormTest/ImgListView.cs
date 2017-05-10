@@ -12,12 +12,12 @@ using System.Collections;
 
 namespace WinFormTest
 {
-    public partial class UserControl4 : UserControl
+    public partial class ImgListView : UserControl
     {
-        private ListView listView;
+        private System.Windows.Forms.ListView listView;
         private ContextMenuStrip picBoxContextMenuStrip;
 
-        public UserControl4(string folderPath, Size panelSize)
+        public ImgListView(string folderPath, Size panelSize)
         {
             InitializeComponent();
             Size = panelSize;
@@ -39,7 +39,7 @@ namespace WinFormTest
         {
             string[] pictures = Directory.GetFiles(folderPath, "*jpg");
 
-            listView = new ListView();
+            listView = new System.Windows.Forms.ListView();
             listView.Dock = DockStyle.Fill;
 
             //listView1.LabelEdit = true;

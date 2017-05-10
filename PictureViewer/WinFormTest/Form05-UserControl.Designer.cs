@@ -50,7 +50,6 @@
             this.Controls.Add(this.panPicShow);
             this.Name = "Form05";
             this.Text = "Form5";
-            this.Load += new System.EventHandler(this.Form05_Load_1);
             this.ResumeLayout(false);
 
         }

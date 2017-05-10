@@ -1,6 +1,6 @@
 ﻿namespace WinFormTest
 {
-    partial class UserControl2
+    partial class ImgLargeView
     {
         /// <summary> 
         /// 必需的设计器变量。

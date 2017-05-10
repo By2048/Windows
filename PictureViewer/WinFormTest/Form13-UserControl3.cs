@@ -20,12 +20,12 @@ namespace WinFormTest
             this.Resize += new System.EventHandler(this.Form13_Resize);
         }
 
-        private UserControl3 userControl;
+        private ImgDetailView userControl;
 
         private void Form13_Load(object sender, EventArgs e)
         {
             CenterToScreen();
-            userControl = new UserControl3(folderPath,Size);
+            userControl = new ImgDetailView(folderPath,Size);
             panelImageShow.Controls.Add(userControl);
         }
 
@@ -33,7 +33,7 @@ namespace WinFormTest
         {
 
             panelImageShow.Controls.Remove(userControl);
-            userControl = new UserControl3(folderPath,Size);
+            userControl = new ImgDetailView(folderPath,Size);
             panelImageShow.Controls.Add(userControl);
         }
 

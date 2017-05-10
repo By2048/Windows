@@ -12,7 +12,7 @@ namespace WinFormTest
 {
     public partial class Form12 : Form
     {
-        private UserControl2 userControl;
+        private ImgLargeView userControl;
         private string folderPath = @"F:\Test\媚眼柔嫩娇滴滴 爆乳萌妹子猫儿蜜糖化身性感女仆被调教";
 
         public Form12()
@@ -35,7 +35,7 @@ namespace WinFormTest
 
         private void LoadUserControl()
         {
-            userControl = new UserControl2(folderPath, panelShowImage.Size);
+            userControl = new ImgLargeView(folderPath, panelShowImage.Size);
             panelShowImage.Controls.Add(userControl);
         }
 

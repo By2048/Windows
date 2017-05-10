@@ -33,13 +33,13 @@ E:\Desktop\Windows\PictureViewer\WinFormTest\obj\Debug\WinFormTest.Form05.resour
 E:\Desktop\Windows\PictureViewer\WinFormTest\obj\Debug\WinFormTest.Form07.resources
 E:\Desktop\Windows\PictureViewer\WinFormTest\obj\Debug\WinFormTest.Form09.resources
 E:\Desktop\Windows\PictureViewer\WinFormTest\obj\Debug\WinFormTest.Form11.resources
-E:\Desktop\Windows\PictureViewer\WinFormTest\obj\Debug\WinFormTest.UserControl1.resources
 E:\Desktop\Windows\PictureViewer\WinFormTest\obj\Debug\WinFormTest.Form00.resources
 E:\Desktop\Windows\PictureViewer\WinFormTest\obj\Debug\WinFormTest.FormLarge.resources
 E:\Desktop\Windows\PictureViewer\WinFormTest\obj\Debug\WinFormTest.Form12.resources
-E:\Desktop\Windows\PictureViewer\WinFormTest\obj\Debug\WinFormTest.UserControl2.resources
 E:\Desktop\Windows\PictureViewer\WinFormTest\obj\Debug\WinFormTest.Form13.resources
-E:\Desktop\Windows\PictureViewer\WinFormTest\obj\Debug\WinFormTest.UserControl3.resources
 E:\Desktop\Windows\PictureViewer\WinFormTest\obj\Debug\WinFormTest.Form14.resources
-E:\Desktop\Windows\PictureViewer\WinFormTest\obj\Debug\WinFormTest.UserControl4.resources
 E:\Desktop\Windows\PictureViewer\WinFormTest\obj\Debug\WinFormTest.Form06Drag.resources
+E:\Desktop\Windows\PictureViewer\WinFormTest\obj\Debug\WinFormTest.ImgSmartView.resources
+E:\Desktop\Windows\PictureViewer\WinFormTest\obj\Debug\WinFormTest.ImgLargeView.resources
+E:\Desktop\Windows\PictureViewer\WinFormTest\obj\Debug\WinFormTest.ImgDetailView.resources
+E:\Desktop\Windows\PictureViewer\WinFormTest\obj\Debug\WinFormTest.ImgListView.resources

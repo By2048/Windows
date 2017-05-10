@@ -11,9 +11,9 @@ using System.IO;
 
 namespace WinFormTest
 {
-    public partial class UserControl2 : UserControl
+    public partial class ImgLargeView : UserControl
     {
-        public UserControl2(string folderPath, Size panelSize)
+        public ImgLargeView(string folderPath, Size panelSize)
         {
             InitializeComponent();
             Size = panelSize;

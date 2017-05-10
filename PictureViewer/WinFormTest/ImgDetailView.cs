@@ -11,9 +11,9 @@ using System.IO;
 
 namespace WinFormTest
 {
-    public partial class UserControl3 : UserControl
+    public partial class ImgDetailView : UserControl
     {
-        public UserControl3(string folderPath, Size panelSize)
+        public ImgDetailView(string folderPath, Size panelSize)
         {
             InitializeComponent();
 
