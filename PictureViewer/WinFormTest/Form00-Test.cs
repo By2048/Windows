@@ -44,3 +44,9 @@ namespace WinFormTest
         }
     }
 }
+
+
+//FileStream fs = new FileStream(imagePath[pictureIndex], FileMode.Open);
+//Bitmap bm = new Bitmap(fs);
+//fs.Dispose();
+//pictureBox.Image = bm;

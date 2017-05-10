@@ -87,7 +87,12 @@ namespace WinFormTest
             if (listView.SelectedItems.Count > 0)
             {
                 string imagePath = listView.SelectedItems[0].SubItems[4].Text;
-                //pictureBoxLarge.Load(imagePath);
+
+
+                FileStream fs = new FileStream(imagePath, FileMode.Open);
+                Bitmap bm = new Bitmap(fs);
+                fs.Dispose();
+                pictureBoxLarge.Image = bm;
 
                 CreateSmallImage();
             }
@@ -194,7 +199,13 @@ namespace WinFormTest
                     pictureBox.Width = pictureWidth;
                     pictureBox.Height = pictureHeight;
                     if (pictureIndex >= imagePath.Count) { return; }
-                    pictureBox.Load(imagePath[pictureIndex]);
+
+                    FileStream fs = new FileStream(imagePath[pictureIndex], FileMode.Open);
+                    Bitmap bm = new Bitmap(fs);
+                    fs.Dispose();
+                    pictureBox.Image = bm;
+
+                    //pictureBox.Load(imagePath[pictureIndex]);
                     //pictureBox.Image=Image.FromFile(imagePath[pictureIndex]);
                     Point pictureLoction = new Point();
                     pictureLoction.X = padding * (column + 1) + pictureWidth * column;
@@ -236,29 +247,13 @@ namespace WinFormTest
 
         private void DeleteItem_Clicked(object sender, EventArgs e)
         {
-
-            foreach (Control control in panelSmallImages.Controls)
-            {
-                PictureBox picBox = (PictureBox)control;
-                picBox.Image = null;
-                //picBox.Image.Dispose();
-                //panelSmallImages.Controls.Remove(control);
-            }
-            //panelSmallImages.Controls.Clear();
+            panelSmallImages.Controls.Clear();
             foreach (ListViewItem item in listView.CheckedItems)
             {
                 string path = listView.Items[item.Index].SubItems[4].Text;
-                MessageBox.Show(path);
                 File.Delete(path);
-                //pictureBoxLarge.Image.Dispose();
-                //listView.Items.RemoveAt(item.Index);
-
-                //this.listView1.Items.RemoveAt(item.Index);
-            }
-
-            //string filePath = @"F:\Test\001.jpg";
-            //File.Delete(filePath);
-            //MessageBox.Show("fewfe");
+                listView.Items.RemoveAt(item.Index);
+            }          
         }
     }
 }
