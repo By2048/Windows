@@ -43,3 +43,4 @@ E:\Desktop\Windows\PictureViewer\WinFormTest\obj\Debug\WinFormTest.ImgSmartView.
 E:\Desktop\Windows\PictureViewer\WinFormTest\obj\Debug\WinFormTest.ImgLargeView.resources
 E:\Desktop\Windows\PictureViewer\WinFormTest\obj\Debug\WinFormTest.ImgDetailView.resources
 E:\Desktop\Windows\PictureViewer\WinFormTest\obj\Debug\WinFormTest.ImgListView.resources
+E:\Desktop\Windows\PictureViewer\WinFormTest\obj\Debug\WinFormTest.ShowImage.resources

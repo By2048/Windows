@@ -18,17 +18,50 @@ namespace PictureViewer
         public Bitmap showBitmap;
         private ContextMenuStrip picBoxContextMenuStrip;
 
+        private void CreateContextMenuStrip()
+        {
+            ToolStripMenuItem ImageShowModel;
+            ToolStripMenuItem StretchImageModel;
+            ToolStripMenuItem AutoSizeModel;
+            ToolStripMenuItem ImageInfo;
 
-        private ToolStripMenuItem ImageShowModel;
-        private ToolStripMenuItem StretchImageModel;
-        private ToolStripMenuItem AutoSizeModel;
+            picBoxContextMenuStrip = new ContextMenuStrip();
+            picBoxContextMenuStrip.Name = "picBoxContextMenuStrip";
 
-        private ToolStripMenuItem ImageInfo;
+            ImageShowModel = new ToolStripMenuItem();
+            ImageShowModel.Name = "ImageShowModel";
+            ImageShowModel.Text = "显示模式";
+            ImageShowModel.DropDownOpening += new EventHandler(ImageShowModel_DropDownOpening);
+            ImageShowModel.DropDownItemClicked += new ToolStripItemClickedEventHandler(ImageShowModelItem_Clicked);
+
+            StretchImageModel = new ToolStripMenuItem();
+            StretchImageModel.Name = "StretchImageModel";
+            StretchImageModel.Text = "图片适应";           
+
+            AutoSizeModel = new ToolStripMenuItem();
+            AutoSizeModel.Name = "AutoSizeModel";
+            AutoSizeModel.Text = "实际像素";
+
+            ImageInfo = new ToolStripMenuItem();
+            ImageInfo.Name = "ImageInfo";
+            ImageInfo.Text = "图片信息";
+
+            picBoxContextMenuStrip.Items.AddRange(
+                new ToolStripItem[] {
+                ImageShowModel,
+                ImageInfo
+            });                     
+
+            ImageShowModel.DropDownItems.AddRange(
+                new ToolStripItem[] {
+                StretchImageModel,
+                AutoSizeModel,
+            });          
+        }
         public ShowImage()
         {
-            CenterToScreen();
-
             InitializeComponent();
+            CenterToScreen();
 
             imagePictureBox.MouseDown += new MouseEventHandler(picture_MouseDown);
             imagePictureBox.MouseMove += new MouseEventHandler(picture_MouseMove);
@@ -38,40 +71,7 @@ namespace PictureViewer
             KeyDown += new KeyEventHandler(ShowImage_KeyDown);
             KeyPress += new KeyPressEventHandler(ShowImage_KeyPress);
             KeyUp += new KeyEventHandler(ShowImage_KeyUp);
-
-            picBoxContextMenuStrip = new ContextMenuStrip();
-            picBoxContextMenuStrip.Name = "picBoxContextMenuStrip";
-
-            ImageShowModel = new ToolStripMenuItem();
-            StretchImageModel = new ToolStripMenuItem();
-            AutoSizeModel = new ToolStripMenuItem();
-
-            ImageInfo = new ToolStripMenuItem();
-
-            picBoxContextMenuStrip.Items.AddRange(
-                new ToolStripItem[] {
-                ImageShowModel,
-                ImageInfo
-            });
-            ImageShowModel.Name = "ImageShowModel";
-            ImageShowModel.Text = "显示模式";
-            ImageShowModel.DropDownOpening += new EventHandler(ImageShowModel_DropDownOpening);
-            ImageShowModel.DropDownItemClicked += new ToolStripItemClickedEventHandler(ImageShowModelItem_Clicked);
-
-            StretchImageModel.Name = "StretchImageModel";
-            StretchImageModel.Text = "图片适应";
-            AutoSizeModel.Name = "AutoSizeModel";
-            AutoSizeModel.Text = "实际像素";
-
-            ImageShowModel.DropDownItems.AddRange(
-                new ToolStripItem[] {
-                StretchImageModel,
-                AutoSizeModel,
-            });
-
-            ImageInfo.Name = "ImageInfo";
-            ImageInfo.Text = "图片信息";
-
+            CreateContextMenuStrip();
         }
 
         private void ShowImage_Load(object sender, EventArgs e)

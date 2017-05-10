@@ -22,7 +22,6 @@ namespace WinFormTest
         }
 
         private void ShowPictureByFolder(string folderPath, Size panelSize, Size imageSize)
-
         {
             string[] pictures = Directory.GetFiles(folderPath, "*jpg");
             int pictureCount = pictures.Length;
@@ -32,7 +31,6 @@ namespace WinFormTest
             int rowCount = (pictureCount % columnCount == 0) ?
                 pictureCount / columnCount :
                 (pictureCount / columnCount) + 1;
-
 
             for (int row = 0; row < rowCount; row++)
             {
@@ -59,11 +57,10 @@ namespace WinFormTest
         {
             PictureBox pictureBox = (PictureBox)sender;
             Image image = pictureBox.Image;
-            FormLarge formLarge = new FormLarge();
-            formLarge.Size = new Size(image.Width, image.Height);
-            formLarge.BackgroundImage = image;
-            formLarge.BackgroundImageLayout = ImageLayout.Zoom;
-            formLarge.Show();
+
+            ShowImage form = new ShowImage();
+            form.SetImage(image);
+            form.Show();
         }
     }
 }

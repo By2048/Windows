@@ -143,6 +143,12 @@
     <Compile Include="ImgListView.Designer.cs">
       <DependentUpon>ImgListView.cs</DependentUpon>
     </Compile>
+    <Compile Include="ShowImage.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ShowImage.Designer.cs">
+      <DependentUpon>ShowImage.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="Form00-Test.resx">
       <DependentUpon>Form00-Test.cs</DependentUpon>
     </EmbeddedResource>
@@ -201,6 +207,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="ImgListView.resx">
       <DependentUpon>ImgListView.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ShowImage.resx">
+      <DependentUpon>ShowImage.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
