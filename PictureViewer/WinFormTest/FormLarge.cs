@@ -15,7 +15,7 @@ namespace WinFormTest
         public FormLarge()
         {
             InitializeComponent();
-            CenterToScreen();
+            CenterToParent();
         }
     }
 }

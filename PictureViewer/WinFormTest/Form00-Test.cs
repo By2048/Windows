@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.IO;
 
 namespace WinFormTest
 {
@@ -20,10 +21,26 @@ namespace WinFormTest
         private void Form00_Load(object sender, EventArgs e)
         {
             CenterToScreen();
-           
-         
+
+            string path = @"F:\Test\002.jpg";
+            FileStream fs = new FileStream(path, FileMode.Open);
+            Bitmap bt = new Bitmap(fs);
+
+            fs.Dispose();
+
+            pictureBox1.Image = bt;
+
+            //pictureBox1.Load(path);
+
         }
 
+        private void button1_Click(object sender, EventArgs e)
+        {
 
+            //pictureBox1.Image.Dispose();
+            //pictureBox1.Image = null;
+            string path = @"F:\Test\002.jpg";
+            File.Delete(path);
+        }
     }
 }

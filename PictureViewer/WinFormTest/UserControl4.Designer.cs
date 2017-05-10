@@ -29,10 +29,10 @@
         private void InitializeComponent()
         {
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
-            this.splitContainer2 = new System.Windows.Forms.SplitContainer();
-            this.panelSmallImage = new System.Windows.Forms.Panel();
             this.panelListView = new System.Windows.Forms.Panel();
-            this.panelButton = new System.Windows.Forms.Panel();
+            this.splitContainer2 = new System.Windows.Forms.SplitContainer();
+            this.panelSmallImages = new System.Windows.Forms.Panel();
+            this.pictureBoxLarge = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
@@ -41,6 +41,7 @@
             this.splitContainer2.Panel1.SuspendLayout();
             this.splitContainer2.Panel2.SuspendLayout();
             this.splitContainer2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxLarge)).BeginInit();
             this.SuspendLayout();
             // 
             // splitContainer1
@@ -60,6 +61,14 @@
             this.splitContainer1.SplitterDistance = 298;
             this.splitContainer1.TabIndex = 1;
             // 
+            // panelListView
+            // 
+            this.panelListView.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panelListView.Location = new System.Drawing.Point(0, 0);
+            this.panelListView.Name = "panelListView";
+            this.panelListView.Size = new System.Drawing.Size(298, 383);
+            this.panelListView.TabIndex = 0;
+            // 
             // splitContainer2
             // 
             this.splitContainer2.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -69,38 +78,31 @@
             // 
             // splitContainer2.Panel1
             // 
-            this.splitContainer2.Panel1.Controls.Add(this.panelSmallImage);
+            this.splitContainer2.Panel1.Controls.Add(this.pictureBoxLarge);
             // 
             // splitContainer2.Panel2
             // 
-            this.splitContainer2.Panel2.Controls.Add(this.panelButton);
+            this.splitContainer2.Panel2.Controls.Add(this.panelSmallImages);
             this.splitContainer2.Size = new System.Drawing.Size(142, 383);
-            this.splitContainer2.SplitterDistance = 297;
+            this.splitContainer2.SplitterDistance = 132;
             this.splitContainer2.TabIndex = 0;
             // 
-            // panelSmallImage
+            // panelSmallImages
             // 
-            this.panelSmallImage.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panelSmallImage.Location = new System.Drawing.Point(0, 0);
-            this.panelSmallImage.Name = "panelSmallImage";
-            this.panelSmallImage.Size = new System.Drawing.Size(142, 297);
-            this.panelSmallImage.TabIndex = 0;
+            this.panelSmallImages.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panelSmallImages.Location = new System.Drawing.Point(0, 0);
+            this.panelSmallImages.Name = "panelSmallImages";
+            this.panelSmallImages.Size = new System.Drawing.Size(142, 247);
+            this.panelSmallImages.TabIndex = 0;
             // 
-            // panelListView
+            // pictureBoxLarge
             // 
-            this.panelListView.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panelListView.Location = new System.Drawing.Point(0, 0);
-            this.panelListView.Name = "panelListView";
-            this.panelListView.Size = new System.Drawing.Size(298, 383);
-            this.panelListView.TabIndex = 0;
-            // 
-            // panelButton
-            // 
-            this.panelButton.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panelButton.Location = new System.Drawing.Point(0, 0);
-            this.panelButton.Name = "panelButton";
-            this.panelButton.Size = new System.Drawing.Size(142, 82);
-            this.panelButton.TabIndex = 0;
+            this.pictureBoxLarge.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.pictureBoxLarge.Location = new System.Drawing.Point(0, 0);
+            this.pictureBoxLarge.Name = "pictureBoxLarge";
+            this.pictureBoxLarge.Size = new System.Drawing.Size(142, 132);
+            this.pictureBoxLarge.TabIndex = 0;
+            this.pictureBoxLarge.TabStop = false;
             // 
             // UserControl4
             // 
@@ -117,6 +119,7 @@
             this.splitContainer2.Panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer2)).EndInit();
             this.splitContainer2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxLarge)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -125,8 +128,8 @@
 
         private System.Windows.Forms.SplitContainer splitContainer1;
         private System.Windows.Forms.SplitContainer splitContainer2;
-        private System.Windows.Forms.Panel panelSmallImage;
         private System.Windows.Forms.Panel panelListView;
-        private System.Windows.Forms.Panel panelButton;
+        private System.Windows.Forms.Panel panelSmallImages;
+        private System.Windows.Forms.PictureBox pictureBoxLarge;
     }
 }
