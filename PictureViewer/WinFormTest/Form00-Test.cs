@@ -22,31 +22,22 @@ namespace WinFormTest
         {
             CenterToScreen();
 
-            string path = @"F:\Test\002.jpg";
-            FileStream fs = new FileStream(path, FileMode.Open);
-            Bitmap bt = new Bitmap(fs);
+            panel1.BackColor = Color.Red;
+            panel2.BackColor = Color.Green;
 
-            fs.Dispose();
-
-            pictureBox1.Image = bt;
-
-            //pictureBox1.Load(path);
-
+            panel2.Focus();
+            
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void panel1_Paint(object sender, PaintEventArgs e)
         {
 
-            //pictureBox1.Image.Dispose();
-            //pictureBox1.Image = null;
-            string path = @"F:\Test\002.jpg";
-            File.Delete(path);
         }
+
+        private void splitContainer1_SplitterMoved(object sender, SplitterEventArgs e)
+        {
+
+        }
+
     }
 }
-
-
-//FileStream fs = new FileStream(imagePath[pictureIndex], FileMode.Open);
-//Bitmap bm = new Bitmap(fs);
-//fs.Dispose();
-//pictureBox.Image = bm;

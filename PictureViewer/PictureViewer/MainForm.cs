@@ -29,13 +29,7 @@ namespace PictureViewer
             panelMain.Controls.Clear();
             ImgSmallView userControl = new ImgSmallView(folderPath, panelMain.Size, imageSize);
             panelMain.Controls.Add(userControl);
-
-            //if (tsbSmallView.Checked)
-            //    MessageBox.Show("true");
-            //else
-            //    MessageBox.Show("false");
-
-            //SetTsbChecked();
+            panelTree.BackColor = Color.Red;
         }
 
         private void SetTsbBtnChecked(string btnName)
@@ -86,24 +80,15 @@ namespace PictureViewer
                     break;
             }
             SetTsbBtnChecked(btn.Name);
-        }       
+        }      
 
-        private void tsbSize1_Click(object sender, EventArgs e)
+        private void tsbSize_Click(object sender, EventArgs e)
         {
-            imageSize = new Size(16 * 10, 9 * 10);
+            ToolStripMenuItem item=(ToolStripMenuItem) sender;
+            int proportion=int.Parse(item.Name.Substring(item.Name.Length-2,2));
+            imageSize = new Size(16 * proportion, 9 * proportion);           
         }
 
-        private void tsbSize2_Click(object sender, EventArgs e)
-        {
-            imageSize = new Size(16 * 15, 9 * 15);
-        }
-
-        private void tsbSize3_Click(object sender, EventArgs e)
-        {
-            imageSize = new Size(16 * 20, 9 * 20);
-        }
-
-      
 
     }
 }

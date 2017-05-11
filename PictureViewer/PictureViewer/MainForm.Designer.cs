@@ -42,9 +42,9 @@ namespace PictureViewer
             this.tsbDetailView = new System.Windows.Forms.ToolStripButton();
             this.tsbListView = new System.Windows.Forms.ToolStripButton();
             this.tsvImageSize = new System.Windows.Forms.ToolStripDropDownButton();
-            this.tsbSize1 = new System.Windows.Forms.ToolStripMenuItem();
-            this.tsbSize2 = new System.Windows.Forms.ToolStripMenuItem();
-            this.tsbSize3 = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsbSize10 = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsbSize15 = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsbSize20 = new System.Windows.Forms.ToolStripMenuItem();
             this.tslMenu = new System.Windows.Forms.ToolStripDropDownButton();
             this.显示多选框ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.imageList = new System.Windows.Forms.ImageList(this.components);
@@ -71,11 +71,11 @@ namespace PictureViewer
             // toolStripContainerImage.ContentPanel
             // 
             this.toolStripContainerImage.ContentPanel.Controls.Add(this.splitContainer1);
-            this.toolStripContainerImage.ContentPanel.Size = new System.Drawing.Size(1159, 780);
+            this.toolStripContainerImage.ContentPanel.Size = new System.Drawing.Size(688, 444);
             this.toolStripContainerImage.Dock = System.Windows.Forms.DockStyle.Fill;
             this.toolStripContainerImage.Location = new System.Drawing.Point(0, 0);
             this.toolStripContainerImage.Name = "toolStripContainerImage";
-            this.toolStripContainerImage.Size = new System.Drawing.Size(1159, 827);
+            this.toolStripContainerImage.Size = new System.Drawing.Size(688, 491);
             this.toolStripContainerImage.TabIndex = 0;
             this.toolStripContainerImage.Text = "toolStripContainer1";
             // 
@@ -90,7 +90,7 @@ namespace PictureViewer
             this.toolStripStatusLabelImage});
             this.statusStripImage.Location = new System.Drawing.Point(0, 0);
             this.statusStripImage.Name = "statusStripImage";
-            this.statusStripImage.Size = new System.Drawing.Size(1159, 22);
+            this.statusStripImage.Size = new System.Drawing.Size(688, 22);
             this.statusStripImage.TabIndex = 0;
             // 
             // toolStripStatusLabelImage
@@ -112,8 +112,9 @@ namespace PictureViewer
             // splitContainer1.Panel2
             // 
             this.splitContainer1.Panel2.Controls.Add(this.panelMain);
-            this.splitContainer1.Size = new System.Drawing.Size(1159, 780);
-            this.splitContainer1.SplitterDistance = 270;
+            this.splitContainer1.Size = new System.Drawing.Size(688, 444);
+            this.splitContainer1.SplitterDistance = 141;
+            this.splitContainer1.SplitterWidth = 5;
             this.splitContainer1.TabIndex = 0;
             // 
             // panelTree
@@ -121,7 +122,7 @@ namespace PictureViewer
             this.panelTree.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panelTree.Location = new System.Drawing.Point(0, 0);
             this.panelTree.Name = "panelTree";
-            this.panelTree.Size = new System.Drawing.Size(270, 780);
+            this.panelTree.Size = new System.Drawing.Size(141, 444);
             this.panelTree.TabIndex = 0;
             // 
             // panelMain
@@ -129,7 +130,7 @@ namespace PictureViewer
             this.panelMain.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panelMain.Location = new System.Drawing.Point(0, 0);
             this.panelMain.Name = "panelMain";
-            this.panelMain.Size = new System.Drawing.Size(885, 780);
+            this.panelMain.Size = new System.Drawing.Size(542, 444);
             this.panelMain.TabIndex = 0;
             // 
             // toolStripMain
@@ -194,33 +195,33 @@ namespace PictureViewer
             // tsvImageSize
             // 
             this.tsvImageSize.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.tsbSize1,
-            this.tsbSize2,
-            this.tsbSize3});
+            this.tsbSize10,
+            this.tsbSize15,
+            this.tsbSize20});
             this.tsvImageSize.Name = "tsvImageSize";
             this.tsvImageSize.Size = new System.Drawing.Size(69, 22);
             this.tsvImageSize.Text = "图片大小";
             // 
-            // tsbSize1
+            // tsbSize10
             // 
-            this.tsbSize1.Name = "tsbSize1";
-            this.tsbSize1.Size = new System.Drawing.Size(152, 22);
-            this.tsbSize1.Text = "10 X 10";
-            this.tsbSize1.Click += new System.EventHandler(this.tsbSize1_Click);
+            this.tsbSize10.Name = "tsbSize10";
+            this.tsbSize10.Size = new System.Drawing.Size(134, 22);
+            this.tsbSize10.Text = "160 X 90";
+            this.tsbSize10.Click += new System.EventHandler(this.tsbSize_Click);
             // 
-            // tsbSize2
+            // tsbSize15
             // 
-            this.tsbSize2.Name = "tsbSize2";
-            this.tsbSize2.Size = new System.Drawing.Size(152, 22);
-            this.tsbSize2.Text = "15 X 15";
-            this.tsbSize2.Click += new System.EventHandler(this.tsbSize2_Click);
+            this.tsbSize15.Name = "tsbSize15";
+            this.tsbSize15.Size = new System.Drawing.Size(134, 22);
+            this.tsbSize15.Text = "240 X 135";
+            this.tsbSize15.Click += new System.EventHandler(this.tsbSize_Click);
             // 
-            // tsbSize3
+            // tsbSize20
             // 
-            this.tsbSize3.Name = "tsbSize3";
-            this.tsbSize3.Size = new System.Drawing.Size(152, 22);
-            this.tsbSize3.Text = "20 X 20";
-            this.tsbSize3.Click += new System.EventHandler(this.tsbSize3_Click);
+            this.tsbSize20.Name = "tsbSize20";
+            this.tsbSize20.Size = new System.Drawing.Size(134, 22);
+            this.tsbSize20.Text = "320 X 180";
+            this.tsbSize20.Click += new System.EventHandler(this.tsbSize_Click);
             // 
             // tslMenu
             // 
@@ -251,7 +252,7 @@ namespace PictureViewer
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1159, 827);
+            this.ClientSize = new System.Drawing.Size(688, 491);
             this.Controls.Add(this.toolStripContainerImage);
             this.Name = "MainForm";
             this.Text = "MainForm";
@@ -287,9 +288,9 @@ namespace PictureViewer
         private System.Windows.Forms.ToolStripButton tsbListView;
         private System.Windows.Forms.ToolStripTextBox toolStripTextBox1;
         private System.Windows.Forms.ToolStripDropDownButton tsvImageSize;
-        private System.Windows.Forms.ToolStripMenuItem tsbSize1;
-        private System.Windows.Forms.ToolStripMenuItem tsbSize2;
-        private System.Windows.Forms.ToolStripMenuItem tsbSize3;
+        private System.Windows.Forms.ToolStripMenuItem tsbSize10;
+        private System.Windows.Forms.ToolStripMenuItem tsbSize15;
+        private System.Windows.Forms.ToolStripMenuItem tsbSize20;
         private System.Windows.Forms.ToolStripDropDownButton tslMenu;
         private System.Windows.Forms.ToolStripMenuItem 显示多选框ToolStripMenuItem;
         private System.Windows.Forms.ImageList imageList;
