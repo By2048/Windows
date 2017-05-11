@@ -144,7 +144,7 @@ namespace PictureViewer
             this.tslMenu});
             this.toolStripMain.Location = new System.Drawing.Point(3, 0);
             this.toolStripMain.Name = "toolStripMain";
-            this.toolStripMain.Size = new System.Drawing.Size(249, 25);
+            this.toolStripMain.Size = new System.Drawing.Size(218, 25);
             this.toolStripMain.TabIndex = 0;
             // 
             // tsbSmallView
@@ -156,7 +156,7 @@ namespace PictureViewer
             this.tsbSmallView.Name = "tsbSmallView";
             this.tsbSmallView.Size = new System.Drawing.Size(23, 22);
             this.tsbSmallView.Text = "SmallView";
-            this.tsbSmallView.Click += new System.EventHandler(this.tsbSmallView_Click);
+            this.tsbSmallView.Click += new System.EventHandler(this.tsbBtn_Click);
             // 
             // tsbLargeView
             // 
@@ -167,7 +167,7 @@ namespace PictureViewer
             this.tsbLargeView.Name = "tsbLargeView";
             this.tsbLargeView.Size = new System.Drawing.Size(23, 22);
             this.tsbLargeView.Text = "LargeView";
-            this.tsbLargeView.Click += new System.EventHandler(this.tsbLargeView_Click);
+            this.tsbLargeView.Click += new System.EventHandler(this.tsbBtn_Click);
             // 
             // tsbDetailView
             // 
@@ -178,7 +178,7 @@ namespace PictureViewer
             this.tsbDetailView.Name = "tsbDetailView";
             this.tsbDetailView.Size = new System.Drawing.Size(23, 22);
             this.tsbDetailView.Text = "DetailView";
-            this.tsbDetailView.Click += new System.EventHandler(this.tsbDetailView_Click);
+            this.tsbDetailView.Click += new System.EventHandler(this.tsbBtn_Click);
             // 
             // tsbListView
             // 
@@ -189,7 +189,7 @@ namespace PictureViewer
             this.tsbListView.Name = "tsbListView";
             this.tsbListView.Size = new System.Drawing.Size(23, 22);
             this.tsbListView.Text = "ListView";
-            this.tsbListView.Click += new System.EventHandler(this.tsbListView_Click);
+            this.tsbListView.Click += new System.EventHandler(this.tsbBtn_Click);
             // 
             // tsvImageSize
             // 
@@ -204,21 +204,21 @@ namespace PictureViewer
             // tsbSize1
             // 
             this.tsbSize1.Name = "tsbSize1";
-            this.tsbSize1.Size = new System.Drawing.Size(120, 22);
+            this.tsbSize1.Size = new System.Drawing.Size(152, 22);
             this.tsbSize1.Text = "10 X 10";
             this.tsbSize1.Click += new System.EventHandler(this.tsbSize1_Click);
             // 
             // tsbSize2
             // 
             this.tsbSize2.Name = "tsbSize2";
-            this.tsbSize2.Size = new System.Drawing.Size(120, 22);
+            this.tsbSize2.Size = new System.Drawing.Size(152, 22);
             this.tsbSize2.Text = "15 X 15";
             this.tsbSize2.Click += new System.EventHandler(this.tsbSize2_Click);
             // 
             // tsbSize3
             // 
             this.tsbSize3.Name = "tsbSize3";
-            this.tsbSize3.Size = new System.Drawing.Size(120, 22);
+            this.tsbSize3.Size = new System.Drawing.Size(152, 22);
             this.tsbSize3.Text = "20 X 20";
             this.tsbSize3.Click += new System.EventHandler(this.tsbSize3_Click);
             // 

@@ -37,7 +37,7 @@ namespace PictureViewer
             int pictureCount = pictures.Length;
 
             int padding = 2;
-            int columnCount = splitContainer1.Panel1.Width/ imageSize.Width;
+            int columnCount = splitContainer1.Panel1.Width / imageSize.Width;
             int rowCount = (pictureCount % columnCount == 0) ?
                 pictureCount / columnCount :
                 (pictureCount / columnCount) + 1;
@@ -150,38 +150,75 @@ public class ImageDetailInfo
         this.lastAccessTime = lastAccessTime;
     }
 
+
+
+
     [Description("图片大小"), Category("图片信息")]
-    public Size ImageSize { get => imageSize; set => imageSize = value; }
+    public Size ImageSize { get { return imageSize; } set { imageSize = value; } }
 
     [Description("图片垂直分辨率"), Category("图片信息")]
-    public string ImageVerticalResolution { get => imageVerticalResolution; set => imageVerticalResolution = value; }
+    public string ImageVerticalResolution { get { return imageVerticalResolution; } set { imageVerticalResolution = value; } }
 
     [Description("图片水平分辨率"), Category("图片信息")]
-    public string ImageHorizontalResolution { get => imageHorizontalResolution; set => imageHorizontalResolution = value; }
+    public string ImageHorizontalResolution { get { return imageHorizontalResolution; } set { imageHorizontalResolution = value; } }
 
     [Description("文件路径"), Category("文件信息")]
-    public string FileDirectoryName { get => fileDirectoryName; set => fileDirectoryName = value; }
+    public string FileDirectoryName { get { return fileDirectoryName; } set { fileDirectoryName = value; } }
 
     [Description("文件名"), Category("文件信息")]
-    public string FileName { get => fileName; set => fileName = value; }
+    public string FileName { get { return fileName; } set { fileName = value; } }
 
     [Description("文件类型"), Category("文件信息")]
-    public string FileType { get => fileType; set => fileType = value; }
+    public string FileType { get { return fileType; } set { fileType = value; } }
 
     [Description("文件路径"), Category("文件信息")]
-    public string FillFullName { get => fillFullName; set => fillFullName = value; }
+    public string FillFullName { get { return fillFullName; } set { fillFullName = value; } }
 
     [Description("文件大小（K）"), Category("文件信息")]
-    public double FileSize { get => fileSize; set => fileSize = value; }
+    public double FileSize { get { return fileSize; } set { fileSize = value; } }
 
     [Description("文件创建时间"), Category("时间信息")]
-    public DateTime CreateTime { get => createTime; set => createTime = value; }
+    public DateTime CreateTime { get { return createTime; } set { createTime = value; } }
 
     [Description("文件修改时间"), Category("时间信息")]
-    public DateTime LastWriteTime { get => lastWriteTime; set => lastWriteTime = value; }
+    public DateTime LastWriteTime { get { return lastWriteTime; } set { lastWriteTime = value; } }
 
     [Description("文件上次访问时间"), Category("时间信息")]
-    public DateTime LastAccessTime { get => lastAccessTime; set => lastAccessTime = value; }
+    public DateTime LastAccessTime { get { return lastAccessTime; } set { lastAccessTime = value; } }
+
+
+    //[Description("图片大小"), Category("图片信息")]
+    //public Size ImageSize { get => imageSize; set => imageSize = value; }    
+
+    //[Description("图片垂直分辨率"), Category("图片信息")]
+    //public string ImageVerticalResolution { get => imageVerticalResolution; set => imageVerticalResolution = value; }
+
+    //[Description("图片水平分辨率"), Category("图片信息")]
+    //public string ImageHorizontalResolution { get => imageHorizontalResolution; set => imageHorizontalResolution = value; }
+
+    //[Description("文件路径"), Category("文件信息")]
+    //public string FileDirectoryName { get => fileDirectoryName; set => fileDirectoryName = value; }
+
+    //[Description("文件名"), Category("文件信息")]
+    //public string FileName { get => fileName; set => fileName = value; }
+
+    //[Description("文件类型"), Category("文件信息")]
+    //public string FileType { get => fileType; set => fileType = value; }
+
+    //[Description("文件路径"), Category("文件信息")]
+    //public string FillFullName { get => fillFullName; set => fillFullName = value; }
+
+    //[Description("文件大小（K）"), Category("文件信息")]
+    //public double FileSize { get => fileSize; set => fileSize = value; }
+
+    //[Description("文件创建时间"), Category("时间信息")]
+    //public DateTime CreateTime { get => createTime; set => createTime = value; }
+
+    //[Description("文件修改时间"), Category("时间信息")]
+    //public DateTime LastWriteTime { get => lastWriteTime; set => lastWriteTime = value; }
+
+    //[Description("文件上次访问时间"), Category("时间信息")]
+    //public DateTime LastAccessTime { get => lastAccessTime; set => lastAccessTime = value; }
 
     //[Description("以毫秒表示的文本重复率。"), Category("全局设置"), DefaultValue(90), ReadOnly(true)]
 

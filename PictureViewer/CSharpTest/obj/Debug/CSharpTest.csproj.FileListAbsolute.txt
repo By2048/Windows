@@ -4,3 +4,9 @@ E:\Desktop\Windows\PictureViewer\CSharpTest\bin\Debug\CSharpTest.pdb
 E:\Desktop\Windows\PictureViewer\CSharpTest\obj\Debug\CSharpTest.csprojResolveAssemblyReference.cache
 E:\Desktop\Windows\PictureViewer\CSharpTest\obj\Debug\CSharpTest.exe
 E:\Desktop\Windows\PictureViewer\CSharpTest\obj\Debug\CSharpTest.pdb
+C:\Users\Administrator\Desktop\Windows\PictureViewer\CSharpTest\bin\Debug\CSharpTest.exe.config
+C:\Users\Administrator\Desktop\Windows\PictureViewer\CSharpTest\bin\Debug\CSharpTest.exe
+C:\Users\Administrator\Desktop\Windows\PictureViewer\CSharpTest\bin\Debug\CSharpTest.pdb
+C:\Users\Administrator\Desktop\Windows\PictureViewer\CSharpTest\obj\Debug\CSharpTest.csprojResolveAssemblyReference.cache
+C:\Users\Administrator\Desktop\Windows\PictureViewer\CSharpTest\obj\Debug\CSharpTest.exe
+C:\Users\Administrator\Desktop\Windows\PictureViewer\CSharpTest\obj\Debug\CSharpTest.pdb
