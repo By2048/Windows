@@ -25,7 +25,8 @@ namespace WinFormTest
         private void Form13_Load(object sender, EventArgs e)
         {
             CenterToScreen();
-            userControl = new ImgDetailView(folderPath,Size);
+            Size imageSize = new Size(16 * 10, 9 * 10);
+            userControl = new ImgDetailView(folderPath,Size, imageSize);
             panelImageShow.Controls.Add(userControl);
         }
 
@@ -33,7 +34,8 @@ namespace WinFormTest
         {
 
             panelImageShow.Controls.Remove(userControl);
-            userControl = new ImgDetailView(folderPath,Size);
+            Size imageSize = new Size(16 * 10, 9 * 10);
+            userControl = new ImgDetailView(folderPath, Size, imageSize);
             panelImageShow.Controls.Add(userControl);
         }
 

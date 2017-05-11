@@ -15,7 +15,7 @@ namespace WinFormTest
     public partial class Form05 : Form
     {
         
-        private ImgSmartView userControl;
+        private ImgSmallView userControl;
         private string folderPath = @"F:\Test\媚眼柔嫩娇滴滴 爆乳萌妹子猫儿蜜糖化身性感女仆被调教";
 
         public Form05()
@@ -42,7 +42,7 @@ namespace WinFormTest
         private void LoadUserControl()
         { 
             Size imageSize = new Size(16 * 10, 9 * 10);
-            userControl = new ImgSmartView(folderPath, panPicShow.Size, imageSize);
+            userControl = new ImgSmallView(folderPath, panPicShow.Size, imageSize);
             panPicShow.Controls.Add(userControl);
         }      
 

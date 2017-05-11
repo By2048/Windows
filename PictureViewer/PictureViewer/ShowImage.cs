@@ -15,9 +15,54 @@ namespace PictureViewer
         bool isMaxScreen = false;
         bool isCtrlDown = false;
 
-        public Bitmap showBitmap;
+        public Image showImage;
         private ContextMenuStrip picBoxContextMenuStrip;
 
+        public ShowImage()
+        {
+            InitializeComponent();         
+
+            imagePictureBox.MouseDown += new MouseEventHandler(picture_MouseDown);
+            imagePictureBox.MouseMove += new MouseEventHandler(picture_MouseMove);
+            imagePictureBox.MouseDoubleClick += new MouseEventHandler(picture_DoubleClick);
+            imagePictureBox.MouseWheel += new MouseEventHandler(picture_MouseWheel);
+
+            KeyDown += new KeyEventHandler(ShowImage_KeyDown);
+            KeyPress += new KeyPressEventHandler(ShowImage_KeyPress);
+            KeyUp += new KeyEventHandler(ShowImage_KeyUp);
+            CreateContextMenuStrip();
+        }
+
+        private void ShowImage_Load(object sender, EventArgs e)
+        {            
+            KeyPreview = true; //允许键盘
+            TopMost = true;
+            FormBorderStyle = FormBorderStyle.None;
+
+            //SetImage("..\\..\\Images\\default.jpg");
+
+            Size = showImage.Size;
+            // 窗口中除去标题栏和边框的地方
+            imagePictureBox.ClientSize = Size;
+
+            imagePictureBox.SizeMode = PictureBoxSizeMode.StretchImage;
+            imagePictureBox.Image = showImage;
+
+            StartPosition = FormStartPosition.Manual;
+            Location = GetStartPoston(showImage.Size);
+
+            Controls.Add(imagePictureBox);
+        }
+
+
+        public void SetImage(string path)
+        {
+            showImage = Image.FromFile(path);
+        }
+        public void SetImage(Image image)
+        {
+            showImage = image;
+        }
         private void CreateContextMenuStrip()
         {
             ToolStripMenuItem ImageShowModel;
@@ -58,48 +103,32 @@ namespace PictureViewer
                 AutoSizeModel,
             });          
         }
-        public ShowImage()
+        // 窗口在屏幕中居中 优先在第二屏幕居中
+        private Point GetStartPoston(Size imgeSize)
         {
-            InitializeComponent();
-            CenterToScreen();
-
-            imagePictureBox.MouseDown += new MouseEventHandler(picture_MouseDown);
-            imagePictureBox.MouseMove += new MouseEventHandler(picture_MouseMove);
-            imagePictureBox.MouseDoubleClick += new MouseEventHandler(picture_DoubleClick);
-            imagePictureBox.MouseWheel += new MouseEventHandler(picture_MouseWheel);
-
-            KeyDown += new KeyEventHandler(ShowImage_KeyDown);
-            KeyPress += new KeyPressEventHandler(ShowImage_KeyPress);
-            KeyUp += new KeyEventHandler(ShowImage_KeyUp);
-            CreateContextMenuStrip();
-        }
-
-        private void ShowImage_Load(object sender, EventArgs e)
-        {
-            //允许键盘
-            KeyPreview = true;
-            TopMost = true;
-            FormBorderStyle = FormBorderStyle.None;
-
-            SetImage("..\\..\\Images\\default.jpg");
-
-            int picWidth = showBitmap.Width;
-            int picHeight = showBitmap.Height;
-
-            Width = picWidth / 4;
-            Height = picHeight / 4;
-
-            imagePictureBox.SizeMode = PictureBoxSizeMode.StretchImage;
-            imagePictureBox.ClientSize = new Size(Width, Height);
-            imagePictureBox.Image = showBitmap;
-
-            Controls.Add(imagePictureBox);
-        }
-
-
-        public void SetImage(string path)
-        {
-            showBitmap = new Bitmap(path);
+            Point startPoint=new Point(0,0);
+            if (Screen.AllScreens.Count() > 1)  // 是双屏
+            {
+                int firstScreenWidth = Screen.AllScreens[0].Bounds.Width;
+                int secondScreenWidth = Screen.AllScreens[1].Bounds.Width;
+                int secondScreenHeight= Screen.AllScreens[1].Bounds.Height;
+                startPoint = new Point()
+                {
+                    X = firstScreenWidth+(secondScreenWidth - imgeSize.Width) / 2,
+                    Y= (secondScreenHeight-imgeSize.Height)/2
+                };
+            }
+            else
+            {
+                int firstScreenWidth = Screen.AllScreens[0].Bounds.Width;
+                int firstScreenHeight = Screen.AllScreens[0].Bounds.Height;
+                startPoint = new Point()
+                {
+                    X = (firstScreenWidth  - imgeSize.Width) / 2,
+                    Y = (firstScreenHeight - imgeSize.Height) / 2
+                };
+            }
+            return startPoint;
         }
 
         private void ShowImage_KeyDown(object sender, KeyEventArgs e)
@@ -170,7 +199,7 @@ namespace PictureViewer
         }
         private void picture_MouseWheel(object sender, MouseEventArgs e)
         {
-            double imageProportion = double.Parse(showBitmap.Width.ToString()) / double.Parse(showBitmap.Height.ToString());
+            double imageProportion = double.Parse(showImage.Width.ToString()) / double.Parse(showImage.Height.ToString());
 
             //当前的屏幕除任务栏外的工作域大小
             int ScreenWidth = System.Windows.Forms.Screen.PrimaryScreen.WorkingArea.Width;

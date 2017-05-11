@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.IO;
 
-namespace WinFormTest
+namespace PictureViewer
 {
     public partial class ImgDetailView : UserControl
     {
@@ -37,7 +37,7 @@ namespace WinFormTest
             int pictureCount = pictures.Length;
 
             int padding = 2;
-            int columnCount = panelSize.Width / 100;
+            int columnCount = splitContainer1.Panel1.Width/ imageSize.Width;
             int rowCount = (pictureCount % columnCount == 0) ?
                 pictureCount / columnCount :
                 (pictureCount / columnCount) + 1;

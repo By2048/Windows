@@ -9,19 +9,20 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.IO;
 
-namespace WinFormTest
+namespace PictureViewer
 {
-    public partial class ImgSmartView : UserControl
+    public partial class ImgSmallView : UserControl
     {
-        public ImgSmartView(string folderPath, Size panelSize, Size imageSize)
+        public ImgSmallView(string folderPath, Size panelSize, Size imageSize)
         {
             InitializeComponent();
             Size = panelSize;
-            panel1.AutoScroll = true;
-            ShowPictureByFolder(folderPath, panelSize, imageSize);
+            panelMain.AutoScroll = true;
+            ShowSmallImages(folderPath, panelSize, imageSize);
         }
 
-        private void ShowPictureByFolder(string folderPath, Size panelSize, Size imageSize)
+        // 缩略图模式 文件路径 窗体大小  需要显示的图片大小
+        private void ShowSmallImages(string folderPath, Size panelSize, Size imageSize)
         {
             string[] pictures = Directory.GetFiles(folderPath, "*jpg");
             int pictureCount = pictures.Length;
@@ -49,7 +50,7 @@ namespace WinFormTest
                     };
                     pictureBox.Location = pictureLoction;
                     pictureBox.DoubleClick += pictureBox_DoubleClick;
-                    panel1.Controls.Add(pictureBox);
+                    panelMain.Controls.Add(pictureBox);
                 }
             }
         }
@@ -57,10 +58,9 @@ namespace WinFormTest
         {
             PictureBox pictureBox = (PictureBox)sender;
             Image image = pictureBox.Image;
-
-            ShowImage form = new ShowImage();
-            form.SetImage(image);
-            form.Show();
+            ShowImage newForm = new ShowImage();
+            newForm.SetImage(image);
+            newForm.Show();
         }
     }
 }

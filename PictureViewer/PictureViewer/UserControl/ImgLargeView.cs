@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.IO;
 
-namespace WinFormTest
+namespace PictureViewer
 {
     public partial class ImgLargeView : UserControl
     {

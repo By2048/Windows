@@ -32,6 +32,7 @@ namespace WinFormTest
             KeyUp += new KeyEventHandler(ShowImage_KeyUp);
             CreateContextMenuStrip();
         }
+
         private void ShowImage_Load(object sender, EventArgs e)
         {            
             KeyPreview = true; //允许键盘
@@ -52,7 +53,6 @@ namespace WinFormTest
 
             Controls.Add(imagePictureBox);
         }
-
 
 
         public void SetImage(string path)

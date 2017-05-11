@@ -10,7 +10,7 @@ using System.Windows.Forms;
 using System.IO;
 using System.Collections;
 
-namespace WinFormTest
+namespace PictureViewer
 {
     public partial class ImgListView : UserControl
     {
@@ -220,11 +220,9 @@ namespace WinFormTest
         {
             PictureBox pictureBox = (PictureBox)sender;
             Image image = pictureBox.Image;
-            FormLarge formLarge = new FormLarge();
-            formLarge.Size = new Size(image.Width, image.Height);
-            formLarge.BackgroundImage = image;
-            formLarge.BackgroundImageLayout = ImageLayout.Zoom;
-            formLarge.Show();
+            ShowImage newForm = new ShowImage();
+            newForm.SetImage(image);
+            newForm.Show();
         }
 
         private void CreateContextMenuStrip()

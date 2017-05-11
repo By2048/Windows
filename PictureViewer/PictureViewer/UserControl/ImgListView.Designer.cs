@@ -1,4 +1,4 @@
-﻿namespace WinFormTest
+﻿namespace PictureViewer
 {
     partial class ImgListView
     {
