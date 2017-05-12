@@ -14,22 +14,28 @@ namespace PictureViewer
 {
     public partial class MainForm : Form
     {
-        //string folderPath = @"F:\Test\媚眼柔嫩娇滴滴 爆乳萌妹子猫儿蜜糖化身性感女仆被调教";
-        string folderPath = @"D:\Test";
+        string folderPath = @"F:\Test\媚眼柔嫩娇滴滴 爆乳萌妹子猫儿蜜糖化身性感女仆被调教";
         Size imageSize = new Size(16 * 10, 9 * 10);
-
         public MainForm()
         {
             InitializeComponent();
+            Resize += new EventHandler(MainForm_Resize);
+            splitContainer.SplitterDistance = Size.Width / 4;
+        }
+
+        private void MainForm_Resize(object sender, EventArgs e)
+        {
+            string name = panelMain.Controls[0].Name;
+            LoadUserControl(name);
         }
 
         private void MainForm_Load(object sender, EventArgs e)
         {
+            KeyPreview = true;
             CenterToScreen();
-            panelMain.Controls.Clear();
-            ImgSmallView userControl = new ImgSmallView(folderPath, panelMain.Size, imageSize);
+            SmallView userControl = new SmallView(folderPath, panelMain.Size, imageSize);
             panelMain.Controls.Add(userControl);
-            panelTree.BackColor = Color.Red;
+            //panelTree.BackColor = Color.Red;
         }
 
         private void SetTsbBtnChecked(string btnName)
@@ -51,34 +57,41 @@ namespace PictureViewer
             }
         }
 
-        private void tsbBtn_Click(object sender, EventArgs e)
+        private void LoadUserControl(string name)
         {
-            ToolStripButton btn=(ToolStripButton) sender;
-            switch (btn.Name)
-            { 
-                case "tsbSmallView":
+            switch (name)
+            {
+                case "SmallView":
                     panelMain.Controls.Clear();
-                    ImgSmallView smallView = new ImgSmallView(folderPath, panelMain.Size, imageSize);
-                    panelMain.Controls.Add(smallView);  
+                    SmallView smallView = new SmallView(folderPath, panelMain.Size, imageSize);
+                    panelMain.Controls.Add(smallView);
                     break;
-                case "tsbLargeView":
+                case "LargeView":
                     panelMain.Controls.Clear();
-                    ImgLargeView largeView = new ImgLargeView(folderPath, panelMain.Size);
+                    LargeView largeView = new LargeView(folderPath, panelMain.Size);
                     panelMain.Controls.Add(largeView);
                     break;
-                case "tsbDetailView":
+                case "DetailView":
                     panelMain.Controls.Clear();
-                    ImgDetailView detailView = new ImgDetailView(folderPath, panelMain.Size, imageSize);
+                    DetailView detailView = new DetailView(folderPath, panelMain.Size, imageSize);
                     panelMain.Controls.Add(detailView);
                     break;
-                case "tsbListView":
+                case "ListView":
                     panelMain.Controls.Clear();
-                    ImgListView listView = new ImgListView(folderPath, panelMain.Size);
+                    ListView listView = new ListView(folderPath, panelMain.Size);
                     panelMain.Controls.Add(listView);
                     break;
                 default:
                     break;
             }
+        }
+
+        private void tsbBtn_Click(object sender, EventArgs e)
+        {
+            //string curTsbName = panelMain.Controls[0].Name;
+            //MessageBox.Show(curTsbName);
+            ToolStripButton btn=(ToolStripButton) sender;
+            LoadUserControl(btn.Name);
             SetTsbBtnChecked(btn.Name);
         }      
 
@@ -88,6 +101,7 @@ namespace PictureViewer
             int proportion=int.Parse(item.Name.Substring(item.Name.Length-2,2));
             imageSize = new Size(16 * proportion, 9 * proportion);           
         }
+
 
 
     }

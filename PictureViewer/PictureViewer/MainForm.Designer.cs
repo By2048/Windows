@@ -33,14 +33,14 @@ namespace PictureViewer
             this.toolStripContainerImage = new System.Windows.Forms.ToolStripContainer();
             this.statusStripImage = new System.Windows.Forms.StatusStrip();
             this.toolStripStatusLabelImage = new System.Windows.Forms.ToolStripStatusLabel();
-            this.splitContainer1 = new System.Windows.Forms.SplitContainer();
+            this.splitContainer = new System.Windows.Forms.SplitContainer();
             this.panelTree = new System.Windows.Forms.Panel();
             this.panelMain = new System.Windows.Forms.Panel();
             this.toolStripMain = new System.Windows.Forms.ToolStrip();
-            this.tsbSmallView = new System.Windows.Forms.ToolStripButton();
-            this.tsbLargeView = new System.Windows.Forms.ToolStripButton();
-            this.tsbDetailView = new System.Windows.Forms.ToolStripButton();
-            this.tsbListView = new System.Windows.Forms.ToolStripButton();
+            this.SmallView = new System.Windows.Forms.ToolStripButton();
+            this.LargeView = new System.Windows.Forms.ToolStripButton();
+            this.DetailView = new System.Windows.Forms.ToolStripButton();
+            this.ListView = new System.Windows.Forms.ToolStripButton();
             this.tsvImageSize = new System.Windows.Forms.ToolStripDropDownButton();
             this.tsbSize10 = new System.Windows.Forms.ToolStripMenuItem();
             this.tsbSize15 = new System.Windows.Forms.ToolStripMenuItem();
@@ -54,10 +54,10 @@ namespace PictureViewer
             this.toolStripContainerImage.TopToolStripPanel.SuspendLayout();
             this.toolStripContainerImage.SuspendLayout();
             this.statusStripImage.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
-            this.splitContainer1.Panel1.SuspendLayout();
-            this.splitContainer1.Panel2.SuspendLayout();
-            this.splitContainer1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.splitContainer)).BeginInit();
+            this.splitContainer.Panel1.SuspendLayout();
+            this.splitContainer.Panel2.SuspendLayout();
+            this.splitContainer.SuspendLayout();
             this.toolStripMain.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -70,7 +70,7 @@ namespace PictureViewer
             // 
             // toolStripContainerImage.ContentPanel
             // 
-            this.toolStripContainerImage.ContentPanel.Controls.Add(this.splitContainer1);
+            this.toolStripContainerImage.ContentPanel.Controls.Add(this.splitContainer);
             this.toolStripContainerImage.ContentPanel.Size = new System.Drawing.Size(688, 444);
             this.toolStripContainerImage.Dock = System.Windows.Forms.DockStyle.Fill;
             this.toolStripContainerImage.Location = new System.Drawing.Point(0, 0);
@@ -99,23 +99,24 @@ namespace PictureViewer
             this.toolStripStatusLabelImage.Size = new System.Drawing.Size(161, 17);
             this.toolStripStatusLabelImage.Text = "toolStripStatusLabelImage";
             // 
-            // splitContainer1
+            // splitContainer
             // 
-            this.splitContainer1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.splitContainer1.Location = new System.Drawing.Point(0, 0);
-            this.splitContainer1.Name = "splitContainer1";
+            this.splitContainer.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.splitContainer.IsSplitterFixed = true;
+            this.splitContainer.Location = new System.Drawing.Point(0, 0);
+            this.splitContainer.Name = "splitContainer";
             // 
-            // splitContainer1.Panel1
+            // splitContainer.Panel1
             // 
-            this.splitContainer1.Panel1.Controls.Add(this.panelTree);
+            this.splitContainer.Panel1.Controls.Add(this.panelTree);
             // 
-            // splitContainer1.Panel2
+            // splitContainer.Panel2
             // 
-            this.splitContainer1.Panel2.Controls.Add(this.panelMain);
-            this.splitContainer1.Size = new System.Drawing.Size(688, 444);
-            this.splitContainer1.SplitterDistance = 141;
-            this.splitContainer1.SplitterWidth = 5;
-            this.splitContainer1.TabIndex = 0;
+            this.splitContainer.Panel2.Controls.Add(this.panelMain);
+            this.splitContainer.Size = new System.Drawing.Size(688, 444);
+            this.splitContainer.SplitterDistance = 141;
+            this.splitContainer.SplitterWidth = 5;
+            this.splitContainer.TabIndex = 0;
             // 
             // panelTree
             // 
@@ -137,10 +138,10 @@ namespace PictureViewer
             // 
             this.toolStripMain.Dock = System.Windows.Forms.DockStyle.None;
             this.toolStripMain.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.tsbSmallView,
-            this.tsbLargeView,
-            this.tsbDetailView,
-            this.tsbListView,
+            this.SmallView,
+            this.LargeView,
+            this.DetailView,
+            this.ListView,
             this.tsvImageSize,
             this.tslMenu});
             this.toolStripMain.Location = new System.Drawing.Point(3, 0);
@@ -148,49 +149,49 @@ namespace PictureViewer
             this.toolStripMain.Size = new System.Drawing.Size(218, 25);
             this.toolStripMain.TabIndex = 0;
             // 
-            // tsbSmallView
+            // SmallView
             // 
-            this.tsbSmallView.CheckOnClick = true;
-            this.tsbSmallView.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.tsbSmallView.Image = global::AM.Windows.Forms.Properties.Resources._1;
-            this.tsbSmallView.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.tsbSmallView.Name = "tsbSmallView";
-            this.tsbSmallView.Size = new System.Drawing.Size(23, 22);
-            this.tsbSmallView.Text = "SmallView";
-            this.tsbSmallView.Click += new System.EventHandler(this.tsbBtn_Click);
+            this.SmallView.CheckOnClick = true;
+            this.SmallView.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.SmallView.Image = global::AM.Windows.Forms.Properties.Resources._1;
+            this.SmallView.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.SmallView.Name = "SmallView";
+            this.SmallView.Size = new System.Drawing.Size(23, 22);
+            this.SmallView.Text = "SmallView";
+            this.SmallView.Click += new System.EventHandler(this.tsbBtn_Click);
             // 
-            // tsbLargeView
+            // LargeView
             // 
-            this.tsbLargeView.CheckOnClick = true;
-            this.tsbLargeView.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.tsbLargeView.Image = global::AM.Windows.Forms.Properties.Resources._2;
-            this.tsbLargeView.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.tsbLargeView.Name = "tsbLargeView";
-            this.tsbLargeView.Size = new System.Drawing.Size(23, 22);
-            this.tsbLargeView.Text = "LargeView";
-            this.tsbLargeView.Click += new System.EventHandler(this.tsbBtn_Click);
+            this.LargeView.CheckOnClick = true;
+            this.LargeView.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.LargeView.Image = global::AM.Windows.Forms.Properties.Resources._2;
+            this.LargeView.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.LargeView.Name = "LargeView";
+            this.LargeView.Size = new System.Drawing.Size(23, 22);
+            this.LargeView.Text = "LargeView";
+            this.LargeView.Click += new System.EventHandler(this.tsbBtn_Click);
             // 
-            // tsbDetailView
+            // DetailView
             // 
-            this.tsbDetailView.CheckOnClick = true;
-            this.tsbDetailView.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.tsbDetailView.Image = global::AM.Windows.Forms.Properties.Resources._3;
-            this.tsbDetailView.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.tsbDetailView.Name = "tsbDetailView";
-            this.tsbDetailView.Size = new System.Drawing.Size(23, 22);
-            this.tsbDetailView.Text = "DetailView";
-            this.tsbDetailView.Click += new System.EventHandler(this.tsbBtn_Click);
+            this.DetailView.CheckOnClick = true;
+            this.DetailView.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.DetailView.Image = global::AM.Windows.Forms.Properties.Resources._3;
+            this.DetailView.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.DetailView.Name = "DetailView";
+            this.DetailView.Size = new System.Drawing.Size(23, 22);
+            this.DetailView.Text = "DetailView";
+            this.DetailView.Click += new System.EventHandler(this.tsbBtn_Click);
             // 
-            // tsbListView
+            // ListView
             // 
-            this.tsbListView.CheckOnClick = true;
-            this.tsbListView.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.tsbListView.Image = global::AM.Windows.Forms.Properties.Resources._4;
-            this.tsbListView.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.tsbListView.Name = "tsbListView";
-            this.tsbListView.Size = new System.Drawing.Size(23, 22);
-            this.tsbListView.Text = "ListView";
-            this.tsbListView.Click += new System.EventHandler(this.tsbBtn_Click);
+            this.ListView.CheckOnClick = true;
+            this.ListView.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.ListView.Image = global::AM.Windows.Forms.Properties.Resources._4;
+            this.ListView.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.ListView.Name = "ListView";
+            this.ListView.Size = new System.Drawing.Size(23, 22);
+            this.ListView.Text = "ListView";
+            this.ListView.Click += new System.EventHandler(this.tsbBtn_Click);
             // 
             // tsvImageSize
             // 
@@ -266,10 +267,10 @@ namespace PictureViewer
             this.toolStripContainerImage.PerformLayout();
             this.statusStripImage.ResumeLayout(false);
             this.statusStripImage.PerformLayout();
-            this.splitContainer1.Panel1.ResumeLayout(false);
-            this.splitContainer1.Panel2.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).EndInit();
-            this.splitContainer1.ResumeLayout(false);
+            this.splitContainer.Panel1.ResumeLayout(false);
+            this.splitContainer.Panel2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.splitContainer)).EndInit();
+            this.splitContainer.ResumeLayout(false);
             this.toolStripMain.ResumeLayout(false);
             this.toolStripMain.PerformLayout();
             this.ResumeLayout(false);
@@ -280,12 +281,12 @@ namespace PictureViewer
         private System.Windows.Forms.ToolStripContainer toolStripContainerImage;
         private System.Windows.Forms.StatusStrip statusStripImage;
         private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabelImage;
-        private System.Windows.Forms.SplitContainer splitContainer1;
+        private System.Windows.Forms.SplitContainer splitContainer;
         private System.Windows.Forms.ToolStrip toolStripMain;
-        private System.Windows.Forms.ToolStripButton tsbSmallView;
-        private System.Windows.Forms.ToolStripButton tsbLargeView;
-        private System.Windows.Forms.ToolStripButton tsbDetailView;
-        private System.Windows.Forms.ToolStripButton tsbListView;
+        private System.Windows.Forms.ToolStripButton SmallView;
+        private System.Windows.Forms.ToolStripButton LargeView;
+        private System.Windows.Forms.ToolStripButton DetailView;
+        private System.Windows.Forms.ToolStripButton ListView;
         private System.Windows.Forms.ToolStripTextBox toolStripTextBox1;
         private System.Windows.Forms.ToolStripDropDownButton tsvImageSize;
         private System.Windows.Forms.ToolStripMenuItem tsbSize10;

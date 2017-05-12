@@ -63,11 +63,11 @@
     <Compile Include="Form04-Paint.Designer.cs">
       <DependentUpon>Form04-Paint.cs</DependentUpon>
     </Compile>
-    <Compile Include="Form05-UserControl.cs">
+    <Compile Include="Form05-ImgSmallView.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Form05-UserControl.Designer.cs">
-      <DependentUpon>Form05-UserControl.cs</DependentUpon>
+    <Compile Include="Form05-ImgSmallView.Designer.cs">
+      <DependentUpon>Form05-ImgSmallView.cs</DependentUpon>
     </Compile>
     <Compile Include="Form06-Drag.cs">
       <SubType>Form</SubType>
@@ -119,28 +119,28 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="ImgSmallView.cs">
+    <Compile Include="UserControl\ImgSmallView.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="ImgSmallView.Designer.cs">
+    <Compile Include="UserControl\ImgSmallView.Designer.cs">
       <DependentUpon>ImgSmallView.cs</DependentUpon>
     </Compile>
-    <Compile Include="ImgLargeView.cs">
+    <Compile Include="UserControl\ImgLargeView.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="ImgLargeView.Designer.cs">
+    <Compile Include="UserControl\ImgLargeView.Designer.cs">
       <DependentUpon>ImgLargeView.cs</DependentUpon>
     </Compile>
-    <Compile Include="ImgDetailView.cs">
+    <Compile Include="UserControl\ImgDetailView.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="ImgDetailView.Designer.cs">
+    <Compile Include="UserControl\ImgDetailView.Designer.cs">
       <DependentUpon>ImgDetailView.cs</DependentUpon>
     </Compile>
-    <Compile Include="ImgListView.cs">
+    <Compile Include="UserControl\ImgListView.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="ImgListView.Designer.cs">
+    <Compile Include="UserControl\ImgListView.Designer.cs">
       <DependentUpon>ImgListView.cs</DependentUpon>
     </Compile>
     <Compile Include="ShowImage.cs">
@@ -158,8 +158,8 @@
     <EmbeddedResource Include="Form04-Paint.resx">
       <DependentUpon>Form04-Paint.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Form05-UserControl.resx">
-      <DependentUpon>Form05-UserControl.cs</DependentUpon>
+    <EmbeddedResource Include="Form05-ImgSmallView.resx">
+      <DependentUpon>Form05-ImgSmallView.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Form06-Drag.resx">
       <DependentUpon>Form06-Drag.cs</DependentUpon>
@@ -196,16 +196,16 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
-    <EmbeddedResource Include="ImgSmallView.resx">
+    <EmbeddedResource Include="UserControl\ImgSmallView.resx">
       <DependentUpon>ImgSmallView.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="ImgLargeView.resx">
+    <EmbeddedResource Include="UserControl\ImgLargeView.resx">
       <DependentUpon>ImgLargeView.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="ImgDetailView.resx">
+    <EmbeddedResource Include="UserControl\ImgDetailView.resx">
       <DependentUpon>ImgDetailView.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="ImgListView.resx">
+    <EmbeddedResource Include="UserControl\ImgListView.resx">
       <DependentUpon>ImgListView.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ShowImage.resx">

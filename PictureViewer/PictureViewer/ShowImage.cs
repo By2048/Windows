@@ -103,6 +103,7 @@ namespace PictureViewer
                 AutoSizeModel,
             });          
         }
+
         // 窗口在屏幕中居中 优先在第二屏幕居中
         private Point GetStartPoston(Size imgeSize)
         {
@@ -221,11 +222,22 @@ namespace PictureViewer
                 int curPicHeight = imagePictureBox.Height;
 
 
-                imagePictureBox.Width = int.Parse(Math.Round((curPicWidth + 20.0 * imageProportion)).ToString());
-                imagePictureBox.Height = int.Parse(Math.Round((curPicHeight + 20.0)).ToString());
+                imagePictureBox.Width = int.Parse(Math.Round(curPicWidth + 20.0 * imageProportion).ToString());
+                imagePictureBox.Height = int.Parse(Math.Round(curPicHeight + 20.0).ToString());
                 Width = imagePictureBox.Width;
                 Height = imagePictureBox.Height;
 
+                //MessageBox.Show(Location.ToString());
+
+                Point nextLocation = Location;
+                int X = Location.X - (int)(Math.Round(20.0 * imageProportion / 2));
+                int Y = Location.Y - (int)(Math.Round(20.0 / 2));
+                if (X <= 0 || Y <= 0)
+                    return;
+                else
+                    nextLocation = new Point(X, Y);
+                Location = nextLocation;
+                
 
                 if (Width >= ScreenWidth || Height >= ScreenHeight)
                     isMaxScreen = true;
@@ -241,6 +253,11 @@ namespace PictureViewer
 
                 Width = imagePictureBox.Width;
                 Height = imagePictureBox.Height;
+
+                int X = Location.X + (int)(Math.Round(20.0 * imageProportion / 2));
+                int Y = Location.Y + (int)(Math.Round(20.0 / 2));
+                Location = new Point(X, Y);
+
                 if (Width < ScreenWidth && Height < ScreenHeight)
                     isMaxScreen = false;
                 return;

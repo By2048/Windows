@@ -68,29 +68,29 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="UserControl\ImgDetailView.cs">
+    <Compile Include="UserControl\DetailView.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="UserControl\ImgDetailView.Designer.cs">
-      <DependentUpon>ImgDetailView.cs</DependentUpon>
+    <Compile Include="UserControl\DetailView.Designer.cs">
+      <DependentUpon>DetailView.cs</DependentUpon>
     </Compile>
-    <Compile Include="UserControl\ImgLargeView.cs">
+    <Compile Include="UserControl\LargeView.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="UserControl\ImgLargeView.Designer.cs">
-      <DependentUpon>ImgLargeView.cs</DependentUpon>
+    <Compile Include="UserControl\LargeView.Designer.cs">
+      <DependentUpon>LargeView.cs</DependentUpon>
     </Compile>
-    <Compile Include="UserControl\ImgListView.cs">
+    <Compile Include="UserControl\ListView.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="UserControl\ImgListView.Designer.cs">
-      <DependentUpon>ImgListView.cs</DependentUpon>
+    <Compile Include="UserControl\ListView.Designer.cs">
+      <DependentUpon>ListView.cs</DependentUpon>
     </Compile>
-    <Compile Include="UserControl\ImgSmallView.cs">
+    <Compile Include="UserControl\SmallView.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="UserControl\ImgSmallView.Designer.cs">
-      <DependentUpon>ImgSmallView.cs</DependentUpon>
+    <Compile Include="UserControl\SmallView.Designer.cs">
+      <DependentUpon>SmallView.cs</DependentUpon>
     </Compile>
     <EmbeddedResource Include="MainForm.resx">
       <DependentUpon>MainForm.cs</DependentUpon>
@@ -111,17 +111,17 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
-    <EmbeddedResource Include="UserControl\ImgDetailView.resx">
-      <DependentUpon>ImgDetailView.cs</DependentUpon>
+    <EmbeddedResource Include="UserControl\DetailView.resx">
+      <DependentUpon>DetailView.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="UserControl\ImgLargeView.resx">
-      <DependentUpon>ImgLargeView.cs</DependentUpon>
+    <EmbeddedResource Include="UserControl\LargeView.resx">
+      <DependentUpon>LargeView.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="UserControl\ImgListView.resx">
-      <DependentUpon>ImgListView.cs</DependentUpon>
+    <EmbeddedResource Include="UserControl\ListView.resx">
+      <DependentUpon>ListView.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="UserControl\ImgSmallView.resx">
-      <DependentUpon>ImgSmallView.cs</DependentUpon>
+    <EmbeddedResource Include="UserControl\SmallView.resx">
+      <DependentUpon>SmallView.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>

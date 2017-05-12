@@ -22,22 +22,9 @@ namespace WinFormTest
         {
             CenterToScreen();
 
-            panel1.BackColor = Color.Red;
-            panel2.BackColor = Color.Green;
-
-            panel2.Focus();
+            Location = new Point(-100, -100);
             
-        }
-
-        private void panel1_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
-
-        private void splitContainer1_SplitterMoved(object sender, SplitterEventArgs e)
-        {
-
-        }
+        }     
 
     }
 }
