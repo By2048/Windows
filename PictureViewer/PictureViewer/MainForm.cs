@@ -38,6 +38,25 @@ namespace PictureViewer
             //panelTree.BackColor = Color.Red;
         }
 
+
+        private void tsbBtn_Click(object sender, EventArgs e)
+        {
+            //string curTsbName = panelMain.Controls[0].Name;
+            //MessageBox.Show(curTsbName);
+            ToolStripButton btn=(ToolStripButton) sender;
+            LoadUserControl(btn.Name);
+            SetTsbBtnChecked(btn.Name);
+        }      
+
+        private void tsbSize_Click(object sender, EventArgs e)
+        {
+            ToolStripMenuItem item=(ToolStripMenuItem) sender;
+            int proportion=int.Parse(item.Name.Substring(item.Name.Length-2,2));
+            imageSize = new Size(16 * proportion, 9 * proportion);           
+        }
+
+
+
         private void SetTsbBtnChecked(string btnName)
         {
             foreach (var item in toolStripMain.Items)
@@ -48,7 +67,7 @@ namespace PictureViewer
                     if (btn.Name == btnName)
                         btn.Checked = true;
                     else
-                        btn.Checked = false;                        
+                        btn.Checked = false;
                 }
                 else
                 {
@@ -85,24 +104,6 @@ namespace PictureViewer
                     break;
             }
         }
-
-        private void tsbBtn_Click(object sender, EventArgs e)
-        {
-            //string curTsbName = panelMain.Controls[0].Name;
-            //MessageBox.Show(curTsbName);
-            ToolStripButton btn=(ToolStripButton) sender;
-            LoadUserControl(btn.Name);
-            SetTsbBtnChecked(btn.Name);
-        }      
-
-        private void tsbSize_Click(object sender, EventArgs e)
-        {
-            ToolStripMenuItem item=(ToolStripMenuItem) sender;
-            int proportion=int.Parse(item.Name.Substring(item.Name.Length-2,2));
-            imageSize = new Size(16 * proportion, 9 * proportion);           
-        }
-
-
 
     }
 }
