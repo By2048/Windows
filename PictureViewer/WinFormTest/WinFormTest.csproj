@@ -63,12 +63,6 @@
     <Compile Include="Form04-Paint.Designer.cs">
       <DependentUpon>Form04-Paint.cs</DependentUpon>
     </Compile>
-    <Compile Include="Form05-ImgSmallView.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Form05-ImgSmallView.Designer.cs">
-      <DependentUpon>Form05-ImgSmallView.cs</DependentUpon>
-    </Compile>
     <Compile Include="Form06-Drag.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -93,23 +87,11 @@
     <Compile Include="Form11-ListView.Designer.cs">
       <DependentUpon>Form11-ListView.cs</DependentUpon>
     </Compile>
-    <Compile Include="Form12-UserControl2.cs">
+    <Compile Include="Form15-TreeView.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Form12-UserControl2.Designer.cs">
-      <DependentUpon>Form12-UserControl2.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Form13-UserControl3.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Form13-UserControl3.Designer.cs">
-      <DependentUpon>Form13-UserControl3.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Form14-UserControl4.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Form14-UserControl4.Designer.cs">
-      <DependentUpon>Form14-UserControl4.cs</DependentUpon>
+    <Compile Include="Form15-TreeView.Designer.cs">
+      <DependentUpon>Form15-TreeView.cs</DependentUpon>
     </Compile>
     <Compile Include="FormLarge.cs">
       <SubType>Form</SubType>
@@ -120,29 +102,18 @@
     <Compile Include="ImageTree.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="RootPath.cs" />
+    <Compile Include="UserControl\TreeView.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControl\TreeView.Designer.cs">
+      <DependentUpon>TreeView.cs</DependentUpon>
+    </Compile>
     <Compile Include="UserControl\ImgSmallView.cs">
       <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="UserControl\ImgSmallView.Designer.cs">
       <DependentUpon>ImgSmallView.cs</DependentUpon>
-    </Compile>
-    <Compile Include="UserControl\ImgLargeView.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="UserControl\ImgLargeView.Designer.cs">
-      <DependentUpon>ImgLargeView.cs</DependentUpon>
-    </Compile>
-    <Compile Include="UserControl\ImgDetailView.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="UserControl\ImgDetailView.Designer.cs">
-      <DependentUpon>ImgDetailView.cs</DependentUpon>
-    </Compile>
-    <Compile Include="UserControl\ImgListView.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="UserControl\ImgListView.Designer.cs">
-      <DependentUpon>ImgListView.cs</DependentUpon>
     </Compile>
     <Compile Include="ShowImage.cs">
       <SubType>Form</SubType>
@@ -159,9 +130,6 @@
     <EmbeddedResource Include="Form04-Paint.resx">
       <DependentUpon>Form04-Paint.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Form05-ImgSmallView.resx">
-      <DependentUpon>Form05-ImgSmallView.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="Form06-Drag.resx">
       <DependentUpon>Form06-Drag.cs</DependentUpon>
     </EmbeddedResource>
@@ -175,14 +143,8 @@
     <EmbeddedResource Include="Form11-ListView.resx">
       <DependentUpon>Form11-ListView.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Form12-UserControl2.resx">
-      <DependentUpon>Form12-UserControl2.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Form13-UserControl3.resx">
-      <DependentUpon>Form13-UserControl3.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Form14-UserControl4.resx">
-      <DependentUpon>Form14-UserControl4.cs</DependentUpon>
+    <EmbeddedResource Include="Form15-TreeView.resx">
+      <DependentUpon>Form15-TreeView.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FormLarge.resx">
       <DependentUpon>FormLarge.cs</DependentUpon>
@@ -197,17 +159,11 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
+    <EmbeddedResource Include="UserControl\TreeView.resx">
+      <DependentUpon>TreeView.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="UserControl\ImgSmallView.resx">
       <DependentUpon>ImgSmallView.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="UserControl\ImgLargeView.resx">
-      <DependentUpon>ImgLargeView.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="UserControl\ImgDetailView.resx">
-      <DependentUpon>ImgDetailView.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="UserControl\ImgListView.resx">
-      <DependentUpon>ImgListView.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ShowImage.resx">
       <DependentUpon>ShowImage.cs</DependentUpon>
@@ -226,7 +182,12 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\008.jpg" />
+    <Content Include="icons\folder-select.png" />
+    <Content Include="icons\folder.png" />
+    <Content Include="icons\img-select.png" />
+    <Content Include="icons\img.png" />
+    <Content Include="icons\pc.png" />
+    <Content Include="icons\picture-viewer.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

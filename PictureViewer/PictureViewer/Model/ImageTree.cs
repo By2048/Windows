@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -9,14 +8,18 @@ namespace PictureViewer
 {
     public class ImageTree
     {
-        public string Name { get; set; }
-        public string Path { get; set; }
-        public ImageTree(string name, string path)
+        public string Name;
+        public string FullPath;
+        public bool IsFolder;
+        public ImageTree(string name, string fullPath, bool isFolder)
         {
-            this.Name = name;
-            this.Path = path;
+            Name = name;
+            FullPath = fullPath;
+            IsFolder = isFolder;
         }
-        public ImageTree() { }
-      
+        public override string ToString()
+        {
+            return Name + "\n" + FullPath + "\n" + IsFolder.ToString();
+        }
     }
 }

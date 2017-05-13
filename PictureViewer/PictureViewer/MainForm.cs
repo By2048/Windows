@@ -14,6 +14,12 @@ namespace PictureViewer
 {
     public partial class MainForm : Form
     {
+        public string RootPath
+        {
+            get { return RootPath; }
+            set { RootPath = value; }
+        }
+
         string folderPath = @"F:\Test\媚眼柔嫩娇滴滴 爆乳萌妹子猫儿蜜糖化身性感女仆被调教";
         Size imageSize = new Size(16 * 10, 9 * 10);
         public MainForm()
@@ -35,6 +41,7 @@ namespace PictureViewer
             CenterToScreen();
             SmallView userControl = new SmallView(folderPath, panelMain.Size, imageSize);
             panelMain.Controls.Add(userControl);
+            LoadTreeView();
             //panelTree.BackColor = Color.Red;
         }
 
@@ -43,19 +50,17 @@ namespace PictureViewer
         {
             //string curTsbName = panelMain.Controls[0].Name;
             //MessageBox.Show(curTsbName);
-            ToolStripButton btn=(ToolStripButton) sender;
+            ToolStripButton btn = (ToolStripButton)sender;
             LoadUserControl(btn.Name);
             SetTsbBtnChecked(btn.Name);
-        }      
+        }
 
         private void tsbSize_Click(object sender, EventArgs e)
         {
-            ToolStripMenuItem item=(ToolStripMenuItem) sender;
-            int proportion=int.Parse(item.Name.Substring(item.Name.Length-2,2));
-            imageSize = new Size(16 * proportion, 9 * proportion);           
+            ToolStripMenuItem item = (ToolStripMenuItem)sender;
+            int proportion = int.Parse(item.Name.Substring(item.Name.Length - 2, 2));
+            imageSize = new Size(16 * proportion, 9 * proportion);
         }
-
-
 
         private void SetTsbBtnChecked(string btnName)
         {
@@ -103,6 +108,13 @@ namespace PictureViewer
                 default:
                     break;
             }
+        }
+
+        private void LoadTreeView()
+        {
+            panelTree.Controls.Clear();
+            TreeView treeView = new TreeView(@"F:\Test", panelTree.Size);
+            panelTree.Controls.Add(treeView);
         }
 
     }

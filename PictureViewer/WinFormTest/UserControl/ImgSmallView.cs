@@ -13,18 +13,27 @@ namespace WinFormTest
 {
     public partial class ImgSmallView : UserControl
     {
-        public ImgSmallView(string folderPath, Size panelSize, Size imageSize)
+        public string FolderPath
+        {
+            get { return FolderPath; }
+            set { FolderPath = value; }
+        }
+        public ImgSmallView(string folderPath)
+        {
+            FolderPath = folderPath;
+        }
+        public ImgSmallView(Size panelSize, Size imageSize)
         {
             InitializeComponent();
             Size = panelSize;
             panelMain.AutoScroll = true;
-            ShowSmallImages(folderPath, panelSize, imageSize);
+            ShowSmallImages(panelSize, imageSize);
         }
 
         // 缩略图模式 文件路径 窗体大小  需要显示的图片大小
-        private void ShowSmallImages(string folderPath, Size panelSize, Size imageSize)
+        private void ShowSmallImages(Size panelSize, Size imageSize)
         {
-            string[] pictures = Directory.GetFiles(folderPath, "*jpg");
+            string[] pictures = Directory.GetFiles(FolderPath, "*jpg");
             int pictureCount = pictures.Length;
 
             int padding = 2;

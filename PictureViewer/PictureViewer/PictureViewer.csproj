@@ -86,6 +86,12 @@
     <Compile Include="UserControl\SmallView.Designer.cs">
       <DependentUpon>SmallView.cs</DependentUpon>
     </Compile>
+    <Compile Include="UserControl\TreeView.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControl\TreeView.Designer.cs">
+      <DependentUpon>TreeView.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="MainForm.resx">
       <DependentUpon>MainForm.cs</DependentUpon>
     </EmbeddedResource>
@@ -114,6 +120,9 @@
     <EmbeddedResource Include="UserControl\SmallView.resx">
       <DependentUpon>SmallView.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="UserControl\TreeView.resx">
+      <DependentUpon>TreeView.cs</DependentUpon>
+    </EmbeddedResource>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -129,12 +138,12 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Backup\github.txt" />
-    <Content Include="icons\folder-select.png" />
-    <Content Include="icons\folder.png" />
-    <Content Include="icons\img-select.png" />
-    <Content Include="icons\img.png" />
-    <Content Include="icons\pc.png" />
-    <Content Include="icons\picture-viewer.png" />
+    <Content Include="Resources\folder-select.png" />
+    <Content Include="Resources\folder.png" />
+    <Content Include="Resources\img-select.png" />
+    <Content Include="Resources\img.png" />
+    <Content Include="Resources\pc.png" />
+    <Content Include="Resources\picture-viewer.png" />
     <Content Include="Images\1.jpg" />
     <Content Include="Images\2.jpg" />
     <Content Include="Images\3.jpg" />

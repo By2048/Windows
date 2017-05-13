@@ -32,7 +32,6 @@ namespace WinFormTest
             if (info.Exists)
             {
                 ImageTree rootFolder = new ImageTree(info.Name, info.FullName, true);
-
                 rootNode = new TreeNode(info.Name);
                 rootNode.Tag = rootFolder;
                 rootNode.ImageKey = "folder.png";
@@ -82,39 +81,17 @@ namespace WinFormTest
 
             ImageTree image = (ImageTree)node.Tag;
 
+            if (image.IsFolder == true)
+            {
+                MessageBox.Show(image.FullPath);
 
-            MessageBox.Show(image.ToString());
+            }
+            else
+            {
+                MessageBox.Show(image.FullPath);
 
-            //TreeNode newSelected = e.Node;
-            //listView1.Items.Clear();
-            //DirectoryInfo nodeDirInfo = (DirectoryInfo)newSelected.Tag;
-            //ListViewItem.ListViewSubItem[] subItems;
-            //ListViewItem item = null;
+            }
 
-            //foreach (DirectoryInfo dir in nodeDirInfo.GetDirectories())
-            //{
-            //    item = new ListViewItem(dir.Name, 0);
-            //    subItems = new ListViewItem.ListViewSubItem[]
-            //              {
-            //                    new ListViewItem.ListViewSubItem(item, "Directory"),
-            //                    new ListViewItem.ListViewSubItem(item,dir.LastAccessTime.ToShortDateString())
-            //              };
-            //    item.SubItems.AddRange(subItems);
-            //    listView1.Items.Add(item);
-            //}
-            //foreach (FileInfo file in nodeDirInfo.GetFiles())
-            //{
-            //    item = new ListViewItem(file.Name, 1);
-            //    subItems = new ListViewItem.ListViewSubItem[]{
-            //        new ListViewItem.ListViewSubItem(item, "File"),
-            //        new ListViewItem.ListViewSubItem(item,
-            //    file.LastAccessTime.ToShortDateString())};
-
-            //    item.SubItems.AddRange(subItems);
-            //    listView1.Items.Add(item);
-            //}
-
-            //listView1.AutoResizeColumns(ColumnHeaderAutoResizeStyle.HeaderSize);
         }
     }
 }
