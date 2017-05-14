@@ -49,6 +49,7 @@ namespace PictureViewer
             this.显示多选框ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.imageList = new System.Windows.Forms.ImageList(this.components);
             this.toolStripTextBox1 = new System.Windows.Forms.ToolStripTextBox();
+            this.btnTest = new System.Windows.Forms.ToolStripLabel();
             this.toolStripContainerImage.BottomToolStripPanel.SuspendLayout();
             this.toolStripContainerImage.ContentPanel.SuspendLayout();
             this.toolStripContainerImage.TopToolStripPanel.SuspendLayout();
@@ -143,17 +144,18 @@ namespace PictureViewer
             this.DetailView,
             this.ListView,
             this.tsvImageSize,
-            this.tslMenu});
+            this.tslMenu,
+            this.btnTest});
             this.toolStripMain.Location = new System.Drawing.Point(3, 0);
             this.toolStripMain.Name = "toolStripMain";
-            this.toolStripMain.Size = new System.Drawing.Size(218, 25);
+            this.toolStripMain.Size = new System.Drawing.Size(295, 25);
             this.toolStripMain.TabIndex = 0;
             // 
             // SmallView
             // 
             this.SmallView.CheckOnClick = true;
             this.SmallView.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.SmallView.Image = global::AM.Windows.Forms.Properties.Resources._1;
+            this.SmallView.Image = global::PictureViewer.Properties.Resources._1;
             this.SmallView.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.SmallView.Name = "SmallView";
             this.SmallView.Size = new System.Drawing.Size(23, 22);
@@ -164,7 +166,7 @@ namespace PictureViewer
             // 
             this.LargeView.CheckOnClick = true;
             this.LargeView.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.LargeView.Image = global::AM.Windows.Forms.Properties.Resources._2;
+            this.LargeView.Image = global::PictureViewer.Properties.Resources._2;
             this.LargeView.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.LargeView.Name = "LargeView";
             this.LargeView.Size = new System.Drawing.Size(23, 22);
@@ -175,7 +177,7 @@ namespace PictureViewer
             // 
             this.DetailView.CheckOnClick = true;
             this.DetailView.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.DetailView.Image = global::AM.Windows.Forms.Properties.Resources._3;
+            this.DetailView.Image = global::PictureViewer.Properties.Resources._3;
             this.DetailView.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.DetailView.Name = "DetailView";
             this.DetailView.Size = new System.Drawing.Size(23, 22);
@@ -186,7 +188,7 @@ namespace PictureViewer
             // 
             this.ListView.CheckOnClick = true;
             this.ListView.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.ListView.Image = global::AM.Windows.Forms.Properties.Resources._4;
+            this.ListView.Image = global::PictureViewer.Properties.Resources._4;
             this.ListView.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.ListView.Name = "ListView";
             this.ListView.Size = new System.Drawing.Size(23, 22);
@@ -249,6 +251,13 @@ namespace PictureViewer
             this.toolStripTextBox1.Name = "toolStripTextBox1";
             this.toolStripTextBox1.Size = new System.Drawing.Size(100, 25);
             // 
+            // btnTest
+            // 
+            this.btnTest.Name = "btnTest";
+            this.btnTest.Size = new System.Drawing.Size(46, 22);
+            this.btnTest.Text = "Button";
+            this.btnTest.Click += new System.EventHandler(this.btnTest_Click);
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -297,5 +306,6 @@ namespace PictureViewer
         private System.Windows.Forms.ImageList imageList;
         private System.Windows.Forms.Panel panelMain;
         private System.Windows.Forms.Panel panelTree;
+        private System.Windows.Forms.ToolStripLabel btnTest;
     }
 }

@@ -13,12 +13,12 @@ namespace PictureViewer
 {
     public partial class SmallView : UserControl
     {
-        public SmallView(string folderPath, Size panelSize, Size imageSize)
+        public SmallView(Size panelSize, Size imageSize)
         {
             InitializeComponent();
             Size = panelSize;
             panelMain.AutoScroll = true;
-            ShowSmallImages(folderPath, panelSize, imageSize);            
+            ShowSmallImages(MainConfig.ShowFolderPath, panelSize, imageSize);            
         }
 
         // 缩略图模式 文件路径 窗体大小  需要显示的图片大小

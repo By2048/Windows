@@ -25,7 +25,6 @@ E:\Desktop\Windows\PictureViewer\PictureViewer\obj\Debug\PictureViewer.csproj.Ge
 E:\Desktop\Windows\PictureViewer\PictureViewer\obj\Debug\PictureViewer.exe
 E:\Desktop\Windows\PictureViewer\PictureViewer\obj\Debug\PictureViewer.pdb
 E:\Desktop\Windows\PictureViewer\PictureViewer\obj\Debug\PictureViewer.csprojResolveAssemblyReference.cache
-E:\Desktop\Windows\PictureViewer\PictureViewer\obj\Debug\AM.Windows.Forms.Properties.Resources.resources
 E:\Desktop\Windows\PictureViewer\PictureViewer\obj\Debug\PictureViewer.MainForm.resources
 E:\Desktop\Windows\PictureViewer\PictureViewer\obj\Debug\PictureViewer.ShowImage.resources
 C:\Users\Administrator\Desktop\Windows\PictureViewer\PictureViewer\obj\Debug\PictureViewer.TestShowForm.resources
@@ -39,3 +38,4 @@ E:\Desktop\Windows\PictureViewer\PictureViewer\obj\Debug\PictureViewer.LargeView
 E:\Desktop\Windows\PictureViewer\PictureViewer\obj\Debug\PictureViewer.ListView.resources
 E:\Desktop\Windows\PictureViewer\PictureViewer\obj\Debug\PictureViewer.SmallView.resources
 E:\Desktop\Windows\PictureViewer\PictureViewer\obj\Debug\PictureViewer.TreeView.resources
+E:\Desktop\Windows\PictureViewer\PictureViewer\obj\Debug\PictureViewer.Properties.Resources.resources

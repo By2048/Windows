@@ -12,13 +12,10 @@ using System.Collections.Specialized;
 
 namespace PictureViewer
 {
+
     public partial class MainForm : Form
     {
-        public string RootPath
-        {
-            get { return RootPath; }
-            set { RootPath = value; }
-        }
+
 
         string folderPath = @"F:\Test\媚眼柔嫩娇滴滴 爆乳萌妹子猫儿蜜糖化身性感女仆被调教";
         Size imageSize = new Size(16 * 10, 9 * 10);
@@ -27,6 +24,7 @@ namespace PictureViewer
             InitializeComponent();
             Resize += new EventHandler(MainForm_Resize);
             splitContainer.SplitterDistance = Size.Width / 4;
+            CheckForIllegalCrossThreadCalls = false;
         }
 
         private void MainForm_Resize(object sender, EventArgs e)
@@ -37,12 +35,15 @@ namespace PictureViewer
 
         private void MainForm_Load(object sender, EventArgs e)
         {
+            MainConfig.ShowFolderPath = @"F:\Test\媚眼柔嫩娇滴滴 爆乳萌妹子猫儿蜜糖化身性感女仆被调教";
+            MainConfig.StartTreePath = @"F:\Test";
+
             KeyPreview = true;
             CenterToScreen();
-            SmallView userControl = new SmallView(folderPath, panelMain.Size, imageSize);
-            panelMain.Controls.Add(userControl);
             LoadTreeView();
-            //panelTree.BackColor = Color.Red;
+            SmallView userControl = new SmallView(panelMain.Size, imageSize);            
+            SetTsbBtnChecked("SmallView");
+            panelMain.Controls.Add(userControl);
         }
 
 
@@ -81,13 +82,28 @@ namespace PictureViewer
             }
         }
 
-        private void LoadUserControl(string name)
+        public void RefreshUserControl()
+        {
+            ToolStripButton curBtn=null;
+            foreach (var item in toolStripMain.Items)
+            {
+                if (item is ToolStripButton)
+                {
+                    curBtn = (ToolStripButton)item;
+                    if (curBtn.Checked == true)
+                        break;
+                }
+            }
+            LoadUserControl(curBtn.Name);
+        }
+
+        public void LoadUserControl(string name)
         {
             switch (name)
             {
                 case "SmallView":
                     panelMain.Controls.Clear();
-                    SmallView smallView = new SmallView(folderPath, panelMain.Size, imageSize);
+                    SmallView smallView = new SmallView(panelMain.Size, imageSize);
                     panelMain.Controls.Add(smallView);
                     break;
                 case "LargeView":
@@ -113,9 +129,14 @@ namespace PictureViewer
         private void LoadTreeView()
         {
             panelTree.Controls.Clear();
-            TreeView treeView = new TreeView(@"F:\Test", panelTree.Size);
+            TreeView treeView = new TreeView(panelTree.Size);
+            treeView.LoadImagesEvent += new TreeView.LoadImages(RefreshUserControl);
             panelTree.Controls.Add(treeView);
         }
 
+        private void btnTest_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show(MainConfig.ShowFolderPath);
+        }
     }
 }

@@ -43,3 +43,5 @@ C:\Users\Administrator\Desktop\Windows\PictureViewer\WinFormTest\obj\Debug\WinFo
 C:\Users\Administrator\Desktop\Windows\PictureViewer\WinFormTest\obj\Debug\WinFormTest.ShowImage.resources
 E:\Desktop\Windows\PictureViewer\WinFormTest\obj\Debug\WinFormTest.TreeView.resources
 E:\Desktop\Windows\PictureViewer\WinFormTest\obj\Debug\WinFormTest.Form15.resources
+E:\Desktop\Windows\PictureViewer\WinFormTest\obj\Debug\WinFormTest.UserControlTest.resources
+E:\Desktop\Windows\PictureViewer\WinFormTest\obj\Debug\WinFormTest.UserControlTest2.resources

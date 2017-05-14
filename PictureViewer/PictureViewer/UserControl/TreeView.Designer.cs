@@ -39,7 +39,7 @@
             this.treeViewImg.Dock = System.Windows.Forms.DockStyle.Fill;
             this.treeViewImg.Location = new System.Drawing.Point(0, 0);
             this.treeViewImg.Name = "treeViewImg";
-            this.treeViewImg.Size = new System.Drawing.Size(333, 556);
+            this.treeViewImg.Size = new System.Drawing.Size(220, 386);
             this.treeViewImg.TabIndex = 0;
             // 
             // imageListIcon
@@ -59,7 +59,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Controls.Add(this.treeViewImg);
             this.Name = "TreeView";
-            this.Size = new System.Drawing.Size(333, 556);
+            this.Size = new System.Drawing.Size(220, 386);
             this.ResumeLayout(false);
 
         }

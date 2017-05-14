@@ -13,12 +13,13 @@ namespace PictureViewer
 {
     public partial class TreeView : UserControl
     {
-        public TreeView(string rootPath,Size panelSize)
+
+        public TreeView(Size panelSize)
         {
             InitializeComponent();
             Size = panelSize;
             treeViewImg.ImageList = imageListIcon;
-            LoadTreeView(rootPath);
+            LoadTreeView(MainConfig.StartTreePath);
             treeViewImg.NodeMouseClick += new TreeNodeMouseClickEventHandler(treeViewImg_NodeMouseClick);
         }
         private void LoadTreeView(string rootPath)
@@ -60,7 +61,7 @@ namespace PictureViewer
 
                 FileInfo[] files = subDir.GetFiles("*.jpg");
                 foreach (FileInfo file in files)
-                {
+                {                    
                     ImageTree image = new ImageTree(file.Name, file.FullName, false);
                     TreeNode imgNode = new TreeNode(image.Name);
                     imgNode.Tag = image;
@@ -70,24 +71,17 @@ namespace PictureViewer
                 }
             }
         }
+
+        //public delegate void LoadImages(string showPath);
+        public delegate void LoadImages();
+        public event LoadImages LoadImagesEvent;
         private void treeViewImg_NodeMouseClick(object sender, TreeNodeMouseClickEventArgs e)
         {
             TreeNode node = e.Node;
             ImageTree nodeTag = (ImageTree)node.Tag;
-            MainForm form = new MainForm();
-            form.RootPath = node.FullPath;
-
-            //if (image.IsFolder == true)
-            //{
-            //    MessageBox.Show(image.FullPath);
-
-            //}
-            //else
-            //{
-            //    MessageBox.Show(image.FullPath);
-
-            //}
-
+            MainConfig.ShowFolderPath = nodeTag.FullPath;
+            //LoadImagesEvent(nodeTag.FullPath);
+            LoadImagesEvent();
         }
 
        
