@@ -13,11 +13,15 @@ namespace PictureViewer
 {
     public partial class TreeView : UserControl
     {
-
+        /// <summary>
+        /// 初始化TreeView
+        /// </summary>
+        /// <param name="panelSize">窗体中TreeView需要展示的大小</param>
         public TreeView(Size panelSize)
         {
             InitializeComponent();
             Size = panelSize;
+            treeViewImg.Size = panelSize;
             treeViewImg.ImageList = imageListIcon;
             LoadTreeView(MainConfig.StartTreePath);
             treeViewImg.NodeMouseClick += new TreeNodeMouseClickEventHandler(treeViewImg_NodeMouseClick);
@@ -38,6 +42,7 @@ namespace PictureViewer
                 GetDirectories(info.GetDirectories(), rootNode);
             }
         }
+
         private void GetDirectories(DirectoryInfo[] subDirs, TreeNode rootNode)
         {
             TreeNode folderNode;
@@ -72,16 +77,29 @@ namespace PictureViewer
             }
         }
 
-        //public delegate void LoadImages(string showPath);
-        public delegate void LoadImages();
-        public event LoadImages LoadImagesEvent;
+        public delegate void LoadUserControl();
+        public event LoadUserControl LoadUserControlEvent;
+
+        public delegate void LoadImage();
+        public event LoadImage LoadImageEvent;
+
         private void treeViewImg_NodeMouseClick(object sender, TreeNodeMouseClickEventArgs e)
         {
             TreeNode node = e.Node;
             ImageTree nodeTag = (ImageTree)node.Tag;
-            MainConfig.ShowFolderPath = nodeTag.FullPath;
-            //LoadImagesEvent(nodeTag.FullPath);
-            LoadImagesEvent();
+            bool isFolder = nodeTag.IsFolder;
+
+
+            if (isFolder == true)
+            {
+                MainConfig.ShowFolderPath = nodeTag.FullPath;
+                LoadUserControlEvent();
+            }
+            else
+            {
+                MainConfig.ShowImagePath = nodeTag.FullPath;
+                LoadImageEvent();
+            }
         }
 
        

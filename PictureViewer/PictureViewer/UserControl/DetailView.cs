@@ -13,31 +13,31 @@ namespace PictureViewer
 {
     public partial class DetailView : UserControl
     {
-        public DetailView(string folderPath, Size panelSize, Size imageSize)
+        public DetailView()
         {
             InitializeComponent();
 
-            Size = panelSize;
+            Size = MainConfig.PanelMainSize;
 
-            splitContainer1.SplitterDistance = int.Parse(Math.Round(Size.Width * (0.618)).ToString());
+            splitContainer.SplitterDistance = int.Parse(Math.Round(Size.Width * (0.618)).ToString());
             splitContainer2.SplitterDistance = int.Parse(Math.Round(Size.Height * (1 - 0.618)).ToString());
 
             panelSmallImages.AutoScroll = true;
             pictureBoxLarge.SizeMode = PictureBoxSizeMode.Zoom;
             pictureBoxLarge.DoubleClick += pictureBox_DoubleClick;
 
-            ShowSmallImages(folderPath, panelSize, imageSize);
+            ShowSmallImages();
 
 
         }
 
-        private void ShowSmallImages(string folderPath, Size panelSize, Size imageSize)
+        private void ShowSmallImages()
         {
-            string[] pictures = Directory.GetFiles(folderPath, "*jpg");
+            string[] pictures = Directory.GetFiles(MainConfig.ShowFolderPath, "*jpg");
             int pictureCount = pictures.Length;
 
             int padding = 2;
-            int columnCount = splitContainer1.Panel1.Width / imageSize.Width;
+            int columnCount = splitContainer.Panel1.Width / MainConfig.ImageSize.Width;
             int rowCount = (pictureCount % columnCount == 0) ?
                 pictureCount / columnCount :
                 (pictureCount / columnCount) + 1;
@@ -49,7 +49,7 @@ namespace PictureViewer
                     int index = row * columnCount + column;
                     PictureBox pictureBox = new PictureBox();
                     pictureBox.SizeMode = PictureBoxSizeMode.Zoom;
-                    pictureBox.Size = imageSize;
+                    pictureBox.Size = MainConfig.ImageSize;
                     if (index >= pictureCount) { return; }
                     //pictureBox.Image = Image.FromFile(pictures[pictureIndex]);
                     pictureBox.Load(pictures[index]);

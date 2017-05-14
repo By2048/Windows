@@ -17,10 +17,10 @@ namespace PictureViewer
         private System.Windows.Forms.ListView listView;
         private ContextMenuStrip picBoxContextMenuStrip;
 
-        public ListView(string folderPath, Size panelSize)
+        public ListView()
         {
             InitializeComponent();
-            Size = panelSize;
+            Size = MainConfig.PanelMainSize;
             splitContainer1.SplitterDistance = Size.Width / 10 * 7;
             splitContainer2.SplitterDistance = Size.Height / 10 * 3;
 
@@ -29,15 +29,15 @@ namespace PictureViewer
             //panelLargeImage.BackColor = Color.Green;
             //panelSmallImages.BackColor = Color.Blue;
             panelSmallImage.AutoScroll = true;
-            CreateListView(folderPath, panelSize);
+            CreateListView();
 
             CreateContextMenuStrip();
 
         }
 
-        private void CreateListView(string folderPath, Size panelSize)
+        private void CreateListView()
         {
-            string[] pictures = Directory.GetFiles(folderPath, "*jpg");
+            string[] pictures = Directory.GetFiles(MainConfig.ShowFolderPath, "*jpg");
 
             listView = new System.Windows.Forms.ListView();
             listView.Dock = DockStyle.Fill;
@@ -331,3 +331,5 @@ public class ImageListViewSort : IComparer
     }
 
 }
+
+

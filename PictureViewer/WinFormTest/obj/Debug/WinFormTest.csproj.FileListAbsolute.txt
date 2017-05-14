@@ -45,3 +45,4 @@ E:\Desktop\Windows\PictureViewer\WinFormTest\obj\Debug\WinFormTest.TreeView.reso
 E:\Desktop\Windows\PictureViewer\WinFormTest\obj\Debug\WinFormTest.Form15.resources
 E:\Desktop\Windows\PictureViewer\WinFormTest\obj\Debug\WinFormTest.UserControlTest.resources
 E:\Desktop\Windows\PictureViewer\WinFormTest\obj\Debug\WinFormTest.UserControlTest2.resources
+E:\Desktop\Windows\PictureViewer\WinFormTest\obj\Debug\WinFormTest.Form18.resources

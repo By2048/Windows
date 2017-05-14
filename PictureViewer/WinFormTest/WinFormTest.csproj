@@ -93,6 +93,12 @@
     <Compile Include="Form15-TreeView.Designer.cs">
       <DependentUpon>Form15-TreeView.cs</DependentUpon>
     </Compile>
+    <Compile Include="Form18-TestImage.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form18-TestImage.Designer.cs">
+      <DependentUpon>Form18-TestImage.cs</DependentUpon>
+    </Compile>
     <Compile Include="FormLarge.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -157,6 +163,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Form15-TreeView.resx">
       <DependentUpon>Form15-TreeView.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form18-TestImage.resx">
+      <DependentUpon>Form18-TestImage.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FormLarge.resx">
       <DependentUpon>FormLarge.cs</DependentUpon>

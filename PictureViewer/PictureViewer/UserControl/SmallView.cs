@@ -13,22 +13,31 @@ namespace PictureViewer
 {
     public partial class SmallView : UserControl
     {
-        public SmallView(Size panelSize, Size imageSize)
+        /// <summary>
+        /// 根据传入的窗体大小和图片大小来初始化SmallView
+        /// </summary>
+        /// <param name="panelSize">窗体中SmallView需要展示的大小</param>
+        public SmallView()
         {
             InitializeComponent();
-            Size = panelSize;
+            Size = MainConfig.PanelMainSize;
             panelMain.AutoScroll = true;
-            ShowSmallImages(MainConfig.ShowFolderPath, panelSize, imageSize);            
+            ShowSmallImages();            
         }
 
-        // 缩略图模式 文件路径 窗体大小  需要显示的图片大小
-        private void ShowSmallImages(string folderPath, Size panelSize, Size imageSize)
+        /// <summary>
+        /// 加载指定文件夹下的所有图片
+        /// </summary>
+        /// <param name="folderPath">文件路径</param>
+        /// <param name="panelSize">SmallView窗体大小</param>
+        /// <param name="imageSize">需要显示的图片大小</param>
+        private void ShowSmallImages()
         {
-            string[] pictures = Directory.GetFiles(folderPath, "*jpg");
+            string[] pictures = Directory.GetFiles(MainConfig.ShowFolderPath, "*jpg");
             int pictureCount = pictures.Length;
 
             int padding = 2;
-            int columnCount = panelSize.Width / imageSize.Width;
+            int columnCount = MainConfig.PanelMainSize.Width / MainConfig.ImageSize.Width;
             int rowCount = (pictureCount % columnCount == 0) ?
                 pictureCount / columnCount :
                 (pictureCount / columnCount) + 1;
@@ -40,10 +49,11 @@ namespace PictureViewer
                     int index = row * columnCount + column; // 图片下标
                     PictureBox pictureBox = new PictureBox();
                     pictureBox.SizeMode = PictureBoxSizeMode.Zoom;
-                    pictureBox.Size = imageSize;
+                    pictureBox.Size = MainConfig.ImageSize;
                     if (index >= pictureCount) { return; }
 
                     pictureBox.Image = Image.FromFile(pictures[index]);
+
                     //FileStream fs = new FileStream(pictures[index], FileMode.Open);
                     //Bitmap bm = new Bitmap(fs);
                     //fs.Dispose();
@@ -62,6 +72,7 @@ namespace PictureViewer
             }
         }
 
+        // 双击显示大图
         private void pictureBox_DoubleClick(object sender, EventArgs e)
         {
             PictureBox pictureBox = (PictureBox)sender;

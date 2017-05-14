@@ -47,6 +47,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Model\Enums.cs" />
     <Compile Include="Model\ImageTree.cs" />
     <Compile Include="MainForm.cs">
       <SubType>Form</SubType>
@@ -63,6 +64,12 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="UserControl\SingleView.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControl\SingleView.Designer.cs">
+      <DependentUpon>SingleView.cs</DependentUpon>
+    </Compile>
     <Compile Include="UserControl\DetailView.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -109,6 +116,9 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
+    <EmbeddedResource Include="UserControl\SingleView.resx">
+      <DependentUpon>SingleView.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="UserControl\DetailView.resx">
       <DependentUpon>DetailView.cs</DependentUpon>
     </EmbeddedResource>

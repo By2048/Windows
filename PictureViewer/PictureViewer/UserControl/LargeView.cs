@@ -13,10 +13,10 @@ namespace PictureViewer
 {
     public partial class LargeView : UserControl
     {
-        public LargeView(string folderPath, Size panelSize)
+        public LargeView()
         {
             InitializeComponent();
-            Size = panelSize;
+            Size = MainConfig.PanelMainSize;
 
             splitContainer1.SplitterDistance = Size.Height / 5 * 4;
 
@@ -26,11 +26,11 @@ namespace PictureViewer
 
             panelSmallImage.AutoScroll = true;
 
-            ShowSmallImages(folderPath, panelSize);
+            ShowSmallImages();
         }
-        private void ShowSmallImages(string folderPath, Size panelSize)
+        private void ShowSmallImages()
         {
-            string[] pictures = Directory.GetFiles(folderPath, "*jpg");
+            string[] pictures = Directory.GetFiles(MainConfig.ShowFolderPath, "*jpg");
             int pictureCount = pictures.Length;
 
             int padding = 2;

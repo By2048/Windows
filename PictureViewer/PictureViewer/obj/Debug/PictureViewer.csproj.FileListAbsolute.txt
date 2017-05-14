@@ -39,3 +39,4 @@ E:\Desktop\Windows\PictureViewer\PictureViewer\obj\Debug\PictureViewer.ListView.
 E:\Desktop\Windows\PictureViewer\PictureViewer\obj\Debug\PictureViewer.SmallView.resources
 E:\Desktop\Windows\PictureViewer\PictureViewer\obj\Debug\PictureViewer.TreeView.resources
 E:\Desktop\Windows\PictureViewer\PictureViewer\obj\Debug\PictureViewer.Properties.Resources.resources
+E:\Desktop\Windows\PictureViewer\PictureViewer\obj\Debug\PictureViewer.SingleView.resources
