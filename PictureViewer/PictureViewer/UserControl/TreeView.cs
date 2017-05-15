@@ -49,6 +49,15 @@ namespace PictureViewer
             DirectoryInfo[] subSubDirs;
             foreach (DirectoryInfo subDir in subDirs)
             {
+                FileInfo[] files = subDir.GetFiles("*.*").
+                    Where(tmp => tmp.Name.EndsWith("jpg") ||
+                    tmp.Name.EndsWith(".jpeg") ||
+                    tmp.Name.EndsWith(".png")).
+                    ToArray();
+               
+
+                if (files.Length <= 0)
+                    continue;
 
                 ImageTree folder = new ImageTree(subDir.Name, subDir.FullName, true);
 
@@ -59,14 +68,13 @@ namespace PictureViewer
 
                 subSubDirs = subDir.GetDirectories();
                 if (subSubDirs.Length != 0)
-                {
                     GetDirectories(subSubDirs, folderNode);
-                }
+
                 rootNode.Nodes.Add(folderNode);
 
-                FileInfo[] files = subDir.GetFiles("*.jpg");
+
                 foreach (FileInfo file in files)
-                {                    
+                {
                     ImageTree image = new ImageTree(file.Name, file.FullName, false);
                     TreeNode imgNode = new TreeNode(image.Name);
                     imgNode.Tag = image;
@@ -89,7 +97,6 @@ namespace PictureViewer
             ImageTree nodeTag = (ImageTree)node.Tag;
             bool isFolder = nodeTag.IsFolder;
 
-
             if (isFolder == true)
             {
                 MainConfig.ShowFolderPath = nodeTag.FullPath;
@@ -102,6 +109,6 @@ namespace PictureViewer
             }
         }
 
-       
+
     }
 }

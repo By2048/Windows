@@ -33,7 +33,9 @@ namespace PictureViewer
         /// <param name="imageSize">需要显示的图片大小</param>
         private void ShowSmallImages()
         {
-            string[] pictures = Directory.GetFiles(MainConfig.ShowFolderPath, "*jpg");
+
+            string[] pictures = ImageTool.GetAllImage(MainConfig.ShowFolderPath);
+
             int pictureCount = pictures.Length;
 
             int padding = 2;

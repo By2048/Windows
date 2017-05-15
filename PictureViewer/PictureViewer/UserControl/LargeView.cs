@@ -30,7 +30,9 @@ namespace PictureViewer
         }
         private void ShowSmallImages()
         {
-            string[] pictures = Directory.GetFiles(MainConfig.ShowFolderPath, "*jpg");
+
+            string[] pictures = ImageTool.GetAllImage(MainConfig.ShowFolderPath);
+
             int pictureCount = pictures.Length;
 
             int padding = 2;

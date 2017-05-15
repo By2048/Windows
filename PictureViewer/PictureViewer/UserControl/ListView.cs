@@ -37,7 +37,8 @@ namespace PictureViewer
 
         private void CreateListView()
         {
-            string[] pictures = Directory.GetFiles(MainConfig.ShowFolderPath, "*jpg");
+
+            string[] pictures = ImageTool.GetAllImage(MainConfig.ShowFolderPath);
 
             listView = new System.Windows.Forms.ListView();
             listView.Dock = DockStyle.Fill;

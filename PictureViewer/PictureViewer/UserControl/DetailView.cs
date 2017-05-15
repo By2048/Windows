@@ -19,7 +19,7 @@ namespace PictureViewer
 
             Size = MainConfig.PanelMainSize;
 
-            splitContainer.SplitterDistance = int.Parse(Math.Round(Size.Width * (0.618)).ToString());
+            splitContainer1.SplitterDistance = int.Parse(Math.Round(Size.Width * (0.618)).ToString());
             splitContainer2.SplitterDistance = int.Parse(Math.Round(Size.Height * (1 - 0.618)).ToString());
 
             panelSmallImages.AutoScroll = true;
@@ -33,11 +33,19 @@ namespace PictureViewer
 
         private void ShowSmallImages()
         {
-            string[] pictures = Directory.GetFiles(MainConfig.ShowFolderPath, "*jpg");
+
+            //string[] pictures = Directory.GetFiles(MainConfig.ShowFolderPath, "*.*").
+            //    Where(tmp => tmp.EndsWith("jpg") ||
+            //    tmp.EndsWith(".jpeg") ||
+            //    tmp.EndsWith(".png")).
+            //    ToArray();
+
+            string[] pictures = ImageTool.GetAllImage(MainConfig.ShowFolderPath);
+
             int pictureCount = pictures.Length;
 
             int padding = 2;
-            int columnCount = splitContainer.Panel1.Width / MainConfig.ImageSize.Width;
+            int columnCount = splitContainer1.Panel1.Width / MainConfig.ImageSize.Width;
             int rowCount = (pictureCount % columnCount == 0) ?
                 pictureCount / columnCount :
                 (pictureCount / columnCount) + 1;

@@ -48,6 +48,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Model\Enums.cs" />
+    <Compile Include="Model\ImageTool.cs" />
     <Compile Include="Model\ImageTree.cs" />
     <Compile Include="MainForm.cs">
       <SubType>Form</SubType>
@@ -145,9 +146,6 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <None Include="App.config" />
-  </ItemGroup>
-  <ItemGroup>
     <Content Include="Backup\github.txt" />
     <Content Include="Resources\folder-select.png" />
     <Content Include="Resources\folder.png" />
@@ -161,7 +159,7 @@
     <Content Include="Images\4.jpg" />
     <Content Include="Images\5.jpg" />
     <Content Include="Images\6.jpg" />
-    <Content Include="Images\default.jpg" />
+    <Content Include="Images\0.jpg" />
     <Content Include="Images\7.jpg" />
     <None Include="Resources\4.png" />
     <None Include="Resources\3.png" />
