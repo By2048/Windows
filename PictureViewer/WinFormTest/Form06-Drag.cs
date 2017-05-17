@@ -7,15 +7,21 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.IO;
 
 namespace WinFormTest
 {
-    public partial class Form06Drag : Form
+    public partial class Form06 : Form
     {
-        public Form06Drag()
+        public Form06()
         {
             InitializeComponent();
         }
+        private void Form6_Load(object sender, EventArgs e)
+        {
+            AllowDrop = true;
+        }
+
         //DragDrop：拖放操作完成时发生。
         //DragEnter：在将对象拖入控件的边界时发生。
         //DragLeave：在将对象拖出控件的边界时发生。
@@ -24,22 +30,23 @@ namespace WinFormTest
         {
             if (e.Data.GetDataPresent(DataFormats.FileDrop))
             {
-                string path = ((Array)e.Data.GetData(DataFormats.FileDrop)).GetValue(0).ToString();
-                pictureBox1.Image = (Bitmap)Bitmap.FromFile(path);
+                string[] files = (string[])e.Data.GetData(DataFormats.FileDrop);
+                foreach (string item in files)
+                {
+                    if (File.Exists(item))
+                    {
+                        MessageBox.Show(item);
+                        MessageBox.Show("文件");
+                    }
+                    else if (Directory.Exists(item))
+                    {
+                        MessageBox.Show(item);
+                        MessageBox.Show("文件夹");
+                    }
+                }
             }
-            else if (e.Data.GetDataPresent(DataFormats.Text))
-            {
-                label1.Text = (e.Data.GetData(DataFormats.Text)).ToString();
-            }
-            //Bitmap bits = (Bitmap)Bitmap.FromFile(e.Data.GetData(DataFormats.Text).ToString());
-            //pictureBox1.Image = bits;
         }
 
-        private void Form6_Load(object sender, EventArgs e)
-        {
-            pictureBox1.SizeMode = PictureBoxSizeMode.Zoom;
-            AllowDrop = true;
-        }
 
         private void Form6_DragEnter(object sender, DragEventArgs e)
         {
@@ -47,15 +54,6 @@ namespace WinFormTest
             {
                 e.Effect = DragDropEffects.Link;
             }
-            else if (e.Data.GetDataPresent(DataFormats.Text))
-            {
-                e.Effect = DragDropEffects.Copy;
-            }
-            else if (e.Data.GetDataPresent(DataFormats.Bitmap))
-            {
-                e.Effect = DragDropEffects.Link;
-            }
-           
         }
     }
 }

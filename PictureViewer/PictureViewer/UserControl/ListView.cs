@@ -95,7 +95,7 @@ namespace PictureViewer
                 fs.Dispose();
                 pictureBoxLarge.Image = bm;
 
-                CreateSmallImage();
+                CreateSmallImages();
             }
 
         }
@@ -113,7 +113,7 @@ namespace PictureViewer
                     item.ForeColor = Color.Black;
                 }
             }
-            CreateSmallImage();
+            CreateSmallImages();
         }
 
         private void ListView_ColumnClick(object sender, ColumnClickEventArgs e)
@@ -156,7 +156,7 @@ namespace PictureViewer
             return imageInfo;
         }
 
-        private void CreateSmallImage()
+        private void CreateSmallImages()
         {
             panelSmallImage.Controls.Clear();
             Size panelSize = panelSmallImage.Size;

@@ -94,6 +94,8 @@ namespace PictureViewer
             ShowImageInfo(selectImagePath);
         }
 
+
+
         private void ShowImageInfo(string filePath)
         {
             Image image = Image.FromFile(filePath);
@@ -140,6 +142,8 @@ public class ImageDetailInfo
     private DateTime lastWriteTime;
     private DateTime lastAccessTime;
 
+    private int num = 0;
+
 
     public ImageDetailInfo(Size imageSize, string imageVerticalResolution, string imageHorizontalResolution,
                      string fileDirectoryName, string fileName, string fileType, string fillFullName, double fileSize,
@@ -159,7 +163,12 @@ public class ImageDetailInfo
     }
 
 
-
+    //Description - 设置显示在属性下方说明帮助窗格中的属性文本。这是一种为活动属性（即具有焦点的属性）提供帮助文本的有效方法。可以将此特性应用于 MaxRepeatRate 属性。
+    //Category - 设置属性在网格中所属的类别。当您需要将属性按类别名称分组时，此特性非常有用。如果没有为属性指定类别，该属性将被分配给杂项 类别。可以将此特性应用于所有属性。
+    //Browsable – 表示是否在网格中显示属性。此特性可用于在网格中隐藏属性。默认情况下，公共属性始终显示在网格中。可以将此特性应用于 SettingsChanged 属性。
+    //ReadOnly – 表示属性是否为只读。此特性可用于禁止在网格中编辑属性。默认情况下，带有 get 和 set 访问函数的公共属性在网格中是可以编辑的。可以将此特性应用于 AppVersion 属性。
+    //DefaultValue – 表示属性的默认值。如果希望为属性提供默认值，然后确定该属性值是否与默认值相同，则可使用此特性。可以将此特性应用于所有属性。
+    //DefaultProperty – 表示类的默认属性。在网格中选择某个类时，将首先突出显示该类的默认属性。可以将此特性应用于 AppSettings 类。
 
     [Description("图片大小"), Category("图片信息")]
     public Size ImageSize { get { return imageSize; } set { imageSize = value; } }
@@ -193,7 +202,6 @@ public class ImageDetailInfo
 
     [Description("文件上次访问时间"), Category("时间信息")]
     public DateTime LastAccessTime { get { return lastAccessTime; } set { lastAccessTime = value; } }
-
 
     //[Description("图片大小"), Category("图片信息")]
     //public Size ImageSize { get => imageSize; set => imageSize = value; }    

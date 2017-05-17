@@ -18,7 +18,6 @@ D:\Windows\PictureViewer\PictureViewer\obj\Debug\PictureViewer.MainForm.resource
 D:\Windows\PictureViewer\PictureViewer\obj\Debug\PictureViewer.Properties.Resources.resources
 D:\Windows\PictureViewer\PictureViewer\obj\Debug\PictureViewer.ShowImage.resources
 D:\Windows\PictureViewer\PictureViewer\obj\Debug\PictureViewer.csproj.GenerateResource.Cache
-E:\Desktop\Windows\PictureViewer\PictureViewer\bin\Debug\PictureViewer.exe.config
 E:\Desktop\Windows\PictureViewer\PictureViewer\bin\Debug\PictureViewer.exe
 E:\Desktop\Windows\PictureViewer\PictureViewer\bin\Debug\PictureViewer.pdb
 E:\Desktop\Windows\PictureViewer\PictureViewer\obj\Debug\PictureViewer.csproj.GenerateResource.Cache

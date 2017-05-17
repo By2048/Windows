@@ -5,14 +5,16 @@ namespace PictureViewer
     public enum ShowView
     {
         DetailView,
-
         LargeView,
-
         ListView,
-
         SmallView,
+    }
 
-        TreeView,
+    public enum ImageTreeNode
+    {
+        Folder,
+        Image,
+        NodeTag,
     }
 
 }

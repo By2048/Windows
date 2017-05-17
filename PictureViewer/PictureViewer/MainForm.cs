@@ -28,13 +28,13 @@ namespace PictureViewer
             MainConfig.ShowFolderPath = @"F:\Test\媚眼柔嫩娇滴滴 爆乳萌妹子猫儿蜜糖化身性感女仆被调教";
             MainConfig.ImageSize=new Size(16 * 10, 9 * 10);
             MainConfig.PanelMainSize = panelMain.Size;
+            MainConfig.ShowView = ShowView.SmallView;
 
             KeyPreview = true;
             CenterToScreen();
             LoadTreeView();
-            SmallView userControl = new SmallView();            
-            SetTsbBtnChecked("SmallView");
-            panelMain.Controls.Add(userControl);
+            LoadUserControlByConfig();
+            SetTsbBtnCheckedByConfig();
 
             //panelMain.BackColor = Color.Red;
             //panelTree.BackColor = Color.Green;
@@ -44,9 +44,8 @@ namespace PictureViewer
         private void MainForm_Resize(object sender, EventArgs e)
         {
             LoadTreeView();
-            RefreshUserControl();
+            RefreshUserControlByConfig();
         }
-
 
         // 图片显示模式按钮点击时根据按钮的Name来加载UserControl
         private void tsbBtn_Click(object sender, EventArgs e)
@@ -54,8 +53,23 @@ namespace PictureViewer
             //string curTsbName = panelMain.Controls[0].Name;
             //MessageBox.Show(curTsbName);
             ToolStripButton btn = (ToolStripButton)sender;
-            LoadUserControl(btn.Name);
-            SetTsbBtnChecked(btn.Name);
+            switch (btn.Name)
+            {
+                case "SmallView":
+                    MainConfig.ShowView = ShowView.SmallView;
+                    break;
+                case "LargeView":
+                    MainConfig.ShowView = ShowView.LargeView;
+                    break;
+                case "DetailView":
+                    MainConfig.ShowView = ShowView.DetailView;
+                    break;
+                case "ListView":
+                    MainConfig.ShowView = ShowView.ListView;
+                    break;
+            }
+            LoadUserControlByConfig();
+            SetTsbBtnCheckedByConfig();
         }
 
         // 图片大小按钮点击时切换图片大小
@@ -64,70 +78,59 @@ namespace PictureViewer
             ToolStripMenuItem item = (ToolStripMenuItem)sender;
             int proportion = int.Parse(item.Name.Substring(item.Name.Length - 2, 2));
             MainConfig.ImageSize = new Size(16 * proportion, 9 * proportion);
-            RefreshUserControl();
+            RefreshUserControlByConfig();
         }
 
-        // 按钮点击时设置按钮状态
-        private void SetTsbBtnChecked(string btnName)
+        private void btnTest_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show(MainConfig.ShowFolderPath);
+        }
+
+        private void SetTsbBtnCheckedByConfig()
         {
             foreach (var item in toolStripMain.Items)
             {
                 if (item is ToolStripButton)
                 {
                     ToolStripButton btn = (ToolStripButton)item;
-                    if (btn.Name == btnName)
+                    if (btn.Name == MainConfig.ShowView.ToString())
                         btn.Checked = true;
                     else
                         btn.Checked = false;
                 }
                 else
                 {
-                    return;
+                    continue;
                 }
             }
         }
 
-        // 刷新图片展示窗体的UserControl
-        public void RefreshUserControl()
+        public void RefreshUserControlByConfig()
         {
             MainConfig.PanelMainSize = panelMain.Size;
-            ToolStripButton curBtn=null;
-            foreach (var item in toolStripMain.Items)
-            {
-                if (item is ToolStripButton)
-                {
-                    curBtn = (ToolStripButton)item;
-                    if (curBtn.Checked == true)
-                        break;
-                }
-            }
-            LoadUserControl(curBtn.Name);
+            LoadUserControlByConfig();
         }
 
-        /// <summary>
-        /// 加载图片需要展示的模式的UserControl
-        /// </summary>
-        /// <param name="name">UserControl的Name</param>
-        public void LoadUserControl(string name)
+        public void LoadUserControlByConfig()
         {
-            switch (name)
+            switch (MainConfig.ShowView)
             {
-                case "SmallView":
+                case ShowView.SmallView:
                     panelMain.Controls.Clear();
                     SmallView smallView = new SmallView();
                     panelMain.Controls.Add(smallView);
                     break;
-                case "LargeView":
+                case ShowView.LargeView:
                     panelMain.Controls.Clear();
                     LargeView largeView = new LargeView();
                     panelMain.Controls.Add(largeView);
                     break;
-                case "DetailView":
+                case ShowView.DetailView:
                     panelMain.Controls.Clear();
                     DetailView detailView = new DetailView();
                     panelMain.Controls.Add(detailView);
                     break;
-                case "ListView":
+                case ShowView.ListView:
                     panelMain.Controls.Clear();
                     ListView listView = new ListView();
                     panelMain.Controls.Add(listView);
@@ -143,13 +146,13 @@ namespace PictureViewer
             panelTree.Controls.Clear();
             TreeView treeView = new TreeView(panelTree.Size);
 
-            treeView.LoadUserControlEvent += new TreeView.LoadUserControl(RefreshUserControl);
-            treeView.LoadImageEvent += new TreeView.LoadImage(LoadImage);
+            treeView.LoadUserControlEvent += new TreeView.LoadUserControl(RefreshUserControlByConfig);
+            treeView.LoadImageEvent += new TreeView.LoadImage(LoadSingleView);
 
             panelTree.Controls.Add(treeView);
         }
 
-        private void LoadImage()
+        private void LoadSingleView()
         {
             panelMain.Controls.Clear();
             SingleView singleView = new SingleView();
@@ -158,9 +161,6 @@ namespace PictureViewer
             //panelMain.BackgroundImageLayout = ImageLayout.Zoom;
         }
 
-        private void btnTest_Click(object sender, EventArgs e)
-        {
-            MessageBox.Show(MainConfig.ShowFolderPath);
-        }
+        
     }
 }
