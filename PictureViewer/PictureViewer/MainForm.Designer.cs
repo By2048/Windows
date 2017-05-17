@@ -47,9 +47,9 @@ namespace PictureViewer
             this.tsbSize20 = new System.Windows.Forms.ToolStripMenuItem();
             this.tslMenu = new System.Windows.Forms.ToolStripDropDownButton();
             this.显示多选框ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.btnTest = new System.Windows.Forms.ToolStripLabel();
             this.imageList = new System.Windows.Forms.ImageList(this.components);
             this.toolStripTextBox1 = new System.Windows.Forms.ToolStripTextBox();
-            this.btnTest = new System.Windows.Forms.ToolStripLabel();
             this.toolStripContainerImage.BottomToolStripPanel.SuspendLayout();
             this.toolStripContainerImage.ContentPanel.SuspendLayout();
             this.toolStripContainerImage.TopToolStripPanel.SuspendLayout();
@@ -148,7 +148,7 @@ namespace PictureViewer
             this.btnTest});
             this.toolStripMain.Location = new System.Drawing.Point(3, 0);
             this.toolStripMain.Name = "toolStripMain";
-            this.toolStripMain.Size = new System.Drawing.Size(295, 25);
+            this.toolStripMain.Size = new System.Drawing.Size(264, 25);
             this.toolStripMain.TabIndex = 0;
             // 
             // SmallView
@@ -240,6 +240,13 @@ namespace PictureViewer
             this.显示多选框ToolStripMenuItem.Size = new System.Drawing.Size(136, 22);
             this.显示多选框ToolStripMenuItem.Text = "显示多选框";
             // 
+            // btnTest
+            // 
+            this.btnTest.Name = "btnTest";
+            this.btnTest.Size = new System.Drawing.Size(46, 22);
+            this.btnTest.Text = "Button";
+            this.btnTest.Click += new System.EventHandler(this.btnTest_Click);
+            // 
             // imageList
             // 
             this.imageList.ColorDepth = System.Windows.Forms.ColorDepth.Depth8Bit;
@@ -251,13 +258,6 @@ namespace PictureViewer
             this.toolStripTextBox1.Name = "toolStripTextBox1";
             this.toolStripTextBox1.Size = new System.Drawing.Size(100, 25);
             // 
-            // btnTest
-            // 
-            this.btnTest.Name = "btnTest";
-            this.btnTest.Size = new System.Drawing.Size(46, 22);
-            this.btnTest.Text = "Button";
-            this.btnTest.Click += new System.EventHandler(this.btnTest_Click);
-            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -267,6 +267,8 @@ namespace PictureViewer
             this.Name = "MainForm";
             this.Text = "MainForm";
             this.Load += new System.EventHandler(this.MainForm_Load);
+            this.DragDrop += new System.Windows.Forms.DragEventHandler(this.MainForm_DragDrop);
+            this.DragEnter += new System.Windows.Forms.DragEventHandler(this.MainForm_DragEnter);
             this.toolStripContainerImage.BottomToolStripPanel.ResumeLayout(false);
             this.toolStripContainerImage.BottomToolStripPanel.PerformLayout();
             this.toolStripContainerImage.ContentPanel.ResumeLayout(false);

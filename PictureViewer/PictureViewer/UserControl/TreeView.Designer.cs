@@ -36,11 +36,14 @@
             // 
             // treeViewImg
             // 
+            this.treeViewImg.AllowDrop = true;
             this.treeViewImg.Dock = System.Windows.Forms.DockStyle.Fill;
             this.treeViewImg.Location = new System.Drawing.Point(0, 0);
             this.treeViewImg.Name = "treeViewImg";
             this.treeViewImg.Size = new System.Drawing.Size(220, 386);
             this.treeViewImg.TabIndex = 0;
+            this.treeViewImg.DragDrop += new System.Windows.Forms.DragEventHandler(this.treeViewImg_DragDrop);
+            this.treeViewImg.DragEnter += new System.Windows.Forms.DragEventHandler(this.treeViewImg_DragEnter);
             // 
             // imageListIcon
             // 

@@ -21,6 +21,7 @@ namespace PictureViewer
             Resize += new EventHandler(MainForm_Resize);
             splitContainer.SplitterDistance = Size.Width / 4;
             CheckForIllegalCrossThreadCalls = false;
+
         }
         private void MainForm_Load(object sender, EventArgs e)
         {
@@ -30,14 +31,12 @@ namespace PictureViewer
             MainConfig.PanelMainSize = panelMain.Size;
             MainConfig.ShowView = ShowView.SmallView;
 
+            AllowDrop = true;
             KeyPreview = true;
             CenterToScreen();
             LoadTreeView();
             LoadUserControlByConfig();
             SetTsbBtnCheckedByConfig();
-
-            //panelMain.BackColor = Color.Red;
-            //panelTree.BackColor = Color.Green;
         }
 
         // 窗体大小变化是刷新UserControl
@@ -161,6 +160,34 @@ namespace PictureViewer
             //panelMain.BackgroundImageLayout = ImageLayout.Zoom;
         }
 
-        
+        private void MainForm_DragDrop(object sender, DragEventArgs e)
+        {
+            //if (e.Data.GetDataPresent(DataFormats.FileDrop))
+            //{
+            //    string[] files = (string[])e.Data.GetData(DataFormats.FileDrop);
+            //    foreach (string item in files)
+            //    {
+            //        if (File.Exists(item))
+            //        {
+            //            MessageBox.Show(item);
+            //            MessageBox.Show("--文件");
+            //        }
+            //        else if (Directory.Exists(item))
+            //        {
+            //            MessageBox.Show(item);
+            //            MessageBox.Show("--文件夹");
+            //        }                    
+            //        MessageBox.Show(e.X.ToString() + " " + e.Y.ToString());
+            //    }
+            //}
+        }
+
+        private void MainForm_DragEnter(object sender, DragEventArgs e)
+        {
+            //if (e.Data.GetDataPresent(DataFormats.FileDrop))
+            //{
+            //    e.Effect = DragDropEffects.Link;
+            //}
+        }
     }
 }

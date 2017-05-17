@@ -10,16 +10,16 @@ namespace PictureViewer
     {
         public string Name;
         public string FullPath;
-        public bool IsFolder;
-        public ImageTree(string name, string fullPath, bool isFolder)
+        public NodeType NodeType;
+        public ImageTree(string name, string fullPath, NodeType nodeType)
         {
             Name = name;
             FullPath = fullPath;
-            IsFolder = isFolder;
+            NodeType = nodeType;
         }
         public override string ToString()
         {
-            return Name + "\n" + FullPath + "\n" + IsFolder.ToString();
+            return Name + "\n" + FullPath + "\n" + NodeType.ToString();
         }
     }
 }

@@ -16,82 +16,81 @@ namespace WinFormTest
         public Form09()
         {
             InitializeComponent();
-            treeView1.ImageList = imageListIcon;
-            LoadTreeView();
-            this.treeView1.NodeMouseClick += new TreeNodeMouseClickEventHandler(this.treeView1_NodeMouseClick);
+            AllowDrop = true;
+
         }
 
         private void Form9_Load(object sender, EventArgs e)
         {
             CenterToScreen();
+
+            //TreeNode node1 = new TreeNode("node1");
+            //treeView1.Nodes.Add(node1);
+
+
+            //TreeNode node2 = new TreeNode("node2");
+            //node1.Nodes.Add(node2);
+
+            //TreeNode node21 = new TreeNode("node21");
+            //node2.Nodes.Add(node21);
+
+            //TreeNode node3 = new TreeNode("node3");
+            //node1.Nodes.Add(node3);
+
+
+            //TreeNode node4 = new TreeNode("node4");
+            //node1.Nodes.Add(node4);
+
+            TreeNode node1 = new TreeNode("node1");
+            treeView1.Nodes.Add(node1);
+
+
+            TreeNode node2 = new TreeNode("node2");
+            treeView1.Nodes.Add(node2);
+
+            TreeNode node21 = new TreeNode("node21");
+            treeView1.Nodes.Add(node21);
+
+            TreeNode node3 = new TreeNode("node3");
+            treeView1.Nodes.Add(node3);
+
+
+            TreeNode node4 = new TreeNode("node4");
+            treeView1.Nodes.Add(node4);
         }
-        private void LoadTreeView()
+
+        private void button1_Click(object sender, EventArgs e)
         {
-            TreeNode rootNode;
-            DirectoryInfo info = new DirectoryInfo(@"F:\Test");
-            if (info.Exists)
-            {
-                ImageTree rootFolder = new ImageTree(info.Name, info.FullName, true);
-                rootNode = new TreeNode(info.Name);
-                rootNode.Tag = rootFolder;
-                rootNode.ImageKey = "folder.png";
-                rootNode.SelectedImageKey = "folder-select.png";
-                treeView1.Nodes.Add(rootNode);
-                rootNode.Expand();
-                GetDirectories(info.GetDirectories(), rootNode);
-            }
+            MessageBox.Show(GetNode("node2").Text.ToString());
         }
 
-        private void GetDirectories(DirectoryInfo[] subDirs, TreeNode rootNode)
+        public TreeNode GetNode(string nodeText, TreeNode rootNode)
         {
-            TreeNode folderNode;
-            DirectoryInfo[] subSubDirs;
-            foreach (DirectoryInfo subDir in subDirs)
+            foreach (TreeNode node in rootNode.Nodes)
             {
-
-                ImageTree folder = new ImageTree(subDir.Name, subDir.FullName, true);
-
-                folderNode = new TreeNode(folder.Name);
-                folderNode.Tag = folder;
-                folderNode.ImageKey = "folder.png";
-                folderNode.SelectedImageKey = "folder-select.png";
-
-                subSubDirs = subDir.GetDirectories();
-                if (subSubDirs.Length != 0)
-                {
-                    GetDirectories(subSubDirs, folderNode);
-                }
-                rootNode.Nodes.Add(folderNode);
-
-                FileInfo[] files = subDir.GetFiles("*.jpg");
-                foreach (FileInfo file in files)
-                {
-                    ImageTree image = new ImageTree(file.Name, file.FullName, false);
-                    TreeNode imgNode = new TreeNode(image.Name);
-                    imgNode.Tag = image;
-                    imgNode.ImageKey = "img.png";
-                    imgNode.SelectedImageKey = "img-select.png";
-                    folderNode.Nodes.Add(imgNode);
-                }
+                if (node.Text.Equals(nodeText))
+                    return node;
+                TreeNode next = GetNode(nodeText, node);
+                if (next != null)
+                    return next;
             }
+            return null;
         }
-        void treeView1_NodeMouseClick(object sender, TreeNodeMouseClickEventArgs e)
+
+        public TreeNode GetNode(string nodeText)
         {
-            TreeNode node = e.Node;
-
-            ImageTree image = (ImageTree)node.Tag;
-
-            if (image.IsFolder == true)
+            TreeNode itemNode = null;
+            foreach (TreeNode node in treeView1.Nodes)
             {
-                MessageBox.Show(image.FullPath);
-
+                if (node.Text.Equals(nodeText))
+                    return node;
+                itemNode = GetNode(nodeText, node);
+                if (itemNode != null)
+                    break;
             }
-            else
-            {
-                MessageBox.Show(image.FullPath);
-
-            }
-
+            return itemNode;
         }
+
+
     }
 }

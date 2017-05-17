@@ -10,7 +10,7 @@ namespace PictureViewer
         SmallView,
     }
 
-    public enum ImageTreeNode
+    public enum NodeType
     {
         Folder,
         Image,
