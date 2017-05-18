@@ -28,6 +28,13 @@ namespace PictureViewer
         }
         private void LoadTreeView(string rootPath)
         {
+            ImageTree userTag = new ImageTree("用户目录", "", NodeType.NodeTag);
+            TreeNode userNode = new TreeNode("用户目录");
+            userNode.Tag = userTag;
+            userNode.ImageKey = "folder.png";
+            userNode.SelectedImageKey = "folder-select.png";
+            treeViewImg.Nodes.Add(userNode);
+
             TreeNode rootNode;
             DirectoryInfo info = new DirectoryInfo(rootPath);
             if (info.Exists)
@@ -40,6 +47,78 @@ namespace PictureViewer
                 treeViewImg.Nodes.Add(rootNode);
                 rootNode.Expand();
                 GetDirectories(info.GetDirectories(), rootNode);
+            }
+            //TreeNode rootNode;
+            //DirectoryInfo info = new DirectoryInfo(rootPath);
+            //if (info.Exists)
+            //{
+            //    ImageTree rootFolder = new ImageTree(info.Name, info.FullName, NodeType.Folder);
+            //    rootNode = new TreeNode(info.Name);
+            //    rootNode.Tag = rootFolder;
+            //    rootNode.ImageKey = "folder.png";
+            //    rootNode.SelectedImageKey = "folder-select.png";
+            //    treeViewImg.Nodes.Add(rootNode);
+            //    rootNode.Expand();
+            //    GetDirectories(info.GetDirectories(), rootNode);
+            //}
+        }
+
+        private void GetDirectoriesByPath(string rootPath, TreeNode rootNode)
+        {
+            DirectoryInfo info = new DirectoryInfo(rootPath);
+            DirectoryInfo[] subDirs = info.GetDirectories();
+            if (info.Exists)
+            {
+                ImageTree rootFolder = new ImageTree(info.Name, info.FullName, NodeType.Folder);
+                rootNode = new TreeNode(info.Name);
+                rootNode.Tag = rootFolder;
+                rootNode.ImageKey = "folder.png";
+                rootNode.SelectedImageKey = "folder-select.png";
+                treeViewImg.Nodes.Add(rootNode);
+                rootNode.Expand();
+                GetDirectories(info.GetDirectories(), rootNode);
+            }
+
+            TreeNode folderNode;
+            DirectoryInfo[] subSubDirs;
+
+            foreach (DirectoryInfo subDir in subDirs)
+            {
+                FileInfo[] files = subDir.GetFiles("*.*").
+                    Where(tmp => tmp.Name.EndsWith("jpg") ||
+                    tmp.Name.EndsWith(".jpeg") ||
+                    tmp.Name.EndsWith(".png")).
+                    ToArray();
+
+
+                if (files.Length <= 0)
+                    continue;
+
+                ImageTree folder = new ImageTree(subDir.Name, subDir.FullName, NodeType.Folder);
+
+                folderNode = new TreeNode(folder.Name);
+                folderNode.Tag = folder;
+                folderNode.ImageKey = "folder.png";
+                folderNode.SelectedImageKey = "folder-select.png";
+
+                subSubDirs = subDir.GetDirectories();
+                if (subSubDirs.Length != 0)
+                {
+                    //GetDirectoriesByPath(subSubDirs, folderNode);
+                }
+
+                rootNode.Nodes.Add(folderNode);
+
+                foreach (FileInfo file in files)
+                {
+                    ImageTree image = new ImageTree(file.Name, file.FullName, NodeType.Image);
+                    TreeNode imgNode = new TreeNode(image.Name);
+                    imgNode.Tag = image;
+                    imgNode.ImageKey = "img.png";
+                    imgNode.SelectedImageKey = "img-select.png";
+                    folderNode.Nodes.Add(imgNode);
+                }
+
             }
         }
 
