@@ -13,14 +13,32 @@ namespace PictureViewer
     public partial class ShowImage : Form
     {
         bool isMaxScreen = false;
+
         bool isCtrlDown = false;
 
-        public Image showImage;
+        public Image showImage;     // 窗体展示的图片
+
+        public string curFilePath;  // 当前显示的文件
+   
+        public List<string> allFilePath;  // 所有的文件 
+
+
+        public void SetShowImage(Image image)
+        {
+            showImage = image;
+        }
+        public void SetFileParent(string _curFileParh, List<string> _allFilePath)
+        {
+            curFilePath = _curFileParh;
+            allFilePath = _allFilePath;
+        }
+    
+
         private ContextMenuStrip picBoxContextMenuStrip;
 
         public ShowImage()
         {
-            InitializeComponent();         
+            InitializeComponent();
 
             imagePictureBox.MouseDown += new MouseEventHandler(picture_MouseDown);
             imagePictureBox.MouseMove += new MouseEventHandler(picture_MouseMove);
@@ -30,16 +48,16 @@ namespace PictureViewer
             KeyDown += new KeyEventHandler(ShowImage_KeyDown);
             KeyPress += new KeyPressEventHandler(ShowImage_KeyPress);
             KeyUp += new KeyEventHandler(ShowImage_KeyUp);
+
             CreateContextMenuStrip();
         }
 
         private void ShowImage_Load(object sender, EventArgs e)
-        {            
+        {
             KeyPreview = true; //允许键盘
             TopMost = true;
             FormBorderStyle = FormBorderStyle.None;
 
-            //SetImage("..\\..\\Images\\default.jpg");
 
             Size = showImage.Size;
             // 窗口中除去标题栏和边框的地方
@@ -55,14 +73,6 @@ namespace PictureViewer
         }
 
 
-        public void SetImage(string path)
-        {
-            showImage = Image.FromFile(path);
-        }
-        public void SetImage(Image image)
-        {
-            showImage = image;
-        }
         private void CreateContextMenuStrip()
         {
             ToolStripMenuItem ImageShowModel;
@@ -81,7 +91,7 @@ namespace PictureViewer
 
             StretchImageModel = new ToolStripMenuItem();
             StretchImageModel.Name = "StretchImageModel";
-            StretchImageModel.Text = "图片适应";           
+            StretchImageModel.Text = "图片适应";
 
             AutoSizeModel = new ToolStripMenuItem();
             AutoSizeModel.Name = "AutoSizeModel";
@@ -95,28 +105,28 @@ namespace PictureViewer
                 new ToolStripItem[] {
                 ImageShowModel,
                 ImageInfo
-            });                     
+            });
 
             ImageShowModel.DropDownItems.AddRange(
                 new ToolStripItem[] {
                 StretchImageModel,
                 AutoSizeModel,
-            });          
+            });
         }
 
         // 窗口在屏幕中居中 优先在第二屏幕居中
         private Point GetStartPoston(Size imgeSize)
         {
-            Point startPoint=new Point(0,0);
+            Point startPoint = new Point(0, 0);
             if (Screen.AllScreens.Count() > 1)  // 是双屏
             {
                 int firstScreenWidth = Screen.AllScreens[0].Bounds.Width;
                 int secondScreenWidth = Screen.AllScreens[1].Bounds.Width;
-                int secondScreenHeight= Screen.AllScreens[1].Bounds.Height;
+                int secondScreenHeight = Screen.AllScreens[1].Bounds.Height;
                 startPoint = new Point()
                 {
-                    X = firstScreenWidth+(secondScreenWidth - imgeSize.Width) / 2,
-                    Y= (secondScreenHeight-imgeSize.Height)/2
+                    X = firstScreenWidth + (secondScreenWidth - imgeSize.Width) / 2,
+                    Y = (secondScreenHeight - imgeSize.Height) / 2
                 };
             }
             else
@@ -125,7 +135,7 @@ namespace PictureViewer
                 int firstScreenHeight = Screen.AllScreens[0].Bounds.Height;
                 startPoint = new Point()
                 {
-                    X = (firstScreenWidth  - imgeSize.Width) / 2,
+                    X = (firstScreenWidth - imgeSize.Width) / 2,
                     Y = (firstScreenHeight - imgeSize.Height) / 2
                 };
             }
@@ -136,11 +146,44 @@ namespace PictureViewer
         {
             if (e.Control == true)
                 isCtrlDown = true;
+
+            switch (e.KeyCode)
+            {
+                case Keys.Up:
+                    MessageBox.Show("Up");
+                    break;
+                case Keys.Down:
+                    MessageBox.Show("Down");
+                    break;
+                case Keys.Left:
+                    MessageBox.Show("Left");
+                    break;
+                case Keys.Right:
+                    MessageBox.Show("Right");
+                    break;
+            }
         }
+
+        private void SwitchNext()
+        {
+            //int curFilePath = allFilePath.Find
+
+
+            //foreach (string filePath in allFilePath)
+            //{
+            //    if(filePath==curFilePath)
+            //        nextFilePath=
+            //}
+        }
+        private void SwitchPrevious()
+        {
+
+        }
+
+
         private void ShowImage_KeyPress(object sender, KeyPressEventArgs e)
         {
             //if (e.KeyChar.ToString() == Keys.Control.ToString())
-
         }
         private void ShowImage_KeyUp(object sender, KeyEventArgs e)
         {
@@ -237,7 +280,7 @@ namespace PictureViewer
                 else
                     nextLocation = new Point(X, Y);
                 Location = nextLocation;
-                
+
 
                 if (Width >= ScreenWidth || Height >= ScreenHeight)
                     isMaxScreen = true;

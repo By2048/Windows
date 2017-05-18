@@ -12,13 +12,33 @@ namespace PictureViewer
         public static string[] GetAllImage(string folderPath)
         {
             string[] pictures = Directory.GetFiles(folderPath, "*.*").
-                Where(tmp => tmp.EndsWith("jpg") ||
-                tmp.EndsWith(".jpeg") ||
-                tmp.EndsWith(".png")).
-                ToArray();
+                                Where(tmp => tmp.EndsWith("jpg") ||
+                                tmp.EndsWith(".jpeg") ||
+                                tmp.EndsWith(".png")).
+                                ToArray();
             return pictures;
         }
 
+        public static FileInfo[] GetFilesByPath(string filePath)
+        {
+            DirectoryInfo info = new DirectoryInfo(filePath);
+            FileInfo[] imgs = info.GetFiles("*.*").
+                              Where(tmp => tmp.Name.EndsWith("jpg") ||
+                              tmp.Name.EndsWith(".jpeg") ||
+                              tmp.Name.EndsWith(".png")).
+                              ToArray();
+            return imgs;
+        }
+
+        public static FileInfo[] GetFilesByDir(DirectoryInfo info)
+        {
+            FileInfo[] imgs = info.GetFiles("*.*").
+                              Where(tmp => tmp.Name.EndsWith("jpg") ||
+                              tmp.Name.EndsWith(".jpeg") ||
+                              tmp.Name.EndsWith(".png")).
+                              ToArray();
+            return imgs;
+        }
 
     }
 }

@@ -61,21 +61,12 @@ namespace WinFormTest
                 }
             }
 
-            //foreach (DirectoryInfo subDir in subDirs)
-            //{
-            //    FileInfo[] files = subDir.GetFiles("*.*");
-            //    foreach (FileInfo file in files)
-            //    {
-            //        MessageBox.Show(file.Name);
-            //    }
-            //}
-
-            //FileInfo[] files = info.GetFiles("*.*");
-            //foreach (FileInfo file in files)
-            //{
-            //    TreeNode fileNode = new TreeNode(file.Name);
-            //    treeView.Nodes.Add(fileNode);
-            //}
+            FileInfo[] files = info.GetFiles("*.*");
+            foreach (FileInfo file in files)
+            {
+                TreeNode fileNode = new TreeNode(file.Name);
+                rootNode.Nodes.Add(fileNode);
+            }
 
         }
 

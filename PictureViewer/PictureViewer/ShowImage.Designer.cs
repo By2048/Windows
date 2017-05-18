@@ -46,6 +46,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(177, 174);
             this.Controls.Add(this.imagePictureBox);
+            this.KeyPreview = true;
             this.Name = "ShowImage";
             this.Text = "窗口图片";
             this.Load += new System.EventHandler(this.ShowImage_Load);

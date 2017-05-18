@@ -34,91 +34,52 @@ namespace PictureViewer
             userNode.ImageKey = "folder.png";
             userNode.SelectedImageKey = "folder-select.png";
             treeViewImg.Nodes.Add(userNode);
-
-            TreeNode rootNode;
-            DirectoryInfo info = new DirectoryInfo(rootPath);
-            if (info.Exists)
-            {
-                ImageTree rootFolder = new ImageTree(info.Name, info.FullName, NodeType.Folder);
-                rootNode = new TreeNode(info.Name);
-                rootNode.Tag = rootFolder;
-                rootNode.ImageKey = "folder.png";
-                rootNode.SelectedImageKey = "folder-select.png";
-                treeViewImg.Nodes.Add(rootNode);
-                rootNode.Expand();
-                GetDirectories(info.GetDirectories(), rootNode);
-            }
-            //TreeNode rootNode;
-            //DirectoryInfo info = new DirectoryInfo(rootPath);
-            //if (info.Exists)
-            //{
-            //    ImageTree rootFolder = new ImageTree(info.Name, info.FullName, NodeType.Folder);
-            //    rootNode = new TreeNode(info.Name);
-            //    rootNode.Tag = rootFolder;
-            //    rootNode.ImageKey = "folder.png";
-            //    rootNode.SelectedImageKey = "folder-select.png";
-            //    treeViewImg.Nodes.Add(rootNode);
-            //    rootNode.Expand();
-            //    GetDirectories(info.GetDirectories(), rootNode);
-            //}
+            userNode.Expand();
+            LoadTree(rootPath, userNode);           
         }
 
-        private void GetDirectoriesByPath(string rootPath, TreeNode rootNode)
+
+        private void LoadTree(string rootPath, TreeNode rootNode)
         {
             DirectoryInfo info = new DirectoryInfo(rootPath);
-            DirectoryInfo[] subDirs = info.GetDirectories();
-            if (info.Exists)
-            {
-                ImageTree rootFolder = new ImageTree(info.Name, info.FullName, NodeType.Folder);
-                rootNode = new TreeNode(info.Name);
-                rootNode.Tag = rootFolder;
-                rootNode.ImageKey = "folder.png";
-                rootNode.SelectedImageKey = "folder-select.png";
-                treeViewImg.Nodes.Add(rootNode);
-                rootNode.Expand();
-                GetDirectories(info.GetDirectories(), rootNode);
-            }
-
-            TreeNode folderNode;
-            DirectoryInfo[] subSubDirs;
+            DirectoryInfo[] subDirs = info.GetDirectories().OrderByDescending(tmp => tmp.CreationTime).ToArray();
 
             foreach (DirectoryInfo subDir in subDirs)
             {
-                FileInfo[] files = subDir.GetFiles("*.*").
-                    Where(tmp => tmp.Name.EndsWith("jpg") ||
-                    tmp.Name.EndsWith(".jpeg") ||
-                    tmp.Name.EndsWith(".png")).
-                    ToArray();
-
-
-                if (files.Length <= 0)
-                    continue;
-
                 ImageTree folder = new ImageTree(subDir.Name, subDir.FullName, NodeType.Folder);
-
-                folderNode = new TreeNode(folder.Name);
+                TreeNode folderNode = new TreeNode(subDir.Name);
                 folderNode.Tag = folder;
                 folderNode.ImageKey = "folder.png";
                 folderNode.SelectedImageKey = "folder-select.png";
 
-                subSubDirs = subDir.GetDirectories();
+                rootNode.Nodes.Add(folderNode);
+                DirectoryInfo[] subSubDirs = subDir.GetDirectories();
                 if (subSubDirs.Length != 0)
                 {
-                    //GetDirectoriesByPath(subSubDirs, folderNode);
+                    LoadTree(subDir.FullName.ToString(), folderNode);
                 }
-
-                rootNode.Nodes.Add(folderNode);
-
-                foreach (FileInfo file in files)
+                FileInfo[] rootPathimgs = ImageTool.GetFilesByDir(subDir);
+                foreach (FileInfo img in rootPathimgs)
                 {
-                    ImageTree image = new ImageTree(file.Name, file.FullName, NodeType.Image);
-                    TreeNode imgNode = new TreeNode(image.Name);
+                    ImageTree image = new ImageTree(img.Name, img.FullName, NodeType.Image);
+                    TreeNode imgNode = new TreeNode(img.Name);
                     imgNode.Tag = image;
                     imgNode.ImageKey = "img.png";
                     imgNode.SelectedImageKey = "img-select.png";
+
                     folderNode.Nodes.Add(imgNode);
                 }
-
+            }
+            FileInfo[] imgs = ImageTool.GetFilesByDir(info);
+            
+            foreach (FileInfo img in imgs)
+            {
+                ImageTree image = new ImageTree(img.Name, img.FullName, NodeType.Image);
+                TreeNode imgNode = new TreeNode(img.Name);
+                imgNode.Tag = image;
+                imgNode.ImageKey = "img.png";
+                imgNode.SelectedImageKey = "img-select.png";
+                rootNode.Nodes.Add(imgNode);
             }
         }
 

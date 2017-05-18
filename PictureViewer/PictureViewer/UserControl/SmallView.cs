@@ -80,7 +80,8 @@ namespace PictureViewer
             PictureBox pictureBox = (PictureBox)sender;
             Image image = pictureBox.Image;
             ShowImage newForm = new ShowImage();
-            newForm.SetImage(image);
+            //newForm.SetImage(image);
+            newForm.showImage=image;
             newForm.Show();
         }
      
