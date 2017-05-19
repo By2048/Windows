@@ -267,8 +267,6 @@ namespace PictureViewer
             this.Name = "MainForm";
             this.Text = "MainForm";
             this.Load += new System.EventHandler(this.MainForm_Load);
-            this.DragDrop += new System.Windows.Forms.DragEventHandler(this.MainForm_DragDrop);
-            this.DragEnter += new System.Windows.Forms.DragEventHandler(this.MainForm_DragEnter);
             this.toolStripContainerImage.BottomToolStripPanel.ResumeLayout(false);
             this.toolStripContainerImage.BottomToolStripPanel.PerformLayout();
             this.toolStripContainerImage.ContentPanel.ResumeLayout(false);

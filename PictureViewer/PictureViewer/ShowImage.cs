@@ -16,23 +16,30 @@ namespace PictureViewer
 
         bool isCtrlDown = false;
 
-        public Image showImage;     // 窗体展示的图片
-
         public string curFilePath;  // 当前显示的文件
    
         public List<string> allFilePath;  // 所有的文件 
 
 
-        public void SetShowImage(Image image)
+        public void SetPictureBoxImage(Image image)
         {
-            showImage = image;
+            pictureBox.Image = image;
+
+            Size = image.Size;
+            pictureBox.ClientSize = Size;  // 窗口中除去标题栏和边框的地方
+            pictureBox.SizeMode = PictureBoxSizeMode.StretchImage;
+            StartPosition = FormStartPosition.Manual;
+            Location = GetStartPoston(image.Size);
+        }
+        public void SetShowImageByPath(string imagePath)
+        {
+            //showImage = image;
         }
         public void SetFileParent(string _curFileParh, List<string> _allFilePath)
         {
             curFilePath = _curFileParh;
             allFilePath = _allFilePath;
-        }
-    
+        }    
 
         private ContextMenuStrip picBoxContextMenuStrip;
 
@@ -40,10 +47,10 @@ namespace PictureViewer
         {
             InitializeComponent();
 
-            imagePictureBox.MouseDown += new MouseEventHandler(picture_MouseDown);
-            imagePictureBox.MouseMove += new MouseEventHandler(picture_MouseMove);
-            imagePictureBox.MouseDoubleClick += new MouseEventHandler(picture_DoubleClick);
-            imagePictureBox.MouseWheel += new MouseEventHandler(picture_MouseWheel);
+            pictureBox.MouseDown += new MouseEventHandler(picture_MouseDown);
+            pictureBox.MouseMove += new MouseEventHandler(picture_MouseMove);
+            pictureBox.MouseDoubleClick += new MouseEventHandler(picture_DoubleClick);
+            pictureBox.MouseWheel += new MouseEventHandler(picture_MouseWheel);
 
             KeyDown += new KeyEventHandler(ShowImage_KeyDown);
             KeyPress += new KeyPressEventHandler(ShowImage_KeyPress);
@@ -57,19 +64,6 @@ namespace PictureViewer
             KeyPreview = true; //允许键盘
             TopMost = true;
             FormBorderStyle = FormBorderStyle.None;
-
-
-            Size = showImage.Size;
-            // 窗口中除去标题栏和边框的地方
-            imagePictureBox.ClientSize = Size;
-
-            imagePictureBox.SizeMode = PictureBoxSizeMode.StretchImage;
-            imagePictureBox.Image = showImage;
-
-            StartPosition = FormStartPosition.Manual;
-            Location = GetStartPoston(showImage.Size);
-
-            Controls.Add(imagePictureBox);
         }
 
 
@@ -145,39 +139,41 @@ namespace PictureViewer
         private void ShowImage_KeyDown(object sender, KeyEventArgs e)
         {
             if (e.Control == true)
-                isCtrlDown = true;
-
-            switch (e.KeyCode)
-            {
-                case Keys.Up:
-                    MessageBox.Show("Up");
-                    break;
-                case Keys.Down:
-                    MessageBox.Show("Down");
-                    break;
-                case Keys.Left:
-                    MessageBox.Show("Left");
-                    break;
-                case Keys.Right:
-                    MessageBox.Show("Right");
-                    break;
-            }
+                isCtrlDown = true;           
         }
 
         private void SwitchNext()
         {
-            //int curFilePath = allFilePath.Find
+            //int curFilePathIndex = allFilePath.FindIndex(tmp => tmp == curFilePath);
+            int curIndex = allFilePath.IndexOf(curFilePath);
+            int nextIndex;
+            if (curIndex == allFilePath.Count - 1)
+                nextIndex = 0;
+            else
+                nextIndex = curIndex + 1;
+            Image image = Image.FromFile(allFilePath[nextIndex]);
 
+            SetPictureBoxImage(image);
+            //pictureBox.Image = image;
 
-            //foreach (string filePath in allFilePath)
-            //{
-            //    if(filePath==curFilePath)
-            //        nextFilePath=
-            //}
+            curFilePath = allFilePath[nextIndex];
         }
         private void SwitchPrevious()
         {
+            int curIndex = allFilePath.IndexOf(curFilePath);
+            int preIndex;
+            if (curIndex == 0)
+                preIndex = allFilePath.Count() - 1;
+            else
+                preIndex = curIndex - 1;
 
+            Image image = Image.FromFile(allFilePath[preIndex]);
+
+            SetPictureBoxImage(image);
+
+            //pictureBox.Image = image;
+
+            curFilePath = allFilePath[preIndex];
         }
 
 
@@ -189,6 +185,23 @@ namespace PictureViewer
         {
             if (e.Control == false)
                 isCtrlDown = false;
+            switch (e.KeyCode)
+            {
+                case Keys.Up:
+                    MessageBox.Show("Up");
+                    break;
+                case Keys.Down:
+                    MessageBox.Show("Down");
+                    break;
+                case Keys.Left:
+                    //MessageBox.Show("Left");
+                    SwitchPrevious();
+                    break;
+                case Keys.Right:
+                    //MessageBox.Show("Right");
+                    SwitchNext();
+                    break;
+            }
         }
 
 
@@ -212,7 +225,7 @@ namespace PictureViewer
         private void picture_MouseMove(object sender, MouseEventArgs e)
         {
 
-            this.imagePictureBox.Focus();
+            this.pictureBox.Focus();
             if (e.Button == MouseButtons.Left && isMaxScreen == false && isMaxScreen == false)
             {
                 Point currentPoint = MousePosition;
@@ -243,7 +256,8 @@ namespace PictureViewer
         }
         private void picture_MouseWheel(object sender, MouseEventArgs e)
         {
-            double imageProportion = double.Parse(showImage.Width.ToString()) / double.Parse(showImage.Height.ToString());
+            Image image = pictureBox.Image;
+            double imageProportion = double.Parse(image.Width.ToString()) / double.Parse(image.Height.ToString());
 
             //当前的屏幕除任务栏外的工作域大小
             int ScreenWidth = System.Windows.Forms.Screen.PrimaryScreen.WorkingArea.Width;
@@ -261,14 +275,14 @@ namespace PictureViewer
             }
             if (e.Delta == 120 && isCtrlDown == false)
             {
-                int curPicWidth = imagePictureBox.Width;
-                int curPicHeight = imagePictureBox.Height;
+                int curPicWidth = pictureBox.Width;
+                int curPicHeight = pictureBox.Height;
 
 
-                imagePictureBox.Width = int.Parse(Math.Round(curPicWidth + 20.0 * imageProportion).ToString());
-                imagePictureBox.Height = int.Parse(Math.Round(curPicHeight + 20.0).ToString());
-                Width = imagePictureBox.Width;
-                Height = imagePictureBox.Height;
+                pictureBox.Width = int.Parse(Math.Round(curPicWidth + 20.0 * imageProportion).ToString());
+                pictureBox.Height = int.Parse(Math.Round(curPicHeight + 20.0).ToString());
+                Width = pictureBox.Width;
+                Height = pictureBox.Height;
 
                 //MessageBox.Show(Location.ToString());
 
@@ -288,14 +302,14 @@ namespace PictureViewer
             }
             if (e.Delta == -120 && isCtrlDown == false)
             {
-                int curPicWidth = imagePictureBox.Width;
-                int curPicHeight = imagePictureBox.Height;
+                int curPicWidth = pictureBox.Width;
+                int curPicHeight = pictureBox.Height;
 
-                imagePictureBox.Width = int.Parse(Math.Round((curPicWidth - 28 * imageProportion)).ToString());
-                imagePictureBox.Height = int.Parse(Math.Round((curPicHeight - 28.0)).ToString());
+                pictureBox.Width = int.Parse(Math.Round((curPicWidth - 28 * imageProportion)).ToString());
+                pictureBox.Height = int.Parse(Math.Round((curPicHeight - 28.0)).ToString());
 
-                Width = imagePictureBox.Width;
-                Height = imagePictureBox.Height;
+                Width = pictureBox.Width;
+                Height = pictureBox.Height;
 
                 int X = Location.X + (int)(Math.Round(20.0 * imageProportion / 2));
                 int Y = Location.Y + (int)(Math.Round(20.0 / 2));
@@ -310,7 +324,7 @@ namespace PictureViewer
 
         private void ImageShowModel_DropDownOpening(object sender, EventArgs e)
         {
-            string mode = this.imagePictureBox.SizeMode.ToString();
+            string mode = this.pictureBox.SizeMode.ToString();
             switch (mode)
             {
                 case "StretchImage": mode = "图片适应"; break;
@@ -329,8 +343,8 @@ namespace PictureViewer
             ToolStripMenuItem item = e.ClickedItem as ToolStripMenuItem;
             switch (item.Text)
             {
-                case "图片适应": imagePictureBox.SizeMode = PictureBoxSizeMode.StretchImage; break;
-                case "实际像素": imagePictureBox.SizeMode = PictureBoxSizeMode.AutoSize; break;
+                case "图片适应": pictureBox.SizeMode = PictureBoxSizeMode.StretchImage; break;
+                case "实际像素": pictureBox.SizeMode = PictureBoxSizeMode.AutoSize; break;
                 default: break;
             }
         }

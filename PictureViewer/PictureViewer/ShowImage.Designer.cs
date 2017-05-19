@@ -28,34 +28,34 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.imagePictureBox = new System.Windows.Forms.PictureBox();
-            ((System.ComponentModel.ISupportInitialize)(this.imagePictureBox)).BeginInit();
+            this.pictureBox = new System.Windows.Forms.PictureBox();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox)).BeginInit();
             this.SuspendLayout();
             // 
-            // imagePictureBox
+            // pictureBox
             // 
-            this.imagePictureBox.Location = new System.Drawing.Point(0, 0);
-            this.imagePictureBox.Name = "imagePictureBox";
-            this.imagePictureBox.Size = new System.Drawing.Size(177, 174);
-            this.imagePictureBox.TabIndex = 0;
-            this.imagePictureBox.TabStop = false;
+            this.pictureBox.Location = new System.Drawing.Point(0, 0);
+            this.pictureBox.Name = "pictureBox";
+            this.pictureBox.Size = new System.Drawing.Size(177, 174);
+            this.pictureBox.TabIndex = 0;
+            this.pictureBox.TabStop = false;
             // 
             // ShowImage
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(177, 174);
-            this.Controls.Add(this.imagePictureBox);
+            this.Controls.Add(this.pictureBox);
             this.KeyPreview = true;
             this.Name = "ShowImage";
             this.Text = "窗口图片";
             this.Load += new System.EventHandler(this.ShowImage_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.imagePictureBox)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox)).EndInit();
             this.ResumeLayout(false);
 
         }
         #endregion
-        private System.Windows.Forms.PictureBox imagePictureBox;
+        private System.Windows.Forms.PictureBox pictureBox;
 
     }
 }

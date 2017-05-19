@@ -26,7 +26,6 @@ namespace PictureViewer
         private void MainForm_Load(object sender, EventArgs e)
         {
             MainConfig.StartTreePath = @"F:\Test";
-            MainConfig.ShowFolderPath = @"F:\Test\媚眼柔嫩娇滴滴 爆乳萌妹子猫儿蜜糖化身性感女仆被调教";
             MainConfig.ImageSize=new Size(16 * 10, 9 * 10);
             MainConfig.PanelMainSize = panelMain.Size;
             MainConfig.ShowView = ShowView.SmallView;
@@ -159,35 +158,6 @@ namespace PictureViewer
             //panelMain.BackgroundImage = Image.FromFile(MainConfig.ShowImagePath);
             //panelMain.BackgroundImageLayout = ImageLayout.Zoom;
         }
-
-        private void MainForm_DragDrop(object sender, DragEventArgs e)
-        {
-            //if (e.Data.GetDataPresent(DataFormats.FileDrop))
-            //{
-            //    string[] files = (string[])e.Data.GetData(DataFormats.FileDrop);
-            //    foreach (string item in files)
-            //    {
-            //        if (File.Exists(item))
-            //        {
-            //            MessageBox.Show(item);
-            //            MessageBox.Show("--文件");
-            //        }
-            //        else if (Directory.Exists(item))
-            //        {
-            //            MessageBox.Show(item);
-            //            MessageBox.Show("--文件夹");
-            //        }                    
-            //        MessageBox.Show(e.X.ToString() + " " + e.Y.ToString());
-            //    }
-            //}
-        }
-
-        private void MainForm_DragEnter(object sender, DragEventArgs e)
-        {
-            //if (e.Data.GetDataPresent(DataFormats.FileDrop))
-            //{
-            //    e.Effect = DragDropEffects.Link;
-            //}
-        }
+       
     }
 }

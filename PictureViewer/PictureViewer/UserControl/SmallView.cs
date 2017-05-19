@@ -35,6 +35,10 @@ namespace PictureViewer
         {
 
             string[] pictures = ImageTool.GetAllImage(MainConfig.ShowFolderPath);
+            //foreach (string pic in pictures)
+            //{
+            //    MessageBox.Show(pic);
+            //}
 
             int pictureCount = pictures.Length;
 
@@ -54,19 +58,19 @@ namespace PictureViewer
                     pictureBox.Size = MainConfig.ImageSize;
                     if (index >= pictureCount) { return; }
 
+                    //pictureBox.Load(pictures[index]);
                     pictureBox.Image = Image.FromFile(pictures[index]);
-
                     //FileStream fs = new FileStream(pictures[index], FileMode.Open);
                     //Bitmap bm = new Bitmap(fs);
                     //fs.Dispose();
-                    //pictureBox.Image = bm;                    
+                    //pictureBox.Image = bm;
 
+                    pictureBox.Tag = pictures[index];
                     Point pictureLoction = new Point()
                     {
                         X = pictureBox.Width * column + padding * (column + 1),
                         Y = pictureBox.Height * row + padding * (row + 1)
                     };
-
                     pictureBox.Location = pictureLoction;
                     pictureBox.DoubleClick += pictureBox_DoubleClick;
                     panelMain.Controls.Add(pictureBox);                    
@@ -78,12 +82,26 @@ namespace PictureViewer
         private void pictureBox_DoubleClick(object sender, EventArgs e)
         {
             PictureBox pictureBox = (PictureBox)sender;
+            string curPic = pictureBox.Tag.ToString();
+            List<string> allPic= ImageTool.GetAllImage(MainConfig.ShowFolderPath).ToList();
+
+            //foreach(string path in allPic)
+            //    MessageBox.Show(path.ToString());
+
             Image image = pictureBox.Image;
-            ShowImage newForm = new ShowImage();
-            //newForm.SetImage(image);
-            newForm.showImage=image;
-            newForm.Show();
+            ShowImage showForm = new ShowImage();
+            //newForm.showImage=image;
+            showForm.SetPictureBoxImage(image);
+            showForm.SetFileParent(curPic, allPic);
+            showForm.Show();
         }
      
     }
+}
+
+class MyPictureBox : PictureBox
+{
+    public string filePath;
+    public new event EventHandler DoubleClick;
+
 }

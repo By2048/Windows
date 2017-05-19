@@ -36,5 +36,10 @@ namespace WinFormTest
             UserControlTest2 us1 = new UserControlTest2(textBox1.Text);
             this.panel2.Controls.Add(us1);
         }
+
+        private void pictureBox1_DoubleClick(object sender, EventArgs e)
+        {
+
+        }
     }
 }

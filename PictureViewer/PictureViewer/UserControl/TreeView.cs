@@ -28,50 +28,58 @@ namespace PictureViewer
         }
         private void LoadTreeView(string rootPath)
         {
-            ImageTree userTag = new ImageTree("用户目录", "", NodeType.NodeTag);
-            TreeNode userNode = new TreeNode("用户目录");
+            ImageTree userTag = new ImageTree(Path.GetFileName(rootPath), rootPath, NodeType.Folder);
+            TreeNode userNode = new TreeNode(Path.GetFileName(rootPath));
             userNode.Tag = userTag;
             userNode.ImageKey = "folder.png";
             userNode.SelectedImageKey = "folder-select.png";
             treeViewImg.Nodes.Add(userNode);
             userNode.Expand();
-            LoadTree(rootPath, userNode);           
+            LoadTreeView(rootPath, userNode);
+
+            MainConfig.ShowFolderPath = rootPath;
         }
 
-
-        private void LoadTree(string rootPath, TreeNode rootNode)
+        private void LoadTreeView(string rootPath, TreeNode rootNode)
         {
             DirectoryInfo info = new DirectoryInfo(rootPath);
             DirectoryInfo[] subDirs = info.GetDirectories().OrderByDescending(tmp => tmp.CreationTime).ToArray();
 
             foreach (DirectoryInfo subDir in subDirs)
             {
+                // 子文件中没有文件&&文件夹 跳出循环
+                if (subDir.GetDirectories().Length == 0 && ImageTool.GetFilesByDir(subDir).Length == 0)
+                {
+                    continue;
+                }
                 ImageTree folder = new ImageTree(subDir.Name, subDir.FullName, NodeType.Folder);
                 TreeNode folderNode = new TreeNode(subDir.Name);
                 folderNode.Tag = folder;
                 folderNode.ImageKey = "folder.png";
                 folderNode.SelectedImageKey = "folder-select.png";
-
                 rootNode.Nodes.Add(folderNode);
+
                 DirectoryInfo[] subSubDirs = subDir.GetDirectories();
                 if (subSubDirs.Length != 0)
                 {
-                    LoadTree(subDir.FullName.ToString(), folderNode);
+                    LoadTreeView(subDir.FullName.ToString(), folderNode);
                 }
-                FileInfo[] rootPathimgs = ImageTool.GetFilesByDir(subDir);
-                foreach (FileInfo img in rootPathimgs)
+                FileInfo[] subImgs = ImageTool.GetFilesByDir(subDir);
+                if (subImgs.Length != 0)
                 {
-                    ImageTree image = new ImageTree(img.Name, img.FullName, NodeType.Image);
-                    TreeNode imgNode = new TreeNode(img.Name);
-                    imgNode.Tag = image;
-                    imgNode.ImageKey = "img.png";
-                    imgNode.SelectedImageKey = "img-select.png";
-
-                    folderNode.Nodes.Add(imgNode);
+                    foreach (FileInfo img in subImgs)
+                    {
+                        ImageTree image = new ImageTree(img.Name, img.FullName, NodeType.Image);
+                        TreeNode imgNode = new TreeNode(img.Name);
+                        imgNode.Tag = image;
+                        imgNode.ImageKey = "img.png";
+                        imgNode.SelectedImageKey = "img-select.png";
+                        folderNode.Nodes.Add(imgNode);
+                    }
                 }
             }
+
             FileInfo[] imgs = ImageTool.GetFilesByDir(info);
-            
             foreach (FileInfo img in imgs)
             {
                 ImageTree image = new ImageTree(img.Name, img.FullName, NodeType.Image);
@@ -80,48 +88,6 @@ namespace PictureViewer
                 imgNode.ImageKey = "img.png";
                 imgNode.SelectedImageKey = "img-select.png";
                 rootNode.Nodes.Add(imgNode);
-            }
-        }
-
-        private void GetDirectories(DirectoryInfo[] subDirs, TreeNode rootNode)
-        {
-            TreeNode folderNode;
-            DirectoryInfo[] subSubDirs;
-            foreach (DirectoryInfo subDir in subDirs)
-            {
-                FileInfo[] files = subDir.GetFiles("*.*").
-                    Where(tmp => tmp.Name.EndsWith("jpg") ||
-                    tmp.Name.EndsWith(".jpeg") ||
-                    tmp.Name.EndsWith(".png")).
-                    ToArray();
-
-
-                if (files.Length <= 0)
-                    continue;
-
-                ImageTree folder = new ImageTree(subDir.Name, subDir.FullName, NodeType.Folder);
-
-                folderNode = new TreeNode(folder.Name);
-                folderNode.Tag = folder;
-                folderNode.ImageKey = "folder.png";
-                folderNode.SelectedImageKey = "folder-select.png";
-
-                subSubDirs = subDir.GetDirectories();
-                if (subSubDirs.Length != 0)
-                    GetDirectories(subSubDirs, folderNode);
-
-                rootNode.Nodes.Add(folderNode);
-
-                foreach (FileInfo file in files)
-                {
-                    ImageTree image = new ImageTree(file.Name, file.FullName, NodeType.Image);
-                    TreeNode imgNode = new TreeNode(image.Name);
-                    imgNode.Tag = image;
-                    imgNode.ImageKey = "img.png";
-                    imgNode.SelectedImageKey = "img-select.png";
-                    folderNode.Nodes.Add(imgNode);
-                }
-
             }
         }
 
@@ -136,14 +102,14 @@ namespace PictureViewer
             TreeNode node = e.Node;
             ImageTree nodeTag = (ImageTree)node.Tag;
 
-            MainConfig.ShowImagePath = nodeTag.FullPath;
-
             if (nodeTag.NodeType.ToString() == "Folder")
             {
+                MainConfig.ShowFolderPath = nodeTag.FullPath;
                 LoadUserControlEvent();
             }
             else if (nodeTag.NodeType.ToString() == "Image")
             {
+                MainConfig.ShowImagePath = nodeTag.FullPath;
                 LoadImageEvent();
             }
             else
@@ -170,8 +136,8 @@ namespace PictureViewer
                 dragNode.ImageKey = "folder.png";
                 dragNode.SelectedImageKey = "folder-select.png";
                 treeViewImg.Nodes.Add(dragNode);
-            }            
-            
+            }
+
             if (e.Data.GetDataPresent(DataFormats.FileDrop))
             {
                 //TreeNode dragNode = treeViewImg.Nodes[1];
