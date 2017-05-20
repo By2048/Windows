@@ -63,18 +63,6 @@
     <Compile Include="Form04-Paint.Designer.cs">
       <DependentUpon>Form04-Paint.cs</DependentUpon>
     </Compile>
-    <Compile Include="Form06-Drag.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Form06-Drag.Designer.cs">
-      <DependentUpon>Form06-Drag.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Form07-TestMain.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Form07-TestMain.Designer.cs">
-      <DependentUpon>Form07-TestMain.cs</DependentUpon>
-    </Compile>
     <Compile Include="Form09-Tree.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -87,40 +75,14 @@
     <Compile Include="Form11-ListView.Designer.cs">
       <DependentUpon>Form11-ListView.cs</DependentUpon>
     </Compile>
-    <Compile Include="Form15-TreeView.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Form15-TreeView.Designer.cs">
-      <DependentUpon>Form15-TreeView.cs</DependentUpon>
-    </Compile>
     <Compile Include="Form18-TestImage.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Form18-TestImage.Designer.cs">
       <DependentUpon>Form18-TestImage.cs</DependentUpon>
     </Compile>
-    <Compile Include="FormLarge.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="FormLarge.Designer.cs">
-      <DependentUpon>FormLarge.cs</DependentUpon>
-    </Compile>
-    <Compile Include="ImageTree.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="RootPath.cs" />
-    <Compile Include="UserControlTest.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="UserControlTest.Designer.cs">
-      <DependentUpon>UserControlTest.cs</DependentUpon>
-    </Compile>
-    <Compile Include="UserControlTest2.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="UserControlTest2.Designer.cs">
-      <DependentUpon>UserControlTest2.cs</DependentUpon>
-    </Compile>
     <Compile Include="UserControl\TreeView.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -133,12 +95,6 @@
     <Compile Include="UserControl\ImgSmallView.Designer.cs">
       <DependentUpon>ImgSmallView.cs</DependentUpon>
     </Compile>
-    <Compile Include="ShowImage.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="ShowImage.Designer.cs">
-      <DependentUpon>ShowImage.cs</DependentUpon>
-    </Compile>
     <EmbeddedResource Include="Form00-Test.resx">
       <DependentUpon>Form00-Test.cs</DependentUpon>
     </EmbeddedResource>
@@ -148,12 +104,6 @@
     <EmbeddedResource Include="Form04-Paint.resx">
       <DependentUpon>Form04-Paint.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Form06-Drag.resx">
-      <DependentUpon>Form06-Drag.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Form07-TestMain.resx">
-      <DependentUpon>Form07-TestMain.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="Form09-Tree.resx">
       <DependentUpon>Form09-Tree.cs</DependentUpon>
       <SubType>Designer</SubType>
@@ -161,14 +111,8 @@
     <EmbeddedResource Include="Form11-ListView.resx">
       <DependentUpon>Form11-ListView.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Form15-TreeView.resx">
-      <DependentUpon>Form15-TreeView.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="Form18-TestImage.resx">
       <DependentUpon>Form18-TestImage.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="FormLarge.resx">
-      <DependentUpon>FormLarge.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -180,20 +124,11 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
-    <EmbeddedResource Include="UserControlTest.resx">
-      <DependentUpon>UserControlTest.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="UserControlTest2.resx">
-      <DependentUpon>UserControlTest2.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="UserControl\TreeView.resx">
       <DependentUpon>TreeView.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UserControl\ImgSmallView.resx">
       <DependentUpon>ImgSmallView.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="ShowImage.resx">
-      <DependentUpon>ShowImage.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
