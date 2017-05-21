@@ -16,13 +16,27 @@ namespace PictureViewer
 
         bool isCtrlDown = false;
 
+        bool allowArrowKey = false;
+
         public string curFilePath;  // 当前显示的文件
-   
+
         public List<string> allFilePath;  // 所有的文件 
 
 
-        public void SetPictureBoxImage(Image image)
+        public void SetPictureBoxByImage(Image image)
         {
+            pictureBox.Image = image;
+
+            Size = image.Size;
+            pictureBox.ClientSize = Size;  // 窗口中除去标题栏和边框的地方
+            pictureBox.SizeMode = PictureBoxSizeMode.StretchImage;
+            StartPosition = FormStartPosition.Manual;
+            Location = GetStartPoston(image.Size);
+        }
+
+        public void SetPictureBoxByPath(string filePath)
+        {
+            Image image = Image.FromFile(filePath);
             pictureBox.Image = image;
 
             Size = image.Size;
@@ -39,7 +53,7 @@ namespace PictureViewer
         {
             curFilePath = _curFileParh;
             allFilePath = _allFilePath;
-        }    
+        }
 
         private ContextMenuStrip picBoxContextMenuStrip;
 
@@ -136,11 +150,6 @@ namespace PictureViewer
             return startPoint;
         }
 
-        private void ShowImage_KeyDown(object sender, KeyEventArgs e)
-        {
-            if (e.Control == true)
-                isCtrlDown = true;           
-        }
 
         private void SwitchNext()
         {
@@ -153,7 +162,7 @@ namespace PictureViewer
                 nextIndex = curIndex + 1;
             Image image = Image.FromFile(allFilePath[nextIndex]);
 
-            SetPictureBoxImage(image);
+            SetPictureBoxByImage(image);
             //pictureBox.Image = image;
 
             curFilePath = allFilePath[nextIndex];
@@ -169,39 +178,90 @@ namespace PictureViewer
 
             Image image = Image.FromFile(allFilePath[preIndex]);
 
-            SetPictureBoxImage(image);
+            SetPictureBoxByImage(image);
 
             //pictureBox.Image = image;
 
             curFilePath = allFilePath[preIndex];
         }
 
+        private void SwitchTop()
+        {
+            Image image;
+            int curIndex = allFilePath.IndexOf(curFilePath);
+            if (curIndex == 0)
+                return;
+            else
+                image = Image.FromFile(allFilePath[0]);
+            SetPictureBoxByImage(image);
+            curFilePath = allFilePath[0];
+        }
+        private void SwitchEnd()
+        {
+            Image image;
+            int endIndex = allFilePath.Count - 1;
+            int curIndex = allFilePath.IndexOf(curFilePath);
+            if (curIndex == allFilePath.Count - 1)
+                return;
+            else
+                image = Image.FromFile(allFilePath[endIndex]);
+            SetPictureBoxByImage(image);
+            curFilePath = allFilePath[endIndex];
+        }
 
+
+
+        private void ShowImage_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.Control == true)
+                isCtrlDown = true;
+            if (curFilePath != null && allFilePath.Count != 0)
+                allowArrowKey = true;
+        }
         private void ShowImage_KeyPress(object sender, KeyPressEventArgs e)
         {
             //if (e.KeyChar.ToString() == Keys.Control.ToString())
         }
         private void ShowImage_KeyUp(object sender, KeyEventArgs e)
-        {
+        {        
+            if (allowArrowKey == true && isCtrlDown==false)
+            {
+                switch (e.KeyCode)
+                {
+                    case Keys.Up:
+                        SwitchPrevious();
+                        break;
+                    case Keys.Down:
+                        SwitchNext();
+                        break;
+                    case Keys.Left:
+                        SwitchPrevious();
+                        break;
+                    case Keys.Right:
+                        SwitchNext();
+                        break;
+                }
+            }
+            if (allowArrowKey == true && isCtrlDown == true)
+            {
+                switch (e.KeyCode)
+                {
+                    case Keys.Up:
+                        SwitchTop();
+                        break;
+                    case Keys.Down:
+                        SwitchEnd();
+                        break;
+                    case Keys.Left:
+                        SwitchTop();
+                        break;
+                    case Keys.Right:
+                        SwitchEnd();
+                        break;
+                }
+            }
             if (e.Control == false)
                 isCtrlDown = false;
-            switch (e.KeyCode)
-            {
-                case Keys.Up:
-                    MessageBox.Show("Up");
-                    break;
-                case Keys.Down:
-                    MessageBox.Show("Down");
-                    break;
-                case Keys.Left:
-                    //MessageBox.Show("Left");
-                    SwitchPrevious();
-                    break;
-                case Keys.Right:
-                    //MessageBox.Show("Right");
-                    SwitchNext();
-                    break;
-            }
         }
 
 

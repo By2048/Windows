@@ -11,7 +11,13 @@ namespace CSharpTest
     {
         static void Main()
         {
-            
+            List<string> pp = new List<string>();
+            for (int i = 0; i < 5; i++)
+                pp.Add(i.ToString());
+            foreach (string p in pp)
+                Console.WriteLine(p);
+            Console.WriteLine("--------");
+            Console.WriteLine(pp.Count.ToString());
         }
 
     }

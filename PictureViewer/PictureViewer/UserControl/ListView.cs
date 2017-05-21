@@ -222,7 +222,7 @@ namespace PictureViewer
             PictureBox pictureBox = (PictureBox)sender;
             Image image = pictureBox.Image;
             ShowImage newForm = new ShowImage();
-            newForm.SetPictureBoxImage(image);
+            newForm.SetPictureBoxByImage(image);
             newForm.Show();
         }
 
