@@ -18,6 +18,7 @@ namespace PictureViewer
             Size = MainConfig.PanelMainSize;
 
             pictureBox.Image = Image.FromFile(MainConfig.ShowImagePath);
+            pictureBox.Tag = MainConfig.ShowImagePath;
             pictureBox.SizeMode = PictureBoxSizeMode.Zoom;
             pictureBox.DoubleClick += pictureBox_DoubleClick;
 
@@ -25,9 +26,11 @@ namespace PictureViewer
         private void pictureBox_DoubleClick(object sender, EventArgs e)
         {
             PictureBox pictureBox = (PictureBox)sender;
-            Image image = pictureBox.Image;
+            string filePath = pictureBox.Tag.ToString();
+            //Image image = pictureBox.Image;
             ShowImage newForm = new ShowImage();
-            newForm.SetPictureBoxByImage(image);
+            newForm.SetFileParent(filePath);
+            //newForm.SetPictureBoxByImage(image);
             newForm.Show();
         }
     }

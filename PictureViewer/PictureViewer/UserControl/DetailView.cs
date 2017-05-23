@@ -61,6 +61,7 @@ namespace PictureViewer
                     if (index >= pictureCount) { return; }
                     //pictureBox.Image = Image.FromFile(pictures[pictureIndex]);
                     pictureBox.Load(pictures[index]);
+                    pictureBox.Tag = pictures[index];
                     Point pictureLoction = new Point()
                     {
                         X = padding * (column + 1) + pictureBox.Width * column,
@@ -79,9 +80,10 @@ namespace PictureViewer
         private void pictureBox_DoubleClick(object sender, EventArgs e)
         {
             PictureBox pictureBox = (PictureBox)sender;
-            Image image = pictureBox.Image;
+            string filePath = pictureBox.Tag.ToString();
             ShowImage newForm = new ShowImage();
-            newForm.SetPictureBoxByImage(image);
+            newForm.SetFileParent(filePath);
+            //newForm.SetPictureBoxByImage(image);
             newForm.Show();
         }
 

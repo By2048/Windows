@@ -60,12 +60,12 @@ namespace PictureViewer
 
                     //pictureBox.Load(pictures[index]);
                     pictureBox.Image = Image.FromFile(pictures[index]);
+                    pictureBox.Tag = pictures[index];
                     //FileStream fs = new FileStream(pictures[index], FileMode.Open);
                     //Bitmap bm = new Bitmap(fs);
                     //fs.Dispose();
                     //pictureBox.Image = bm;
 
-                    pictureBox.Tag = pictures[index];
                     Point pictureLoction = new Point()
                     {
                         X = pictureBox.Width * column + padding * (column + 1),
@@ -82,26 +82,19 @@ namespace PictureViewer
         private void pictureBox_DoubleClick(object sender, EventArgs e)
         {
             PictureBox pictureBox = (PictureBox)sender;
-            string curPic = pictureBox.Tag.ToString();
+            string filePath = pictureBox.Tag.ToString();
             List<string> allPic= ImageTool.GetAllImage(MainConfig.ShowFolderPath).ToList();
 
             //foreach(string path in allPic)
             //    MessageBox.Show(path.ToString());
 
-            Image image = pictureBox.Image;
+            //Image image = pictureBox.Image;
             ShowImage showForm = new ShowImage();
             //newForm.showImage=image;
-            showForm.SetPictureBoxByImage(image);
-            showForm.SetFileParent(curPic, allPic);
+            //showForm.SetPictureBoxByImage(image);
+            showForm.SetFileParent(filePath, allPic);
             showForm.Show();
         }
      
     }
-}
-
-class MyPictureBox : PictureBox
-{
-    public string filePath;
-    public new event EventHandler DoubleClick;
-
 }

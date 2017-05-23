@@ -204,6 +204,7 @@ namespace PictureViewer
                     Bitmap bm = new Bitmap(fs);
                     fs.Dispose();
                     pictureBox.Image = bm;
+                    pictureBox.Tag = imagePath[index];
 
                     //pictureBox.Load(imagePath[pictureIndex]);
                     //pictureBox.Image=Image.FromFile(imagePath[pictureIndex]);
@@ -220,9 +221,11 @@ namespace PictureViewer
         private void pictureBox_DoubleClick(object sender, EventArgs e)
         {
             PictureBox pictureBox = (PictureBox)sender;
-            Image image = pictureBox.Image;
+            string filePath = pictureBox.Tag.ToString();
+            //Image image = pictureBox.Image;
             ShowImage newForm = new ShowImage();
-            newForm.SetPictureBoxByImage(image);
+            newForm.SetFileParent(filePath);
+            //newForm.SetPictureBoxByImage(image);
             newForm.Show();
         }
 

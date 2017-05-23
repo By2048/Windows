@@ -39,14 +39,15 @@ namespace PictureViewer
             int pictureHeight = panelSmallImage.Height - 17;
             int pictureWidth = pictureHeight * 16 / 9;
 
-            for (int cnt = 0; cnt < pictureCount; cnt++)
+            for (int index = 0; index < pictureCount; index++)
             {
                 PictureBox pictureBox = new PictureBox();
                 pictureBox.SizeMode = PictureBoxSizeMode.Zoom;
                 pictureBox.Width = pictureWidth;
                 pictureBox.Height = pictureHeight;
 
-                pictureBox.Image = Image.FromFile(pictures[cnt]);
+                pictureBox.Image = Image.FromFile(pictures[index]);
+                pictureBox.Tag = pictures[index];
                 //FileStream fs = new FileStream(pictures[cnt], FileMode.Open);
                 //Bitmap bm = new Bitmap(fs);
                 //fs.Dispose();
@@ -54,7 +55,7 @@ namespace PictureViewer
 
                 Point pictureLoction = new Point()
                 {
-                    X = padding * (cnt + 1) + pictureWidth * cnt,
+                    X = padding * (index + 1) + pictureWidth * index,
                     Y = 0
                 };
                 pictureBox.Location = pictureLoction;
@@ -74,9 +75,11 @@ namespace PictureViewer
         private void pictureBox_DoubleClick(object sender, EventArgs e)
         {
             PictureBox pictureBox = (PictureBox)sender;
-            Image image = pictureBox.Image;
+            string filePath = pictureBox.Tag.ToString();
+            //Image image = pictureBox.Image;
             ShowImage newForm = new ShowImage();
-            newForm.SetPictureBoxByImage(image);
+            newForm.SetFileParent(filePath);
+            //newForm.SetPictureBoxByImage(image);
             newForm.Show();
         }
 

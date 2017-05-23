@@ -20,8 +20,20 @@ namespace PictureViewer
 
         public string curFilePath;  // 当前显示的文件
 
-        public List<string> allFilePath;  // 所有的文件 
+        public List<string> allFilePath=new List<string>();  // 所有的文件 
 
+        // 加载 curFilePath 的 Image 到 pictureBoxu
+        private void LoadImage()
+        {
+            Image image = Image.FromFile(curFilePath);
+            pictureBox.Image = image;
+
+            Size = image.Size;
+            pictureBox.ClientSize = Size;  // 窗口中除去标题栏和边框的地方
+            pictureBox.SizeMode = PictureBoxSizeMode.StretchImage;
+            StartPosition = FormStartPosition.Manual;
+            Location = GetStartPoston(image.Size);
+        }
 
         public void SetPictureBoxByImage(Image image)
         {
@@ -38,6 +50,7 @@ namespace PictureViewer
         {
             Image image = Image.FromFile(filePath);
             pictureBox.Image = image;
+            pictureBox.Tag = filePath;
 
             Size = image.Size;
             pictureBox.ClientSize = Size;  // 窗口中除去标题栏和边框的地方
@@ -45,14 +58,16 @@ namespace PictureViewer
             StartPosition = FormStartPosition.Manual;
             Location = GetStartPoston(image.Size);
         }
-        public void SetShowImageByPath(string imagePath)
-        {
-            //showImage = image;
-        }
+
         public void SetFileParent(string _curFileParh, List<string> _allFilePath)
         {
             curFilePath = _curFileParh;
             allFilePath = _allFilePath;
+        }
+        public void SetFileParent(string _curFileParh)
+        {
+            curFilePath = _curFileParh;
+            //allFilePath = null;
         }
 
         private ContextMenuStrip picBoxContextMenuStrip;
@@ -71,6 +86,8 @@ namespace PictureViewer
             KeyUp += new KeyEventHandler(ShowImage_KeyUp);
 
             CreateContextMenuStrip();
+
+            //LoadImage();
         }
 
         private void ShowImage_Load(object sender, EventArgs e)
@@ -78,6 +95,8 @@ namespace PictureViewer
             KeyPreview = true; //允许键盘
             TopMost = true;
             FormBorderStyle = FormBorderStyle.None;
+            LoadImage();
+
         }
 
 
@@ -160,12 +179,11 @@ namespace PictureViewer
                 nextIndex = 0;
             else
                 nextIndex = curIndex + 1;
-            Image image = Image.FromFile(allFilePath[nextIndex]);
-
-            SetPictureBoxByImage(image);
-            //pictureBox.Image = image;
 
             curFilePath = allFilePath[nextIndex];
+
+            LoadImage();
+            //SetPictureBoxByPath(allFilePath[nextIndex]);
         }
         private void SwitchPrevious()
         {
@@ -176,37 +194,40 @@ namespace PictureViewer
             else
                 preIndex = curIndex - 1;
 
-            Image image = Image.FromFile(allFilePath[preIndex]);
-
-            SetPictureBoxByImage(image);
-
-            //pictureBox.Image = image;
-
             curFilePath = allFilePath[preIndex];
+
+            LoadImage();
+
+            //Image image = Image.FromFile(allFilePath[preIndex]);
+            //SetPictureBoxByImage(image);
+            //pictureBox.Image = image;
         }
 
         private void SwitchTop()
         {
-            Image image;
+            //Image image;
             int curIndex = allFilePath.IndexOf(curFilePath);
             if (curIndex == 0)
                 return;
             else
-                image = Image.FromFile(allFilePath[0]);
-            SetPictureBoxByImage(image);
-            curFilePath = allFilePath[0];
+                curFilePath = allFilePath[0];
+            LoadImage();
+            //image = Image.FromFile(allFilePath[0]);
+            //SetPictureBoxByImage(image);
+
         }
         private void SwitchEnd()
         {
-            Image image;
+            //Image image;
             int endIndex = allFilePath.Count - 1;
             int curIndex = allFilePath.IndexOf(curFilePath);
             if (curIndex == allFilePath.Count - 1)
                 return;
             else
-                image = Image.FromFile(allFilePath[endIndex]);
-            SetPictureBoxByImage(image);
-            curFilePath = allFilePath[endIndex];
+               curFilePath = allFilePath[endIndex];
+            LoadImage();
+            //image = Image.FromFile(allFilePath[endIndex]);
+            //SetPictureBoxByImage(image);
         }
 
 
