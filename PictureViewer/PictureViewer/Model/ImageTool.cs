@@ -9,14 +9,14 @@ namespace PictureViewer
 {
     public static class ImageTool
     {
-        public static string[] GetAllImage(string folderPath)
+        public static string[] GetAllImagePath(string folderPath)
         {
-            string[] pictures = Directory.GetFiles(folderPath, "*.*").
+            string[] picturePaths = Directory.GetFiles(folderPath, "*.*").
                                 Where(tmp => tmp.EndsWith("jpg") ||
                                 tmp.EndsWith(".jpeg") ||
                                 tmp.EndsWith(".png")).
                                 ToArray();
-            return pictures;
+            return picturePaths;
         }
 
         public static FileInfo[] GetFilesByPath(string filePath)

@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.IO;
 
 namespace PictureViewer
 {
@@ -35,39 +36,13 @@ namespace PictureViewer
             Location = GetStartPoston(image.Size);
         }
 
-        public void SetPictureBoxByImage(Image image)
+   
+    
+        public void SetFileParent(string filePath)
         {
-            pictureBox.Image = image;
-
-            Size = image.Size;
-            pictureBox.ClientSize = Size;  // 窗口中除去标题栏和边框的地方
-            pictureBox.SizeMode = PictureBoxSizeMode.StretchImage;
-            StartPosition = FormStartPosition.Manual;
-            Location = GetStartPoston(image.Size);
-        }
-
-        public void SetPictureBoxByPath(string filePath)
-        {
-            Image image = Image.FromFile(filePath);
-            pictureBox.Image = image;
-            pictureBox.Tag = filePath;
-
-            Size = image.Size;
-            pictureBox.ClientSize = Size;  // 窗口中除去标题栏和边框的地方
-            pictureBox.SizeMode = PictureBoxSizeMode.StretchImage;
-            StartPosition = FormStartPosition.Manual;
-            Location = GetStartPoston(image.Size);
-        }
-
-        public void SetFileParent(string _curFileParh, List<string> _allFilePath)
-        {
-            curFilePath = _curFileParh;
-            allFilePath = _allFilePath;
-        }
-        public void SetFileParent(string _curFileParh)
-        {
-            curFilePath = _curFileParh;
-            //allFilePath = null;
+            curFilePath = filePath;
+            List<string> paths= ImageTool.GetAllImagePath(Path.GetDirectoryName(filePath)).ToList();
+            allFilePath = paths;           
         }
 
         private ContextMenuStrip picBoxContextMenuStrip;
@@ -86,8 +61,6 @@ namespace PictureViewer
             KeyUp += new KeyEventHandler(ShowImage_KeyUp);
 
             CreateContextMenuStrip();
-
-            //LoadImage();
         }
 
         private void ShowImage_Load(object sender, EventArgs e)
@@ -96,7 +69,6 @@ namespace PictureViewer
             TopMost = true;
             FormBorderStyle = FormBorderStyle.None;
             LoadImage();
-
         }
 
 

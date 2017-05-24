@@ -20,7 +20,8 @@ namespace WinFormTest
 
         private void Form00_Load(object sender, EventArgs e)
         {
-           
+            string path = @"F:\Test\16b25.jpg";
+            MessageBox.Show(Path.GetDirectoryName(path));
         }
 
     }

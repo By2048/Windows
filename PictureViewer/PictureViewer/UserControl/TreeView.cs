@@ -170,7 +170,6 @@ namespace PictureViewer
             }
         }
 
-
         public TreeNode FindNode(string nodeText, TreeNode rootNode)
         {
             foreach (TreeNode node in rootNode.Nodes)

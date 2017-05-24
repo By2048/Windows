@@ -40,7 +40,7 @@ namespace PictureViewer
             //    tmp.EndsWith(".png")).
             //    ToArray();
 
-            string[] pictures = ImageTool.GetAllImage(MainConfig.ShowFolderPath);
+            string[] pictures = ImageTool.GetAllImagePath(MainConfig.ShowFolderPath);
 
             int pictureCount = pictures.Length;
 

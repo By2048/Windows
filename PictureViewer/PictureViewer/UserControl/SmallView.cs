@@ -34,7 +34,7 @@ namespace PictureViewer
         private void ShowSmallImages()
         {
 
-            string[] pictures = ImageTool.GetAllImage(MainConfig.ShowFolderPath);
+            string[] pictures = ImageTool.GetAllImagePath(MainConfig.ShowFolderPath);
             //foreach (string pic in pictures)
             //{
             //    MessageBox.Show(pic);
@@ -83,7 +83,7 @@ namespace PictureViewer
         {
             PictureBox pictureBox = (PictureBox)sender;
             string filePath = pictureBox.Tag.ToString();
-            List<string> allPic= ImageTool.GetAllImage(MainConfig.ShowFolderPath).ToList();
+            //List<string> allPic= ImageTool.GetAllImage(MainConfig.ShowFolderPath).ToList();
 
             //foreach(string path in allPic)
             //    MessageBox.Show(path.ToString());
@@ -92,7 +92,7 @@ namespace PictureViewer
             ShowImage showForm = new ShowImage();
             //newForm.showImage=image;
             //showForm.SetPictureBoxByImage(image);
-            showForm.SetFileParent(filePath, allPic);
+            showForm.SetFileParent(filePath);
             showForm.Show();
         }
      
