@@ -46,6 +46,7 @@
             this.Controls.Add(this.panelMain);
             this.Name = "SmallView";
             this.Size = new System.Drawing.Size(397, 370);
+            this.Load += new System.EventHandler(this.SmallView_Load);
             this.ResumeLayout(false);
 
         }

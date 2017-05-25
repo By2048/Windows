@@ -37,5 +37,4 @@ C:\Users\Administrator\Desktop\Windows\PictureViewer\WinFormTest\obj\Debug\WinFo
 C:\Users\Administrator\Desktop\Windows\PictureViewer\WinFormTest\obj\Debug\WinFormTest.ImgListView.resources
 C:\Users\Administrator\Desktop\Windows\PictureViewer\WinFormTest\obj\Debug\WinFormTest.ShowImage.resources
 E:\Desktop\Windows\PictureViewer\WinFormTest\obj\Debug\WinFormTest.Form18.resources
-E:\Desktop\Windows\PictureViewer\WinFormTest\bin\Debug\Newtonsoft.Json.dll
 E:\Desktop\Windows\PictureViewer\WinFormTest\obj\Debug\WinFormTest.Form12.resources

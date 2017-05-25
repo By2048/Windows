@@ -24,8 +24,6 @@ namespace WinFormTest
         private void Form12_Load(object sender, EventArgs e)
         {
             CenterToScreen();
-           
-
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -70,10 +68,6 @@ namespace WinFormTest
         {
 
             //string json = File.ReadAllText(@"F:\\Test.json");
-            string json = File.ReadAllText(@"F:\\Test3.json");
-            JObject obj = JObject.Parse(json);
-
-            MessageBox.Show(obj.ToString());
 
             //MessageBox.Show((string)obj["Collections"].ToString());
             //MessageBox.Show((string)obj["Collections"][0]["FolderPath"]);
@@ -90,19 +84,6 @@ namespace WinFormTest
 
             //objArr.Remove(obj["Collections"][0]);
             //MessageBox.Show(obj.ToString());
-
-
-            //string pp = @"""Id3"": {""FolderPath"": ""F:\\Test3"",""CollectionDate"": ""2015-11-52""}"; 
-            string pp = @" {""FolderPath"": ""F:\\Test3"",""CollectionDate"": ""2015-11-52""}"; 
-            MessageBox.Show(pp);
-
-
-
-            obj.Add("Id3",JObject.Parse(pp));
-            MessageBox.Show(obj.ToString());
-
-            obj.Remove("Id1");
-            MessageBox.Show(obj.ToString());
 
 
 
@@ -133,6 +114,45 @@ namespace WinFormTest
             //MessageBox.Show((string)obj["school"].ToString());
 
         }
+
+        string json;
+        JObject obj;
+        private void LoadJson_Click(object sender, EventArgs e)
+        {
+            json = File.ReadAllText(@"F:\\Test3.json");
+            obj = JObject.Parse(json);
+        }
+        private void Add_Click(object sender, EventArgs e)
+        {
+            string addJson = @" {""FolderPath"": ""F:\\Test3"",""CollectionDate"": ""2015-11-52""}";
+            obj.Add("Id3", JObject.Parse(addJson));
+            MessageBox.Show(obj.ToString());
+        }
+
+        private void Del_Click(object sender, EventArgs e)
+        {
+            obj.Remove("Id1");
+            MessageBox.Show(obj.ToString());
+        }
+
+        private void Write_Click(object sender, EventArgs e)
+        {
+            string strJson = obj.ToString();
+
+            FileInfo myFile = new FileInfo(@"F:\Test3.Json");
+            StreamWriter sw = myFile.CreateText();
+            sw.WriteLine(strJson);
+            sw.Close();
+        }
+
+        private void Show_Click(object sender, EventArgs e)
+        {
+            //string json = File.ReadAllText(@"F:\\Test3.json");
+            //JObject obj = JObject.Parse(json);
+            //textBox.Text += obj.ToString();
+            textBox.Text += obj.ToString();
+        }
+
 
     }
 }

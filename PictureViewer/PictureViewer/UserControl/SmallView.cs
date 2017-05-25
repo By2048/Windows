@@ -13,16 +13,18 @@ namespace PictureViewer
 {
     public partial class SmallView : UserControl
     {
-        /// <summary>
-        /// 根据传入的窗体大小和图片大小来初始化SmallView
-        /// </summary>
-        /// <param name="panelSize">窗体中SmallView需要展示的大小</param>
         public SmallView()
         {
             InitializeComponent();
             Size = MainConfig.PanelMainSize;
             panelMain.AutoScroll = true;
-            ShowSmallImages();            
+            ShowSmallImages();
+        }
+        private void SmallView_Load(object sender, EventArgs e)
+        {
+            ParentForm.KeyDown += new KeyEventHandler(SmallView_KeyDown);
+            ParentForm.KeyPress += new KeyPressEventHandler(SmallView_KeyPress);
+            ParentForm.KeyUp += new KeyEventHandler(SmallView_KeyUp);
         }
 
         /// <summary>
@@ -33,12 +35,7 @@ namespace PictureViewer
         /// <param name="imageSize">需要显示的图片大小</param>
         private void ShowSmallImages()
         {
-
             string[] pictures = ImageTool.GetAllImagePath(MainConfig.ShowFolderPath);
-            //foreach (string pic in pictures)
-            //{
-            //    MessageBox.Show(pic);
-            //}
 
             int pictureCount = pictures.Length;
 
@@ -71,12 +68,43 @@ namespace PictureViewer
                         X = pictureBox.Width * column + padding * (column + 1),
                         Y = pictureBox.Height * row + padding * (row + 1)
                     };
+
                     pictureBox.Location = pictureLoction;
                     pictureBox.DoubleClick += pictureBox_DoubleClick;
-                    panelMain.Controls.Add(pictureBox);                    
+                    pictureBox.MouseDown += pictureBox_MouseDown;
+                    panelMain.Controls.Add(pictureBox);
                 }
             }
+
+
         }
+
+        private void SmallView_KeyUp(object sender, KeyEventArgs e)
+        {
+            //MessageBox.Show("Up");
+        }
+
+        private void SmallView_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            //MessageBox.Show("Press");
+        }
+
+        private void SmallView_KeyDown(object sender, KeyEventArgs e)
+        {
+            //MessageBox.Show("Down");
+        }
+
+        private void pictureBox_MouseDown(object sender, MouseEventArgs e)
+        {
+            PictureBox pictureBox = (PictureBox)sender;
+            string filePath = pictureBox.Tag.ToString();
+            if (e.Button == MouseButtons.Right)
+            {
+                ContextMenuStrip = CreateContextMenuStrip(filePath);
+            }
+        }
+
+
 
         // 双击显示大图
         private void pictureBox_DoubleClick(object sender, EventArgs e)
@@ -95,6 +123,48 @@ namespace PictureViewer
             showForm.SetFileParent(filePath);
             showForm.Show();
         }
-     
+
+        private ContextMenuStrip CreateContextMenuStrip(string filePath)
+        {
+            ContextMenuStrip picBoxContextMenuStrip;
+            ToolStripMenuItem Del;
+            ToolStripMenuItem Add;
+
+            picBoxContextMenuStrip = new ContextMenuStrip();
+            picBoxContextMenuStrip.Name = "picBoxContextMenuStrip";
+
+            Del = new ToolStripMenuItem();
+            Del.Name = "Del";
+            Del.Text = "删除";
+            Del.Click += new EventHandler(Del_click);
+            Del.Tag = filePath;
+
+            Add = new ToolStripMenuItem();
+            Add.Name = "Add";
+            Add.Text = "添加收藏";
+            Add.Click += new EventHandler(Add_click);
+            Add.Tag = filePath;
+
+            picBoxContextMenuStrip.Items.AddRange(
+                new ToolStripItem[] {
+                Del,
+                Add,
+            });
+            return picBoxContextMenuStrip;
+        }
+        private void Del_click(object sender, EventArgs e)
+        {
+            ToolStripMenuItem item = (ToolStripMenuItem)sender;
+            string filePath = item.Tag.ToString();
+            MessageBox.Show(filePath);
+        }
+        private void Add_click(object sender, EventArgs e)
+        {
+            ToolStripMenuItem item = (ToolStripMenuItem)sender;
+            string filePath = item.Tag.ToString();
+            MessageBox.Show(filePath);
+        }
+
+
     }
 }
