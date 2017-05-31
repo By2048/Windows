@@ -48,6 +48,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Model\CollectionTool.cs" />
     <Compile Include="Model\Enums.cs" />
     <Compile Include="Model\ImageTool.cs" />
     <Compile Include="Model\ImageTree.cs" />

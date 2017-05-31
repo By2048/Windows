@@ -100,7 +100,7 @@ namespace PictureViewer
             string filePath = pictureBox.Tag.ToString();
             if (e.Button == MouseButtons.Right)
             {
-                ContextMenuStrip = CreateContextMenuStrip(filePath);
+                ContextMenuStrip = ImageTool.CreateContextMenuStrip(filePath);
             }
         }
 
@@ -124,47 +124,46 @@ namespace PictureViewer
             showForm.Show();
         }
 
-        private ContextMenuStrip CreateContextMenuStrip(string filePath)
-        {
-            ContextMenuStrip treeViewContextMenuStrip;
-            ToolStripMenuItem Del;
-            ToolStripMenuItem Add;
+        //private ContextMenuStrip CreateContextMenuStrip(string filePath)
+        //{
+        //    ContextMenuStrip picContextMenuStrip;
+        //    ToolStripMenuItem Del;
+        //    ToolStripMenuItem Add;
 
-            treeViewContextMenuStrip = new ContextMenuStrip();
-            treeViewContextMenuStrip.Name = "treeViewContextMenuStrip";
+        //    picContextMenuStrip = new ContextMenuStrip();
+        //    picContextMenuStrip.Name = "picContextMenuStrip";
 
-            Del = new ToolStripMenuItem();
-            Del.Name = "Del";
-            Del.Text = "删除";
-            Del.Click += new EventHandler(Del_click);
-            Del.Tag = filePath;
+        //    Del = new ToolStripMenuItem();
+        //    Del.Name = "Del";
+        //    Del.Text = "删除";
+        //    Del.Click += new EventHandler(Del_click);
+        //    Del.Tag = filePath;
 
-            Add = new ToolStripMenuItem();
-            Add.Name = "Add";
-            Add.Text = "添加收藏";
-            Add.Click += new EventHandler(Add_click);
-            Add.Tag = filePath;
+        //    Add = new ToolStripMenuItem();
+        //    Add.Name = "Add";
+        //    Add.Text = "添加收藏";
+        //    Add.Click += new EventHandler(Add_click);
+        //    Add.Tag = filePath;
 
-            treeViewContextMenuStrip.Items.AddRange(
-                new ToolStripItem[] {
-                Del,
-                Add,
-            });
-            return treeViewContextMenuStrip;
-        }
-        private void Del_click(object sender, EventArgs e)
-        {
-            ToolStripMenuItem item = (ToolStripMenuItem)sender;
-            string filePath = item.Tag.ToString();
-            MessageBox.Show(filePath);
-        }
-        private void Add_click(object sender, EventArgs e)
-        {
-            ToolStripMenuItem item = (ToolStripMenuItem)sender;
-            string filePath = item.Tag.ToString();
-            MessageBox.Show(filePath);
-        }
-
+        //    picContextMenuStrip.Items.AddRange(
+        //        new ToolStripItem[] {
+        //        Del,
+        //        Add,
+        //    });
+        //    return picContextMenuStrip;
+        //}
+        //private void Del_click(object sender, EventArgs e)
+        //{
+        //    ToolStripMenuItem item = (ToolStripMenuItem)sender;
+        //    string filePath = item.Tag.ToString();
+        //    MessageBox.Show(filePath);
+        //}
+        //private void Add_click(object sender, EventArgs e)
+        //{
+        //    ToolStripMenuItem item = (ToolStripMenuItem)sender;
+        //    string filePath = item.Tag.ToString();
+        //    MessageBox.Show(filePath);
+        //}
 
     }
 }

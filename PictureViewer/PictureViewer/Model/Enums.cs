@@ -17,4 +17,10 @@ namespace PictureViewer
         NodeTag,
     }
 
+    public enum UserType
+    {
+        User,
+        Admin,
+    }
+
 }

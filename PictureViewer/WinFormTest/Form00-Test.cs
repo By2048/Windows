@@ -20,55 +20,25 @@ namespace WinFormTest
 
         private void Form00_Load(object sender, EventArgs e)
         {
-            string path = @"F:\Test\16b25.jpg";
-            MessageBox.Show(Path.GetDirectoryName(path));
-            pictureBox1.BackColor = Color.Red;
-            CreateContextMenuStrip();
+
         }
 
-        private ContextMenuStrip picBoxContextMenuStrip;
-
-        private void pictureBox1_MouseDown(object sender, MouseEventArgs e)
+        private void button1_Click(object sender, EventArgs e)
         {
-            if (e.Button == MouseButtons.Right)
+            //string path = @"F:\Test\16b34.jpg";
+            string path = @"F:\Test";
+            if (File.Exists(path))
             {
-                ContextMenuStrip = picBoxContextMenuStrip;
+                MessageBox.Show("File");
+            }
+            else if (Directory.Exists(path))
+            {
+                MessageBox.Show("Dir");
+            }
+            else
+            {
+                MessageBox.Show("No");
             }
         }
-        private void CreateContextMenuStrip()
-        {
-            ToolStripMenuItem Del;
-            ToolStripMenuItem Add;
-
-            picBoxContextMenuStrip = new ContextMenuStrip();
-            picBoxContextMenuStrip.Name = "picBoxContextMenuStrip";
-
-            Del = new ToolStripMenuItem();
-            Del.Name = "Del";
-            Del.Text = "删除";
-            Del.Click += new EventHandler(Del_click);
-
-
-            Add = new ToolStripMenuItem();
-            Add.Name = "Add";
-            Add.Text = "添加收藏";
-            Add.Click += new EventHandler(Add_click);
-
-            picBoxContextMenuStrip.Items.AddRange(
-                new ToolStripItem[] {
-                Del,
-                Add,
-            });          
-        }
-
-        private void Del_click(object sender, EventArgs e)
-        {
-            MessageBox.Show("Del");
-        }
-        private void Add_click(object sender, EventArgs e)
-        {
-            MessageBox.Show("Add");
-        }
-      
     }
 }

@@ -29,20 +29,37 @@ namespace PictureViewer
         }
         private void LoadTreeView(string rootPath)
         {
-            ImageTree userTag = new ImageTree(Path.GetFileName(rootPath), rootPath, NodeType.Folder);
-            TreeNode userNode = new TreeNode(Path.GetFileName(rootPath));
-            userNode.Tag = userTag;
-            userNode.ImageKey = "folder.png";
-            userNode.SelectedImageKey = "folder-select.png";
-            treeViewImg.Nodes.Add(userNode);
-            userNode.Expand();
-            LoadTreeView(rootPath, userNode);
+            //ImageTree userTag = new ImageTree(Path.GetFileName(rootPath), rootPath, NodeType.Folder);
+            //TreeNode userNode = new TreeNode(Path.GetFileName(rootPath));
+            //userNode.Tag = userTag;
+            //userNode.ImageKey = "folder.png";
+            //userNode.SelectedImageKey = "folder-select.png";
+            //treeViewImg.Nodes.Add(userNode);
+            //userNode.Expand();
+
+            ImageTree nodeTag = new ImageTree("图片目录", "", NodeType.NodeTag);
+            TreeNode imageNode = new TreeNode("图片目录");
+            imageNode.Tag = nodeTag;
+            imageNode.ImageKey = "folder.png";
+            imageNode.SelectedImageKey = "folder-select.png";
+            treeViewImg.Nodes.Add(imageNode);
+
+            ImageTree startTag = new ImageTree(Path.GetFileName(rootPath), rootPath, NodeType.Folder);
+            TreeNode startNode = new TreeNode(Path.GetFileName(rootPath));
+            startNode.Tag = startTag;
+            startNode.ImageKey = "folder.png";
+            startNode.SelectedImageKey = "folder-select.png";
+            imageNode.Nodes.Add(startNode);
+            imageNode.Expand();
+
+            LoadTreeView(rootPath, startNode);
 
             MainConfig.ShowFolderPath = rootPath;
         }
 
         private void LoadTreeView(string rootPath, TreeNode rootNode)
         {
+          
             DirectoryInfo info = new DirectoryInfo(rootPath);
             DirectoryInfo[] subDirs = info.GetDirectories().OrderByDescending(tmp => tmp.CreationTime).ToArray();
 
@@ -141,25 +158,30 @@ namespace PictureViewer
                 treeViewImg.Nodes.Add(dragNode);
             }
 
-            if (e.Data.GetDataPresent(DataFormats.FileDrop))
+            if (e.Data.GetDataPresent(DataFormats.FileDrop)) 
             {
                 //TreeNode dragNode = treeViewImg.Nodes[1];
                 TreeNode dragNode = FindNode("拖放文件");
 
                 string[] filePaths = (string[])e.Data.GetData(DataFormats.FileDrop);
+                //List<string> _filePath = new List<string>();
+                List<string> listFilePath=new List<string>();
+
+                //文件夹优先
                 foreach (string filePath in filePaths)
                 {
-                    if (File.Exists(filePath)) //文件
-                    {
-                        //MessageBox.Show(Path.GetFileName(filePath));
-                        ImageTree image = new ImageTree(Path.GetFileName(filePath), filePath, NodeType.Image);
-                        TreeNode imgNode = new TreeNode(Path.GetFileName(filePath));
-                        imgNode.Tag = image;
-                        imgNode.ImageKey = "img.png";
-                        imgNode.SelectedImageKey = "img-select.png";
-                        dragNode.Nodes.Add(imgNode);
-                    }
-                    else if (Directory.Exists(filePath)) //文件夹
+                    if (Directory.Exists(filePath))
+                        listFilePath.Add(filePath);
+                }
+                foreach (string filePath in filePaths)
+                {
+                    if (File.Exists(filePath))
+                        listFilePath.Add(filePath);
+                }
+
+                foreach (string filePath in listFilePath)
+                {
+                    if (Directory.Exists(filePath)) //文件夹
                     {
                         ImageTree fodler = new ImageTree(Path.GetFileName(filePath), filePath, NodeType.Folder);
                         TreeNode folderNode = new TreeNode(Path.GetFileName(filePath));
@@ -167,7 +189,31 @@ namespace PictureViewer
                         folderNode.ImageKey = "folder.png";
                         folderNode.SelectedImageKey = "folder-select.png";
                         dragNode.Nodes.Add(folderNode);
+
+                        LoadTreeView(filePath, folderNode);
                     }
+                    else if (File.Exists(filePath)) //文件
+                    {
+                        ImageTree image = new ImageTree(Path.GetFileName(filePath), filePath, NodeType.Image);
+                        TreeNode imgNode = new TreeNode(Path.GetFileName(filePath));
+                        imgNode.Tag = image;
+                        imgNode.ImageKey = "img.png";
+                        imgNode.SelectedImageKey = "img-select.png";
+                        dragNode.Nodes.Add(imgNode);
+                    }
+                    else
+                    {
+                        return;
+                    }
+                    //else if (Directory.Exists(filePath)) //文件夹
+                    //{
+                    //    ImageTree fodler = new ImageTree(Path.GetFileName(filePath), filePath, NodeType.Folder);
+                    //    TreeNode folderNode = new TreeNode(Path.GetFileName(filePath));
+                    //    folderNode.Tag = fodler;
+                    //    folderNode.ImageKey = "folder.png";
+                    //    folderNode.SelectedImageKey = "folder-select.png";
+                    //    dragNode.Nodes.Add(folderNode);
+                    //}
                 }
                 dragNode.Expand();
             }
@@ -205,47 +251,53 @@ namespace PictureViewer
             {
                 Point clickPoint = new Point(e.X, e.Y);
                 TreeNode curNode = treeViewImg.GetNodeAt(clickPoint);
-                ImageTree image = (ImageTree)curNode.Tag;
-                //MessageBox.Show(image.FullPath);
-                ContextMenuStrip = CreateContextMenuStrip(image.FullPath);
+                //ImageTree image = (ImageTree)curNode.Tag;
+                ContextMenuStrip = CreateContextMenuStrip(curNode);
             }
         }
 
-        private ContextMenuStrip CreateContextMenuStrip(string filePath)
+        public ContextMenuStrip CreateContextMenuStrip(TreeNode selectNode)
         {
-            ContextMenuStrip picBoxContextMenuStrip;
-            ToolStripMenuItem Del;
-            ToolStripMenuItem Add;
+            ContextMenuStrip contextMenuStrip;
+            ToolStripMenuItem delete;
+            ToolStripMenuItem collection;
 
-            picBoxContextMenuStrip = new ContextMenuStrip();
-            picBoxContextMenuStrip.Name = "picBoxContextMenuStrip";
+            contextMenuStrip = new ContextMenuStrip();
+            contextMenuStrip.Name = "contextMenuStrip";
 
-            Del = new ToolStripMenuItem();
-            Del.Name = "Del";
-            Del.Text = "删除";
-            Del.Click += new EventHandler(Del_click);
-            Del.Tag = filePath;
+            delete = new ToolStripMenuItem();
+            delete.Name = "Delete";
+            delete.Text = "删除";
+            delete.Click += new EventHandler(Delete_click);
+            delete.Tag = selectNode;
 
-            Add = new ToolStripMenuItem();
-            Add.Name = "Add";
-            Add.Text = "添加收藏";
-            Add.Click += new EventHandler(Add_click);
-            Add.Tag = filePath;
+            collection = new ToolStripMenuItem();
+            collection.Name = "Collection";
+            collection.Text = "添加收藏";
+            collection.Click += new EventHandler(Collection_click);
+            collection.Tag = selectNode;
 
-            picBoxContextMenuStrip.Items.AddRange(
+            contextMenuStrip.Items.AddRange(
                 new ToolStripItem[] {
-                Del,
-                Add,
+                delete,
+                collection,
             });
-            return picBoxContextMenuStrip;
+            return contextMenuStrip;
         }
-        private void Del_click(object sender, EventArgs e)
+        private void Delete_click(object sender, EventArgs e)
         {
-            MessageBox.Show("Del");
+            ToolStripMenuItem item = (ToolStripMenuItem)sender;
+            TreeNode node = (TreeNode)item.Tag;
+            ImageTree imageTree = (ImageTree)node.Tag;
+            string path = imageTree.FullPath;
+            treeViewImg.Nodes.Remove(node);
+            ImageTool.Delete(path);
         }
-        private void Add_click(object sender, EventArgs e)
+        private void Collection_click(object sender, EventArgs e)
         {
-            MessageBox.Show("Add");
+            MessageBox.Show("Collection");
         }
+
+
     }
 }

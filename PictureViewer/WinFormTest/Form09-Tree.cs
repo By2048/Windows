@@ -62,6 +62,7 @@ namespace WinFormTest
         private void button1_Click(object sender, EventArgs e)
         {
             MessageBox.Show(GetNode("node2").Text.ToString());
+            treeView1.Nodes.Remove(GetNode("node3"));
         }
 
         public TreeNode GetNode(string nodeText, TreeNode rootNode)

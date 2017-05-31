@@ -39,3 +39,4 @@ E:\Desktop\Windows\PictureViewer\PictureViewer\obj\Debug\PictureViewer.SmallView
 E:\Desktop\Windows\PictureViewer\PictureViewer\obj\Debug\PictureViewer.TreeView.resources
 E:\Desktop\Windows\PictureViewer\PictureViewer\obj\Debug\PictureViewer.Properties.Resources.resources
 E:\Desktop\Windows\PictureViewer\PictureViewer\obj\Debug\PictureViewer.SingleView.resources
+E:\Desktop\Windows\PictureViewer\PictureViewer\obj\Debug\PictureViewer.csproj.ResolveComReference.cache
