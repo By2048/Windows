@@ -4,6 +4,7 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Microsoft.VisualBasic.FileIO; // 删除到回收站引用
 
 namespace PictureViewer
 {
@@ -17,18 +18,7 @@ namespace PictureViewer
                                 tmp.EndsWith(".png")).
                                 ToArray();
             return picturePaths;
-        }
-
-        public static FileInfo[] GetFilesByPath(string filePath)
-        {
-            DirectoryInfo info = new DirectoryInfo(filePath);
-            FileInfo[] imgs = info.GetFiles("*.*").
-                              Where(tmp => tmp.Name.EndsWith("jpg") ||
-                              tmp.Name.EndsWith(".jpeg") ||
-                              tmp.Name.EndsWith(".png")).
-                              ToArray();
-            return imgs;
-        }
+        }     
 
         public static FileInfo[] GetFilesByDir(DirectoryInfo info)
         {
@@ -38,6 +28,24 @@ namespace PictureViewer
                               tmp.Name.EndsWith(".png")).
                               ToArray();
             return imgs;
+        }
+
+        /// <summary>
+        /// 删除文件夹到回收站
+        /// </summary>
+        /// <param name="folderPath">文件夹路径</param>
+        public static void DelFolder(string folderPath)
+        {
+            FileSystem.DeleteDirectory(folderPath, UIOption.OnlyErrorDialogs, RecycleOption.SendToRecycleBin);
+        }
+
+        /// <summary>
+        /// 删除文件到回收站
+        /// </summary>
+        /// <param name="filePath">文件路径</param>
+        public static void DelFile(string filePath)
+        {
+            FileSystem.DeleteFile(filePath, UIOption.OnlyErrorDialogs, RecycleOption.SendToRecycleBin);
         }
 
     }

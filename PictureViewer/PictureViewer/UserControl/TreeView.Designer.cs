@@ -44,6 +44,7 @@
             this.treeViewImg.TabIndex = 0;
             this.treeViewImg.DragDrop += new System.Windows.Forms.DragEventHandler(this.treeViewImg_DragDrop);
             this.treeViewImg.DragEnter += new System.Windows.Forms.DragEventHandler(this.treeViewImg_DragEnter);
+            this.treeViewImg.MouseDown += new System.Windows.Forms.MouseEventHandler(this.treeViewImg_MouseDown);
             // 
             // imageListIcon
             // 

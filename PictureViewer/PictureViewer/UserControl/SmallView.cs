@@ -126,12 +126,12 @@ namespace PictureViewer
 
         private ContextMenuStrip CreateContextMenuStrip(string filePath)
         {
-            ContextMenuStrip picBoxContextMenuStrip;
+            ContextMenuStrip treeViewContextMenuStrip;
             ToolStripMenuItem Del;
             ToolStripMenuItem Add;
 
-            picBoxContextMenuStrip = new ContextMenuStrip();
-            picBoxContextMenuStrip.Name = "picBoxContextMenuStrip";
+            treeViewContextMenuStrip = new ContextMenuStrip();
+            treeViewContextMenuStrip.Name = "treeViewContextMenuStrip";
 
             Del = new ToolStripMenuItem();
             Del.Name = "Del";
@@ -145,12 +145,12 @@ namespace PictureViewer
             Add.Click += new EventHandler(Add_click);
             Add.Tag = filePath;
 
-            picBoxContextMenuStrip.Items.AddRange(
+            treeViewContextMenuStrip.Items.AddRange(
                 new ToolStripItem[] {
                 Del,
                 Add,
             });
-            return picBoxContextMenuStrip;
+            return treeViewContextMenuStrip;
         }
         private void Del_click(object sender, EventArgs e)
         {

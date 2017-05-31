@@ -33,6 +33,7 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Microsoft.VisualBasic" />
     <Reference Include="Newtonsoft.Json">
       <HintPath>F:\Newtonsoft.Json.dll</HintPath>
     </Reference>
@@ -90,7 +91,12 @@
     <Compile Include="Form18-TestImage.Designer.cs">
       <DependentUpon>Form18-TestImage.cs</DependentUpon>
     </Compile>
-    <Compile Include="JobInfo.cs" />
+    <Compile Include="Form19-FolderDel.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form19-FolderDel.Designer.cs">
+      <DependentUpon>Form19-FolderDel.cs</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="Form00-Test.resx">
@@ -115,6 +121,9 @@
     <EmbeddedResource Include="Form18-TestImage.resx">
       <DependentUpon>Form18-TestImage.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Form19-FolderDel.resx">
+      <DependentUpon>Form19-FolderDel.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
@@ -134,7 +143,6 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
-    <None Include="Test.json" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
@@ -146,6 +154,26 @@
     <Content Include="icons\img.png" />
     <Content Include="icons\pc.png" />
     <Content Include="icons\picture-viewer.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <COMReference Include="Microsoft.Office.Core">
+      <Guid>{2DF8D04C-5BFA-101B-BDE5-00AA0044DE52}</Guid>
+      <VersionMajor>2</VersionMajor>
+      <VersionMinor>7</VersionMinor>
+      <Lcid>0</Lcid>
+      <WrapperTool>primary</WrapperTool>
+      <Isolated>False</Isolated>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </COMReference>
+    <COMReference Include="VBIDE">
+      <Guid>{0002E157-0000-0000-C000-000000000046}</Guid>
+      <VersionMajor>5</VersionMajor>
+      <VersionMinor>3</VersionMinor>
+      <Lcid>0</Lcid>
+      <WrapperTool>primary</WrapperTool>
+      <Isolated>False</Isolated>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </COMReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

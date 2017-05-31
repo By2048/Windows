@@ -20,6 +20,7 @@ namespace PictureViewer
         public TreeView(Size panelSize)
         {
             InitializeComponent();
+            treeViewImg.ShowLines = false;
             Size = panelSize;
             treeViewImg.Size = panelSize;
             treeViewImg.ImageList = imageListIcon;
@@ -101,21 +102,23 @@ namespace PictureViewer
         {
             TreeNode node = e.Node;
             ImageTree nodeTag = (ImageTree)node.Tag;
-
-            if (nodeTag.NodeType.ToString() == "Folder")
+            if (e.Button == MouseButtons.Left)
             {
-                MainConfig.ShowFolderPath = nodeTag.FullPath;
-                LoadUserControlEvent();
-            }
-            else if (nodeTag.NodeType.ToString() == "Image")
-            {
-                MainConfig.ShowImagePath = nodeTag.FullPath;
-                LoadImageEvent();
-            }
-            else
-            {
-                return;
-            }
+                if (nodeTag.NodeType.ToString() == "Folder")
+                {
+                    MainConfig.ShowFolderPath = nodeTag.FullPath;
+                    LoadUserControlEvent();
+                }
+                else if (nodeTag.NodeType.ToString() == "Image")
+                {
+                    MainConfig.ShowImagePath = nodeTag.FullPath;
+                    LoadImageEvent();
+                }
+                else
+                {
+                    return;
+                }
+            }           
         }
 
         private void treeViewImg_DragDrop(object sender, DragEventArgs e)
@@ -196,7 +199,53 @@ namespace PictureViewer
             return itemNode;
         }
 
+        private void treeViewImg_MouseDown(object sender, MouseEventArgs e)
+        {
+            if (e.Button == MouseButtons.Right)
+            {
+                Point clickPoint = new Point(e.X, e.Y);
+                TreeNode curNode = treeViewImg.GetNodeAt(clickPoint);
+                ImageTree image = (ImageTree)curNode.Tag;
+                //MessageBox.Show(image.FullPath);
+                ContextMenuStrip = CreateContextMenuStrip(image.FullPath);
+            }
+        }
 
+        private ContextMenuStrip CreateContextMenuStrip(string filePath)
+        {
+            ContextMenuStrip picBoxContextMenuStrip;
+            ToolStripMenuItem Del;
+            ToolStripMenuItem Add;
 
+            picBoxContextMenuStrip = new ContextMenuStrip();
+            picBoxContextMenuStrip.Name = "picBoxContextMenuStrip";
+
+            Del = new ToolStripMenuItem();
+            Del.Name = "Del";
+            Del.Text = "删除";
+            Del.Click += new EventHandler(Del_click);
+            Del.Tag = filePath;
+
+            Add = new ToolStripMenuItem();
+            Add.Name = "Add";
+            Add.Text = "添加收藏";
+            Add.Click += new EventHandler(Add_click);
+            Add.Tag = filePath;
+
+            picBoxContextMenuStrip.Items.AddRange(
+                new ToolStripItem[] {
+                Del,
+                Add,
+            });
+            return picBoxContextMenuStrip;
+        }
+        private void Del_click(object sender, EventArgs e)
+        {
+            MessageBox.Show("Del");
+        }
+        private void Add_click(object sender, EventArgs e)
+        {
+            MessageBox.Show("Add");
+        }
     }
 }
