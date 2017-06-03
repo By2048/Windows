@@ -23,4 +23,10 @@ namespace PictureViewer
         Admin,
     }
 
+    public enum CollectionType
+    {
+        Folder,
+        Image,
+        Internet,
+    }
 }

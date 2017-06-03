@@ -24,9 +24,9 @@ namespace PictureViewer
         {
             ParentForm.KeyDown += new KeyEventHandler(SmallView_KeyDown);
             ParentForm.KeyPress += new KeyPressEventHandler(SmallView_KeyPress);
-            ParentForm.KeyUp += new KeyEventHandler(SmallView_KeyUp);
+            ParentForm.KeyUp += new KeyEventHandler(SmallView_KeyUp);  
+            //CollectionTool
         }
-
         /// <summary>
         /// 加载指定文件夹下的所有图片
         /// </summary>

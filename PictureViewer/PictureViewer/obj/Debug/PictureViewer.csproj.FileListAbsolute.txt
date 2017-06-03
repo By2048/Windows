@@ -40,3 +40,5 @@ E:\Desktop\Windows\PictureViewer\PictureViewer\obj\Debug\PictureViewer.TreeView.
 E:\Desktop\Windows\PictureViewer\PictureViewer\obj\Debug\PictureViewer.Properties.Resources.resources
 E:\Desktop\Windows\PictureViewer\PictureViewer\obj\Debug\PictureViewer.SingleView.resources
 E:\Desktop\Windows\PictureViewer\PictureViewer\obj\Debug\PictureViewer.csproj.ResolveComReference.cache
+E:\Desktop\Windows\PictureViewer\PictureViewer\bin\Debug\Newtonsoft.Json.dll
+E:\Desktop\Windows\PictureViewer\PictureViewer\obj\Debug\PictureViewer.TestForm.resources

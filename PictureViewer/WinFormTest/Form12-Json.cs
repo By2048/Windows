@@ -153,6 +153,44 @@ namespace WinFormTest
             textBox.Text += obj.ToString();
         }
 
+        private void btnAllId_Click(object sender, EventArgs e)
+        {
+            foreach (JProperty item in obj.Children())
+            {
+                MessageBox.Show(item.Name.ToString()); // id2
+                MessageBox.Show(item.Value.ToString()); // value
+            }
+        }
 
+        private void btnTestShow_Click(object sender, EventArgs e)
+        {
+            string id = "Id2";
+            MessageBox.Show(obj[id]["Path"].ToString());
+            MessageBox.Show(obj.ToString());
+        }
+
+        private void btnMaxId_Click(object sender, EventArgs e)
+        {
+
+            MessageBox.Show(((JProperty)(obj.Last)).Name.ToString());
+            //foreach (JProperty item in obj1.Children())
+            //{
+            //    MessageBox.Show(item.Name.ToString()); // id2
+            //    MessageBox.Show(item.Value.ToString()); // value
+            //}
+
+        }
     }
 }
+
+
+//{
+//  "Id2": {
+//    "FolderPath": "F:\\Test2",
+//    "CollectionDate": "2015-11-52"
+//  },
+//  "Id3": {
+//    "FolderPath": "F:\\Test3",
+//    "CollectionDate": "2015-11-52"
+//  }
+//}
