@@ -8,13 +8,13 @@ namespace PictureViewer
 {
     public class Collection
     {
-        public CollectionType Type;
+        public string Type;
         public string Path;
         public string Date;
 
         public Collection() { }
 
-        public Collection(CollectionType type, string path, string date)
+        public Collection(string type, string path, string date)
         {
             Type = type;
             Path = path;

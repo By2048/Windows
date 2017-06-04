@@ -19,7 +19,6 @@ namespace PictureViewer
 
         private void button1_Click(object sender, EventArgs e)
         {
-            CollectionTool.Load();
             //MessageBox.Show(CollectionTool.json);
             //MessageBox.Show(CollectionTool.obj.ToString());
             //Collection item = new Collection();

@@ -15,18 +15,12 @@ namespace PictureViewer
         Folder,
         Image,
         NodeTag,
+        Internet,
     }
 
     public enum UserType
     {
         User,
         Admin,
-    }
-
-    public enum CollectionType
-    {
-        Folder,
-        Image,
-        Internet,
-    }
+    } 
 }

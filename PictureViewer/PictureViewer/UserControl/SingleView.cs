@@ -10,6 +10,7 @@ using System.Windows.Forms;
 
 namespace PictureViewer
 {
+    // 显示一张图片 根据 MainConfig.ShowImagePath
     public partial class SingleView : UserControl
     {
         public SingleView()
@@ -17,8 +18,9 @@ namespace PictureViewer
             InitializeComponent();
             Size = MainConfig.PanelMainSize;
 
-            pictureBox.Image = Image.FromFile(MainConfig.ShowImagePath);
+            pictureBox.Image = ImageTool.LoadImage(MainConfig.ShowImagePath);
             pictureBox.Tag = MainConfig.ShowImagePath;
+
             pictureBox.SizeMode = PictureBoxSizeMode.Zoom;
             pictureBox.DoubleClick += pictureBox_DoubleClick;
 

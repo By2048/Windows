@@ -27,9 +27,22 @@ namespace PictureViewer
             json = File.ReadAllText(jsonPath);
             obj = JObject.Parse(json);
         }
+        public static void Save()
+        {
+            string strJson = obj.ToString();
+            FileInfo myFile = new FileInfo(jsonPath);
+            StreamWriter sw = myFile.CreateText();
+            sw.WriteLine(strJson);
+            sw.Close();
 
+            Refresh();
+        }
+
+        // 添加至收藏
         public static void Add(Collection item)
         {
+            Load();
+
             StringWriter sw = new StringWriter();
             JsonWriter writer = new JsonTextWriter(sw);
 
@@ -48,37 +61,48 @@ namespace PictureViewer
             string maxId = ((JProperty)(obj.Last)).Name.ToString();
             string newId = (int.Parse(maxId) + 1).ToString();
 
-            obj.Add(newId, JObject.Parse(jsonText));
+            if (FindByPath(item.Path) == false) // 没有添加收藏
+            {
+                obj.Add(newId, JObject.Parse(jsonText));
+                Save();
+                Refresh();
+            }
+            else
+                return;
 
-            Save();
-            Refresh();
         }
 
-
+        // 根据文件或文件夹路径删除 
         public static void RemoveByPath(string path)
         {
+            Load();
             string delId = "";
             foreach (JProperty item in obj.Children())
             {
-                if (item.Value["Path"].ToString() == "F:\\Test3")
+                if (item.Value["Path"].ToString() == path)
                     delId = item.Name;
             }
-            if(delId!="")
+            if (delId != "")
+            {
                 obj.Remove(delId);
-            Save();
-            Refresh();
+                Save();
+                Refresh();
+            }
+            else
+                return;
         }
 
-        public static void Save()
+        public static bool FindByPath(string path)
         {
-            string strJson = obj.ToString();
-            FileInfo myFile = new FileInfo(jsonPath);
-            StreamWriter sw = myFile.CreateText();
-            sw.WriteLine(strJson);
-            sw.Close();
-
-            Refresh();
+            Load();
+            foreach (JProperty item in obj.Children())
+            {
+                if (item.Value["Path"].ToString() == path)
+                    return true;
+            }
+            return false;
         }
+
 
     }
 

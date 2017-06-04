@@ -6,6 +6,8 @@ using System.Text;
 using System.Threading.Tasks;
 using Microsoft.VisualBasic.FileIO; // 删除到回收站引用
 using System.Windows.Forms;
+using System.Drawing;
+using System.Drawing.Imaging;
 
 namespace PictureViewer
 {
@@ -29,6 +31,14 @@ namespace PictureViewer
                               tmp.Name.EndsWith(".png")).
                               ToArray();
             return imgs;
+        }
+
+        public static Bitmap LoadImage(string path)
+        {
+            FileStream fs = new FileStream(path, FileMode.Open, FileAccess.Read);
+            Bitmap bm = new Bitmap(fs);
+            fs.Dispose();
+            return bm;
         }
 
         /// <summary>

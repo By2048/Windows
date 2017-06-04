@@ -144,7 +144,7 @@ public class ImageDetailInfo
     private DateTime lastWriteTime;
     private DateTime lastAccessTime;
 
-    private int num = 0;
+    //private int num = 0;
 
 
     public ImageDetailInfo(Size imageSize, string imageVerticalResolution, string imageHorizontalResolution,

@@ -13,20 +13,28 @@ namespace PictureViewer
 {
     public partial class TreeView : UserControl
     {
-        /// <summary>
-        /// 初始化TreeView
-        /// </summary>
-        /// <param name="panelSize">窗体中TreeView需要展示的大小</param>
-        public TreeView(Size panelSize)
+        //public TreeView(Size panelSize)
+        //{
+        //    InitializeComponent();
+        //    treeViewImg.ShowLines = false;
+        //    Size = panelSize;
+        //    treeViewImg.Size = panelSize;
+        //    treeViewImg.ImageList = imageListIcon;
+        //    LoadTreeView(MainConfig.StartTreePath);
+        //    treeViewImg.NodeMouseClick += new TreeNodeMouseClickEventHandler(treeViewImg_NodeMouseClick);
+        //}
+
+        public TreeView()
         {
             InitializeComponent();
             treeViewImg.ShowLines = false;
-            Size = panelSize;
-            treeViewImg.Size = panelSize;
+            Size = MainConfig.PanelTreeSize;
+            treeViewImg.Size = MainConfig.PanelTreeSize;
             treeViewImg.ImageList = imageListIcon;
             LoadTreeView(MainConfig.StartTreePath);
             treeViewImg.NodeMouseClick += new TreeNodeMouseClickEventHandler(treeViewImg_NodeMouseClick);
         }
+
         private void LoadTreeView(string rootPath)
         {
             //ImageTree userTag = new ImageTree(Path.GetFileName(rootPath), rootPath, NodeType.Folder);
@@ -132,9 +140,7 @@ namespace PictureViewer
                     LoadImageEvent();
                 }
                 else
-                {
                     return;
-                }
             }           
         }
 
@@ -189,7 +195,6 @@ namespace PictureViewer
                         folderNode.ImageKey = "folder.png";
                         folderNode.SelectedImageKey = "folder-select.png";
                         dragNode.Nodes.Add(folderNode);
-
                         LoadTreeView(filePath, folderNode);
                     }
                     else if (File.Exists(filePath)) //文件
@@ -202,18 +207,7 @@ namespace PictureViewer
                         dragNode.Nodes.Add(imgNode);
                     }
                     else
-                    {
-                        return;
-                    }
-                    //else if (Directory.Exists(filePath)) //文件夹
-                    //{
-                    //    ImageTree fodler = new ImageTree(Path.GetFileName(filePath), filePath, NodeType.Folder);
-                    //    TreeNode folderNode = new TreeNode(Path.GetFileName(filePath));
-                    //    folderNode.Tag = fodler;
-                    //    folderNode.ImageKey = "folder.png";
-                    //    folderNode.SelectedImageKey = "folder-select.png";
-                    //    dragNode.Nodes.Add(folderNode);
-                    //}
+                        return;                  
                 }
                 dragNode.Expand();
             }
@@ -284,6 +278,7 @@ namespace PictureViewer
             });
             return contextMenuStrip;
         }
+
         private void Delete_click(object sender, EventArgs e)
         {
             ToolStripMenuItem item = (ToolStripMenuItem)sender;
@@ -293,9 +288,19 @@ namespace PictureViewer
             treeViewImg.Nodes.Remove(node);
             ImageTool.Delete(path);
         }
+
         private void Collection_click(object sender, EventArgs e)
         {
-            MessageBox.Show("Collection");
+            //MessageBox.Show("Collection");
+
+            ToolStripMenuItem item = (ToolStripMenuItem)sender;
+            TreeNode node = (TreeNode)item.Tag;
+            ImageTree imageTree = (ImageTree)node.Tag;
+            string type = imageTree.NodeType.ToString();
+            string path = imageTree.FullPath;
+            string date = DateTime.Now.ToString();
+            Collection coll = new Collection(type, path, date);
+            CollectionTool.Add(coll);
         }
 
 

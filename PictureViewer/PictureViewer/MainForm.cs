@@ -21,12 +21,13 @@ namespace PictureViewer
             Resize += new EventHandler(MainForm_Resize);
             splitContainer.SplitterDistance = Size.Width / 4;
             CheckForIllegalCrossThreadCalls = false;
-
         }
+
         private void MainForm_Load(object sender, EventArgs e)
         {
             MainConfig.StartTreePath = @"F:\Test";
             MainConfig.ImageSize=new Size(16 * 10, 9 * 10);
+            MainConfig.PanelTreeSize = panelTree.Size;
             MainConfig.PanelMainSize = panelMain.Size;
             MainConfig.ShowView = ShowView.SmallView;
 
@@ -38,7 +39,7 @@ namespace PictureViewer
             SetTsbBtnCheckedByConfig();
         }
 
-        // 窗体大小变化是刷新UserControl
+        // 窗体大小变化时刷新 UserControl
         private void MainForm_Resize(object sender, EventArgs e)
         {
             LoadTreeView();
@@ -97,14 +98,13 @@ namespace PictureViewer
                         btn.Checked = false;
                 }
                 else
-                {
                     continue;
-                }
             }
         }
 
         public void RefreshUserControlByConfig()
         {
+            MainConfig.PanelTreeSize = panelTree.Size;
             MainConfig.PanelMainSize = panelMain.Size;
             LoadUserControlByConfig();
         }
@@ -142,7 +142,7 @@ namespace PictureViewer
         private void LoadTreeView()
         {
             panelTree.Controls.Clear();
-            TreeView treeView = new TreeView(panelTree.Size);
+            TreeView treeView = new TreeView();
 
             treeView.LoadUserControlEvent += new TreeView.LoadUserControl(RefreshUserControlByConfig);
             treeView.LoadImageEvent += new TreeView.LoadImage(LoadSingleView);

@@ -16,6 +16,9 @@ namespace PictureViewer
         // 状态栏文本
         public static string ToolStripStatusLabelImage;
 
+        // 加载TreeView窗体的大小
+        public static Size PanelTreeSize;
+
         // 加载UserControl窗体的大小
         public static Size PanelMainSize;
 

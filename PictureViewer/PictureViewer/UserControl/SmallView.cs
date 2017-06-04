@@ -20,6 +20,7 @@ namespace PictureViewer
             panelMain.AutoScroll = true;
             ShowSmallImages();
         }
+
         private void SmallView_Load(object sender, EventArgs e)
         {
             ParentForm.KeyDown += new KeyEventHandler(SmallView_KeyDown);
@@ -27,12 +28,7 @@ namespace PictureViewer
             ParentForm.KeyUp += new KeyEventHandler(SmallView_KeyUp);  
             //CollectionTool
         }
-        /// <summary>
-        /// 加载指定文件夹下的所有图片
-        /// </summary>
-        /// <param name="folderPath">文件路径</param>
-        /// <param name="panelSize">SmallView窗体大小</param>
-        /// <param name="imageSize">需要显示的图片大小</param>
+
         private void ShowSmallImages()
         {
             string[] pictures = ImageTool.GetAllImagePath(MainConfig.ShowFolderPath);
@@ -56,12 +52,14 @@ namespace PictureViewer
                     if (index >= pictureCount) { return; }
 
                     //pictureBox.Load(pictures[index]);
-                    pictureBox.Image = Image.FromFile(pictures[index]);
-                    pictureBox.Tag = pictures[index];
+                    //pictureBox.Image = Image.FromFile(pictures[index]);
                     //FileStream fs = new FileStream(pictures[index], FileMode.Open);
                     //Bitmap bm = new Bitmap(fs);
                     //fs.Dispose();
                     //pictureBox.Image = bm;
+
+                    pictureBox.Image = ImageTool.LoadImage(pictures[index]);
+                    pictureBox.Tag = pictures[index];
 
                     Point pictureLoction = new Point()
                     {
@@ -103,8 +101,6 @@ namespace PictureViewer
                 ContextMenuStrip = ImageTool.CreateContextMenuStrip(filePath);
             }
         }
-
-
 
         // 双击显示大图
         private void pictureBox_DoubleClick(object sender, EventArgs e)
