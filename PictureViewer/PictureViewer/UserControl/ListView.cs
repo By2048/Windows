@@ -122,13 +122,9 @@ namespace PictureViewer
             {
                 // 重新设置此列的排序方法.
                 if (imageListViewSort.OrderValue == SortOrder.Ascending)
-                {
                     imageListViewSort.OrderValue = SortOrder.Descending;
-                }
                 else
-                {
                     imageListViewSort.OrderValue = SortOrder.Ascending;
-                }
             }
             else
             {
@@ -200,10 +196,12 @@ namespace PictureViewer
                     pictureBox.Height = pictureHeight;
                     if (index >= imagePath.Count) { return; }
 
-                    FileStream fs = new FileStream(imagePath[index], FileMode.Open);
-                    Bitmap bm = new Bitmap(fs);
-                    fs.Dispose();
-                    pictureBox.Image = bm;
+                    //FileStream fs = new FileStream(imagePath[index], FileMode.Open);
+                    //Bitmap bm = new Bitmap(fs);
+                    //fs.Dispose();
+                    //pictureBox.Image = bm;
+
+                    pictureBox.Image = ImageTool.LoadImage(imagePath[index]);
                     pictureBox.Tag = imagePath[index];
 
                     //pictureBox.Load(imagePath[pictureIndex]);

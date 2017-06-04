@@ -24,7 +24,6 @@ namespace PictureViewer
 
             panelSmallImages.AutoScroll = true;
             pictureBoxLarge.SizeMode = PictureBoxSizeMode.Zoom;
-            pictureBoxLarge.DoubleClick += pictureBox_DoubleClick;
 
             ShowSmallImages();
 
@@ -33,13 +32,6 @@ namespace PictureViewer
 
         private void ShowSmallImages()
         {
-
-            //string[] pictures = Directory.GetFiles(MainConfig.ShowFolderPath, "*.*").
-            //    Where(tmp => tmp.EndsWith("jpg") ||
-            //    tmp.EndsWith(".jpeg") ||
-            //    tmp.EndsWith(".png")).
-            //    ToArray();
-
             string[] pictures = ImageTool.GetAllImagePath(MainConfig.ShowFolderPath);
 
             int pictureCount = pictures.Length;
@@ -59,9 +51,13 @@ namespace PictureViewer
                     pictureBox.SizeMode = PictureBoxSizeMode.Zoom;
                     pictureBox.Size = MainConfig.ImageSize;
                     if (index >= pictureCount) { return; }
+
                     //pictureBox.Image = Image.FromFile(pictures[pictureIndex]);
-                    pictureBox.Load(pictures[index]);
+                    //pictureBox.Load(pictures[index]);
+
+                    pictureBox.Image = ImageTool.LoadImage(pictures[index]);
                     pictureBox.Tag = pictures[index];
+
                     Point pictureLoction = new Point()
                     {
                         X = padding * (column + 1) + pictureBox.Width * column,
@@ -83,17 +79,30 @@ namespace PictureViewer
             string filePath = pictureBox.Tag.ToString();
             ShowImage newForm = new ShowImage();
             newForm.SetFileParent(filePath);
-            //newForm.SetPictureBoxByImage(image);
+            newForm.Show();
+        }
+
+        private void pictureBoxLarge_DoubleClick(object sender, EventArgs e)
+        {
+            PictureBox pictureBox = (PictureBox)sender;
+            string filePath = pictureBox.Tag.ToString();
+            ShowImage newForm = new ShowImage();
+            newForm.SetFileParent(filePath);
             newForm.Show();
         }
 
         private void pictureBox_Click(object sender, EventArgs e)
         {
-            //PictureBox selectPicture = (PictureBox)sender;
-            PictureBox selectPicture = sender as PictureBox;
-            pictureBoxLarge.Load(selectPicture.ImageLocation);
-            string selectImagePath = Path.GetFullPath(selectPicture.ImageLocation);
-            ShowImageInfo(selectImagePath);
+            PictureBox pictureBox = sender as PictureBox;
+            string filePath = pictureBox.Tag.ToString();
+
+            //pictureBoxLarge.Load(selectPicture.ImageLocation);
+            pictureBoxLarge.Image = ImageTool.LoadImage(filePath);
+            pictureBoxLarge.Tag = filePath;
+            pictureBoxLarge.DoubleClick += pictureBoxLarge_DoubleClick;
+
+            //string selectImagePath = Path.GetFullPath(selectPicture.ImageLocation);
+            ShowImageInfo(filePath);
         }
 
 
@@ -126,6 +135,7 @@ namespace PictureViewer
             propertyGrid1.SelectedObject = imageInfo;
         }
 
+      
     }
 }
 

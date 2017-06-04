@@ -107,6 +107,7 @@ namespace PictureViewer
             MainConfig.PanelTreeSize = panelTree.Size;
             MainConfig.PanelMainSize = panelMain.Size;
             LoadUserControlByConfig();
+            LoadTreeView();
         }
 
         public void LoadUserControlByConfig()
