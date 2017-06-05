@@ -33,6 +33,7 @@ namespace PictureViewer
             treeViewImg.ImageList = imageListIcon;
             LoadTreeView(MainConfig.StartTreePath);
             treeViewImg.NodeMouseClick += new TreeNodeMouseClickEventHandler(treeViewImg_NodeMouseClick);
+            //LoadCollectionTree();
         }
 
         private void LoadTreeView(string rootPath)
@@ -211,6 +212,46 @@ namespace PictureViewer
                 }
                 dragNode.Expand();
             }
+        }
+
+        private void LoadCollectionTree()
+        {
+            if (FindNode("我的收藏") == null)
+            {
+                ImageTree nodeTag = new ImageTree("我的收藏", "", NodeType.NodeTag);
+                TreeNode node = new TreeNode("我的收藏");
+                node.Tag = nodeTag;
+                node.ImageKey = "folder.png";
+                node.SelectedImageKey = "folder-select.png";
+                treeViewImg.Nodes.Add(node);
+            }
+            TreeNode collNode = FindNode("我的收藏");
+            List<string> allPath = CollectionTool.GetALlPath();
+            foreach (string path in allPath)
+            {
+                if (Directory.Exists(path)) //文件夹
+                {
+                    ImageTree fodler = new ImageTree(Path.GetFileName(path), path, NodeType.Folder);
+                    TreeNode folderNode = new TreeNode(Path.GetFileName(path));
+                    folderNode.Tag = fodler;
+                    folderNode.ImageKey = "folder.png";
+                    folderNode.SelectedImageKey = "folder-select.png";
+                    collNode.Nodes.Add(folderNode);
+                    LoadTreeView(path, folderNode);
+                }
+                else if (File.Exists(path)) //文件
+                {
+                    ImageTree image = new ImageTree(Path.GetFileName(path), path, NodeType.Image);
+                    TreeNode imgNode = new TreeNode(Path.GetFileName(path));
+                    imgNode.Tag = image;
+                    imgNode.ImageKey = "img.png";
+                    imgNode.SelectedImageKey = "img-select.png";
+                    collNode.Nodes.Add(imgNode);
+                }
+                else
+                    return;
+            }
+
         }
 
         public TreeNode FindNode(string nodeText, TreeNode rootNode)

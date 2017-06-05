@@ -92,6 +92,14 @@ namespace PictureViewer
                 return;
         }
 
+        public static void RemoveById(string id)
+        {
+            Load();
+            obj.Remove(id);
+            Save();
+            Refresh();
+        }
+
         public static bool FindByPath(string path)
         {
             Load();
@@ -101,6 +109,41 @@ namespace PictureViewer
                     return true;
             }
             return false;
+        }
+
+        public static bool IsExist(string path)
+        {
+            if (Directory.Exists(path) || File.Exists(path))
+                return true;
+            else
+                return false;
+        }
+
+        // 删除所有的无效路径
+        public static void DeleteUseless()
+        {
+            Load();
+            foreach (JProperty item in obj.Children())
+            {
+                string delId = item.Name;
+                string path=item.Value["Path"].ToString();
+                if (IsExist(path) == false)
+                    RemoveById(delId);
+                else
+                    continue;
+            }
+        }
+
+        public static List<string> GetALlPath()
+        {
+            DeleteUseless();
+            List<string> allPath = new List<string>();
+            Load();
+            foreach (JProperty item in obj.Children())
+            {
+                allPath.Add(item.Value["Path"].ToString());
+            }
+            return allPath;
         }
 
 
