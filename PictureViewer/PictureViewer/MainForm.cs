@@ -35,15 +35,14 @@ namespace PictureViewer
             KeyPreview = true;
             CenterToScreen();
             LoadTreeView();
-            LoadUserControlByConfig();
-            SetTsbBtnCheckedByConfig();
+            LoadUserControl();
+            SetTsbBtnChecked();
         }
 
         // 窗体大小变化时刷新 UserControl
         private void MainForm_Resize(object sender, EventArgs e)
         {
-            LoadTreeView();
-            RefreshUserControlByConfig();
+            RefreshForm();
         }
 
         // 图片显示模式按钮点击时根据按钮的Name来加载UserControl
@@ -67,8 +66,8 @@ namespace PictureViewer
                     MainConfig.ShowView = ShowView.ListView;
                     break;
             }
-            LoadUserControlByConfig();
-            SetTsbBtnCheckedByConfig();
+            LoadUserControl();
+            SetTsbBtnChecked();
         }
 
         // 图片大小按钮点击时切换图片大小
@@ -77,15 +76,15 @@ namespace PictureViewer
             ToolStripMenuItem item = (ToolStripMenuItem)sender;
             int proportion = int.Parse(item.Name.Substring(item.Name.Length - 2, 2));
             MainConfig.ImageSize = new Size(16 * proportion, 9 * proportion);
-            RefreshUserControlByConfig();
-        }
+            RefreshForm();
+        }      
 
         private void btnTest_Click(object sender, EventArgs e)
         {
             MessageBox.Show(MainConfig.ShowFolderPath);
         }
 
-        private void SetTsbBtnCheckedByConfig()
+        private void SetTsbBtnChecked()
         {
             foreach (var item in toolStripMain.Items)
             {
@@ -102,15 +101,15 @@ namespace PictureViewer
             }
         }
 
-        public void RefreshUserControlByConfig()
+        public void RefreshForm()
         {
             MainConfig.PanelTreeSize = panelTree.Size;
             MainConfig.PanelMainSize = panelMain.Size;
-            LoadUserControlByConfig();
             LoadTreeView();
+            LoadUserControl();
         }
 
-        public void LoadUserControlByConfig()
+        public void LoadUserControl()
         {
             switch (MainConfig.ShowView)
             {
@@ -138,18 +137,20 @@ namespace PictureViewer
                     break;
             }
         }
-
+     
         // 初始化TreeView
         private void LoadTreeView()
         {
             panelTree.Controls.Clear();
             TreeView treeView = new TreeView();
 
-            treeView.LoadUserControlEvent += new TreeView.LoadUserControl(RefreshUserControlByConfig);
+            //treeView.LoadUserControlEvent += new TreeView.LoadUserControl(RefreshForm);
+            treeView.LoadUserControlEvent += new TreeView.LoadUserControl(LoadUserControl);
             treeView.LoadImageEvent += new TreeView.LoadImage(LoadSingleView);
 
             panelTree.Controls.Add(treeView);
         }
+       
 
         private void LoadSingleView()
         {

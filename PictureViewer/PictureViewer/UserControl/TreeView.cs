@@ -33,18 +33,11 @@ namespace PictureViewer
             treeViewImg.ImageList = imageListIcon;
             LoadTreeView(MainConfig.StartTreePath);
             treeViewImg.NodeMouseClick += new TreeNodeMouseClickEventHandler(treeViewImg_NodeMouseClick);
-            //LoadCollectionTree();
+            LoadCollectionTree();
         }
 
         private void LoadTreeView(string rootPath)
         {
-            //ImageTree userTag = new ImageTree(Path.GetFileName(rootPath), rootPath, NodeType.Folder);
-            //TreeNode userNode = new TreeNode(Path.GetFileName(rootPath));
-            //userNode.Tag = userTag;
-            //userNode.ImageKey = "folder.png";
-            //userNode.SelectedImageKey = "folder-select.png";
-            //treeViewImg.Nodes.Add(userNode);
-            //userNode.Expand();
 
             ImageTree nodeTag = new ImageTree("图片目录", "", NodeType.NodeTag);
             TreeNode imageNode = new TreeNode("图片目录");
