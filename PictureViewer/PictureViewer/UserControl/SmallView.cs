@@ -114,9 +114,10 @@ namespace PictureViewer
 
             //Image image = pictureBox.Image;
             ShowImage showForm = new ShowImage();
+            showForm.picPath = filePath;
             //newForm.showImage=image;
             //showForm.SetPictureBoxByImage(image);
-            showForm.SetFileParent(filePath);
+            //showForm.SetFileParent(filePath);
             showForm.Show();
         }
 

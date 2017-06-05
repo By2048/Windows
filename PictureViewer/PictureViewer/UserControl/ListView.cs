@@ -222,7 +222,7 @@ namespace PictureViewer
             string filePath = pictureBox.Tag.ToString();
             //Image image = pictureBox.Image;
             ShowImage newForm = new ShowImage();
-            newForm.SetFileParent(filePath);
+            newForm.picPath = filePath;
             //newForm.SetPictureBoxByImage(image);
             newForm.Show();
         }

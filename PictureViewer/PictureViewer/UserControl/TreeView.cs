@@ -13,17 +13,6 @@ namespace PictureViewer
 {
     public partial class TreeView : UserControl
     {
-        //public TreeView(Size panelSize)
-        //{
-        //    InitializeComponent();
-        //    treeViewImg.ShowLines = false;
-        //    Size = panelSize;
-        //    treeViewImg.Size = panelSize;
-        //    treeViewImg.ImageList = imageListIcon;
-        //    LoadTreeView(MainConfig.StartTreePath);
-        //    treeViewImg.NodeMouseClick += new TreeNodeMouseClickEventHandler(treeViewImg_NodeMouseClick);
-        //}
-
         public TreeView()
         {
             InitializeComponent();
@@ -224,7 +213,7 @@ namespace PictureViewer
             {
                 if (Directory.Exists(path)) //文件夹
                 {
-                    ImageTree fodler = new ImageTree(Path.GetFileName(path), path, NodeType.Folder);
+                    ImageTree fodler = new ImageTree(Path.GetFileName(path), path, NodeType.Collection);
                     TreeNode folderNode = new TreeNode(Path.GetFileName(path));
                     folderNode.Tag = fodler;
                     folderNode.ImageKey = "folder.png";
@@ -234,7 +223,7 @@ namespace PictureViewer
                 }
                 else if (File.Exists(path)) //文件
                 {
-                    ImageTree image = new ImageTree(Path.GetFileName(path), path, NodeType.Image);
+                    ImageTree image = new ImageTree(Path.GetFileName(path), path, NodeType.Collection);
                     TreeNode imgNode = new TreeNode(Path.GetFileName(path));
                     imgNode.Tag = image;
                     imgNode.ImageKey = "img.png";
@@ -279,8 +268,11 @@ namespace PictureViewer
             {
                 Point clickPoint = new Point(e.X, e.Y);
                 TreeNode curNode = treeViewImg.GetNodeAt(clickPoint);
-                //ImageTree image = (ImageTree)curNode.Tag;
-                ContextMenuStrip = CreateContextMenuStrip(curNode);
+                ImageTree image = (ImageTree)curNode.Tag;
+                if (image.NodeType.ToString() == "Folder" || image.NodeType.ToString() == "Image")
+                    ContextMenuStrip = CreateContextMenuStrip(curNode);
+                else
+                    ContextMenuStrip = CreateCollContextMenuStrip(curNode);
             }
         }
 
@@ -325,8 +317,6 @@ namespace PictureViewer
 
         private void Collection_click(object sender, EventArgs e)
         {
-            //MessageBox.Show("Collection");
-
             ToolStripMenuItem item = (ToolStripMenuItem)sender;
             TreeNode node = (TreeNode)item.Tag;
             ImageTree imageTree = (ImageTree)node.Tag;
@@ -337,6 +327,39 @@ namespace PictureViewer
             CollectionTool.Add(coll);
         }
 
+
+        // 收藏Node的右键菜单
+        public ContextMenuStrip CreateCollContextMenuStrip(TreeNode selectNode)
+        {
+            ContextMenuStrip contextMenuStrip;
+            ToolStripMenuItem delete;
+
+            contextMenuStrip = new ContextMenuStrip();
+            contextMenuStrip.Name = "contextMenuStrip";
+
+            delete = new ToolStripMenuItem();
+            delete.Name = "Delete";
+            delete.Text = "删除";
+            delete.Click += new EventHandler(CollDelete_click);
+            delete.Tag = selectNode;
+
+
+            contextMenuStrip.Items.AddRange(
+                new ToolStripItem[] {
+                delete,
+            });
+            return contextMenuStrip;
+        }
+
+        private void CollDelete_click(object sender, EventArgs e)
+        {
+            ToolStripMenuItem item = (ToolStripMenuItem)sender;
+            TreeNode node = (TreeNode)item.Tag;
+            ImageTree imageTree = (ImageTree)node.Tag;
+            string path = imageTree.FullPath;
+            treeViewImg.Nodes.Remove(node);
+            CollectionTool.RemoveByPath(path);
+        }       
 
     }
 }

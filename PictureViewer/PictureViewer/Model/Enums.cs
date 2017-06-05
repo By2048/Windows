@@ -16,6 +16,7 @@ namespace PictureViewer
         Image,
         NodeTag,
         Internet,
+        Collection,
     }
 
     public enum UserType

@@ -14,36 +14,11 @@ namespace PictureViewer
     public partial class ShowImage : Form
     {
         bool isMaxScreen = false;
-
         bool isCtrlDown = false;
-
         bool allowArrowKey = false;
 
-        public string curFilePath;  // 当前显示的文件
-
-        public List<string> allFilePath=new List<string>();  // 所有的文件 
-
-        // 加载 curFilePath 的 Image 到 pictureBoxu
-        private void LoadImage()
-        {
-            Image image = Image.FromFile(curFilePath);
-            pictureBox.Image = image;
-
-            Size = image.Size;
-            pictureBox.ClientSize = Size;  // 窗口中除去标题栏和边框的地方
-            pictureBox.SizeMode = PictureBoxSizeMode.StretchImage;
-            StartPosition = FormStartPosition.Manual;
-            Location = GetStartPoston(image.Size);
-        }
-
-   
-    
-        public void SetFileParent(string filePath)
-        {
-            curFilePath = filePath;
-            List<string> paths= ImageTool.GetAllImagePath(Path.GetDirectoryName(filePath)).ToList();
-            allFilePath = paths;           
-        }
+        public string picPath = "";  // 窗体所显示的文件路径  
+        List<string> parentFilePath = new List<string>();  // 当前显示路径下的同辈文件
 
         private ContextMenuStrip picBoxContextMenuStrip;
 
@@ -71,6 +46,71 @@ namespace PictureViewer
             LoadImage();
         }
 
+        // 加载 curFilePath 的 Image 到 pictureBoxu
+        private void LoadImage()
+        {
+          
+
+            Image image = Image.FromFile(picPath);
+            pictureBox.Image = ImageTool.LoadImage(picPath);
+            //pictureBox.Image = image;
+
+
+            pictureBox.SizeMode = PictureBoxSizeMode.StretchImage;
+            StartPosition = FormStartPosition.Manual;
+            Location = GetStartPoston(image.Size);
+
+            Size = GetImageSize(image);
+            pictureBox.Size = Size;
+
+            image.Dispose();
+
+            GetParentFile();
+        }
+
+        private Size GetImageSize(Image image)
+        {
+            //当前的屏幕除任务栏外的工作域大小
+            int screenWidth = Screen.PrimaryScreen.WorkingArea.Width;
+            int screenHeight = Screen.PrimaryScreen.WorkingArea.Height;
+
+            Size imageSize = image.Size;
+
+            if (image.Width > screenWidth || image.Height > screenHeight) // 图片原始分辨率比屏幕大
+            {
+                double proportion = double.Parse(image.Width.ToString()) / double.Parse(image.Height.ToString());
+                if (image.Width > screenWidth && image.Height > screenHeight)   // 过宽 且 过高
+                {
+                    imageSize = new Size()
+                    {
+                        Width = image.Width / 2,
+                        Height = image.Height / 2
+                    };
+                }
+                if (image.Width > screenWidth && image.Height < screenHeight) // 过宽 不 过高
+                {
+                    imageSize = new Size()
+                    {
+                        Height = image.Height,
+                        Width = int.Parse(Math.Round(image.Height * proportion).ToString())
+                    };
+                }
+                if (image.Width < screenWidth && image.Height > screenHeight) // 不过宽 过高
+                {
+                    imageSize = new Size()
+                    {
+                        Width = image.Width,
+                        Height = int.Parse(Math.Round(image.Width / proportion).ToString())
+                    };
+                }
+            }           
+            return imageSize;
+        }
+
+        public void GetParentFile()
+        {
+            parentFilePath = ImageTool.GetAllImagePath(Path.GetDirectoryName(picPath)).ToList();
+        }
 
         private void CreateContextMenuStrip()
         {
@@ -113,6 +153,7 @@ namespace PictureViewer
             });
         }
 
+
         // 窗口在屏幕中居中 优先在第二屏幕居中
         private Point GetStartPoston(Size imgeSize)
         {
@@ -144,71 +185,69 @@ namespace PictureViewer
 
         private void SwitchNext()
         {
-            //int curFilePathIndex = allFilePath.FindIndex(tmp => tmp == curFilePath);
-            int curIndex = allFilePath.IndexOf(curFilePath);
+            //int picPathIndex = parentFilePath.FindIndex(tmp => tmp == picPath);
+            int curIndex = parentFilePath.IndexOf(picPath);
             int nextIndex;
-            if (curIndex == allFilePath.Count - 1)
+            if (curIndex == parentFilePath.Count - 1)
                 nextIndex = 0;
             else
                 nextIndex = curIndex + 1;
 
-            curFilePath = allFilePath[nextIndex];
+            picPath = parentFilePath[nextIndex];
 
             LoadImage();
-            //SetPictureBoxByPath(allFilePath[nextIndex]);
+            //SetPictureBoxByPath(parentFilePath[nextIndex]);
         }
         private void SwitchPrevious()
         {
-            int curIndex = allFilePath.IndexOf(curFilePath);
+            int curIndex = parentFilePath.IndexOf(picPath);
             int preIndex;
             if (curIndex == 0)
-                preIndex = allFilePath.Count() - 1;
+                preIndex = parentFilePath.Count() - 1;
             else
                 preIndex = curIndex - 1;
 
-            curFilePath = allFilePath[preIndex];
+            picPath = parentFilePath[preIndex];
 
             LoadImage();
 
-            //Image image = Image.FromFile(allFilePath[preIndex]);
+            //Image image = Image.FromFile(parentFilePath[preIndex]);
             //SetPictureBoxByImage(image);
             //pictureBox.Image = image;
         }
-
         private void SwitchTop()
         {
             //Image image;
-            int curIndex = allFilePath.IndexOf(curFilePath);
+            int curIndex = parentFilePath.IndexOf(picPath);
             if (curIndex == 0)
                 return;
             else
-                curFilePath = allFilePath[0];
+                picPath = parentFilePath[0];
             LoadImage();
-            //image = Image.FromFile(allFilePath[0]);
+            //image = Image.FromFile(parentFilePath[0]);
             //SetPictureBoxByImage(image);
 
         }
         private void SwitchEnd()
         {
             //Image image;
-            int endIndex = allFilePath.Count - 1;
-            int curIndex = allFilePath.IndexOf(curFilePath);
-            if (curIndex == allFilePath.Count - 1)
+            int endIndex = parentFilePath.Count - 1;
+            int curIndex = parentFilePath.IndexOf(picPath);
+            if (curIndex == parentFilePath.Count - 1)
                 return;
             else
-               curFilePath = allFilePath[endIndex];
+                picPath = parentFilePath[endIndex];
             LoadImage();
-            //image = Image.FromFile(allFilePath[endIndex]);
+            //image = Image.FromFile(parentFilePath[endIndex]);
             //SetPictureBoxByImage(image);
         }
-
 
 
         private void ShowImage_KeyDown(object sender, KeyEventArgs e)
         {
             if (e.Control == true)
                 isCtrlDown = true;
-            if (curFilePath != null && allFilePath.Count != 0)
+            if (picPath != null && parentFilePath.Count != 0)
                 allowArrowKey = true;
         }
         private void ShowImage_KeyPress(object sender, KeyPressEventArgs e)
@@ -216,8 +255,8 @@ namespace PictureViewer
             //if (e.KeyChar.ToString() == Keys.Control.ToString())
         }
         private void ShowImage_KeyUp(object sender, KeyEventArgs e)
-        {        
-            if (allowArrowKey == true && isCtrlDown==false)
+        {
+            if (allowArrowKey == true && isCtrlDown == false)
             {
                 switch (e.KeyCode)
                 {

@@ -78,7 +78,7 @@ namespace PictureViewer
             PictureBox pictureBox = (PictureBox)sender;
             string filePath = pictureBox.Tag.ToString();
             ShowImage newForm = new ShowImage();
-            newForm.SetFileParent(filePath);
+            newForm.picPath = filePath;
             newForm.Show();
         }
 
@@ -87,7 +87,7 @@ namespace PictureViewer
             PictureBox pictureBox = (PictureBox)sender;
             string filePath = pictureBox.Tag.ToString();
             ShowImage newForm = new ShowImage();
-            newForm.SetFileParent(filePath);
+            newForm.picPath = filePath;
             newForm.Show();
         }
 

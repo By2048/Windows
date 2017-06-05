@@ -33,6 +33,11 @@ namespace PictureViewer
             return imgs;
         }
 
+        /// <summary>
+        /// 使用文件流创建BitMap加载图片
+        /// </summary>
+        /// <param name="path">图片的路径</param>
+        /// <returns></returns>
         public static Bitmap LoadImage(string path)
         {
             FileStream fs = new FileStream(path, FileMode.Open, FileAccess.Read);

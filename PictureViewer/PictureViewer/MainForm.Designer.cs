@@ -72,11 +72,11 @@ namespace PictureViewer
             // toolStripContainerImage.ContentPanel
             // 
             this.toolStripContainerImage.ContentPanel.Controls.Add(this.splitContainer);
-            this.toolStripContainerImage.ContentPanel.Size = new System.Drawing.Size(688, 444);
+            this.toolStripContainerImage.ContentPanel.Size = new System.Drawing.Size(981, 644);
             this.toolStripContainerImage.Dock = System.Windows.Forms.DockStyle.Fill;
             this.toolStripContainerImage.Location = new System.Drawing.Point(0, 0);
             this.toolStripContainerImage.Name = "toolStripContainerImage";
-            this.toolStripContainerImage.Size = new System.Drawing.Size(688, 491);
+            this.toolStripContainerImage.Size = new System.Drawing.Size(981, 691);
             this.toolStripContainerImage.TabIndex = 0;
             this.toolStripContainerImage.Text = "toolStripContainer1";
             // 
@@ -91,7 +91,7 @@ namespace PictureViewer
             this.toolStripStatusLabelImage});
             this.statusStripImage.Location = new System.Drawing.Point(0, 0);
             this.statusStripImage.Name = "statusStripImage";
-            this.statusStripImage.Size = new System.Drawing.Size(688, 22);
+            this.statusStripImage.Size = new System.Drawing.Size(981, 22);
             this.statusStripImage.TabIndex = 0;
             // 
             // toolStripStatusLabelImage
@@ -114,8 +114,8 @@ namespace PictureViewer
             // splitContainer.Panel2
             // 
             this.splitContainer.Panel2.Controls.Add(this.panelMain);
-            this.splitContainer.Size = new System.Drawing.Size(688, 444);
-            this.splitContainer.SplitterDistance = 141;
+            this.splitContainer.Size = new System.Drawing.Size(981, 644);
+            this.splitContainer.SplitterDistance = 201;
             this.splitContainer.SplitterWidth = 5;
             this.splitContainer.TabIndex = 0;
             // 
@@ -124,7 +124,7 @@ namespace PictureViewer
             this.panelTree.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panelTree.Location = new System.Drawing.Point(0, 0);
             this.panelTree.Name = "panelTree";
-            this.panelTree.Size = new System.Drawing.Size(141, 444);
+            this.panelTree.Size = new System.Drawing.Size(201, 644);
             this.panelTree.TabIndex = 0;
             // 
             // panelMain
@@ -132,7 +132,7 @@ namespace PictureViewer
             this.panelMain.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panelMain.Location = new System.Drawing.Point(0, 0);
             this.panelMain.Name = "panelMain";
-            this.panelMain.Size = new System.Drawing.Size(542, 444);
+            this.panelMain.Size = new System.Drawing.Size(775, 644);
             this.panelMain.TabIndex = 0;
             // 
             // toolStripMain
@@ -262,7 +262,7 @@ namespace PictureViewer
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(688, 491);
+            this.ClientSize = new System.Drawing.Size(981, 691);
             this.Controls.Add(this.toolStripContainerImage);
             this.Name = "MainForm";
             this.Text = "MainForm";
