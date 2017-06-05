@@ -146,6 +146,21 @@ namespace PictureViewer
             return allPath;
         }
 
+        public static List<CollectionDetail> GetAllCollection()
+        {
+            Load();
+            List<CollectionDetail> allColl = new List<CollectionDetail>();
+            foreach (JProperty item in obj.Children())
+            {
+                string id = item.Name;
+                string type = item.Value["Type"].ToString();
+                string path = item.Value["Path"].ToString();
+                string date = item.Value["Date"].ToString();
+                CollectionDetail coll = new CollectionDetail(id, type, path, date);
+                allColl.Add(coll);
+            }
+            return allColl;
+        }
 
     }
 

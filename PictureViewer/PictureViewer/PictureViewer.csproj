@@ -58,6 +58,7 @@
       <DependentUpon>CollectionForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Model\Collection.cs" />
+    <Compile Include="Model\CollectionDetail.cs" />
     <Compile Include="Model\CollectionTool.cs" />
     <Compile Include="Model\Enums.cs" />
     <Compile Include="Model\ImageTool.cs" />
