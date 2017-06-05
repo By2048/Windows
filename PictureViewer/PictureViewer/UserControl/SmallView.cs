@@ -35,7 +35,7 @@ namespace PictureViewer
             InitializeComponent();
             Size = panelSize;
             panelMain.AutoScroll = true;
-            ShowSmallImages(path,imageSize);
+            ShowSmallImages(path, panelSize, imageSize);
         }
 
         private void SmallView_Load(object sender, EventArgs e)
@@ -46,14 +46,14 @@ namespace PictureViewer
             //CollectionTool
         }
 
-        private void ShowSmallImages(string path,Size imageSize)
+        private void ShowSmallImages(string path,Size panelSize, Size imageSize)
         {
             string[] pictures = ImageTool.GetAllImagePath(path);
 
             int pictureCount = pictures.Length;
 
             int padding = 2;
-            int columnCount = MainConfig.PanelMainSize.Width / imageSize.Width;
+            int columnCount = panelSize.Width / imageSize.Width;
             int rowCount = (pictureCount % columnCount == 0) ?
                 pictureCount / columnCount :
                 (pictureCount / columnCount) + 1;

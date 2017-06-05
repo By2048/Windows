@@ -30,7 +30,7 @@
         {
             this.splitContainer = new System.Windows.Forms.SplitContainer();
             this.panelListView = new System.Windows.Forms.Panel();
-            this.panelSmallView = new System.Windows.Forms.Panel();
+            this.panelShowView = new System.Windows.Forms.Panel();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer)).BeginInit();
             this.splitContainer.Panel1.SuspendLayout();
             this.splitContainer.Panel2.SuspendLayout();
@@ -49,7 +49,7 @@
             // 
             // splitContainer.Panel2
             // 
-            this.splitContainer.Panel2.Controls.Add(this.panelSmallView);
+            this.splitContainer.Panel2.Controls.Add(this.panelShowView);
             this.splitContainer.Size = new System.Drawing.Size(974, 656);
             this.splitContainer.SplitterDistance = 339;
             this.splitContainer.TabIndex = 1;
@@ -62,13 +62,13 @@
             this.panelListView.Size = new System.Drawing.Size(339, 656);
             this.panelListView.TabIndex = 0;
             // 
-            // panelSmallView
+            // panelShowView
             // 
-            this.panelSmallView.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panelSmallView.Location = new System.Drawing.Point(0, 0);
-            this.panelSmallView.Name = "panelSmallView";
-            this.panelSmallView.Size = new System.Drawing.Size(631, 656);
-            this.panelSmallView.TabIndex = 0;
+            this.panelShowView.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panelShowView.Location = new System.Drawing.Point(0, 0);
+            this.panelShowView.Name = "panelShowView";
+            this.panelShowView.Size = new System.Drawing.Size(631, 656);
+            this.panelShowView.TabIndex = 0;
             // 
             // CollectionForm
             // 
@@ -91,6 +91,6 @@
 
         private System.Windows.Forms.SplitContainer splitContainer;
         private System.Windows.Forms.Panel panelListView;
-        private System.Windows.Forms.Panel panelSmallView;
+        private System.Windows.Forms.Panel panelShowView;
     }
 }

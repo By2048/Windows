@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -70,15 +71,37 @@ namespace PictureViewer
                 listView.Items.Add(item);
                 index++;
             }
-            listView.ItemChecked += new ItemCheckedEventHandler(ListView_ItemChecked);
+            listView.ItemChecked += new ItemCheckedEventHandler(listView_ItemChecked);
+
+            listView.ItemSelectionChanged += new ListViewItemSelectionChangedEventHandler(listView_ItemSelectionChanged);
+
+            listView.MouseDown += new MouseEventHandler(this.listView_MouseDown);
 
             panelListView.Controls.Add(listView);
         }
 
-        private void ListView_ItemChecked(object sender, ItemCheckedEventArgs e)
+        private void listView_MouseDown(object sender, MouseEventArgs e)
+        {
+            listView.ContextMenuStrip = CreateContextMenuStrip();
+        }
+
+        private void listView_ItemSelectionChanged(object sender, ListViewItemSelectionChangedEventArgs e)
+        {
+            panelShowView.Controls.Clear();
+            if (listView.SelectedItems.Count > 0)
+            {
+                string path = listView.SelectedItems[0].SubItems[3].Text;
+                if (Directory.Exists(path)) // 文件夹
+                    CreateSmallView(path);
+                else if (File.Exists(path)) // 文件
+                    CreateSingleView(path);
+            }
+        }
+
+        private void listView_ItemChecked(object sender, ItemCheckedEventArgs e)
         {
             ListViewItem checkItem = listView.Items[e.Item.Index];
-            foreach (ListViewItem item in this.listView.Items)
+            foreach (ListViewItem item in listView.Items)
             {
                 if (checkItem.Checked)
                     checkItem.ForeColor = Color.Red;
@@ -87,11 +110,49 @@ namespace PictureViewer
             }
         }
 
-
-        private void CreateSmallView()
+        private void CreateSmallView(string path)
         {
+            Size panelSize = panelShowView.Size;
+            Size imageSize= new Size(16 * 10, 9 * 10);
+            SmallView smallView = new SmallView(path, panelSize, imageSize);
+            panelShowView.Controls.Add(smallView);
 
         }
+        private void CreateSingleView(string path)
+        {
+            Size panelSize = panelShowView.Size;
+            SingleView singleView = new SingleView(path,panelSize);
+            panelShowView.Controls.Add(singleView);
+        }
 
+        public ContextMenuStrip CreateContextMenuStrip()
+        {
+            ContextMenuStrip contextMenuStrip;
+            ToolStripMenuItem delete;
+
+            contextMenuStrip = new ContextMenuStrip();
+            contextMenuStrip.Name = "contextMenuStrip";
+
+            delete = new ToolStripMenuItem();
+            delete.Name = "Delete";
+            delete.Text = "删除";
+            delete.Click += new EventHandler(Delete_click);       
+
+            contextMenuStrip.Items.AddRange(
+                new ToolStripItem[] {
+                delete,
+            });
+            return contextMenuStrip;
+        }
+
+        private void Delete_click(object sender, EventArgs e)
+        {
+            foreach (ListViewItem item in listView.CheckedItems)
+            {
+                string path = item.SubItems[3].Text;
+                CollectionTool.RemoveByPath(path);
+                listView.Items.RemoveAt(item.Index);
+            }
+        }
     }
 }

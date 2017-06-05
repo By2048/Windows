@@ -40,5 +40,10 @@ namespace WinFormTest
                 MessageBox.Show("No");
             }
         }
+
+        private void listView1_MouseDown(object sender, MouseEventArgs e)
+        {
+
+        }
     }
 }
