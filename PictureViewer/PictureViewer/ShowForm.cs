@@ -58,10 +58,12 @@ namespace PictureViewer
 
             pictureBox.SizeMode = PictureBoxSizeMode.StretchImage;
             StartPosition = FormStartPosition.Manual;
-            Location = GetStartPoston(image.Size);
 
             Size = GetImageSize(image);
             pictureBox.Size = Size;
+            //Location = GetStartPoston(image.Size);
+            Location = GetStartPoston(pictureBox.Size);
+
 
             image.Dispose();
 
@@ -91,7 +93,7 @@ namespace PictureViewer
                 {
                     imageSize = new Size()
                     {
-                        Height = image.Height,
+                        Height = image.Height-50,
                         Width = int.Parse(Math.Round(image.Height * proportion).ToString())
                     };
                 }
@@ -99,7 +101,7 @@ namespace PictureViewer
                 {
                     imageSize = new Size()
                     {
-                        Width = image.Width,
+                        Width = image.Width-50,
                         Height = int.Parse(Math.Round(image.Width / proportion).ToString())
                     };
                 }
@@ -155,7 +157,7 @@ namespace PictureViewer
 
 
         // 窗口在屏幕中居中 优先在第二屏幕居中
-        private Point GetStartPoston(Size imgeSize)
+        private Point GetStartPoston(Size picSize)
         {
             Point startPoint = new Point(0, 0);
             if (Screen.AllScreens.Count() > 1)  // 是双屏
@@ -165,8 +167,8 @@ namespace PictureViewer
                 int secondScreenHeight = Screen.AllScreens[1].Bounds.Height;
                 startPoint = new Point()
                 {
-                    X = firstScreenWidth + (secondScreenWidth - imgeSize.Width) / 2,
-                    Y = (secondScreenHeight - imgeSize.Height) / 2
+                    X = firstScreenWidth + (secondScreenWidth - picSize.Width) / 2,
+                    Y = (secondScreenHeight - picSize.Height) / 2
                 };
             }
             else
@@ -175,8 +177,8 @@ namespace PictureViewer
                 int firstScreenHeight = Screen.AllScreens[0].Bounds.Height;
                 startPoint = new Point()
                 {
-                    X = (firstScreenWidth - imgeSize.Width) / 2,
-                    Y = (firstScreenHeight - imgeSize.Height) / 2
+                    X = (firstScreenWidth - picSize.Width) / 2,
+                    Y = (firstScreenHeight - picSize.Height) / 2
                 };
             }
             return startPoint;
