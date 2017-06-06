@@ -46,10 +46,10 @@ namespace PictureViewer
             this.tsbSize15 = new System.Windows.Forms.ToolStripMenuItem();
             this.tsbSize20 = new System.Windows.Forms.ToolStripMenuItem();
             this.tslMenu = new System.Windows.Forms.ToolStripDropDownButton();
-            this.显示多选框ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.btnTest = new System.Windows.Forms.ToolStripLabel();
             this.imageList = new System.Windows.Forms.ImageList(this.components);
             this.toolStripTextBox1 = new System.Windows.Forms.ToolStripTextBox();
+            this.收藏管理ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripContainerImage.BottomToolStripPanel.SuspendLayout();
             this.toolStripContainerImage.ContentPanel.SuspendLayout();
             this.toolStripContainerImage.TopToolStripPanel.SuspendLayout();
@@ -148,7 +148,7 @@ namespace PictureViewer
             this.btnTest});
             this.toolStripMain.Location = new System.Drawing.Point(3, 0);
             this.toolStripMain.Name = "toolStripMain";
-            this.toolStripMain.Size = new System.Drawing.Size(264, 25);
+            this.toolStripMain.Size = new System.Drawing.Size(295, 25);
             this.toolStripMain.TabIndex = 0;
             // 
             // SmallView
@@ -208,37 +208,31 @@ namespace PictureViewer
             // tsbSize10
             // 
             this.tsbSize10.Name = "tsbSize10";
-            this.tsbSize10.Size = new System.Drawing.Size(134, 22);
+            this.tsbSize10.Size = new System.Drawing.Size(152, 22);
             this.tsbSize10.Text = "160 X 90";
             this.tsbSize10.Click += new System.EventHandler(this.tsbSize_Click);
             // 
             // tsbSize15
             // 
             this.tsbSize15.Name = "tsbSize15";
-            this.tsbSize15.Size = new System.Drawing.Size(134, 22);
+            this.tsbSize15.Size = new System.Drawing.Size(152, 22);
             this.tsbSize15.Text = "240 X 135";
             this.tsbSize15.Click += new System.EventHandler(this.tsbSize_Click);
             // 
             // tsbSize20
             // 
             this.tsbSize20.Name = "tsbSize20";
-            this.tsbSize20.Size = new System.Drawing.Size(134, 22);
+            this.tsbSize20.Size = new System.Drawing.Size(152, 22);
             this.tsbSize20.Text = "320 X 180";
             this.tsbSize20.Click += new System.EventHandler(this.tsbSize_Click);
             // 
             // tslMenu
             // 
             this.tslMenu.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.显示多选框ToolStripMenuItem});
+            this.收藏管理ToolStripMenuItem});
             this.tslMenu.Name = "tslMenu";
             this.tslMenu.Size = new System.Drawing.Size(45, 22);
             this.tslMenu.Text = "菜单";
-            // 
-            // 显示多选框ToolStripMenuItem
-            // 
-            this.显示多选框ToolStripMenuItem.Name = "显示多选框ToolStripMenuItem";
-            this.显示多选框ToolStripMenuItem.Size = new System.Drawing.Size(136, 22);
-            this.显示多选框ToolStripMenuItem.Text = "显示多选框";
             // 
             // btnTest
             // 
@@ -257,6 +251,13 @@ namespace PictureViewer
             // 
             this.toolStripTextBox1.Name = "toolStripTextBox1";
             this.toolStripTextBox1.Size = new System.Drawing.Size(100, 25);
+            // 
+            // 收藏管理ToolStripMenuItem
+            // 
+            this.收藏管理ToolStripMenuItem.Name = "收藏管理ToolStripMenuItem";
+            this.收藏管理ToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.收藏管理ToolStripMenuItem.Text = "收藏管理";
+            this.收藏管理ToolStripMenuItem.Click += new System.EventHandler(this.收藏管理ToolStripMenuItem_Click);
             // 
             // MainForm
             // 
@@ -302,10 +303,10 @@ namespace PictureViewer
         private System.Windows.Forms.ToolStripMenuItem tsbSize15;
         private System.Windows.Forms.ToolStripMenuItem tsbSize20;
         private System.Windows.Forms.ToolStripDropDownButton tslMenu;
-        private System.Windows.Forms.ToolStripMenuItem 显示多选框ToolStripMenuItem;
         private System.Windows.Forms.ImageList imageList;
         private System.Windows.Forms.Panel panelMain;
         private System.Windows.Forms.Panel panelTree;
         private System.Windows.Forms.ToolStripLabel btnTest;
+        private System.Windows.Forms.ToolStripMenuItem 收藏管理ToolStripMenuItem;
     }
 }

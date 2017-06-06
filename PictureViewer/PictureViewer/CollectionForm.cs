@@ -27,6 +27,7 @@ namespace PictureViewer
         private void CollectionForm_Load(object sender, EventArgs e)
         {
             CenterToScreen();
+            MaximizeBox = false;
         }
         private void CreateListView()
         {

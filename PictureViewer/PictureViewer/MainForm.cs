@@ -160,6 +160,11 @@ namespace PictureViewer
             //panelMain.BackgroundImage = Image.FromFile(MainConfig.ShowImagePath);
             //panelMain.BackgroundImageLayout = ImageLayout.Zoom;
         }
-       
+
+        private void 收藏管理ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            CollectionForm form = new CollectionForm();
+            form.Show();
+        }
     }
 }

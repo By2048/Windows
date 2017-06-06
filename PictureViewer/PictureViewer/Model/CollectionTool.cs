@@ -13,7 +13,7 @@ namespace PictureViewer
 
     public static class CollectionTool
     {
-        public static string jsonPath = @"F:\\Test3.json";
+        public static string jsonPath = @"F:\\Collection.json";
         public static string json;
         public static JObject obj;
 

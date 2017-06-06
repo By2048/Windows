@@ -171,7 +171,7 @@ namespace PictureViewer
             //    MessageBox.Show(path.ToString());
 
             //Image image = pictureBox.Image;
-            ShowImage showForm = new ShowImage();
+            ShowForm showForm = new ShowForm();
             showForm.picPath = filePath;
             //newForm.showImage=image;
             //showForm.SetPictureBoxByImage(image);
