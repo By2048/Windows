@@ -328,7 +328,7 @@ namespace PictureViewer
         }
 
 
-        // 收藏Node的右键菜单
+        // 创建收藏Node的右键菜单
         public ContextMenuStrip CreateCollContextMenuStrip(TreeNode selectNode)
         {
             ContextMenuStrip contextMenuStrip;

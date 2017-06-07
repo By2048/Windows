@@ -40,3 +40,5 @@ E:\Desktop\Windows\PictureViewer\WinFormTest\obj\Debug\WinFormTest.Form18.resour
 E:\Desktop\Windows\PictureViewer\WinFormTest\obj\Debug\WinFormTest.Form12.resources
 E:\Desktop\Windows\PictureViewer\WinFormTest\obj\Debug\WinFormTest.csproj.ResolveComReference.cache
 E:\Desktop\Windows\PictureViewer\WinFormTest\obj\Debug\WinFormTest.Form19.resources
+E:\Desktop\Windows\PictureViewer\WinFormTest\obj\Debug\WinFormTest.Form20.resources
+E:\Desktop\Windows\PictureViewer\WinFormTest\obj\Debug\WinFormTest.PicBox.resources
