@@ -1,0 +1,39 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+
+<Courses>
+  <Course>
+    <CouId>c1</CouId>
+    <Name>name-1</Name>
+    <TeaId>t1</TeaId>
+    <CouHour>1</CouHour>
+    <Describe>des-1</Describe>
+  </Course>
+  <Course>
+    <CouId>c2</CouId>
+    <Name>name-2</Name>
+    <TeaId>t2</TeaId>
+    <CouHour>2</CouHour>
+    <Describe>des-2</Describe>
+  </Course>
+  <Course>
+    <CouId>c3</CouId>
+    <Name>name-3</Name>
+    <TeaId>t3</TeaId>
+    <CouHour>3</CouHour>
+    <Describe>des-3</Describe>
+  </Course>
+  <Course>
+    <CouId>c4</CouId>
+    <Name>name-4</Name>
+    <TeaId>t4</TeaId>
+    <CouHour>4</CouHour>
+    <Describe>des-4</Describe>
+  </Course>
+  <Course>
+    <CouId>c5</CouId>
+    <Name>name-5</Name>
+    <TeaId>t5</TeaId>
+    <CouHour>5</CouHour>
+    <Describe>des-5</Describe>
+  </Course>
+</Courses>
