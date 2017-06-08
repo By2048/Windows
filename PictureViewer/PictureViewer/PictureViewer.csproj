@@ -84,6 +84,12 @@
     <Compile Include="TestForm.Designer.cs">
       <DependentUpon>TestForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="UserControl\PicBox.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControl\PicBox.Designer.cs">
+      <DependentUpon>PicBox.cs</DependentUpon>
+    </Compile>
     <Compile Include="UserControl\SingleView.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -141,6 +147,9 @@
     </Compile>
     <EmbeddedResource Include="TestForm.resx">
       <DependentUpon>TestForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserControl\PicBox.resx">
+      <DependentUpon>PicBox.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UserControl\SingleView.resx">
       <DependentUpon>SingleView.cs</DependentUpon>

@@ -7,8 +7,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.IO;
 
-namespace WinFormTest
+namespace PictureViewer
 {
     public partial class PicBox : UserControl
     {
@@ -23,18 +24,21 @@ namespace WinFormTest
             Size = showSize;
             InitPanel(imgPath);
 
-            DoubleClick += PicBox_DoubleClick;
             Tag = imgPath;
+            DoubleClick += Control_DoubleClick;
         }
 
         private void Control_DoubleClick(object sender, EventArgs e)
         {
             PicBox picBox = (PicBox)sender;
             string imgPath = picBox.Tag.ToString();
+            //MessageBox.Show(imgPath);
+            ShowForm form = new ShowForm();
+            form.imgPath = imgPath;
+            form.Show();
 
-            MessageBox.Show("User control clicked");
-            OnDoubleClick(e);
         }
+  
 
         private void InitPanel(string imgPath)
         {
@@ -48,20 +52,18 @@ namespace WinFormTest
 
             pictureBox.Size = panelImage.Size;
             pictureBox.Location = new Point(0, 0);
-            //pictureBox.Image\=Image
+            pictureBox.SizeMode = PictureBoxSizeMode.Zoom;
+            pictureBox.Image = ImageTool.LoadImage(imgPath);
+            pictureBox.DoubleClick += pictureBox_DoubleClick;
 
             label.Size = panelInfo.Size;
             label.Location = new Point(0, 0);
-            label.Text = "001.jpg";
+            label.Text = Path.GetFileName(imgPath);
             label.TextAlign = ContentAlignment.MiddleCenter;
-
-            panelInfo.BackColor = Color.Green;
-            panelImage.BackColor = Color.Red;
-
-
-            pictureBox.DoubleClick += pictureBox_DoubleClick;
             label.DoubleClick += label_DoubleClick;
 
+            //panelInfo.BackColor = Color.Green;
+            //panelImage.BackColor = Color.Red;
         }
 
         private void label_DoubleClick(object sender, EventArgs e)
@@ -74,9 +76,6 @@ namespace WinFormTest
             OnDoubleClick(e);
         }
 
-        public void PicBox_DoubleClick(object sender, EventArgs e)
-        {
-            MessageBox.Show("PicBox_DoubleClick");
-        }     
+        
     }
 }

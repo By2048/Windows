@@ -46,7 +46,7 @@ namespace PictureViewer
             PictureBox pictureBox = (PictureBox)sender;
             string filePath = pictureBox.Tag.ToString();
             ShowForm newForm = new ShowForm();
-            newForm.picPath = filePath;
+            newForm.imgPath = filePath;
             newForm.Show();
         }
     }

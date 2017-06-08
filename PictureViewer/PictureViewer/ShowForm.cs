@@ -17,7 +17,7 @@ namespace PictureViewer
         bool isCtrlDown = false;
         bool allowArrowKey = false;
 
-        public string picPath = "";  // 窗体所显示的文件路径  
+        public string imgPath = "";  // 窗体所显示的文件路径  
         List<string> parentFilePath = new List<string>();  // 当前显示路径下的同辈文件
 
         private ContextMenuStrip picBoxContextMenuStrip;
@@ -51,8 +51,8 @@ namespace PictureViewer
         {
           
 
-            Image image = Image.FromFile(picPath);
-            pictureBox.Image = ImageTool.LoadImage(picPath);
+            Image image = Image.FromFile(imgPath);
+            pictureBox.Image = ImageTool.LoadImage(imgPath);
             //pictureBox.Image = image;
 
 
@@ -111,7 +111,7 @@ namespace PictureViewer
 
         public void GetParentFile()
         {
-            parentFilePath = ImageTool.GetAllImagePath(Path.GetDirectoryName(picPath)).ToList();
+            parentFilePath = ImageTool.GetAllImagePath(Path.GetDirectoryName(imgPath)).ToList();
         }
 
         private void CreateContextMenuStrip()
@@ -188,28 +188,28 @@ namespace PictureViewer
         private void SwitchNext()
         {
             //int picPathIndex = parentFilePath.FindIndex(tmp => tmp == picPath);
-            int curIndex = parentFilePath.IndexOf(picPath);
+            int curIndex = parentFilePath.IndexOf(imgPath);
             int nextIndex;
             if (curIndex == parentFilePath.Count - 1)
                 nextIndex = 0;
             else
                 nextIndex = curIndex + 1;
 
-            picPath = parentFilePath[nextIndex];
+            imgPath = parentFilePath[nextIndex];
 
             LoadImage();
             //SetPictureBoxByPath(parentFilePath[nextIndex]);
         }
         private void SwitchPrevious()
         {
-            int curIndex = parentFilePath.IndexOf(picPath);
+            int curIndex = parentFilePath.IndexOf(imgPath);
             int preIndex;
             if (curIndex == 0)
                 preIndex = parentFilePath.Count() - 1;
             else
                 preIndex = curIndex - 1;
 
-            picPath = parentFilePath[preIndex];
+            imgPath = parentFilePath[preIndex];
 
             LoadImage();
 
@@ -220,11 +220,11 @@ namespace PictureViewer
         private void SwitchTop()
         {
             //Image image;
-            int curIndex = parentFilePath.IndexOf(picPath);
+            int curIndex = parentFilePath.IndexOf(imgPath);
             if (curIndex == 0)
                 return;
             else
-                picPath = parentFilePath[0];
+                imgPath = parentFilePath[0];
             LoadImage();
             //image = Image.FromFile(parentFilePath[0]);
             //SetPictureBoxByImage(image);
@@ -234,11 +234,11 @@ namespace PictureViewer
         {
             //Image image;
             int endIndex = parentFilePath.Count - 1;
-            int curIndex = parentFilePath.IndexOf(picPath);
+            int curIndex = parentFilePath.IndexOf(imgPath);
             if (curIndex == parentFilePath.Count - 1)
                 return;
             else
-                picPath = parentFilePath[endIndex];
+                imgPath = parentFilePath[endIndex];
             LoadImage();
             //image = Image.FromFile(parentFilePath[endIndex]);
             //SetPictureBoxByImage(image);
@@ -249,7 +249,7 @@ namespace PictureViewer
         {
             if (e.Control == true)
                 isCtrlDown = true;
-            if (picPath != null && parentFilePath.Count != 0)
+            if (imgPath != null && parentFilePath.Count != 0)
                 allowArrowKey = true;
         }
         private void ShowImage_KeyPress(object sender, KeyPressEventArgs e)

@@ -19,10 +19,7 @@ namespace WinFormTest
 
         private void Form20_Load(object sender, EventArgs e)
         {
-            CenterToScreen();
-            string imgPath = @"F:\Test\001.jpg";
-            PicBox picBox = new PicBox(imgPath, new Size(150, 150));
-            Controls.Add(picBox);
+           
         }
     }
 }

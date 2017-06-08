@@ -19,16 +19,15 @@ namespace PictureViewer
 
         private void button1_Click(object sender, EventArgs e)
         {
-            //MessageBox.Show(CollectionTool.json);
-            //MessageBox.Show(CollectionTool.obj.ToString());
-            //Collection item = new Collection();
-            //CollectionTool.Add(item);
-            CollectionTool.RemoveByPath("fwefwe");
+        
         }
 
         private void TestForm_Load(object sender, EventArgs e)
         {
             CenterToScreen();
+            string imgPath = @"F:\Test\000.jpg";
+            PicBox picBox = new PicBox(imgPath, new Size(150, 150));
+            Controls.Add(picBox);
         }
     }
 }
