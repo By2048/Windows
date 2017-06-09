@@ -17,38 +17,42 @@ namespace WinFormTest
             InitializeComponent();
         }
 
-        bool wselected = false;
+        bool selected = false;
         Point curPoint = new Point();
-        private void Form1_Load(object sender, EventArgs e)
+        private void Form_Load(object sender, EventArgs e)
         {
-
+            CenterToScreen();
         }
 
-        private void pictureBox1_MouseDown(object sender, MouseEventArgs e)
+        private void pictureBox_MouseDown(object sender, MouseEventArgs e)
         {
-            wselected = true;
+            selected = true;
             curPoint.X = e.X;
             curPoint.Y = e.Y;
         }
         Point diffPoint = new Point(0, 0);
-        //int driftX = 0, driftY = 0;
-        Point movePoint = new Point(0, 0);
-        //int mx = 0, my = 0;
-        private void pictureBox1_MouseMove(object sender, MouseEventArgs e)
+        Point newPoint = new Point(0, 0);
+
+        private void pictureBox_MouseMove(object sender, MouseEventArgs e)
         {
-            if (wselected)
+            if (selected)
             {
                 diffPoint.X = curPoint.X - e.X;
                 diffPoint.Y = curPoint.Y - e.Y;
 
-                movePoint.X = movePoint.X - diffPoint.X;
-                movePoint.Y = movePoint.Y - diffPoint.Y;
+                newPoint.X = newPoint.X - diffPoint.X;
+                newPoint.Y = newPoint.Y - diffPoint.Y;
 
-                Bitmap bm = new Bitmap(this.pictureBox1.Image);
+                Bitmap bm = new Bitmap(pictureBox.Image);
 
-                Graphics g = pictureBox1.CreateGraphics();
-                g.Clear(pictureBox1.BackColor);
-                g.DrawImage(bm, movePoint.X, movePoint.Y);
+                Graphics g = pictureBox.CreateGraphics();
+                g.Clear(pictureBox.BackColor);
+
+                int w = bm.Width/2;
+                int h = bm.Height/2;
+
+                g.DrawImage(bm, newPoint.X, newPoint.Y,w,h);
+
 
                 curPoint.X = e.X;
                 curPoint.Y = e.Y;
@@ -58,9 +62,9 @@ namespace WinFormTest
             }
         }
 
-        private void pictureBox1_MouseUp(object sender, MouseEventArgs e)
+        private void pictureBox_MouseUp(object sender, MouseEventArgs e)
         {
-            wselected = false;
+            selected = false;
         }
 
       
