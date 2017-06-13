@@ -70,6 +70,7 @@
       <DependentUpon>MainForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Model\MainConfig.cs" />
+    <Compile Include="Model\TreeViewConfig.cs" />
     <Compile Include="ShowForm.cs">
       <SubType>Form</SubType>
     </Compile>

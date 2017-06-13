@@ -22,7 +22,26 @@ namespace PictureViewer
             treeViewImg.ImageList = imageListIcon;
             LoadTreeView(MainConfig.StartTreePath);
             treeViewImg.NodeMouseClick += new TreeNodeMouseClickEventHandler(treeViewImg_NodeMouseClick);
+            LoadCollectionTree();         
+
+        }
+
+        // 初始化 TreeView 根据上一次点击的节点
+        public TreeView(string oldNodeText)
+        {
+            oldNodeText = TreeViewConfig.OldNodeText;
+            InitializeComponent();
+            treeViewImg.ShowLines = false;
+            Size = MainConfig.PanelTreeSize;
+            treeViewImg.Size = MainConfig.PanelTreeSize;
+            treeViewImg.ImageList = imageListIcon;
+            LoadTreeView(MainConfig.StartTreePath);
+            treeViewImg.NodeMouseClick += new TreeNodeMouseClickEventHandler(treeViewImg_NodeMouseClick);
             LoadCollectionTree();
+
+            TreeNode oldNode = FindNode(oldNodeText);
+            oldNode.Expand();
+            treeViewImg.SelectedNode = oldNode;
         }
 
         private void LoadTreeView(string rootPath)
@@ -106,21 +125,27 @@ namespace PictureViewer
         public delegate void LoadImage();
         public event LoadImage LoadImageEvent;
 
+        public delegate void LoadToolStripStatusLabel();
+        public event LoadToolStripStatusLabel LoadToolStripStatusLabelEvent;
+
         private void treeViewImg_NodeMouseClick(object sender, TreeNodeMouseClickEventArgs e)
         {
             TreeNode node = e.Node;
             ImageTree nodeTag = (ImageTree)node.Tag;
             if (e.Button == MouseButtons.Left)
             {
-                if (nodeTag.NodeType.ToString() == "Folder")
+                if (nodeTag.NodeType.ToString() == "Folder" || nodeTag.NodeType.ToString()== "Collection")
                 {
                     MainConfig.ShowFolderPath = nodeTag.FullPath;
+                    TreeViewConfig.OldNodeText = nodeTag.Name;
                     LoadUserControlEvent();
+                    LoadToolStripStatusLabelEvent();
                 }
                 else if (nodeTag.NodeType.ToString() == "Image")
                 {
                     MainConfig.ShowImagePath = nodeTag.FullPath;
                     LoadImageEvent();
+                    LoadToolStripStatusLabelEvent();
                 }
                 else
                     return;
@@ -208,6 +233,7 @@ namespace PictureViewer
                 treeViewImg.Nodes.Add(node);
             }
             TreeNode collNode = FindNode("我的收藏");
+            collNode.Nodes.Clear();
             List<string> allPath = CollectionTool.GetALlPath();
             foreach (string path in allPath)
             {
@@ -325,6 +351,7 @@ namespace PictureViewer
             string date = DateTime.Now.ToString();
             Collection coll = new Collection(type, path, date);
             CollectionTool.Add(coll);
+            LoadCollectionTree();
         }
 
 

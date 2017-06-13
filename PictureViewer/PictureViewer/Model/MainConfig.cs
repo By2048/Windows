@@ -28,6 +28,6 @@ namespace PictureViewer
         // 图片当前显示的模式
         public static ShowView ShowView;
 
-
     }
+
 }

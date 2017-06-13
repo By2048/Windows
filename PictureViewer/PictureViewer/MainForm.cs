@@ -21,11 +21,11 @@ namespace PictureViewer
             Resize += new EventHandler(MainForm_Resize);
             splitContainer.SplitterDistance = Size.Width / 4;
             CheckForIllegalCrossThreadCalls = false;
-        }
+        }     
 
         private void MainForm_Load(object sender, EventArgs e)
         {
-            MainConfig.StartTreePath = @"F:\Test";
+            MainConfig.StartTreePath = @"F:\Test2";
             MainConfig.ImageSize=new Size(16 * 10, 9 * 10);
             MainConfig.PanelTreeSize = panelTree.Size;
             MainConfig.PanelMainSize = panelMain.Size;
@@ -36,7 +36,7 @@ namespace PictureViewer
             CenterToScreen();
             LoadTreeView();
             LoadUserControl();
-            SetTsbBtnChecked();
+            SetTsbBtnChecked();          
         }
 
         // 窗体大小变化时刷新 UserControl
@@ -76,7 +76,8 @@ namespace PictureViewer
             ToolStripMenuItem item = (ToolStripMenuItem)sender;
             int proportion = int.Parse(item.Name.Substring(item.Name.Length - 2, 2));
             MainConfig.ImageSize = new Size(16 * proportion, 9 * proportion);
-            RefreshForm();
+            LoadOldTreeView();
+            LoadUserControl(); 
         }      
 
         private void btnTest_Click(object sender, EventArgs e)
@@ -138,19 +139,45 @@ namespace PictureViewer
             }
         }
      
+
         // 初始化TreeView
         private void LoadTreeView()
         {
             panelTree.Controls.Clear();
             TreeView treeView = new TreeView();
 
-            //treeView.LoadUserControlEvent += new TreeView.LoadUserControl(RefreshForm);
             treeView.LoadUserControlEvent += new TreeView.LoadUserControl(LoadUserControl);
             treeView.LoadImageEvent += new TreeView.LoadImage(LoadSingleView);
+            treeView.LoadToolStripStatusLabelEvent += new TreeView.LoadToolStripStatusLabel(LoadtoolStripStatusLabelImage);
 
             panelTree.Controls.Add(treeView);
         }
-       
+
+        private void LoadOldTreeView()
+        {
+            panelTree.Controls.Clear();
+
+            TreeView treeView = new TreeView("OldNodeString");  
+
+            treeView.LoadUserControlEvent += new TreeView.LoadUserControl(LoadUserControl);
+            treeView.LoadImageEvent += new TreeView.LoadImage(LoadSingleView);
+            treeView.LoadToolStripStatusLabelEvent += new TreeView.LoadToolStripStatusLabel(LoadtoolStripStatusLabelImage);
+
+            panelTree.Controls.Add(treeView);
+        }
+
+        private void LoadTreeView(TreeNode oldNode)
+        {
+            panelTree.Controls.Clear();
+            TreeView treeView = new TreeView();
+
+            treeView.LoadUserControlEvent += new TreeView.LoadUserControl(LoadUserControl);
+            treeView.LoadImageEvent += new TreeView.LoadImage(LoadSingleView);
+            treeView.LoadToolStripStatusLabelEvent += new TreeView.LoadToolStripStatusLabel(LoadtoolStripStatusLabelImage);
+
+            panelTree.Controls.Add(treeView);
+        }
+
 
         private void LoadSingleView()
         {
@@ -159,6 +186,13 @@ namespace PictureViewer
             panelMain.Controls.Add(singleView);
             //panelMain.BackgroundImage = Image.FromFile(MainConfig.ShowImagePath);
             //panelMain.BackgroundImageLayout = ImageLayout.Zoom;
+        }
+
+        private void LoadtoolStripStatusLabelImage()
+        {
+            toolStripStatusLabelImage.Text = "";
+            if (MainConfig.ShowFolderPath != "")
+                toolStripStatusLabelImage.Text += MainConfig.ShowFolderPath;
         }
 
         private void 收藏管理ToolStripMenuItem_Click(object sender, EventArgs e)

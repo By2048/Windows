@@ -165,60 +165,11 @@ namespace PictureViewer
         {
             PictureBox pictureBox = (PictureBox)sender;
             string filePath = pictureBox.Tag.ToString();
-            //List<string> allPic= ImageTool.GetAllImage(MainConfig.ShowFolderPath).ToList();
-
-            //foreach(string path in allPic)
-            //    MessageBox.Show(path.ToString());
-
-            //Image image = pictureBox.Image;
             ShowForm showForm = new ShowForm();
-            showForm.imgPath = filePath;
-            //newForm.showImage=image;
-            //showForm.SetPictureBoxByImage(image);
-            //showForm.SetFileParent(filePath);
+            showForm.imgPath = filePath;          
             showForm.Show();
         }
-
-        //private ContextMenuStrip CreateContextMenuStrip(string filePath)
-        //{
-        //    ContextMenuStrip picContextMenuStrip;
-        //    ToolStripMenuItem Del;
-        //    ToolStripMenuItem Add;
-
-        //    picContextMenuStrip = new ContextMenuStrip();
-        //    picContextMenuStrip.Name = "picContextMenuStrip";
-
-        //    Del = new ToolStripMenuItem();
-        //    Del.Name = "Del";
-        //    Del.Text = "删除";
-        //    Del.Click += new EventHandler(Del_click);
-        //    Del.Tag = filePath;
-
-        //    Add = new ToolStripMenuItem();
-        //    Add.Name = "Add";
-        //    Add.Text = "添加收藏";
-        //    Add.Click += new EventHandler(Add_click);
-        //    Add.Tag = filePath;
-
-        //    picContextMenuStrip.Items.AddRange(
-        //        new ToolStripItem[] {
-        //        Del,
-        //        Add,
-        //    });
-        //    return picContextMenuStrip;
-        //}
-        //private void Del_click(object sender, EventArgs e)
-        //{
-        //    ToolStripMenuItem item = (ToolStripMenuItem)sender;
-        //    string filePath = item.Tag.ToString();
-        //    MessageBox.Show(filePath);
-        //}
-        //private void Add_click(object sender, EventArgs e)
-        //{
-        //    ToolStripMenuItem item = (ToolStripMenuItem)sender;
-        //    string filePath = item.Tag.ToString();
-        //    MessageBox.Show(filePath);
-        //}
+               
 
     }
 }

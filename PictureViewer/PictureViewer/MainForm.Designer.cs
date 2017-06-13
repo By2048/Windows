@@ -46,10 +46,10 @@ namespace PictureViewer
             this.tsbSize15 = new System.Windows.Forms.ToolStripMenuItem();
             this.tsbSize20 = new System.Windows.Forms.ToolStripMenuItem();
             this.tslMenu = new System.Windows.Forms.ToolStripDropDownButton();
+            this.收藏管理ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.btnTest = new System.Windows.Forms.ToolStripLabel();
             this.imageList = new System.Windows.Forms.ImageList(this.components);
             this.toolStripTextBox1 = new System.Windows.Forms.ToolStripTextBox();
-            this.收藏管理ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripContainerImage.BottomToolStripPanel.SuspendLayout();
             this.toolStripContainerImage.ContentPanel.SuspendLayout();
             this.toolStripContainerImage.TopToolStripPanel.SuspendLayout();
@@ -148,7 +148,7 @@ namespace PictureViewer
             this.btnTest});
             this.toolStripMain.Location = new System.Drawing.Point(3, 0);
             this.toolStripMain.Name = "toolStripMain";
-            this.toolStripMain.Size = new System.Drawing.Size(295, 25);
+            this.toolStripMain.Size = new System.Drawing.Size(281, 25);
             this.toolStripMain.TabIndex = 0;
             // 
             // SmallView
@@ -234,11 +234,18 @@ namespace PictureViewer
             this.tslMenu.Size = new System.Drawing.Size(45, 22);
             this.tslMenu.Text = "菜单";
             // 
+            // 收藏管理ToolStripMenuItem
+            // 
+            this.收藏管理ToolStripMenuItem.Name = "收藏管理ToolStripMenuItem";
+            this.收藏管理ToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.收藏管理ToolStripMenuItem.Text = "收藏管理";
+            this.收藏管理ToolStripMenuItem.Click += new System.EventHandler(this.收藏管理ToolStripMenuItem_Click);
+            // 
             // btnTest
             // 
             this.btnTest.Name = "btnTest";
-            this.btnTest.Size = new System.Drawing.Size(46, 22);
-            this.btnTest.Text = "Button";
+            this.btnTest.Size = new System.Drawing.Size(32, 22);
+            this.btnTest.Text = "Test";
             this.btnTest.Click += new System.EventHandler(this.btnTest_Click);
             // 
             // imageList
@@ -251,13 +258,6 @@ namespace PictureViewer
             // 
             this.toolStripTextBox1.Name = "toolStripTextBox1";
             this.toolStripTextBox1.Size = new System.Drawing.Size(100, 25);
-            // 
-            // 收藏管理ToolStripMenuItem
-            // 
-            this.收藏管理ToolStripMenuItem.Name = "收藏管理ToolStripMenuItem";
-            this.收藏管理ToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
-            this.收藏管理ToolStripMenuItem.Text = "收藏管理";
-            this.收藏管理ToolStripMenuItem.Click += new System.EventHandler(this.收藏管理ToolStripMenuItem_Click);
             // 
             // MainForm
             // 
