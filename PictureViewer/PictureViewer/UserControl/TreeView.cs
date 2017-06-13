@@ -22,14 +22,21 @@ namespace PictureViewer
             treeViewImg.ImageList = imageListIcon;
             LoadTreeView(MainConfig.StartTreePath);
             treeViewImg.NodeMouseClick += new TreeNodeMouseClickEventHandler(treeViewImg_NodeMouseClick);
-            LoadCollectionTree();         
+            LoadCollectionTree();
 
+            if (MainConfig.CurNodeText!="")
+            {
+                TreeNode oldNode = FindNode(MainConfig.CurNodeText);
+                oldNode.Expand();
+                treeViewImg.SelectedNode = oldNode;
+            }
+            
         }
 
         // 初始化 TreeView 根据上一次点击的节点
         public TreeView(string oldNodeText)
         {
-            oldNodeText = TreeViewConfig.OldNodeText;
+            oldNodeText = MainConfig.CurNodeText;
             InitializeComponent();
             treeViewImg.ShowLines = false;
             Size = MainConfig.PanelTreeSize;
@@ -137,7 +144,7 @@ namespace PictureViewer
                 if (nodeTag.NodeType.ToString() == "Folder" || nodeTag.NodeType.ToString()== "Collection")
                 {
                     MainConfig.ShowFolderPath = nodeTag.FullPath;
-                    TreeViewConfig.OldNodeText = nodeTag.Name;
+                    MainConfig.CurNodeText=nodeTag.Name;
                     LoadUserControlEvent();
                     LoadToolStripStatusLabelEvent();
                 }

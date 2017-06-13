@@ -148,7 +148,7 @@ namespace PictureViewer
             this.btnTest});
             this.toolStripMain.Location = new System.Drawing.Point(3, 0);
             this.toolStripMain.Name = "toolStripMain";
-            this.toolStripMain.Size = new System.Drawing.Size(281, 25);
+            this.toolStripMain.Size = new System.Drawing.Size(250, 25);
             this.toolStripMain.TabIndex = 0;
             // 
             // SmallView
@@ -208,21 +208,21 @@ namespace PictureViewer
             // tsbSize10
             // 
             this.tsbSize10.Name = "tsbSize10";
-            this.tsbSize10.Size = new System.Drawing.Size(152, 22);
+            this.tsbSize10.Size = new System.Drawing.Size(134, 22);
             this.tsbSize10.Text = "160 X 90";
             this.tsbSize10.Click += new System.EventHandler(this.tsbSize_Click);
             // 
             // tsbSize15
             // 
             this.tsbSize15.Name = "tsbSize15";
-            this.tsbSize15.Size = new System.Drawing.Size(152, 22);
+            this.tsbSize15.Size = new System.Drawing.Size(134, 22);
             this.tsbSize15.Text = "240 X 135";
             this.tsbSize15.Click += new System.EventHandler(this.tsbSize_Click);
             // 
             // tsbSize20
             // 
             this.tsbSize20.Name = "tsbSize20";
-            this.tsbSize20.Size = new System.Drawing.Size(152, 22);
+            this.tsbSize20.Size = new System.Drawing.Size(134, 22);
             this.tsbSize20.Text = "320 X 180";
             this.tsbSize20.Click += new System.EventHandler(this.tsbSize_Click);
             // 
@@ -237,7 +237,7 @@ namespace PictureViewer
             // 收藏管理ToolStripMenuItem
             // 
             this.收藏管理ToolStripMenuItem.Name = "收藏管理ToolStripMenuItem";
-            this.收藏管理ToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.收藏管理ToolStripMenuItem.Size = new System.Drawing.Size(124, 22);
             this.收藏管理ToolStripMenuItem.Text = "收藏管理";
             this.收藏管理ToolStripMenuItem.Click += new System.EventHandler(this.收藏管理ToolStripMenuItem_Click);
             // 
@@ -266,7 +266,7 @@ namespace PictureViewer
             this.ClientSize = new System.Drawing.Size(981, 691);
             this.Controls.Add(this.toolStripContainerImage);
             this.Name = "MainForm";
-            this.Text = "MainForm";
+            this.Text = " ";
             this.Load += new System.EventHandler(this.MainForm_Load);
             this.toolStripContainerImage.BottomToolStripPanel.ResumeLayout(false);
             this.toolStripContainerImage.BottomToolStripPanel.PerformLayout();
