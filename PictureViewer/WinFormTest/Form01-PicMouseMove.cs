@@ -53,7 +53,6 @@ namespace WinFormTest
 
                 g.DrawImage(bm, newPoint.X, newPoint.Y,w,h);
 
-
                 curPoint.X = e.X;
                 curPoint.Y = e.Y;
 
