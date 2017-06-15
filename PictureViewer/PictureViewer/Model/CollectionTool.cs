@@ -74,7 +74,7 @@ namespace PictureViewer
             string maxId = ((JProperty)(obj.Last)).Name.ToString();
             string newId = (int.Parse(maxId) + 1).ToString();
 
-            if (FindByPath(item.Path) == false) // 没有添加收藏
+            if (FindByPath(item.Path) == false) // 没有则添加收藏
             {
                 obj.Add(newId, JObject.Parse(jsonText));
                 Save();

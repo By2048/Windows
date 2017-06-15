@@ -8,9 +8,6 @@ namespace PictureViewer
         public static string StartTreePath;
 
         // 当前显示的图片目录
-        public static string ShowFolderPath;
-
-        // 当前显示的图片目录
         public static string ShowImagePath;
 
         // 状态栏文本
@@ -21,6 +18,9 @@ namespace PictureViewer
 
         // 加载UserControl窗体的大小
         public static Size PanelMainSize;
+
+        // 当前显示的图片目录
+        public static string ShowFolderPath;
 
         // 图片大小
         public static Size ImageSize;
