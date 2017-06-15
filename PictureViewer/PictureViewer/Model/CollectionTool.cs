@@ -14,8 +14,23 @@ namespace PictureViewer
     public static class CollectionTool
     {
         public static string jsonPath = @"F:\\Collection.json";
+        //public static string jsonPath = @"..\\..\\Backup\\Collection.json";
         public static string json;
         public static JObject obj;
+
+        public static void CreateJsonFile()
+        {
+            if (!File.Exists(jsonPath))
+            {
+                FileStream fs = new FileStream(jsonPath, FileMode.Create, FileAccess.Write);
+                StreamWriter sw = new StreamWriter(fs);
+                sw.WriteLine("{\"0\": {\"Path\": \"收藏的文件路径\",\"Type\": \"收藏的类型\",\"Date\": \"收藏的时间\"}}");
+                sw.Close();
+                fs.Close();
+            }
+            else
+                return;
+        }
 
         public static void Load()
         {
@@ -34,10 +49,8 @@ namespace PictureViewer
             StreamWriter sw = myFile.CreateText();
             sw.WriteLine(strJson);
             sw.Close();
-
             Refresh();
         }
-
         // 添加至收藏
         public static void Add(Collection item)
         {
@@ -71,7 +84,6 @@ namespace PictureViewer
                 return;
 
         }
-
         // 根据文件或文件夹路径删除 
         public static void RemoveByPath(string path)
         {
@@ -91,7 +103,6 @@ namespace PictureViewer
             else
                 return;
         }
-
         public static void RemoveById(string id)
         {
             Load();
@@ -99,7 +110,6 @@ namespace PictureViewer
             Save();
             Refresh();
         }
-
         public static bool FindByPath(string path)
         {
             Load();
@@ -110,7 +120,6 @@ namespace PictureViewer
             }
             return false;
         }
-
         public static bool IsExist(string path)
         {
             if (Directory.Exists(path) || File.Exists(path))
@@ -118,7 +127,6 @@ namespace PictureViewer
             else
                 return false;
         }
-
         // 删除所有的无效路径
         public static void DeleteUseless()
         {
@@ -126,14 +134,15 @@ namespace PictureViewer
             foreach (JProperty item in obj.Children())
             {
                 string delId = item.Name;
-                string path=item.Value["Path"].ToString();
+                if (delId == "1")
+                    continue;
+                string path = item.Value["Path"].ToString();
                 if (IsExist(path) == false)
                     RemoveById(delId);
                 else
                     continue;
             }
         }
-
         public static List<string> GetALlPath()
         {
             DeleteUseless();
@@ -141,11 +150,12 @@ namespace PictureViewer
             Load();
             foreach (JProperty item in obj.Children())
             {
+                if (item.Name == "1")
+                    continue;
                 allPath.Add(item.Value["Path"].ToString());
             }
             return allPath;
         }
-
         public static List<CollectionDetail> GetAllCollection()
         {
             Load();
@@ -153,6 +163,8 @@ namespace PictureViewer
             foreach (JProperty item in obj.Children())
             {
                 string id = item.Name;
+                if (id == "1")
+                    continue;
                 string type = item.Value["Type"].ToString();
                 string path = item.Value["Path"].ToString();
                 string date = item.Value["Date"].ToString();
@@ -161,7 +173,6 @@ namespace PictureViewer
             }
             return allColl;
         }
-
     }
 
 }

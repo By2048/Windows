@@ -70,7 +70,6 @@
       <DependentUpon>MainForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Model\MainConfig.cs" />
-    <Compile Include="Model\TreeViewConfig.cs" />
     <Compile Include="ShowForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -170,6 +169,8 @@
     <EmbeddedResource Include="UserControl\TreeView.resx">
       <DependentUpon>TreeView.cs</DependentUpon>
     </EmbeddedResource>
+    <None Include="Backup\Collection.json" />
+    <None Include="ClassDiagram.cd" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -181,7 +182,6 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Backup\github.txt" />
     <Content Include="Resources\folder-select.png" />
     <Content Include="Resources\folder.png" />
     <Content Include="Resources\img-select.png" />

@@ -30,7 +30,7 @@ namespace PictureViewer
         /// <param name="path">显示的路径</param>
         /// <param name="panelSize">panel容器的大小</param>
         /// <param name="imageSize">显示的图片大小</param>
-        public SmallView(string path,Size panelSize,Size imageSize)
+        public SmallView(string path, Size panelSize, Size imageSize)
         {
             InitializeComponent();
             Size = panelSize;
@@ -42,11 +42,11 @@ namespace PictureViewer
         {
             ParentForm.KeyDown += new KeyEventHandler(SmallView_KeyDown);
             ParentForm.KeyPress += new KeyPressEventHandler(SmallView_KeyPress);
-            ParentForm.KeyUp += new KeyEventHandler(SmallView_KeyUp);  
+            ParentForm.KeyUp += new KeyEventHandler(SmallView_KeyUp);
             //CollectionTool
         }
 
-        private void ShowSmallImages(string path,Size panelSize, Size imageSize)
+        private void ShowSmallImages(string path, Size panelSize, Size imageSize)
         {
             string[] pictures = ImageTool.GetAllImagePath(path);
 
@@ -66,7 +66,7 @@ namespace PictureViewer
                     PictureBox pictureBox = new PictureBox();
                     pictureBox.SizeMode = PictureBoxSizeMode.Zoom;
                     pictureBox.Size = imageSize;
-                    if (index >= pictureCount) { return; }                  
+                    if (index >= pictureCount) { return; }
 
                     pictureBox.Image = ImageTool.LoadImage(pictures[index]);
                     pictureBox.Tag = pictures[index];
@@ -131,8 +131,6 @@ namespace PictureViewer
                     panelMain.Controls.Add(pictureBox);
                 }
             }
-
-
         }
 
         private void SmallView_KeyUp(object sender, KeyEventArgs e)
@@ -166,10 +164,10 @@ namespace PictureViewer
             PictureBox pictureBox = (PictureBox)sender;
             string filePath = pictureBox.Tag.ToString();
             ShowForm showForm = new ShowForm();
-            showForm.imgPath = filePath;          
+            showForm.imgPath = filePath;
             showForm.Show();
         }
-               
+
 
     }
 }

@@ -16,7 +16,7 @@ namespace PictureViewer
         public TreeView()
         {
             InitializeComponent();
-            treeViewImg.ShowLines = false;
+            treeViewImg.ShowLines = false; 
             Size = MainConfig.PanelTreeSize;
             treeViewImg.Size = MainConfig.PanelTreeSize;
             treeViewImg.ImageList = imageListIcon;
