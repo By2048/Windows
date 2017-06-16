@@ -1,22 +1,18 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.ComponentModel;
-using System.Data;
 using System.Drawing;
-using System.Linq;
-using System.Text;
 using System.Threading;
-using System.Threading.Tasks;
 using System.Windows.Forms;
+
 
 namespace PictureViewer
 {
     public partial class TestForm : Form
     {
-        private ManualResetEvent manualReset = new ManualResetEvent(true);
         public TestForm()
         {
             InitializeComponent();
+            CheckForIllegalCrossThreadCalls = false;
             panelMain.AutoScroll = true;
         }
         private void TestForm_Load(object sender, EventArgs e)
@@ -26,8 +22,7 @@ namespace PictureViewer
 
         private void button1_Click(object sender, EventArgs e)
         {
-            ShowSmallImages();
-            //backgroundWorker.CancelAsync();
+            ShowSmallImages();            
         }
 
 
@@ -65,33 +60,30 @@ namespace PictureViewer
                     };
 
                     //MessageBox.Show(pictureBox.Tag.ToString());
-                    pictureBox.Location = pictureLoction;                    
-                    panelMain.Controls.Add(pictureBox);                    
-                    Refresh();
+                    pictureBox.Location = pictureLoction;
+
+                    Thread t = new Thread(new ParameterizedThreadStart(AddControol));
+                    t.Start();
+
+                    //panelMain.Controls.Add(pictureBox);
+                    //Refresh();
                 }
             }
         }
 
-       
-
-        private void backgroundWorker_DoWork(object sender, DoWorkEventArgs e)
+        private void AddControol()
         {
-            ShowSmallImages();
+            throw new NotImplementedException();
         }
 
-        private void backgroundWorker_ProgressChanged(object sender, ProgressChangedEventArgs e)
+        private void AddControol(object obj)
         {
-
+            PictureBox picBox = (PictureBox)obj;
+            panelMain.Controls.Add(picBox);
+            Refresh();
+            MessageBox.Show("---");
         }
 
-        private void backgroundWorker_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
-        {
-
-        }
-
-        private void button2_Click(object sender, EventArgs e)
-        {
-            CollectionTool.CreateJsonFile();
-        }
+  
     }
 }
