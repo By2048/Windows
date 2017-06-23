@@ -47,6 +47,58 @@ namespace PictureViewer
         }
 
         /// <summary>
+        /// 根据指定的图片路径生成图片缩略图
+        /// </summary>
+        /// <param name="imgPath">图片的路径</param>
+        /// <param name="imgSize">需要生成缩略图的大小 长，宽</param>
+        /// <returns></returns>
+        public static Bitmap GetThumbnailsImg(string imgPath, Size imgSize)
+        {
+            Bitmap bitMap = null;
+            try
+            {
+                Bitmap loBMP = new Bitmap(imgPath);
+                ImageFormat loFormat = loBMP.RawFormat;
+
+                decimal lnRatio;
+                int lnNewWidth = 0;
+                int lnNewHeight = 0;
+
+                //如果图像小于缩略图直接返回原图，因为upfront
+                if (loBMP.Width < imgSize.Width && loBMP.Height < imgSize.Height)
+                    return loBMP;
+
+                if (loBMP.Width > loBMP.Height)
+                {
+                    lnRatio = (decimal)imgSize.Width / loBMP.Width;
+                    lnNewWidth = imgSize.Width;
+                    decimal lnTemp = loBMP.Height * lnRatio;
+                    lnNewHeight = (int)lnTemp;
+                }
+                else
+                {
+                    lnRatio = (decimal)imgSize.Height / loBMP.Height;
+                    lnNewHeight = imgSize.Height;
+                    decimal lnTemp = loBMP.Width * lnRatio;
+                    lnNewWidth = (int)lnTemp;
+                }
+                bitMap = new Bitmap(lnNewWidth, lnNewHeight);
+                Graphics g = Graphics.FromImage(bitMap);
+                g.InterpolationMode = System.Drawing.Drawing2D.InterpolationMode.HighQualityBicubic;
+                g.FillRectangle(Brushes.White, 0, 0, lnNewWidth, lnNewHeight);
+                g.DrawImage(loBMP, 0, 0, lnNewWidth, lnNewHeight);
+
+                loBMP.Dispose();
+            }
+            catch
+            {
+                return null;
+            }
+
+            return bitMap;
+        }
+
+        /// <summary>
         /// 删除文件夹到回收站
         /// </summary>
         /// <param name="path">文件夹路径</param>

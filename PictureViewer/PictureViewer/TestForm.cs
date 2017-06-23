@@ -50,7 +50,8 @@ namespace PictureViewer
                     pictureBox.Size = imageSize;
                     if (index >= pictureCount) { return; }
 
-                    pictureBox.Image = ImageTool.LoadImage(pictures[index]);
+                    //pictureBox.Image = ImageTool.LoadImage(pictures[index]);
+                    pictureBox.Image = ImageTool.GetThumbnailsImg(pictures[index], imageSize);
                     pictureBox.Tag = pictures[index];
 
                     Point pictureLoction = new Point()
@@ -62,26 +63,20 @@ namespace PictureViewer
                     //MessageBox.Show(pictureBox.Tag.ToString());
                     pictureBox.Location = pictureLoction;
 
-                    Thread t = new Thread(new ParameterizedThreadStart(AddControol));
-                    t.Start();
+                    //Thread t = new Thread(new ParameterizedThreadStart(AddControol));
+                    //t.Start();
 
-                    //panelMain.Controls.Add(pictureBox);
-                    //Refresh();
+                    panelMain.Controls.Add(pictureBox);
+                    Refresh();
                 }
             }
-        }
-
-        private void AddControol()
-        {
-            throw new NotImplementedException();
-        }
+        }      
 
         private void AddControol(object obj)
         {
             PictureBox picBox = (PictureBox)obj;
             panelMain.Controls.Add(picBox);
             Refresh();
-            MessageBox.Show("---");
         }
 
   
