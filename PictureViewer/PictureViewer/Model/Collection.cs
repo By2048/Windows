@@ -12,6 +12,11 @@ namespace PictureViewer
         public string Path;
         public string Date;
 
+        public Collection()
+        {
+          
+        }
+
         public Collection(string type, string path, string date)
         {
             Type = type;

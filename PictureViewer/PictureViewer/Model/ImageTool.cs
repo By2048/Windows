@@ -102,7 +102,7 @@ namespace PictureViewer
         /// 删除文件夹到回收站
         /// </summary>
         /// <param name="path">文件夹路径</param>
-        public static void Delete(string path)
+        public static void DeleteFile(string path)
         {
             if (File.Exists(path)) // file
                 FileSystem.DeleteFile(path, UIOption.OnlyErrorDialogs, RecycleOption.SendToRecycleBin);
@@ -112,45 +112,79 @@ namespace PictureViewer
                 return;
         }
 
+        /// <summary>
+        /// 在 pictureBox 上的图片上创建 ContextMenuStrip (添加到收藏，从收藏删除)
+        /// </summary>
+        /// <param name="path"></param>
+        /// <returns></returns>
         public static ContextMenuStrip CreateContextMenuStrip(string path)
         {
             ContextMenuStrip contextMenuStrip;
-            ToolStripMenuItem delete;
-            ToolStripMenuItem collection;
+            ToolStripMenuItem deleteColl;
+            ToolStripMenuItem addColl;
+            ToolStripMenuItem deleteFile;
 
             contextMenuStrip = new ContextMenuStrip();
             contextMenuStrip.Name = "contextMenuStrip";
 
-            delete = new ToolStripMenuItem();
-            delete.Name = "Delete";
-            delete.Text = "删除";
-            delete.Click += new EventHandler(Delete_click);
-            delete.Tag = path;
+            addColl = new ToolStripMenuItem();
+            addColl.Name = "AddCollection";
+            addColl.Text = "添加收藏";
+            addColl.Click += new EventHandler(addColl_click);
+            addColl.Tag = path;
 
-            collection = new ToolStripMenuItem();
-            collection.Name = "Collection";
-            collection.Text = "添加收藏";
-            collection.Click += new EventHandler(Collection_click);
-            collection.Tag = path;
+            contextMenuStrip.Items.Add(addColl);
 
-            contextMenuStrip.Items.AddRange(
-                new ToolStripItem[] {
-                delete,
-                collection,
-            });
+
+            if (CollectionTool.FindByPath(path) == true)
+            {
+                deleteColl = new ToolStripMenuItem();
+                deleteColl.Name = "DelCollection";
+                deleteColl.Text = "删除收藏";
+                deleteColl.Click += new EventHandler(deleteColl_click);
+                deleteColl.Tag = path;
+                contextMenuStrip.Items.Add(deleteColl);
+            }
+
+
+            deleteFile = new ToolStripMenuItem();
+            deleteFile.Name = "Collection";
+            deleteFile.Text = "删除文件";
+            deleteFile.Click += new EventHandler(deleteFile_click);
+            deleteFile.Tag = path;
+
+
             return contextMenuStrip;
         }
-        private static void Delete_click(object sender, EventArgs e)
+
+        private static void deleteFile_click(object sender, EventArgs e)
         {
             ToolStripMenuItem item = (ToolStripMenuItem)sender;
             string path = item.Tag.ToString();
-            Delete(path);
+            DeleteFile(path);
         }
-        private static void Collection_click(object sender, EventArgs e)
+
+        private static void deleteColl_click(object sender, EventArgs e)
         {
             ToolStripMenuItem item = (ToolStripMenuItem)sender;
             string path = item.Tag.ToString();
+            CollectionTool.RemoveByPath(path);
+        }
+
+        private static void addColl_click(object sender, EventArgs e)
+        {
+            ToolStripMenuItem item = (ToolStripMenuItem)sender;
+            string path = item.Tag.ToString();
+            Collection coll = new Collection()
+            {
+                Type = "Image",
+                Path = path,
+                Date = DateTime.Now.ToString()
+            };
+            CollectionTool.Add(coll);
         }
 
     }
+
 }
+

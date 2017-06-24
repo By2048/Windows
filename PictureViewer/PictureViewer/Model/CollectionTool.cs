@@ -24,7 +24,7 @@ namespace PictureViewer
             {
                 FileStream fs = new FileStream(jsonPath, FileMode.Create, FileAccess.Write);
                 StreamWriter sw = new StreamWriter(fs);
-                sw.WriteLine("{\"0\": {\"Path\": \"收藏的文件路径\",\"Type\": \"收藏的类型\",\"Date\": \"收藏的时间\"}}");
+                sw.WriteLine("{\"1\": {\"Path\": \"收藏的文件路径\",\"Type\": \"收藏的类型\",\"Date\": \"收藏的时间\"}}");
                 sw.Close();
                 fs.Close();
             }
@@ -120,6 +120,11 @@ namespace PictureViewer
             }
             return false;
         }
+        /// <summary>
+        /// 判断收藏的文件夹时候存在
+        /// </summary>
+        /// <param name="path"></param>
+        /// <returns></returns>
         public static bool IsExist(string path)
         {
             if (Directory.Exists(path) || File.Exists(path))

@@ -345,7 +345,7 @@ namespace PictureViewer
             ImageTree imageTree = (ImageTree)node.Tag;
             string path = imageTree.FullPath;
             treeViewImg.Nodes.Remove(node);
-            ImageTool.Delete(path);
+            ImageTool.DeleteFile(path);
         }
 
         private void Collection_click(object sender, EventArgs e)
@@ -394,6 +394,7 @@ namespace PictureViewer
             treeViewImg.Nodes.Remove(node);
             CollectionTool.RemoveByPath(path);
         }       
+
 
     }
 }
