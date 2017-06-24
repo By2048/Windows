@@ -52,7 +52,7 @@ namespace PictureViewer
           
 
             Image image = Image.FromFile(imgPath);
-            pictureBox.Image = ImageTool.LoadImage(imgPath);
+            pictureBox.Image = ImageTool.GetImage(imgPath);
             //pictureBox.Image = image;
 
 

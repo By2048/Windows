@@ -43,7 +43,6 @@ namespace PictureViewer
             ParentForm.KeyDown += new KeyEventHandler(SmallView_KeyDown);
             ParentForm.KeyPress += new KeyPressEventHandler(SmallView_KeyPress);
             ParentForm.KeyUp += new KeyEventHandler(SmallView_KeyUp);
-            //CollectionTool
         }
 
         private void ShowSmallImages(string path, Size panelSize, Size imageSize)
@@ -68,7 +67,8 @@ namespace PictureViewer
                     pictureBox.Size = imageSize;
                     if (index >= pictureCount) { return; }
 
-                    pictureBox.Image = ImageTool.LoadImage(pictures[index]);
+                    //pictureBox.Image = ImageTool.GetImage(pictures[index]);                    
+                    pictureBox.Image = ImageTool.GetThumbnailsImage(pictures[index],MainConfig.ImageSize);
                     pictureBox.Tag = pictures[index];
 
                     Point pictureLoction = new Point()
@@ -81,6 +81,8 @@ namespace PictureViewer
                     pictureBox.DoubleClick += pictureBox_DoubleClick;
                     pictureBox.MouseDown += pictureBox_MouseDown;
                     panelMain.Controls.Add(pictureBox);
+
+                    //Refresh();
                 }
             }
 
@@ -116,7 +118,7 @@ namespace PictureViewer
                     //fs.Dispose();
                     //pictureBox.Image = bm;
 
-                    pictureBox.Image = ImageTool.LoadImage(pictures[index]);
+                    pictureBox.Image = ImageTool.GetImage(pictures[index]);
                     pictureBox.Tag = pictures[index];
 
                     Point pictureLoction = new Point()

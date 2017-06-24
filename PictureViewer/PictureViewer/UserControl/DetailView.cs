@@ -53,7 +53,7 @@ namespace PictureViewer
                     //pictureBox.Image = Image.FromFile(pictures[pictureIndex]);
                     //pictureBox.Load(pictures[index]);
 
-                    pictureBox.Image = ImageTool.LoadImage(pictures[index]);
+                    pictureBox.Image = ImageTool.GetImage(pictures[index]);
                     pictureBox.Tag = pictures[index];
 
                     Point pictureLoction = new Point()
@@ -95,7 +95,7 @@ namespace PictureViewer
             string filePath = pictureBox.Tag.ToString();
 
             //pictureBoxLarge.Load(selectPicture.ImageLocation);
-            pictureBoxLarge.Image = ImageTool.LoadImage(filePath);
+            pictureBoxLarge.Image = ImageTool.GetImage(filePath);
             pictureBoxLarge.Tag = filePath;
             pictureBoxLarge.DoubleClick += pictureBoxLarge_DoubleClick;
 

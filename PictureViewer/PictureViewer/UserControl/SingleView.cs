@@ -18,7 +18,7 @@ namespace PictureViewer
             InitializeComponent();
             Size = MainConfig.PanelMainSize;
 
-            pictureBox.Image = ImageTool.LoadImage(MainConfig.ShowImagePath);
+            pictureBox.Image = ImageTool.GetImage(MainConfig.ShowImagePath);
             pictureBox.Tag = MainConfig.ShowImagePath;
 
             pictureBox.SizeMode = PictureBoxSizeMode.Zoom;
@@ -34,7 +34,7 @@ namespace PictureViewer
             InitializeComponent();
             Size = panelSize;
 
-            pictureBox.Image = ImageTool.LoadImage(path);
+            pictureBox.Image = ImageTool.GetImage(path);
             pictureBox.Tag = path;
 
             pictureBox.SizeMode = PictureBoxSizeMode.Zoom;

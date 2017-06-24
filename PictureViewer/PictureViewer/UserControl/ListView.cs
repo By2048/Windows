@@ -201,7 +201,7 @@ namespace PictureViewer
                     //fs.Dispose();
                     //pictureBox.Image = bm;
 
-                    pictureBox.Image = ImageTool.LoadImage(imagePath[index]);
+                    pictureBox.Image = ImageTool.GetImage(imagePath[index]);
                     pictureBox.Tag = imagePath[index];
 
                     //pictureBox.Load(imagePath[pictureIndex]);

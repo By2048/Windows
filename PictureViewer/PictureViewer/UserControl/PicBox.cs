@@ -53,7 +53,7 @@ namespace PictureViewer
             pictureBox.Size = panelImage.Size;
             pictureBox.Location = new Point(0, 0);
             pictureBox.SizeMode = PictureBoxSizeMode.Zoom;
-            pictureBox.Image = ImageTool.LoadImage(imgPath);
+            pictureBox.Image = ImageTool.GetImage(imgPath);
             pictureBox.DoubleClick += pictureBox_DoubleClick;
 
             label.Size = panelInfo.Size;

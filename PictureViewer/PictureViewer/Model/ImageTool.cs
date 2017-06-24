@@ -38,13 +38,14 @@ namespace PictureViewer
         /// </summary>
         /// <param name="path">图片的路径</param>
         /// <returns></returns>
-        public static Bitmap LoadImage(string path)
+        public static Bitmap GetImage(string path)
         {
             FileStream fs = new FileStream(path, FileMode.Open, FileAccess.Read);
             Bitmap bm = new Bitmap(fs);
             fs.Dispose();
             return bm;
-        }
+        }            
+
 
         /// <summary>
         /// 根据指定的图片路径生成图片缩略图
@@ -52,7 +53,7 @@ namespace PictureViewer
         /// <param name="imgPath">图片的路径</param>
         /// <param name="imgSize">需要生成缩略图的大小 长，宽</param>
         /// <returns></returns>
-        public static Bitmap GetThumbnailsImg(string imgPath, Size imgSize)
+        public static Bitmap GetThumbnailsImage(string imgPath, Size imgSize)
         {
             Bitmap bitMap = null;
             try

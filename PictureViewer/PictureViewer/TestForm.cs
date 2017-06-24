@@ -30,7 +30,7 @@ namespace PictureViewer
         private void ShowSmallImages()
         {
             Size imageSize = new Size(16 * 10, 9 * 10);
-            string[] pictures = ImageTool.GetAllImagePath(@"F:\\Test\\Bing");
+            string[] pictures = ImageTool.GetAllImagePath(@"F:\\- Test\\Bing");
 
             int pictureCount = pictures.Length;
 
@@ -51,7 +51,7 @@ namespace PictureViewer
                     if (index >= pictureCount) { return; }
 
                     //pictureBox.Image = ImageTool.LoadImage(pictures[index]);
-                    pictureBox.Image = ImageTool.GetThumbnailsImg(pictures[index], imageSize);
+                    pictureBox.Image = ImageTool.GetThumbnailsImage(pictures[index], imageSize);
                     pictureBox.Tag = pictures[index];
 
                     Point pictureLoction = new Point()
