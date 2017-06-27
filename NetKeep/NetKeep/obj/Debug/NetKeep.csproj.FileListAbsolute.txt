@@ -1,0 +1,12 @@
+E:\Desktop\Windows\NetKeep\NetKeep\bin\Debug\NetKeep.exe.config
+E:\Desktop\Windows\NetKeep\NetKeep\bin\Debug\NetKeep.exe
+E:\Desktop\Windows\NetKeep\NetKeep\bin\Debug\NetKeep.pdb
+E:\Desktop\Windows\NetKeep\NetKeep\obj\Debug\NetKeep.csprojResolveAssemblyReference.cache
+E:\Desktop\Windows\NetKeep\NetKeep\obj\Debug\NetKeep.Properties.Resources.resources
+E:\Desktop\Windows\NetKeep\NetKeep\obj\Debug\NetKeep.TestForm.resources
+E:\Desktop\Windows\NetKeep\NetKeep\obj\Debug\NetKeep.csproj.GenerateResource.Cache
+E:\Desktop\Windows\NetKeep\NetKeep\obj\Debug\NetKeep.exe
+E:\Desktop\Windows\NetKeep\NetKeep\obj\Debug\NetKeep.pdb
+E:\Desktop\Windows\NetKeep\NetKeep\bin\Debug\WinAPI.dll
+E:\Desktop\Windows\NetKeep\NetKeep\bin\Debug\WinAPI.pdb
+E:\Desktop\Windows\NetKeep\NetKeep\obj\Debug\NetKeep.MainForm.resources
