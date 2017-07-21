@@ -1,0 +1,10 @@
+F:\SwitchScreen\SwitchScreen\obj\Debug\SwitchScreen.csprojResolveAssemblyReference.cache
+F:\SwitchScreen\SwitchScreen\obj\Debug\SwitchScreen.csproj.GenerateResource.Cache
+F:\SwitchScreen\SwitchScreen\obj\Debug\SwitchScreen.MainForm.resources
+F:\SwitchScreen\SwitchScreen\bin\Debug\SwitchScreen.exe.config
+F:\SwitchScreen\SwitchScreen\bin\Debug\SwitchScreen.exe
+F:\SwitchScreen\SwitchScreen\bin\Debug\SwitchScreen.pdb
+F:\SwitchScreen\SwitchScreen\obj\Debug\SwitchScreen.Properties.Resources.resources
+F:\SwitchScreen\SwitchScreen\obj\Debug\SwitchScreen.TestForm.resources
+F:\SwitchScreen\SwitchScreen\obj\Debug\SwitchScreen.exe
+F:\SwitchScreen\SwitchScreen\obj\Debug\SwitchScreen.pdb

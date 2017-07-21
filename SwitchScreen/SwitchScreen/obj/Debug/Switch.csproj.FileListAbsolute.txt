@@ -1,0 +1,9 @@
+F:\Switch\Switch\bin\Debug\Switch.exe.config
+F:\Switch\Switch\bin\Debug\Switch.exe
+F:\Switch\Switch\bin\Debug\Switch.pdb
+F:\Switch\Switch\obj\Debug\Switch.csprojResolveAssemblyReference.cache
+F:\Switch\Switch\obj\Debug\Switch.MainForm.resources
+F:\Switch\Switch\obj\Debug\Switch.Properties.Resources.resources
+F:\Switch\Switch\obj\Debug\Switch.csproj.GenerateResource.Cache
+F:\Switch\Switch\obj\Debug\Switch.exe
+F:\Switch\Switch\obj\Debug\Switch.pdb
