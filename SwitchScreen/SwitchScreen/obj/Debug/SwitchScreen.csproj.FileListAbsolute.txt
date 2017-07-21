@@ -8,3 +8,13 @@ F:\SwitchScreen\SwitchScreen\obj\Debug\SwitchScreen.Properties.Resources.resourc
 F:\SwitchScreen\SwitchScreen\obj\Debug\SwitchScreen.TestForm.resources
 F:\SwitchScreen\SwitchScreen\obj\Debug\SwitchScreen.exe
 F:\SwitchScreen\SwitchScreen\obj\Debug\SwitchScreen.pdb
+E:\Desktop\Windows\SwitchScreen\SwitchScreen\bin\Debug\SwitchScreen.exe.config
+E:\Desktop\Windows\SwitchScreen\SwitchScreen\bin\Debug\SwitchScreen.exe
+E:\Desktop\Windows\SwitchScreen\SwitchScreen\bin\Debug\SwitchScreen.pdb
+E:\Desktop\Windows\SwitchScreen\SwitchScreen\obj\Debug\SwitchScreen.csprojResolveAssemblyReference.cache
+E:\Desktop\Windows\SwitchScreen\SwitchScreen\obj\Debug\SwitchScreen.MainForm.resources
+E:\Desktop\Windows\SwitchScreen\SwitchScreen\obj\Debug\SwitchScreen.Properties.Resources.resources
+E:\Desktop\Windows\SwitchScreen\SwitchScreen\obj\Debug\SwitchScreen.TestForm.resources
+E:\Desktop\Windows\SwitchScreen\SwitchScreen\obj\Debug\SwitchScreen.csproj.GenerateResource.Cache
+E:\Desktop\Windows\SwitchScreen\SwitchScreen\obj\Debug\SwitchScreen.exe
+E:\Desktop\Windows\SwitchScreen\SwitchScreen\obj\Debug\SwitchScreen.pdb

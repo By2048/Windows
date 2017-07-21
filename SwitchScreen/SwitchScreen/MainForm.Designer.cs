@@ -34,9 +34,14 @@
             this.SuspendLayout();
             // 
             // notifyIcon
-            // 
+            //
+
+
             this.notifyIcon.Icon = ((System.Drawing.Icon)(resources.GetObject("open")));
-            this.notifyIcon.Text = "open";
+            this.notifyIcon.Text = "切换到单屏";
+            this.notifyIcon.Tag = "Multiple";
+
+
             this.notifyIcon.Visible = true;
             //this.notifyIcon.Click += new System.EventHandler(this.notifyIcon_Click);
             this.notifyIcon.DoubleClick += new System.EventHandler(this.notifyIcon_DoubleClick);
@@ -49,10 +54,11 @@
             this.ClientSize = new System.Drawing.Size(284, 261);
             this.Name = "MainForm";
             this.Text = "MainForm";
-            this.Load += new System.EventHandler(this.MainForm_Load);
             this.ResumeLayout(false);
 
         }
+
+
 
         #endregion
 

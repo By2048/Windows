@@ -18,35 +18,51 @@ namespace SwitchScreen
         public MainForm()
         {
             InitializeComponent();
+            ComponentResourceManager resources = new ComponentResourceManager(typeof(MainForm));
+            if (System.Windows.Forms.Screen.AllScreens.Count() == 1)
+            {
+                this.notifyIcon.Icon = ((System.Drawing.Icon)(resources.GetObject("close")));
+                this.notifyIcon.Text = "切换到双屏";
+                this.notifyIcon.Tag = "Single";
+            }
+            else
+            {
+                this.notifyIcon.Icon = ((System.Drawing.Icon)(resources.GetObject("open")));
+                this.notifyIcon.Text = "切换到单屏";
+                this.notifyIcon.Tag = "Multiple";
+            }
         }
 
-        private void MainForm_Load(object sender, EventArgs e)
-        {
-
-        }
         private void notifyIcon_MouseClick(object sender, MouseEventArgs e)
         {
             if (e.Button == MouseButtons.Left)
             {
                 ComponentResourceManager resources = new ComponentResourceManager(typeof(MainForm));
-                if (notifyIcon.Text == "close")
+                if (notifyIcon.Tag.ToString() == "Single")
                 {
                     notifyIcon.Icon = ((System.Drawing.Icon)(resources.GetObject("open")));
-                    notifyIcon.Text = "open";
+                    notifyIcon.Tag = "Multiple";
+                    notifyIcon.Text = "切换到单屏";
                 }
-                else
+                else if(notifyIcon.Tag.ToString() == "Multiple")
                 {
                     notifyIcon.Icon = ((System.Drawing.Icon)(resources.GetObject("close")));
-                    notifyIcon.Text = "close";
+                    notifyIcon.Tag = "Single";
+                    notifyIcon.Text = "切换到双屏";
                 }
                 SwitchScreen();
             }
             if (e.Button == MouseButtons.Right)
             {
-                notifyIcon.ContextMenuStrip = CreateContextMenuStrip();       
-                notifyIcon.ContextMenuStrip.Show(Control.MousePosition);
+                //#region 使用右键菜单关闭 
+                //notifyIcon.ContextMenuStrip = CreateContextMenuStrip();
+                //Point point = Control.MousePosition;
+                //notifyIcon.ContextMenuStrip.Show(point);
+                //#endregion
 
-                //System.Environment.Exit(0);
+                #region 直接关闭 
+                System.Environment.Exit(0);
+                #endregion
             }
         }
 
