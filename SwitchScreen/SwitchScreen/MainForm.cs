@@ -110,8 +110,10 @@ namespace SwitchScreen
 
         public const int KEYEVENTF_EXTENDEDKEY = 0x0001; //Key click flag
         public const int KEYEVENTF_KEYUP = 0x0002; //Key up flag
+
         [DllImport("user32.dll")]
         private static extern void keybd_event(byte bVk, byte bSCan, int dwFlags, int dwExtraInfo);
+
         [DllImport("user32.dll")]
         private static extern byte MapVirtualKey(byte wCode, int wMap);
 
@@ -129,8 +131,9 @@ namespace SwitchScreen
 
         public static void VirtualKeyClick(VirtualKeyCode keyCode)
         {
-            var code = (byte)keyCode;
-            keybd_event(code, 0, KEYEVENTF_EXTENDEDKEY, 0);
+            VirtualKeyDown(keyCode);
+            Thread.Sleep(200);
+            VirtualKeyUp(keyCode);
         }
 
         #endregion
