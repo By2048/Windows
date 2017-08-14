@@ -1,4 +1,6 @@
-﻿namespace SwitchScreen
+﻿using System.Drawing;
+
+namespace SwitchScreen
 {
     partial class MainForm
     {
@@ -34,16 +36,13 @@
             this.SuspendLayout();
             // 
             // notifyIcon
-            //
-
-
-            this.notifyIcon.Icon = ((System.Drawing.Icon)(resources.GetObject("open")));
-            this.notifyIcon.Text = "切换到单屏";
-            this.notifyIcon.Tag = "Multiple";
-
-
+            // 
+            //Bitmap _close = new Bitmap("..\\..\\icon\\close.ico");
+            //Icon icon = Icon.FromHandle(_close.GetHicon());
+            //this.notifyIcon.Icon = icon;
+            //this.notifyIcon.Text = "切换到双屏";
+            //this.notifyIcon.Tag = "Single";
             this.notifyIcon.Visible = true;
-            //this.notifyIcon.Click += new System.EventHandler(this.notifyIcon_Click);
             this.notifyIcon.DoubleClick += new System.EventHandler(this.notifyIcon_DoubleClick);
             this.notifyIcon.MouseClick += new System.Windows.Forms.MouseEventHandler(this.notifyIcon_MouseClick);
             // 

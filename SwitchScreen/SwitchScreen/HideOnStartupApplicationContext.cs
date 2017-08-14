@@ -9,7 +9,6 @@ internal class HideOnStartupApplicationContext : ApplicationContext
     public HideOnStartupApplicationContext(Form mainForm)
     {
         this.mainFormInternal = mainForm;
-
         this.mainFormInternal.Closed += new EventHandler(mainFormInternal_Closed);
     }
 

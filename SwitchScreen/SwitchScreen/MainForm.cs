@@ -15,38 +15,59 @@ namespace SwitchScreen
 {
     public partial class MainForm : Form
     {
+        HotKeys h = new HotKeys();
+
+        Icon iconClose = Icon.FromHandle(new Bitmap("..\\..\\icon\\close.ico").GetHicon());
+        Icon iconOpen = Icon.FromHandle(new Bitmap("..\\..\\icon\\open.ico").GetHicon());
+
         public MainForm()
         {
             InitializeComponent();
-            ComponentResourceManager resources = new ComponentResourceManager(typeof(MainForm));
-            if (System.Windows.Forms.Screen.AllScreens.Count() == 1)
+            if (Screen.AllScreens.Count() == 1)
             {
-                this.notifyIcon.Icon = ((System.Drawing.Icon)(resources.GetObject("close")));
+                this.notifyIcon.Icon = iconClose;
                 this.notifyIcon.Text = "切换到双屏";
                 this.notifyIcon.Tag = "Single";
             }
             else
             {
-                this.notifyIcon.Icon = ((System.Drawing.Icon)(resources.GetObject("open")));
+                this.notifyIcon.Icon = iconOpen;
                 this.notifyIcon.Text = "切换到单屏";
                 this.notifyIcon.Tag = "Multiple";
             }
+            h.Regist(this.Handle, (int)HotKeys.HotkeyModifiers.Control + (int)HotKeys.HotkeyModifiers.Shift, Keys.P, CallBack);
         }
+
+
+        //private void btnUnregist_Click(object sender, EventArgs e)
+        //{
+        //    h.UnRegist(this.Handle, CallBack);
+        //    MessageBox.Show("卸载成功");
+        //}
+
+        protected override void WndProc(ref Message m)
+        {
+            //窗口消息处理函数
+            h.ProcessHotKey(m);
+            base.WndProc(ref m);
+        }
+
+
 
         private void notifyIcon_MouseClick(object sender, MouseEventArgs e)
         {
+
             if (e.Button == MouseButtons.Left)
             {
-                ComponentResourceManager resources = new ComponentResourceManager(typeof(MainForm));
                 if (notifyIcon.Tag.ToString() == "Single")
                 {
-                    notifyIcon.Icon = ((System.Drawing.Icon)(resources.GetObject("open")));
+                    this.notifyIcon.Icon = iconOpen;
                     notifyIcon.Tag = "Multiple";
                     notifyIcon.Text = "切换到单屏";
                 }
-                else if(notifyIcon.Tag.ToString() == "Multiple")
+                else if (notifyIcon.Tag.ToString() == "Multiple")
                 {
-                    notifyIcon.Icon = ((System.Drawing.Icon)(resources.GetObject("close")));
+                    this.notifyIcon.Icon = iconClose;
                     notifyIcon.Tag = "Single";
                     notifyIcon.Text = "切换到双屏";
                 }
@@ -66,6 +87,30 @@ namespace SwitchScreen
             }
         }
 
+        private void StartSwitch()
+        {
+            if (notifyIcon.Tag.ToString() == "Single")
+            {
+                this.notifyIcon.Icon = iconOpen;
+                notifyIcon.Tag = "Multiple";
+                notifyIcon.Text = "切换到单屏";
+            }
+            else if (notifyIcon.Tag.ToString() == "Multiple")
+            {
+                this.notifyIcon.Icon = iconClose;
+                notifyIcon.Tag = "Single";
+                notifyIcon.Text = "切换到双屏";
+            }
+            SwitchScreen();
+
+        }
+
+        public void CallBack()
+        {
+            Thread.Sleep(500); // 不加 sleep 出错 ？？？？
+            StartSwitch();
+        }
+
 
         private void notifyIcon_DoubleClick(object sender, EventArgs e)
         {
@@ -80,13 +125,9 @@ namespace SwitchScreen
             {
                 VirtualKeyDown(VirtualKeyCode.Left_Windows_key);
                 VirtualKeyClick(VirtualKeyCode.P_key);
-
                 VirtualKeyUp(VirtualKeyCode.Left_Windows_key);
-
                 Thread.Sleep(500);
-
                 VirtualKeyClick(VirtualKeyCode.UP_ARROW_key);
-
                 VirtualKeyClick(VirtualKeyCode.ENTER_key);
                 VirtualKeyClick(VirtualKeyCode.ESC_key);
             }
@@ -94,22 +135,17 @@ namespace SwitchScreen
             {
                 VirtualKeyDown(VirtualKeyCode.Left_Windows_key);
                 VirtualKeyClick(VirtualKeyCode.P_key);
-
                 VirtualKeyUp(VirtualKeyCode.Left_Windows_key);
-
                 Thread.Sleep(500);
-
                 VirtualKeyClick(VirtualKeyCode.DOWN_ARROW_key);
-
                 VirtualKeyClick(VirtualKeyCode.ENTER_key);
                 VirtualKeyClick(VirtualKeyCode.ESC_key);
             }
-
-
         }
 
-        public const int KEYEVENTF_EXTENDEDKEY = 0x0001; //Key click flag
-        public const int KEYEVENTF_KEYUP = 0x0002; //Key up flag
+ 
+        public const int KEYEVENTF_EXTENDEDKEY = 0x0001; // Key click flag
+        public const int KEYEVENTF_KEYUP = 0x0002; // Key up flag
 
         [DllImport("user32.dll")]
         private static extern void keybd_event(byte bVk, byte bSCan, int dwFlags, int dwExtraInfo);
@@ -135,7 +171,6 @@ namespace SwitchScreen
             Thread.Sleep(200);
             VirtualKeyUp(keyCode);
         }
-
         #endregion
 
 
@@ -160,5 +195,7 @@ namespace SwitchScreen
         {
             System.Environment.Exit(0);
         }
+
+
     }
 }
