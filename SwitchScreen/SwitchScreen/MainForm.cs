@@ -35,9 +35,24 @@ namespace SwitchScreen
                 this.notifyIcon.Text = "切换到单屏";
                 this.notifyIcon.Tag = "Multiple";
             }
-            h.Regist(this.Handle, (int)HotKeys.HotkeyModifiers.Control + (int)HotKeys.HotkeyModifiers.Shift, Keys.P, CallBack);
+            h.Regist(this.Handle, (int)HotKeys.HotkeyModifiers.Control + (int)HotKeys.HotkeyModifiers.Shift, Keys.F12, CallBack);
         }
 
+        public void RefreshIcon()
+        {
+            if (Screen.AllScreens.Count() == 1)
+            {
+                this.notifyIcon.Icon = iconClose;
+                this.notifyIcon.Text = "切换到双屏";
+                this.notifyIcon.Tag = "Single";
+            }
+            else
+            {
+                this.notifyIcon.Icon = iconOpen;
+                this.notifyIcon.Text = "切换到单屏";
+                this.notifyIcon.Tag = "Multiple";
+            }
+        }
 
         //private void btnUnregist_Click(object sender, EventArgs e)
         //{
@@ -59,31 +74,17 @@ namespace SwitchScreen
 
             if (e.Button == MouseButtons.Left)
             {
-                if (notifyIcon.Tag.ToString() == "Single")
-                {
-                    this.notifyIcon.Icon = iconOpen;
-                    notifyIcon.Tag = "Multiple";
-                    notifyIcon.Text = "切换到单屏";
-                }
-                else if (notifyIcon.Tag.ToString() == "Multiple")
-                {
-                    this.notifyIcon.Icon = iconClose;
-                    notifyIcon.Tag = "Single";
-                    notifyIcon.Text = "切换到双屏";
-                }
-                SwitchScreen();
+                StartSwitch();        
             }
             if (e.Button == MouseButtons.Right)
             {
-                //#region 使用右键菜单关闭 
+                // 使用右键菜单关闭 
                 //notifyIcon.ContextMenuStrip = CreateContextMenuStrip();
                 //Point point = Control.MousePosition;
                 //notifyIcon.ContextMenuStrip.Show(point);
-                //#endregion
 
-                #region 直接关闭 
+                // 直接关闭 
                 System.Environment.Exit(0);
-                #endregion
             }
         }
 
@@ -102,7 +103,6 @@ namespace SwitchScreen
                 notifyIcon.Text = "切换到双屏";
             }
             SwitchScreen();
-
         }
 
         public void CallBack()
