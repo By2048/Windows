@@ -58,7 +58,7 @@ namespace SwitchScreen
             // 
             // notifyIcon1
             // 
-            Bitmap iconBm = new Bitmap("..\\..\\icon\\close.ico");
+            Bitmap iconBm = new Bitmap("icon\\close.ico");
             Icon icon = Icon.FromHandle(iconBm.GetHicon());
             this.notifyIcon1.Icon = icon;
             this.notifyIcon1.Text = "notifyIcon1";

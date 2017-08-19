@@ -26,7 +26,7 @@ namespace SwitchScreen
             MessageBox.Show("注册成功");
 
 
-            pictureBox1.Image = Image.FromFile("..\\..\\icon\\close.ico");
+            pictureBox1.Image = Image.FromFile("icon\\close.ico");
         }
 
         private void button1_Click(object sender, EventArgs e)

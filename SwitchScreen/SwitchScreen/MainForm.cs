@@ -17,8 +17,8 @@ namespace SwitchScreen
     {
         HotKeys h = new HotKeys();
 
-        Icon iconClose = Icon.FromHandle(new Bitmap("..\\..\\icon\\close.ico").GetHicon());
-        Icon iconOpen = Icon.FromHandle(new Bitmap("..\\..\\icon\\open.ico").GetHicon());
+        Icon iconClose = Icon.FromHandle(new Bitmap("icon\\close.ico").GetHicon());
+        Icon iconOpen = Icon.FromHandle(new Bitmap("icon\\open.ico").GetHicon());
 
         public MainForm()
         {
