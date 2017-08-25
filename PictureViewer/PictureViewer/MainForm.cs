@@ -25,7 +25,7 @@ namespace PictureViewer
 
         private void MainForm_Load(object sender, EventArgs e)
         {
-            MainConfig.StartTreePath = @"F:\_Test";
+            MainConfig.StartTreePath = @"F:\- PicViewTest";
             MainConfig.ImageSize = new Size(16 * 10, 9 * 10);
             MainConfig.PanelTreeSize = panelTree.Size;
             MainConfig.PanelMainSize = panelMain.Size;

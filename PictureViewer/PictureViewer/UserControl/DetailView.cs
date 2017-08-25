@@ -53,7 +53,8 @@ namespace PictureViewer
                     //pictureBox.Image = Image.FromFile(pictures[pictureIndex]);
                     //pictureBox.Load(pictures[index]);
 
-                    pictureBox.Image = ImageTool.GetImage(pictures[index]);
+                    //pictureBox.Image = ImageTool.GetImage(pictures[index]);
+                    pictureBox.Image = ImageTool.GetThumbnailsImage(pictures[index], MainConfig.ImageSize);
                     pictureBox.Tag = pictures[index];
 
                     Point pictureLoction = new Point()

@@ -170,7 +170,6 @@
       <DependentUpon>TreeView.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="Backup\Collection.json" />
-    <None Include="ClassDiagram.cd" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>

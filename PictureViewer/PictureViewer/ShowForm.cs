@@ -46,7 +46,7 @@ namespace PictureViewer
             LoadImage();
         }
 
-        // 加载 curFilePath 的 Image 到 pictureBoxu
+        // 加载 curFilePath 的 Image 到 pictureBox
         private void LoadImage()
         {
           
@@ -63,7 +63,6 @@ namespace PictureViewer
             pictureBox.Size = Size;
             //Location = GetStartPoston(image.Size);
             Location = GetStartPoston(pictureBox.Size);
-
 
             image.Dispose();
 

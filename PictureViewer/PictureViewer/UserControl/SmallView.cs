@@ -35,7 +35,7 @@ namespace PictureViewer
             InitializeComponent();
             Size = panelSize;
             panelMain.AutoScroll = true;
-            ShowSmallImages(path, panelSize, imageSize);
+            LoadSmallImages(path, panelSize, imageSize);
         }
 
         private void SmallView_Load(object sender, EventArgs e)
@@ -45,7 +45,7 @@ namespace PictureViewer
             ParentForm.KeyUp += new KeyEventHandler(SmallView_KeyUp);
         }
 
-        private void ShowSmallImages(string path, Size panelSize, Size imageSize)
+        private void LoadSmallImages(string path, Size panelSize, Size imageSize)
         {
             string[] pictures = ImageTool.GetAllImagePath(path);
 
@@ -85,8 +85,6 @@ namespace PictureViewer
                     //Refresh();
                 }
             }
-
-
         }
 
         private void ShowSmallImages()
@@ -118,7 +116,8 @@ namespace PictureViewer
                     //fs.Dispose();
                     //pictureBox.Image = bm;
 
-                    pictureBox.Image = ImageTool.GetImage(pictures[index]);
+                    //pictureBox.Image = ImageTool.GetImage(pictures[index]);
+                    pictureBox.Image = ImageTool.GetThumbnailsImage(pictures[index], MainConfig.ImageSize);
                     pictureBox.Tag = pictures[index];
 
                     Point pictureLoction = new Point()

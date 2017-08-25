@@ -47,7 +47,8 @@ namespace PictureViewer
                 pictureBox.Height = pictureHeight;
 
                 //pictureBox.Image = Image.FromFile(pictures[index]);
-                pictureBox.Image = ImageTool.GetImage(pictures[index]);
+                //pictureBox.Image = ImageTool.GetImage(pictures[index]);
+                pictureBox.Image = ImageTool.GetThumbnailsImage(pictures[index], MainConfig.ImageSize);
                 pictureBox.Tag = pictures[index];
                 //FileStream fs = new FileStream(pictures[cnt], FileMode.Open);
                 //Bitmap bm = new Bitmap(fs);
