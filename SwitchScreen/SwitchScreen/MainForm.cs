@@ -17,8 +17,13 @@ namespace SwitchScreen
     {
         HotKeys h = new HotKeys();
 
-        Icon iconClose = Icon.FromHandle(new Bitmap("icon\\close.ico").GetHicon());
-        Icon iconOpen = Icon.FromHandle(new Bitmap("icon\\open.ico").GetHicon());
+        //Icon iconClose = Icon.FromHandle(new Bitmap("icon\\close.ico").GetHicon());
+        //Icon iconOpen = Icon.FromHandle(new Bitmap("icon\\open.ico").GetHicon());
+
+        Icon iconClose = Properties.Resources.close;
+        Icon iconOpen = Properties.Resources.open;
+
+
 
         public MainForm()
         {
@@ -35,7 +40,7 @@ namespace SwitchScreen
                 this.notifyIcon.Text = "切换到单屏";
                 this.notifyIcon.Tag = "Multiple";
             }
-            h.Regist(this.Handle, (int)HotKeys.HotkeyModifiers.Control + (int)HotKeys.HotkeyModifiers.Shift, Keys.F12, CallBack);
+            h.Regist(this.Handle, (int)HotKeys.HotkeyModifiers.Control + (int)HotKeys.HotkeyModifiers.Alt, Keys.P, CallBack);
         }
 
         public void RefreshIcon()
