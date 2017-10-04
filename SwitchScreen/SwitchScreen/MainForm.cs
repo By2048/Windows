@@ -15,15 +15,13 @@ namespace SwitchScreen
 {
     public partial class MainForm : Form
     {
-        HotKeys h = new HotKeys();
-
         //Icon iconClose = Icon.FromHandle(new Bitmap("icon\\close.ico").GetHicon());
         //Icon iconOpen = Icon.FromHandle(new Bitmap("icon\\open.ico").GetHicon());
 
         Icon iconClose = Properties.Resources.close;
         Icon iconOpen = Properties.Resources.open;
 
-
+        HotKeys h = new HotKeys();
 
         public MainForm()
         {
@@ -76,20 +74,18 @@ namespace SwitchScreen
 
         private void notifyIcon_MouseClick(object sender, MouseEventArgs e)
         {
-
             if (e.Button == MouseButtons.Left)
             {
                 StartSwitch();        
             }
             if (e.Button == MouseButtons.Right)
             {
-                // 使用右键菜单关闭 
-                //notifyIcon.ContextMenuStrip = CreateContextMenuStrip();
-                //Point point = Control.MousePosition;
-                //notifyIcon.ContextMenuStrip.Show(point);
-
+                // 使用右键菜单关闭
+                notifyIcon.ContextMenuStrip = CreateContextMenuStrip();
+                Point point = Control.MousePosition;
+                notifyIcon.ContextMenuStrip.Show(point);
                 // 直接关闭 
-                System.Environment.Exit(0);
+                //System.Environment.Exit(0);
             }
         }
 
@@ -110,18 +106,10 @@ namespace SwitchScreen
             SwitchScreen();
         }
 
-        public void CallBack()
-        {
-            Thread.Sleep(500); // 不加 sleep 出错 ？？？？
-            StartSwitch();
-        }
-
-
         private void notifyIcon_DoubleClick(object sender, EventArgs e)
         {
             MessageBox.Show("DoubleClick");
         }
-
 
         #region 屏幕切换 模拟按键
         public void SwitchScreen()
@@ -182,16 +170,21 @@ namespace SwitchScreen
         public static ContextMenuStrip CreateContextMenuStrip()
         {
             ContextMenuStrip contextMenuStrip;
-            ToolStripMenuItem close;
+            ToolStripMenuItem close,hotKey;
 
             contextMenuStrip = new ContextMenuStrip();
             contextMenuStrip.Name = "contextMenuStrip";
 
+            hotKey = new ToolStripMenuItem();
+            hotKey.Name = "hot key";
+            hotKey.Text = "快捷键按 Ctrl + Alt + P";
+            contextMenuStrip.Items.Add(hotKey);
+
             close = new ToolStripMenuItem();
             close.Name = "close";
-            close.Text = "关闭";
+            close.Text = "退出";
             close.Click += new EventHandler(close_click);
-            contextMenuStrip.Items.Add(close);
+            contextMenuStrip.Items.Add(close); 
 
             return contextMenuStrip;
         }
@@ -201,6 +194,11 @@ namespace SwitchScreen
             System.Environment.Exit(0);
         }
 
+        public void CallBack()
+        {
+            Thread.Sleep(500); // 不加 sleep 出错 ？？？？
+            StartSwitch();
+        }
 
     }
 }
