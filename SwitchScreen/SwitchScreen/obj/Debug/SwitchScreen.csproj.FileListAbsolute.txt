@@ -18,3 +18,4 @@ E:\Desktop\Windows\SwitchScreen\SwitchScreen\obj\Debug\SwitchScreen.TestForm.res
 E:\Desktop\Windows\SwitchScreen\SwitchScreen\obj\Debug\SwitchScreen.csproj.GenerateResource.Cache
 E:\Desktop\Windows\SwitchScreen\SwitchScreen\obj\Debug\SwitchScreen.exe
 E:\Desktop\Windows\SwitchScreen\SwitchScreen\obj\Debug\SwitchScreen.pdb
+E:\Desktop\Windows\SwitchScreen\SwitchScreen\obj\Debug\SwitchScreen.csproj.CoreCompileInputs.cache

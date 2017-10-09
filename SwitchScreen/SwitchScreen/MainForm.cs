@@ -178,6 +178,7 @@ namespace SwitchScreen
             hotKey = new ToolStripMenuItem();
             hotKey.Name = "hot key";
             hotKey.Text = "快捷键按 Ctrl + Alt + P";
+            hotKey.Click += new EventHandler(hotKey_click);
             contextMenuStrip.Items.Add(hotKey);
 
             close = new ToolStripMenuItem();
@@ -187,6 +188,12 @@ namespace SwitchScreen
             contextMenuStrip.Items.Add(close); 
 
             return contextMenuStrip;
+        }
+
+        private static void hotKey_click(object sender, EventArgs e)
+        {
+            // 未完成 实现自定义时间关闭...
+            MessageBox.Show("使用快捷键 ( Ctrl + Alt + P ) 切换桌面 !");
         }
 
         private static void close_click(object sender, EventArgs e)
